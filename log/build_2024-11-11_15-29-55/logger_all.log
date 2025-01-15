@@ -1,0 +1,168 @@
+[0.106s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'niryo_one_msgs']
+[0.106s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['niryo_one_msgs'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7ffadf3a82f0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7ffadf377c80>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7ffadf377c80>>, mixin_verb=('build',))
+[0.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.142s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/noldona/niryo/niryo_two_ros'
+[0.142s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.142s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.142s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.143s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.143s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.143s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.143s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.143s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.143s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.168s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.168s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.168s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.168s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.168s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.169s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.169s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.169s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.169s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.169s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.169s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.169s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.169s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.169s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.169s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_msgs) by extension 'ignore'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_msgs) by extension 'ignore_ament_install'
+[0.171s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_msgs) by extensions ['colcon_pkg']
+[0.171s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_msgs) by extension 'colcon_pkg'
+[0.171s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_msgs) by extensions ['colcon_meta']
+[0.171s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_msgs) by extension 'colcon_meta'
+[0.171s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_msgs) by extensions ['ros']
+[0.171s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_msgs) by extension 'ros'
+[0.174s] DEBUG:colcon.colcon_core.package_identification:Package 'src/niryo_one_msgs' with type 'ros.ament_cmake' and name 'niryo_one_msgs'
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_rpi) by extensions ['ignore', 'ignore_ament_install']
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_rpi) by extension 'ignore'
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_rpi) by extension 'ignore_ament_install'
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_rpi) by extensions ['colcon_pkg']
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_rpi) by extension 'colcon_pkg'
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_rpi) by extensions ['colcon_meta']
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_rpi) by extension 'colcon_meta'
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_rpi) by extensions ['ros']
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(src/niryo_one_rpi) by extension 'ros'
+[0.175s] DEBUG:colcon.colcon_core.package_identification:Package 'src/niryo_one_rpi' with type 'ros.ament_python' and name 'niryo_one_rpi'
+[0.175s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.175s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.175s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.175s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.175s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.193s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'niryo_one_rpi' in 'src/niryo_one_rpi'
+[0.194s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.194s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.197s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 332 installed packages in /opt/ros/jazzy
+[0.198s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'niryo_one_msgs' build argument 'cmake_args' from command line to 'None'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'niryo_one_msgs' build argument 'cmake_target' from command line to 'None'
+[0.247s] Level 5:colcon.colcon_core.verb:set package 'niryo_one_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.247s] Level 5:colcon.colcon_core.verb:set package 'niryo_one_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.247s] Level 5:colcon.colcon_core.verb:set package 'niryo_one_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.247s] Level 5:colcon.colcon_core.verb:set package 'niryo_one_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.247s] Level 5:colcon.colcon_core.verb:set package 'niryo_one_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.247s] Level 5:colcon.colcon_core.verb:set package 'niryo_one_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.247s] Level 5:colcon.colcon_core.verb:set package 'niryo_one_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.247s] DEBUG:colcon.colcon_core.verb:Building package 'niryo_one_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs', 'merge_install': False, 'path': '/home/noldona/niryo/niryo_two_ros/src/niryo_one_msgs', 'symlink_install': False, 'test_result_base': None}
+[0.247s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.248s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.248s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/noldona/niryo/niryo_two_ros/src/niryo_one_msgs' with build type 'ament_cmake'
+[0.248s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/noldona/niryo/niryo_two_ros/src/niryo_one_msgs'
+[0.250s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.251s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.251s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.260s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs -- -j4 -l4
+[31.681s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs -- -j4 -l4
+[32.233s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs
+[32.433s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(niryo_one_msgs)
+[32.434s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs
+[32.436s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs' for CMake module files
+[32.437s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs' for CMake config files
+[32.438s] Level 1:colcon.colcon_core.shell:create_environment_hook('niryo_one_msgs', 'cmake_prefix_path')
+[32.438s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/cmake_prefix_path.ps1'
+[32.438s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/cmake_prefix_path.dsv'
+[32.439s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/cmake_prefix_path.sh'
+[32.440s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib'
+[32.440s] Level 1:colcon.colcon_core.shell:create_environment_hook('niryo_one_msgs', 'ld_library_path_lib')
+[32.440s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/ld_library_path_lib.ps1'
+[32.441s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/ld_library_path_lib.dsv'
+[32.441s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/ld_library_path_lib.sh'
+[32.441s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/bin'
+[32.442s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/pkgconfig/niryo_one_msgs.pc'
+[32.442s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages'
+[32.442s] Level 1:colcon.colcon_core.shell:create_environment_hook('niryo_one_msgs', 'pythonpath')
+[32.442s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/pythonpath.ps1'
+[32.443s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/pythonpath.dsv'
+[32.443s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/pythonpath.sh'
+[32.444s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/bin'
+[32.444s] INFO:colcon.colcon_core.shell:Creating package script '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.ps1'
+[32.445s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.dsv'
+[32.445s] INFO:colcon.colcon_core.shell:Creating package script '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.sh'
+[32.446s] INFO:colcon.colcon_core.shell:Creating package script '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.bash'
+[32.447s] INFO:colcon.colcon_core.shell:Creating package script '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.zsh'
+[32.447s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/colcon-core/packages/niryo_one_msgs)
+[32.983s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(niryo_one_msgs)
+[32.983s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs' for CMake module files
+[32.984s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs' for CMake config files
+[32.985s] Level 1:colcon.colcon_core.shell:create_environment_hook('niryo_one_msgs', 'cmake_prefix_path')
+[32.985s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/cmake_prefix_path.ps1'
+[32.986s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/cmake_prefix_path.dsv'
+[32.986s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/cmake_prefix_path.sh'
+[32.987s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib'
+[32.987s] Level 1:colcon.colcon_core.shell:create_environment_hook('niryo_one_msgs', 'ld_library_path_lib')
+[32.988s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/ld_library_path_lib.ps1'
+[32.988s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/ld_library_path_lib.dsv'
+[32.989s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/ld_library_path_lib.sh'
+[32.989s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/bin'
+[32.989s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/pkgconfig/niryo_one_msgs.pc'
+[32.990s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages'
+[32.990s] Level 1:colcon.colcon_core.shell:create_environment_hook('niryo_one_msgs', 'pythonpath')
+[32.990s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/pythonpath.ps1'
+[32.990s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/pythonpath.dsv'
+[32.991s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/hook/pythonpath.sh'
+[32.991s] Level 1:colcon.colcon_core.environment:checking '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/bin'
+[32.992s] INFO:colcon.colcon_core.shell:Creating package script '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.ps1'
+[32.992s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.dsv'
+[32.993s] INFO:colcon.colcon_core.shell:Creating package script '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.sh'
+[32.994s] INFO:colcon.colcon_core.shell:Creating package script '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.bash'
+[32.994s] INFO:colcon.colcon_core.shell:Creating package script '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.zsh'
+[32.994s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/colcon-core/packages/niryo_one_msgs)
+[32.995s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[32.995s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[32.995s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[32.995s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[33.001s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[33.001s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[33.001s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[33.002s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+[33.002s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[33.003s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/noldona/niryo/niryo_two_ros/install/local_setup.ps1'
+[33.004s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/noldona/niryo/niryo_two_ros/install/_local_setup_util_ps1.py'
+[33.005s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/noldona/niryo/niryo_two_ros/install/setup.ps1'
+[33.006s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/noldona/niryo/niryo_two_ros/install/local_setup.sh'
+[33.006s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/noldona/niryo/niryo_two_ros/install/_local_setup_util_sh.py'
+[33.007s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/noldona/niryo/niryo_two_ros/install/setup.sh'
+[33.008s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/noldona/niryo/niryo_two_ros/install/local_setup.bash'
+[33.008s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/noldona/niryo/niryo_two_ros/install/setup.bash'
+[33.009s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/noldona/niryo/niryo_two_ros/install/local_setup.zsh'
+[33.010s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/noldona/niryo/niryo_two_ros/install/setup.zsh'

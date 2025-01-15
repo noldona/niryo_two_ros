@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "niryo_one_msgs/srv/SetString_Request",
+      "fields": [
+        {
+          "name": "value",
+          "type": {
+            "type_id": 17,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "niryo_one_msgs/srv/SetString_Request",
+      "hash_string": "RIHS01_fa9dee1e9673c1463bbe1c3d18e67949cc10f1c3f1ebf27ada34f2bf12c018f1"
+    }
+  ]
+}

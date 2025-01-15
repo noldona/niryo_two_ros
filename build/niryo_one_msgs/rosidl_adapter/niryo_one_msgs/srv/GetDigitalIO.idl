@@ -1,0 +1,25 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/GetDigitalIO.srv
+// generated code does not contain a copyright notice
+
+
+module niryo_one_msgs {
+  module srv {
+    struct GetDigitalIO_Request {
+      int32 pin;
+    };
+    struct GetDigitalIO_Response {
+      int32 status;
+
+      string message;
+
+      int32 pin;
+
+      string name;
+
+      int32 mode;
+
+      int32 state;
+    };
+  };
+};

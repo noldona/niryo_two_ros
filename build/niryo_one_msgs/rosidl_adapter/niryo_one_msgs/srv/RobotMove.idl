@@ -1,0 +1,18 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/RobotMove.srv
+// generated code does not contain a copyright notice
+
+#include "niryo_one_msgs/msg/RobotMoveCommand.idl"
+
+module niryo_one_msgs {
+  module srv {
+    struct RobotMove_Request {
+      niryo_one_msgs::msg::RobotMoveCommand cmd;
+    };
+    struct RobotMove_Response {
+      int32 status;
+
+      string message;
+    };
+  };
+};

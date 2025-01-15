@@ -1,0 +1,51 @@
+[0.011s] Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs -- -j4 -l4
+[0.049s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.160s] -- Found std_msgs: 5.3.5 (/opt/ros/jazzy/share/std_msgs/cmake)
+[0.187s] -- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.196s] -- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.209s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.223s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.252s] -- Found geometry_msgs: 5.3.5 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[0.270s] -- Found moveit_msgs: 2.5.0 (/opt/ros/jazzy/share/moveit_msgs/cmake)
+[0.579s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[0.587s] -- Found rosidl_adapter: 4.6.4 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[1.031s] [31mCMake Error at /opt/ros/jazzy/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:57 (message):
+[1.031s]   execute_process(/usr/bin/python3 -m rosidl_adapter --package-name
+[1.031s]   niryo_one_msgs --arguments-file
+[1.032s]   /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs/rosidl_adapter__arguments__niryo_one_msgs.json
+[1.032s]   --output-dir
+[1.032s]   /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs/rosidl_adapter/niryo_one_msgs
+[1.032s]   --output-file
+[1.032s]   /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs/rosidl_adapter/niryo_one_msgs.idls)
+[1.032s]   returned error code 1:
+[1.032s] 
+[1.032s]   Traceback (most recent call last):
+[1.032s] 
+[1.032s]     File "<frozen runpy>", line 198, in _run_module_as_main
+[1.033s]     File "<frozen runpy>", line 88, in _run_code
+[1.033s]     File "/opt/ros/jazzy/lib/python3.12/site-packages/rosidl_adapter/__main__.py", line 19, in <module>
+[1.033s]       sys.exit(main())
+[1.033s]                ^^^^^^
+[1.033s]     File "/opt/ros/jazzy/lib/python3.12/site-packages/rosidl_adapter/main.py", line 53, in main
+[1.033s]       abs_idl_file = convert_to_idl(
+[1.033s]                      ^^^^^^^^^^^^^^^
+[1.033s]     File "/opt/ros/jazzy/lib/python3.12/site-packages/rosidl_adapter/__init__.py", line 24, in convert_to_idl
+[1.033s]       return convert_srv_to_idl(
+[1.033s]              ^^^^^^^^^^^^^^^^^^^
+[1.033s]     File "/opt/ros/jazzy/lib/python3.12/site-packages/rosidl_adapter/srv/__init__.py", line 28, in convert_srv_to_idl
+[1.034s]       srv = parse_service_string(package_name, input_file.stem, content)
+[1.034s]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1.034s]     File "/opt/ros/jazzy/lib/python3.12/site-packages/rosidl_adapter/parser.py", line 851, in parse_service_string
+[1.034s]       raise InvalidServiceSpecification(
+[1.034s] 
+[1.034s]   rosidl_adapter.parser.InvalidServiceSpecification: Could not find separator
+[1.034s]   '---' between request and response
+[1.034s] 
+[1.034s] Call Stack (most recent call first):
+[1.034s]   /opt/ros/jazzy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:132 (rosidl_adapt_interfaces)
+[1.035s]   CMakeLists.txt:18 (rosidl_generate_interfaces)
+[1.035s] 
+[1.035s] [0m
+[1.035s] -- Configuring incomplete, errors occurred!
+[1.039s] gmake: *** [Makefile:5675: cmake_check_build_system] Error 1
+[1.041s] Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs -- -j4 -l4

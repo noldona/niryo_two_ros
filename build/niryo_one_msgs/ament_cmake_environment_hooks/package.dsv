@@ -1,0 +1,4 @@
+source;share/niryo_one_msgs/local_setup.bash
+source;share/niryo_one_msgs/local_setup.dsv
+source;share/niryo_one_msgs/local_setup.sh
+source;share/niryo_one_msgs/local_setup.zsh

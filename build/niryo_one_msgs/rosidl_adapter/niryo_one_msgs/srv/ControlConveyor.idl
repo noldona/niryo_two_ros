@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/ControlConveyor.srv
+// generated code does not contain a copyright notice
+
+
+module niryo_one_msgs {
+  module srv {
+    struct ControlConveyor_Request {
+      uint8 id;
+
+      boolean control_on;
+
+      int16 speed;
+
+      int8 direction;
+    };
+    struct ControlConveyor_Response {
+      uint8 status;
+
+      string message;
+    };
+  };
+};

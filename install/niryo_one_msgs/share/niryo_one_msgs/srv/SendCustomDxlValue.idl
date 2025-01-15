@@ -1,0 +1,30 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/SendCustomDxlValue.srv
+// generated code does not contain a copyright notice
+
+
+module niryo_one_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "Check XL-320 and XL-430 reference doc for" "\n"
+      "the complete register table")
+    struct SendCustomDxlValue_Request {
+      @verbatim (language="comment", text=
+        "1 (XL-320) or 2 (XL-430)")
+      int32 motor_type;
+
+      uint8 id;
+
+      int32 value;
+
+      int32 reg_address;
+
+      int32 byte_number;
+    };
+    struct SendCustomDxlValue_Response {
+      int32 status;
+
+      string message;
+    };
+  };
+};

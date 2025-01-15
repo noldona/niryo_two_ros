@@ -1,0 +1,16 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from niryo_one_msgs/msg/SequenceAutorunStatus.msg
+// generated code does not contain a copyright notice
+
+
+module niryo_one_msgs {
+  module msg {
+    struct SequenceAutorunStatus {
+      boolean enabled;
+
+      int32 mode;
+
+      sequence<int32> sequence_ids;
+    };
+  };
+};

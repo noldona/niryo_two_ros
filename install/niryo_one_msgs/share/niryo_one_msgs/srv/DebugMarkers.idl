@@ -1,0 +1,18 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/DebugMarkers.srv
+// generated code does not contain a copyright notice
+
+#include "sensor_msgs/msg/CompressedImage.idl"
+
+module niryo_one_msgs {
+  module srv {
+    struct DebugMarkers_Request {
+      uint8 structure_needs_at_least_one_member;
+    };
+    struct DebugMarkers_Response {
+      boolean markers_detected;
+
+      sensor_msgs::msg::CompressedImage img;
+    };
+  };
+};

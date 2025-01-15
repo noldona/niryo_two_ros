@@ -1,0 +1,4 @@
+niryo_one_msgs/RobotMoveCommand cmd
+---
+int32 status
+string message

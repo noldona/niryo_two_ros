@@ -1,0 +1,618 @@
+-- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found std_msgs: 5.3.5 (/opt/ros/jazzy/share/std_msgs/cmake)
+-- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found geometry_msgs: 5.3.5 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+-- Found moveit_msgs: 2.5.0 (/opt/ros/jazzy/share/moveit_msgs/cmake)
+-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+-- Found rosidl_adapter: 4.6.4 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+-- Found ament_lint_auto: 0.17.1 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done (2.7s)
+-- Generating done (0.2s)
+-- Build files have been written to: /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs
+[  1%] Built target niryo_one_msgs__rosidl_generator_type_description
+[  1%] Built target ament_cmake_python_copy_niryo_one_msgs
+[  1%] Built target niryo_one_msgs__cpp
+[  1%] [32m[1mLinking C shared library libniryo_one_msgs__rosidl_generator_c.so[0m
+[ 29%] Built target niryo_one_msgs__rosidl_generator_c
+[ 29%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[ 29%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_cpp.so[0m
+running egg_info
+[ 29%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+writing niryo_one_msgs.egg-info/PKG-INFO
+writing dependency_links to niryo_one_msgs.egg-info/dependency_links.txt
+writing top-level names to niryo_one_msgs.egg-info/top_level.txt
+[ 38%] Built target niryo_one_msgs__rosidl_typesupport_cpp
+[ 48%] Built target niryo_one_msgs__rosidl_typesupport_fastrtps_c
+[ 58%] Built target niryo_one_msgs__rosidl_typesupport_fastrtps_cpp
+[ 59%] [32m[1mLinking C shared library libniryo_one_msgs__rosidl_typesupport_introspection_c.so[0m
+[ 60%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_c.so[0m
+reading manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'
+writing manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'
+[ 61%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[ 61%] Built target ament_cmake_python_build_niryo_one_msgs_egg
+[ 70%] Built target niryo_one_msgs__rosidl_typesupport_introspection_c
+[ 79%] Built target niryo_one_msgs__rosidl_typesupport_c
+[ 88%] Built target niryo_one_msgs__rosidl_typesupport_introspection_cpp
+[ 88%] Built target niryo_one_msgs
+[ 88%] Built target niryo_one_msgs__py
+[ 88%] [32m[1mLinking C shared library libniryo_one_msgs__rosidl_generator_py.so[0m
+[ 97%] Built target niryo_one_msgs__rosidl_generator_py
+[ 98%] [32m[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so[0m
+[ 99%] [32m[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so[0m
+[100%] [32m[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so[0m
+[100%] Built target niryo_one_msgs_s__rosidl_typesupport_introspection_c
+[100%] Built target niryo_one_msgs_s__rosidl_typesupport_c
+[100%] Built target niryo_one_msgs_s__rosidl_typesupport_fastrtps_c
+-- Install configuration: ""
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/rosidl_interfaces/niryo_one_msgs
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/DigitalIOState.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/HardwareStatus.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/LogStatus.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/MatlabMoveResult.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ObjectPose.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Position.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ProcessState.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotMoveCommand.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotState.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RPY.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Sequence.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SequenceAutorunStatus.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ShiftPose.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SoftwareVersion.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ToolCommand.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Trajectory.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/TrajectoryPlan.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.json
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_move_command.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/process_state.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/object_pose.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory_plan.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/position.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/digital_io_state.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_state.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/log_status.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/matlab_move_result.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_generator_c__visibility_control.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rpy.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/software_version.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__struct.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__description.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__struct.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__functions.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__struct.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__functions.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__functions.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__struct.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__struct.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__description.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__functions.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/shift_pose.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/conveyor_feedback.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/tool_command.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence_autorun_status.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/hardware_status.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/change_hardware_version.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__description.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__functions.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__struct.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__functions.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/library_path.sh
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/library_path.dsv
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_c.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_c.so" to ""
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_state.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/software_version.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/tool_command.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/shift_pose.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory_plan.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/log_status.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_move_command.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/digital_io_state.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/position.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/object_pose.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/matlab_move_result.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/conveyor_feedback.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rpy.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/process_state.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence_autorun_status.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/hardware_status.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__builder.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__traits.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__struct.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/change_hardware_version.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/dds_fastrtps
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/dds_fastrtps
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_introspection_c.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_introspection_c.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_introspection_c.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_introspection_c.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_introspection_c.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_introspection_c.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_introspection_c.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_introspection_c.h
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_c.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_c.so" to ""
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_c.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_c.so" to ""
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.cpp
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_cpp.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_cpp.so" to ""
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/pythonpath.sh
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/pythonpath.dsv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/SOURCES.txt
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/PKG-INFO
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/dependency_links.txt
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/top_level.txt
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/__init__.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/__init__.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_software_version.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence_autorun_status.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence_autorun_status_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_tool_command_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_digital_io_state.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_hardware_status_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory_plan.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_state.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_shift_pose_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_digital_io_state_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_matlab_move_result.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_object_pose.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_shift_pose.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_process_state.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_rpy.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_move_command.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_log_status.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_position_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_hardware_status.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_software_version_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_move_command_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_state_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_rpy_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_position.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_log_status_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_tool_command.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_object_pose_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_matlab_move_result_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_process_state_s.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory_plan_s.c
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_introspection_c.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_c.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/__init__.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version.py
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version_s.c
+Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs'...
+Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/__init__.py'...
+Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg'...
+Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv'...
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so" to ""
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so" to ""
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so" to ""
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_py.so
+-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_py.so" to ""
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/DigitalIOState.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/HardwareStatus.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/LogStatus.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/MatlabMoveResult.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ObjectPose.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Position.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ProcessState.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotMoveCommand.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotState.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RPY.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Sequence.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SequenceAutorunStatus.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ShiftPose.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SoftwareVersion.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ToolCommand.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Trajectory.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/TrajectoryPlan.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.idl
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/DigitalIOState.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/HardwareStatus.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/LogStatus.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/MatlabMoveResult.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ObjectPose.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Position.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ProcessState.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotMoveCommand.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotState.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RPY.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Sequence.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SequenceAutorunStatus.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ShiftPose.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SoftwareVersion.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ToolCommand.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Trajectory.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/TrajectoryPlan.msg
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.srv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/package_run_dependencies/niryo_one_msgs
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/parent_prefix_path/niryo_one_msgs
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/ament_prefix_path.sh
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/path.sh
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/path.dsv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.bash
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.sh
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.zsh
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.dsv
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.dsv
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/packages/niryo_one_msgs
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport-noconfig.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cppExport.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport-noconfig.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_pyExport.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_pyExport-noconfig.cmake
+-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake-extras.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_targets-extras.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgsConfig.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgsConfig-version.cmake
+-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.xml

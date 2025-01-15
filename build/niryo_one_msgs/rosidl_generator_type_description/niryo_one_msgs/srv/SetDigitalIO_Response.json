@@ -1,0 +1,36 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "niryo_one_msgs/srv/SetDigitalIO_Response",
+      "fields": [
+        {
+          "name": "status",
+          "type": {
+            "type_id": 6,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "message",
+          "type": {
+            "type_id": 17,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "niryo_one_msgs/srv/SetDigitalIO_Response",
+      "hash_string": "RIHS01_8e4b88f908800193cef442cf4eb5f557ad7ee71161ec0e70a1edb919c3bdd19d"
+    }
+  ]
+}

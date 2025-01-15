@@ -1,0 +1,66 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "niryo_one_msgs/action/Sequence_GetResult_Response",
+      "fields": [
+        {
+          "name": "status",
+          "type": {
+            "type_id": 2,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "result",
+          "type": {
+            "type_id": 1,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": "niryo_one_msgs/action/Sequence_Result"
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": [
+      {
+        "type_name": "niryo_one_msgs/action/Sequence_Result",
+        "fields": [
+          {
+            "name": "status",
+            "type": {
+              "type_id": 6,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          },
+          {
+            "name": "message",
+            "type": {
+              "type_id": 17,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          }
+        ]
+      }
+    ]
+  },
+  "type_hashes": [
+    {
+      "type_name": "niryo_one_msgs/action/Sequence_GetResult_Response",
+      "hash_string": "RIHS01_eaa03f2167282c316c0156ba09d2eade35604828e634022ba26be6aa819f57b7"
+    },
+    {
+      "type_name": "niryo_one_msgs/action/Sequence_Result",
+      "hash_string": "RIHS01_bddcf07bcb04de0509c3aaed4b43ff8fc9e82e87e1cc043b11e0aede6e4d1238"
+    }
+  ]
+}

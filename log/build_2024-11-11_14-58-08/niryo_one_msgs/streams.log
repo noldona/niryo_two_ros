@@ -1,0 +1,260 @@
+[0.011s] Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs -- -j4 -l4
+[0.038s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.149s] -- Found std_msgs: 5.3.5 (/opt/ros/jazzy/share/std_msgs/cmake)
+[0.176s] -- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.186s] -- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.198s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.212s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.241s] -- Found geometry_msgs: 5.3.5 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[0.259s] -- Found moveit_msgs: 2.5.0 (/opt/ros/jazzy/share/moveit_msgs/cmake)
+[0.575s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[0.583s] -- Found rosidl_adapter: 4.6.4 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[1.045s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[1.723s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.985s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.988s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[2.423s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[2.590s] -- Found ament_lint_auto: 0.17.1 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[2.623s] -- Added test 'lint_cmake' to check CMake code style
+[2.626s] -- Added test 'xmllint' to check XML markup files
+[2.632s] -- Configuring done (2.6s)
+[2.799s] -- Generating done (0.1s)
+[2.807s] -- Build files have been written to: /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs
+[2.854s] [  2%] Built target niryo_one_msgs__rosidl_generator_type_description
+[2.870s] [  2%] Built target ament_cmake_python_copy_niryo_one_msgs
+[2.886s] [  4%] Built target niryo_one_msgs__cpp
+[2.915s] [  9%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/conveyor_feedback__description.c.o[0m
+[2.915s] [  9%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/conveyor_feedback__functions.c.o[0m
+[2.915s] [ 11%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c.o[0m
+[3.177s] [ 13%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/srv/detail/change_hardware_version__description.c.o[0m
+[3.185s] [ 15%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/srv/detail/change_hardware_version__functions.c.o[0m
+[3.198s] [ 18%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c.o[0m
+[3.264s] running egg_info
+[3.293s] writing niryo_one_msgs.egg-info/PKG-INFO
+[3.294s] writing dependency_links to niryo_one_msgs.egg-info/dependency_links.txt
+[3.294s] writing top-level names to niryo_one_msgs.egg-info/top_level.txt
+[3.296s] [ 20%] [32m[1mLinking C shared library libniryo_one_msgs__rosidl_generator_c.so[0m
+[3.378s] reading manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'
+[3.379s] [ 22%] Built target niryo_one_msgs__rosidl_generator_c
+[3.380s] writing manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'
+[3.419s] [ 22%] Built target ament_cmake_python_build_niryo_one_msgs_egg
+[3.439s] [ 25%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/conveyor_feedback__type_support.cpp.o[0m
+[3.450s] [ 27%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/conveyor_feedback__type_support.cpp.o[0m
+[3.455s] [ 29%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/conveyor_feedback__type_support_c.cpp.o[0m
+[3.459s] [ 31%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c.o[0m
+[3.513s] [ 34%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c.o[0m
+[3.591s] [ 36%] [32m[1mLinking C shared library libniryo_one_msgs__rosidl_typesupport_introspection_c.so[0m
+[3.665s] [ 38%] Built target niryo_one_msgs__rosidl_typesupport_introspection_c
+[3.677s] [ 40%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/srv/change_hardware_version__type_support.cpp.o[0m
+[4.279s] [ 43%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/conveyor_feedback__type_support.cpp.o[0m
+[4.395s] [ 45%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/srv/change_hardware_version__type_support.cpp.o[0m
+[4.412s] [ 47%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_cpp.so[0m
+[4.468s] [ 50%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/srv/detail/dds_fastrtps/change_hardware_version__type_support.cpp.o[0m
+[4.476s] [ 52%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_c.so[0m
+[4.559s] [ 54%] Built target niryo_one_msgs__rosidl_typesupport_c
+[4.580s] [ 56%] Built target niryo_one_msgs__rosidl_typesupport_cpp
+[4.589s] [ 59%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/srv/detail/change_hardware_version__type_support_c.cpp.o[0m
+[4.600s] [ 63%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/srv/detail/change_hardware_version__type_support.cpp.o[0m
+[4.602s] [ 63%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.cpp.o[0m
+[5.853s] [ 65%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[6.036s] [ 68%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[6.204s] [ 70%] Built target niryo_one_msgs__rosidl_typesupport_introspection_cpp
+[6.229s] [ 72%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[6.265s] [ 75%] Built target niryo_one_msgs__rosidl_typesupport_fastrtps_c
+[6.445s] [ 77%] Built target niryo_one_msgs__rosidl_typesupport_fastrtps_cpp
+[6.500s] [ 77%] Built target niryo_one_msgs
+[6.549s] [ 79%] Built target niryo_one_msgs__py
+[6.610s] [ 81%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_conveyor_feedback_s.c.o[0m
+[6.611s] [ 84%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/srv/_change_hardware_version_s.c.o[0m
+[6.943s] [ 86%] [32m[1mLinking C shared library libniryo_one_msgs__rosidl_generator_py.so[0m
+[7.079s] [ 86%] Built target niryo_one_msgs__rosidl_generator_py
+[7.138s] [ 88%] [32mBuilding C object CMakeFiles/niryo_one_msgs_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[7.138s] [ 90%] [32mBuilding C object CMakeFiles/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[7.156s] [ 93%] [32mBuilding C object CMakeFiles/niryo_one_msgs_s__rosidl_typesupport_c.dir/rosidl_generator_py/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[7.397s] [100%] [32m[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so[0m
+[7.397s] [100%] [32m[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so[0m
+[7.397s] [100%] [32m[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so[0m
+[7.456s] [100%] Built target niryo_one_msgs_s__rosidl_typesupport_c
+[7.461s] [100%] Built target niryo_one_msgs_s__rosidl_typesupport_introspection_c
+[7.465s] [100%] Built target niryo_one_msgs_s__rosidl_typesupport_fastrtps_c
+[7.481s] Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs -- -j4 -l4
+[7.617s] Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs
+[7.630s] -- Install configuration: ""
+[7.633s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/rosidl_interfaces/niryo_one_msgs
+[7.634s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.json
+[7.634s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.json
+[7.635s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[7.635s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[7.636s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_generator_c__visibility_control.h
+[7.636s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[7.636s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__functions.h
+[7.637s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__description.c
+[7.637s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.h
+[7.637s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c
+[7.637s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__functions.c
+[7.637s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__struct.h
+[7.637s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/conveyor_feedback.h
+[7.637s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[7.637s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/change_hardware_version.h
+[7.638s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[7.638s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c
+[7.638s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__description.c
+[7.638s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__functions.c
+[7.638s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__struct.h
+[7.638s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__functions.h
+[7.638s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.h
+[7.640s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/library_path.sh
+[7.640s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/library_path.dsv
+[7.642s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_c.so
+[7.643s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_c.so" to ""
+[7.643s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[7.643s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[7.644s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[7.646s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_fastrtps_c.h
+[7.646s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[7.646s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[7.646s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[7.646s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_fastrtps_c.h
+[7.647s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so
+[7.647s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[7.647s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[7.647s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[7.647s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[7.647s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__builder.hpp
+[7.647s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__traits.hpp
+[7.648s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.hpp
+[7.648s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__struct.hpp
+[7.648s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/conveyor_feedback.hpp
+[7.648s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[7.648s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[7.651s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[7.651s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__builder.hpp
+[7.651s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__traits.hpp
+[7.651s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__struct.hpp
+[7.651s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.hpp
+[7.652s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/change_hardware_version.hpp
+[7.652s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[7.652s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[7.652s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[7.652s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/dds_fastrtps
+[7.652s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_fastrtps_cpp.hpp
+[7.652s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[7.652s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[7.653s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[7.653s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/dds_fastrtps
+[7.653s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_fastrtps_cpp.hpp
+[7.653s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so
+[7.653s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[7.653s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[7.653s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[7.653s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[7.653s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_introspection_c.h
+[7.654s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c
+[7.654s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[7.654s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[7.654s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[7.654s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c
+[7.654s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_introspection_c.h
+[7.654s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_c.so
+[7.654s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_c.so" to ""
+[7.655s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_c.so
+[7.656s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_c.so" to ""
+[7.656s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[7.656s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[7.656s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[7.657s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_introspection_cpp.hpp
+[7.657s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.cpp
+[7.658s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[7.659s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[7.659s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.cpp
+[7.659s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_introspection_cpp.hpp
+[7.660s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so
+[7.661s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[7.663s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_cpp.so
+[7.664s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_cpp.so" to ""
+[7.664s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/pythonpath.sh
+[7.664s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/pythonpath.dsv
+[7.664s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info
+[7.664s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/SOURCES.txt
+[7.665s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/PKG-INFO
+[7.665s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/dependency_links.txt
+[7.666s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/top_level.txt
+[7.666s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs
+[7.666s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/__init__.py
+[7.666s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg
+[7.667s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/__init__.py
+[7.667s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback_s.c
+[7.667s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback.py
+[7.667s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so
+[7.667s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so
+[7.668s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so
+[7.668s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[7.668s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_c.c
+[7.668s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[7.668s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv
+[7.668s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/__init__.py
+[7.669s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version.py
+[7.669s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version_s.c
+[7.752s] Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs'...
+[7.753s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/__init__.py'...
+[7.753s] Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg'...
+[7.753s] Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv'...
+[7.760s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so
+[7.761s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so" to ""
+[7.761s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so
+[7.762s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so" to ""
+[7.762s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so
+[7.763s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so" to ""
+[7.763s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_py.so
+[7.764s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_py.so" to ""
+[7.764s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.idl
+[7.765s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.idl
+[7.765s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.msg
+[7.765s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.srv
+[7.766s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/package_run_dependencies/niryo_one_msgs
+[7.766s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/parent_prefix_path/niryo_one_msgs
+[7.767s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/ament_prefix_path.sh
+[7.767s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/ament_prefix_path.dsv
+[7.767s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/path.sh
+[7.767s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/path.dsv
+[7.768s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.bash
+[7.768s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.sh
+[7.768s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.zsh
+[7.768s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.dsv
+[7.769s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.dsv
+[7.769s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/packages/niryo_one_msgs
+[7.770s] -- Old export file "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport.cmake" will be replaced.  Removing files [/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport-noconfig.cmake].
+[7.770s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport.cmake
+[7.770s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport-noconfig.cmake
+[7.771s] -- Old export file "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport.cmake" will be replaced.  Removing files [/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake].
+[7.771s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[7.772s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[7.773s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cppExport.cmake
+[7.774s] -- Old export file "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport.cmake" will be replaced.  Removing files [/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake].
+[7.774s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[7.775s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[7.775s] -- Old export file "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport.cmake" will be replaced.  Removing files [/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake].
+[7.776s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport.cmake
+[7.778s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[7.778s] -- Old export file "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport.cmake" will be replaced.  Removing files [/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport-noconfig.cmake].
+[7.778s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport.cmake
+[7.779s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[7.780s] -- Old export file "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport.cmake" will be replaced.  Removing files [/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake].
+[7.780s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[7.780s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[7.781s] -- Old export file "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport.cmake" will be replaced.  Removing files [/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport-noconfig.cmake].
+[7.781s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport.cmake
+[7.782s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[7.783s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_pyExport.cmake
+[7.783s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_pyExport-noconfig.cmake
+[7.784s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake-extras.cmake
+[7.784s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[7.785s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[7.785s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[7.785s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[7.785s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[7.786s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[7.786s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgsConfig.cmake
+[7.786s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgsConfig-version.cmake
+[7.786s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.xml
+[7.790s] Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs

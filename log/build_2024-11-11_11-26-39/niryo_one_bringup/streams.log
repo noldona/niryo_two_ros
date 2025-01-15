@@ -1,0 +1,21 @@
+[0.024s] Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/noldona/niryo/niryo_two_ros/src/niryo_one_bringup -DCMAKE_INSTALL_PREFIX=/home/noldona/niryo/niryo_two_ros/install/niryo_one_bringup
+[0.391s] -- The C compiler identification is GNU 13.2.0
+[0.663s] -- The CXX compiler identification is GNU 13.2.0
+[0.686s] -- Detecting C compiler ABI info
+[0.850s] -- Detecting C compiler ABI info - done
+[0.866s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.866s] -- Detecting C compile features
+[0.866s] -- Detecting C compile features - done
+[0.882s] -- Detecting CXX compiler ABI info
+[1.062s] -- Detecting CXX compiler ABI info - done
+[1.086s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.088s] -- Detecting CXX compile features
+[1.090s] -- Detecting CXX compile features - done
+[1.096s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.293s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.459s] -- Found ament_lint_auto: 0.17.1 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.639s] -- Added test 'lint_cmake' to check CMake code style
+[1.641s] -- Added test 'xmllint' to check XML markup files
+[1.643s] -- Configuring done (1.5s)
+[1.651s] -- Generating done (0.0s)
+[1.654s] -- Build files have been written to: /home/noldona/niryo/niryo_two_ros/build/niryo_one_bringup

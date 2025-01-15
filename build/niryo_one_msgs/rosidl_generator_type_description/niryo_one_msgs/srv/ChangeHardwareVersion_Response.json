@@ -1,0 +1,36 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "niryo_one_msgs/srv/ChangeHardwareVersion_Response",
+      "fields": [
+        {
+          "name": "status",
+          "type": {
+            "type_id": 6,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "message",
+          "type": {
+            "type_id": 17,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "niryo_one_msgs/srv/ChangeHardwareVersion_Response",
+      "hash_string": "RIHS01_c5d4fdb4398f6e4e9c74a0f666fa0528f0bed47e242b2a0c2c3bc526e3499fb4"
+    }
+  ]
+}

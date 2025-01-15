@@ -1,0 +1,26 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from niryo_one_msgs/msg/DigitalIOState.msg
+// generated code does not contain a copyright notice
+
+
+module niryo_one_msgs {
+  module msg {
+    struct DigitalIOState {
+      @verbatim (language="comment", text=
+        "GPIO pin")
+      sequence<int32> pins;
+
+      @verbatim (language="comment", text=
+        "PIN names seen by user to make it simpler")
+      sequence<string> names;
+
+      @verbatim (language="comment", text=
+        "IN/OUT")
+      sequence<int32> modes;
+
+      @verbatim (language="comment", text=
+        "HIGH/LOW")
+      sequence<int32> states;
+    };
+  };
+};

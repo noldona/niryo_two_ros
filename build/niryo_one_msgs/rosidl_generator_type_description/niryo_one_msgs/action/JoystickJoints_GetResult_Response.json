@@ -1,0 +1,56 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "niryo_one_msgs/action/JoystickJoints_GetResult_Response",
+      "fields": [
+        {
+          "name": "status",
+          "type": {
+            "type_id": 2,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "result",
+          "type": {
+            "type_id": 1,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": "niryo_one_msgs/action/JoystickJoints_Result"
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": [
+      {
+        "type_name": "niryo_one_msgs/action/JoystickJoints_Result",
+        "fields": [
+          {
+            "name": "has_succeeded",
+            "type": {
+              "type_id": 6,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          }
+        ]
+      }
+    ]
+  },
+  "type_hashes": [
+    {
+      "type_name": "niryo_one_msgs/action/JoystickJoints_GetResult_Response",
+      "hash_string": "RIHS01_e19896e441327acae208e0554384b3f4a98c938df3a65b7de77d9c559ed061a9"
+    },
+    {
+      "type_name": "niryo_one_msgs/action/JoystickJoints_Result",
+      "hash_string": "RIHS01_58de72a63eaf10146a819af97ae47892d5232784a318b4db2cae6d4ded72c0d4"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/GetCalibrationCam.srv
+// generated code does not contain a copyright notice
+
+#include "sensor_msgs/msg/CameraInfo.idl"
+#include "std_msgs/msg/Empty.idl"
+
+module niryo_one_msgs {
+  module srv {
+    struct GetCalibrationCam_Request {
+      std_msgs::msg::Empty empty;
+    };
+    struct GetCalibrationCam_Response {
+      boolean is_set;
+
+      sensor_msgs::msg::CameraInfo camera_info;
+    };
+  };
+};

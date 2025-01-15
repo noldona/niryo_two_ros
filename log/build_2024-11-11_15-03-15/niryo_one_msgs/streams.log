@@ -1,0 +1,846 @@
+[0.016s] Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs -- -j4 -l4
+[0.139s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.189s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.295s] -- Found std_msgs: 5.3.5 (/opt/ros/jazzy/share/std_msgs/cmake)
+[0.349s] -- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.367s] -- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.388s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.412s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.453s] -- Found geometry_msgs: 5.3.5 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[0.475s] -- Found moveit_msgs: 2.5.0 (/opt/ros/jazzy/share/moveit_msgs/cmake)
+[0.835s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[0.848s] -- Found rosidl_adapter: 4.6.4 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[1.397s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[2.099s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.376s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.379s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[2.747s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[2.867s] -- Found ament_lint_auto: 0.17.1 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[2.892s] -- Added test 'lint_cmake' to check CMake code style
+[2.895s] -- Added test 'xmllint' to check XML markup files
+[2.900s] -- Configuring done (2.8s)
+[3.108s] -- Generating done (0.2s)
+[3.114s] -- Build files have been written to: /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs
+[3.184s] [  1%] [34m[1mGenerating type hashes for ROS interfaces[0m
+[3.207s] [  1%] Built target ament_cmake_python_copy_niryo_one_msgs
+[3.489s] running egg_info
+[3.517s] writing niryo_one_msgs.egg-info/PKG-INFO
+[3.518s] writing dependency_links to niryo_one_msgs.egg-info/dependency_links.txt
+[3.518s] writing top-level names to niryo_one_msgs.egg-info/top_level.txt
+[3.595s] reading manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'
+[3.595s] writing manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'
+[3.632s] [  1%] Built target ament_cmake_python_build_niryo_one_msgs_egg
+[3.847s] [  1%] Built target niryo_one_msgs__rosidl_generator_type_description
+[3.862s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[3.876s] [  2%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[5.573s] [  2%] Built target niryo_one_msgs__cpp
+[6.026s] [  3%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/conveyor_feedback__functions.c.o[0m
+[6.026s] [  3%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/conveyor_feedback__description.c.o[0m
+[6.027s] [  3%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c.o[0m
+[6.032s] [  4%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/digital_io_state__description.c.o[0m
+[6.267s] [  4%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/digital_io_state__functions.c.o[0m
+[6.285s] [  5%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/digital_io_state__type_support.c.o[0m
+[6.287s] [  5%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/hardware_status__description.c.o[0m
+[6.297s] [  6%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/hardware_status__functions.c.o[0m
+[6.331s] [  6%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/hardware_status__type_support.c.o[0m
+[6.347s] [  7%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/log_status__description.c.o[0m
+[6.350s] [  7%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/log_status__functions.c.o[0m
+[6.371s] [  8%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/log_status__type_support.c.o[0m
+[6.382s] [  8%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/matlab_move_result__description.c.o[0m
+[6.409s] [  8%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/matlab_move_result__functions.c.o[0m
+[6.430s] [  8%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/object_pose__description.c.o[0m
+[6.441s] [  9%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/matlab_move_result__type_support.c.o[0m
+[6.458s] [ 10%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/object_pose__functions.c.o[0m
+[6.483s] [ 10%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/object_pose__type_support.c.o[0m
+[6.486s] [ 11%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/rpy__description.c.o[0m
+[6.499s] [ 11%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/rpy__functions.c.o[0m
+[6.526s] [ 12%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/rpy__type_support.c.o[0m
+[6.529s] [ 12%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/position__description.c.o[0m
+[6.547s] [ 13%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/position__functions.c.o[0m
+[6.568s] [ 13%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/position__type_support.c.o[0m
+[6.571s] [ 14%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/process_state__description.c.o[0m
+[6.592s] [ 14%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/process_state__functions.c.o[0m
+[6.615s] [ 15%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/process_state__type_support.c.o[0m
+[6.625s] [ 15%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/shift_pose__description.c.o[0m
+[6.625s] [ 15%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/shift_pose__functions.c.o[0m
+[6.662s] [ 16%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/shift_pose__type_support.c.o[0m
+[6.676s] [ 16%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/trajectory_plan__description.c.o[0m
+[6.681s] [ 17%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/trajectory_plan__functions.c.o[0m
+[6.695s] [ 17%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/trajectory_plan__type_support.c.o[0m
+[6.707s] [ 18%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/robot_move_command__description.c.o[0m
+[6.749s] [ 18%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/robot_move_command__functions.c.o[0m
+[6.771s] [ 19%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/robot_move_command__type_support.c.o[0m
+[6.796s] [ 19%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/robot_state__description.c.o[0m
+[6.816s] [ 20%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/robot_state__functions.c.o[0m
+[6.821s] [ 20%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/robot_state__type_support.c.o[0m
+[6.841s] [ 21%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/sequence__description.c.o[0m
+[6.857s] [ 21%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/sequence__functions.c.o[0m
+[6.866s] [ 22%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/sequence__type_support.c.o[0m
+[6.893s] [ 22%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/sequence_autorun_status__description.c.o[0m
+[6.896s] [ 22%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/sequence_autorun_status__functions.c.o[0m
+[6.913s] [ 23%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.c.o[0m
+[6.935s] [ 23%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/software_version__description.c.o[0m
+[6.951s] [ 24%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/software_version__functions.c.o[0m
+[6.959s] [ 24%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/software_version__type_support.c.o[0m
+[6.976s] [ 25%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/tool_command__description.c.o[0m
+[6.992s] [ 25%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/tool_command__functions.c.o[0m
+[7.006s] [ 26%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/tool_command__type_support.c.o[0m
+[7.030s] [ 27%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/trajectory__functions.c.o[0m
+[7.033s] [ 27%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/trajectory__description.c.o[0m
+[7.055s] [ 27%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/trajectory__type_support.c.o[0m
+[7.064s] [ 28%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/srv/detail/change_hardware_version__description.c.o[0m
+[7.103s] [ 28%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/srv/detail/change_hardware_version__functions.c.o[0m
+[7.116s] [ 29%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c.o[0m
+[7.193s] [ 29%] [32m[1mLinking C shared library libniryo_one_msgs__rosidl_generator_c.so[0m
+[7.288s] [ 29%] Built target niryo_one_msgs__rosidl_generator_c
+[7.314s] [ 29%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[7.316s] [ 31%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[7.316s] [ 31%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[7.317s] [ 32%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[8.494s] [ 33%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/conveyor_feedback__type_support.cpp.o[0m
+[8.890s] [ 33%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c.o[0m
+[8.950s] [ 33%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/digital_io_state__type_support.c.o[0m
+[9.025s] [ 34%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/hardware_status__type_support.c.o[0m
+[9.141s] [ 34%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/log_status__type_support.c.o[0m
+[9.200s] [ 35%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/matlab_move_result__type_support.c.o[0m
+[9.251s] [ 35%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/object_pose__type_support.c.o[0m
+[9.271s] [ 35%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/digital_io_state__type_support.cpp.o[0m
+[9.318s] [ 36%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/rpy__type_support.c.o[0m
+[9.338s] [ 36%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/conveyor_feedback__type_support.cpp.o[0m
+[9.371s] [ 36%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/position__type_support.c.o[0m
+[9.452s] [ 37%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/process_state__type_support.c.o[0m
+[9.459s] [ 37%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/conveyor_feedback__type_support_c.cpp.o[0m
+[9.533s] [ 37%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/shift_pose__type_support.c.o[0m
+[9.607s] [ 38%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/trajectory_plan__type_support.c.o[0m
+[9.680s] [ 38%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/robot_move_command__type_support.c.o[0m
+[9.763s] [ 39%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/robot_state__type_support.c.o[0m
+[9.827s] [ 40%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/sequence__type_support.c.o[0m
+[9.828s] [ 40%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/hardware_status__type_support.cpp.o[0m
+[9.898s] [ 41%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.c.o[0m
+[9.988s] [ 41%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/software_version__type_support.c.o[0m
+[10.090s] [ 41%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/tool_command__type_support.c.o[0m
+[10.194s] [ 42%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/trajectory__type_support.c.o[0m
+[10.262s] [ 43%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/digital_io_state__type_support.cpp.o[0m
+[10.279s] [ 43%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c.o[0m
+[10.339s] [ 44%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/digital_io_state__type_support_c.cpp.o[0m
+[10.367s] [ 45%] [32m[1mLinking C shared library libniryo_one_msgs__rosidl_typesupport_introspection_c.so[0m
+[10.465s] [ 45%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/log_status__type_support.cpp.o[0m
+[10.507s] [ 45%] Built target niryo_one_msgs__rosidl_typesupport_introspection_c
+[10.519s] [ 45%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/hardware_status__type_support_c.cpp.o[0m
+[11.012s] [ 45%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/matlab_move_result__type_support.cpp.o[0m
+[11.204s] [ 46%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/object_pose__type_support.cpp.o[0m
+[11.330s] [ 46%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/hardware_status__type_support.cpp.o[0m
+[11.412s] [ 47%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/log_status__type_support_c.cpp.o[0m
+[11.563s] [ 47%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/matlab_move_result__type_support_c.cpp.o[0m
+[11.774s] [ 47%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/rpy__type_support.cpp.o[0m
+[12.255s] [ 48%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/position__type_support.cpp.o[0m
+[12.369s] [ 48%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/process_state__type_support.cpp.o[0m
+[12.381s] [ 49%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/log_status__type_support.cpp.o[0m
+[12.412s] [ 50%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/object_pose__type_support_c.cpp.o[0m
+[12.823s] [ 50%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/rpy__type_support_c.cpp.o[0m
+[12.912s] [ 51%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/shift_pose__type_support.cpp.o[0m
+[13.202s] [ 51%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/matlab_move_result__type_support.cpp.o[0m
+[13.215s] [ 52%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/position__type_support_c.cpp.o[0m
+[13.468s] [ 52%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/trajectory_plan__type_support.cpp.o[0m
+[13.650s] [ 53%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/object_pose__type_support.cpp.o[0m
+[13.998s] [ 53%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/process_state__type_support_c.cpp.o[0m
+[14.068s] [ 53%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[14.081s] [ 54%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/robot_move_command__type_support.cpp.o[0m
+[14.510s] [ 54%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/rpy__type_support.cpp.o[0m
+[14.677s] [ 54%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/robot_state__type_support.cpp.o[0m
+[14.817s] [ 55%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/shift_pose__type_support_c.cpp.o[0m
+[15.302s] [ 56%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/sequence__type_support.cpp.o[0m
+[15.402s] [ 56%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/position__type_support.cpp.o[0m
+[15.475s] [ 57%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/conveyor_feedback__type_support.cpp.o[0m
+[15.546s] [ 57%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/digital_io_state__type_support.cpp.o[0m
+[15.615s] [ 58%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/hardware_status__type_support.cpp.o[0m
+[15.735s] [ 58%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/trajectory_plan__type_support_c.cpp.o[0m
+[15.737s] [ 58%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/log_status__type_support.cpp.o[0m
+[15.807s] [ 59%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/matlab_move_result__type_support.cpp.o[0m
+[15.860s] [ 59%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/sequence_autorun_status__type_support.cpp.o[0m
+[15.876s] [ 59%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/object_pose__type_support.cpp.o[0m
+[15.941s] [ 60%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/rpy__type_support.cpp.o[0m
+[16.013s] [ 60%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/position__type_support.cpp.o[0m
+[16.099s] [ 60%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/process_state__type_support.cpp.o[0m
+[16.172s] [ 61%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/shift_pose__type_support.cpp.o[0m
+[16.243s] [ 61%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/trajectory_plan__type_support.cpp.o[0m
+[16.318s] [ 62%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/robot_move_command__type_support.cpp.o[0m
+[16.324s] [ 63%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/process_state__type_support.cpp.o[0m
+[16.391s] [ 63%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/robot_state__type_support.cpp.o[0m
+[16.438s] [ 64%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/software_version__type_support.cpp.o[0m
+[16.469s] [ 65%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/sequence__type_support.cpp.o[0m
+[16.533s] [ 65%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/sequence_autorun_status__type_support.cpp.o[0m
+[16.593s] [ 66%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/robot_move_command__type_support_c.cpp.o[0m
+[16.603s] [ 67%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/software_version__type_support.cpp.o[0m
+[16.669s] [ 67%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/tool_command__type_support.cpp.o[0m
+[16.741s] [ 68%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/trajectory__type_support.cpp.o[0m
+[16.830s] [ 68%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/srv/change_hardware_version__type_support.cpp.o[0m
+[16.908s] [ 69%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_c.so[0m
+[17.000s] [ 69%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/tool_command__type_support.cpp.o[0m
+[17.040s] [ 69%] Built target niryo_one_msgs__rosidl_typesupport_c
+[17.055s] [ 69%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/robot_state__type_support_c.cpp.o[0m
+[17.302s] [ 69%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/shift_pose__type_support.cpp.o[0m
+[17.512s] [ 69%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[17.544s] [ 70%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/trajectory__type_support.cpp.o[0m
+[17.869s] [ 70%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/sequence__type_support_c.cpp.o[0m
+[18.115s] [ 71%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/trajectory_plan__type_support.cpp.o[0m
+[18.118s] [ 71%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/srv/change_hardware_version__type_support.cpp.o[0m
+[18.734s] [ 72%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support_c.cpp.o[0m
+[18.811s] [ 72%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_cpp.so[0m
+[18.945s] [ 72%] Built target niryo_one_msgs__rosidl_typesupport_cpp
+[18.970s] [ 72%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/robot_move_command__type_support.cpp.o[0m
+[19.026s] [ 72%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/software_version__type_support_c.cpp.o[0m
+[19.186s] [ 73%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.cpp.o[0m
+[19.607s] [ 74%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/robot_state__type_support.cpp.o[0m
+[19.746s] [ 74%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/digital_io_state__type_support.cpp.o[0m
+[19.856s] [ 75%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/tool_command__type_support_c.cpp.o[0m
+[19.976s] [ 75%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/trajectory__type_support_c.cpp.o[0m
+[20.435s] [ 76%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/hardware_status__type_support.cpp.o[0m
+[20.461s] [ 76%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/sequence__type_support.cpp.o[0m
+[20.712s] [ 77%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/sequence_autorun_status__type_support.cpp.o[0m
+[20.820s] [ 78%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/srv/detail/change_hardware_version__type_support_c.cpp.o[0m
+[21.183s] [ 78%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/log_status__type_support.cpp.o[0m
+[21.459s] [ 79%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/matlab_move_result__type_support.cpp.o[0m
+[21.660s] [ 79%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/software_version__type_support.cpp.o[0m
+[21.774s] [ 79%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[21.783s] [ 80%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/tool_command__type_support.cpp.o[0m
+[21.951s] [ 80%] Built target niryo_one_msgs__rosidl_typesupport_fastrtps_c
+[21.960s] [ 80%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/object_pose__type_support.cpp.o[0m
+[22.068s] [ 80%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/trajectory__type_support.cpp.o[0m
+[22.557s] [ 81%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/rpy__type_support.cpp.o[0m
+[22.584s] [ 81%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/position__type_support.cpp.o[0m
+[22.700s] [ 82%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/srv/detail/dds_fastrtps/change_hardware_version__type_support.cpp.o[0m
+[23.014s] [ 83%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/process_state__type_support.cpp.o[0m
+[23.102s] [ 83%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/shift_pose__type_support.cpp.o[0m
+[23.196s] [ 83%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/trajectory_plan__type_support.cpp.o[0m
+[23.661s] [ 84%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/robot_move_command__type_support.cpp.o[0m
+[23.730s] [ 84%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/robot_state__type_support.cpp.o[0m
+[23.793s] [ 84%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[23.993s] [ 84%] Built target niryo_one_msgs__rosidl_typesupport_fastrtps_cpp
+[24.009s] [ 85%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/sequence__type_support.cpp.o[0m
+[24.023s] [ 85%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.cpp.o[0m
+[24.299s] [ 86%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/software_version__type_support.cpp.o[0m
+[24.567s] [ 86%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/tool_command__type_support.cpp.o[0m
+[24.575s] [ 87%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/trajectory__type_support.cpp.o[0m
+[24.634s] [ 87%] [32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/srv/detail/change_hardware_version__type_support.cpp.o[0m
+[25.345s] [ 88%] [32m[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[25.490s] [ 88%] Built target niryo_one_msgs__rosidl_typesupport_introspection_cpp
+[25.517s] [ 88%] Built target niryo_one_msgs
+[25.543s] [ 88%] [34m[1mGenerating Python code for ROS interfaces[0m
+[27.572s] [ 88%] Built target niryo_one_msgs__py
+[27.658s] [ 89%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_conveyor_feedback_s.c.o[0m
+[27.658s] [ 90%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_log_status_s.c.o[0m
+[27.660s] [ 90%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_digital_io_state_s.c.o[0m
+[27.661s] [ 89%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_hardware_status_s.c.o[0m
+[27.939s] [ 90%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_matlab_move_result_s.c.o[0m
+[27.939s] [ 91%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_object_pose_s.c.o[0m
+[27.994s] [ 91%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_rpy_s.c.o[0m
+[28.017s] [ 92%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_position_s.c.o[0m
+[28.135s] [ 92%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_process_state_s.c.o[0m
+[28.139s] [ 93%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_shift_pose_s.c.o[0m
+[28.193s] [ 93%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_trajectory_plan_s.c.o[0m
+[28.240s] [ 94%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_robot_move_command_s.c.o[0m
+[28.335s] [ 94%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_robot_state_s.c.o[0m
+[28.354s] [ 95%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_sequence_s.c.o[0m
+[28.392s] [ 95%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_sequence_autorun_status_s.c.o[0m
+[28.471s] [ 95%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_software_version_s.c.o[0m
+[28.531s] [ 96%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_tool_command_s.c.o[0m
+[28.553s] [ 96%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_trajectory_s.c.o[0m
+[28.597s] [ 97%] [32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/srv/_change_hardware_version_s.c.o[0m
+[28.805s] [ 97%] [32m[1mLinking C shared library libniryo_one_msgs__rosidl_generator_py.so[0m
+[28.889s] [ 97%] Built target niryo_one_msgs__rosidl_generator_py
+[28.944s] [ 97%] [32mBuilding C object CMakeFiles/niryo_one_msgs_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[28.955s] [ 97%] [32mBuilding C object CMakeFiles/niryo_one_msgs_s__rosidl_typesupport_c.dir/rosidl_generator_py/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[28.956s] [ 97%] [32mBuilding C object CMakeFiles/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[29.210s] [ 98%] [32m[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so[0m
+[29.263s] [ 99%] [32m[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so[0m
+[29.267s] [100%] [32m[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so[0m
+[29.268s] [100%] Built target niryo_one_msgs_s__rosidl_typesupport_c
+[29.312s] [100%] Built target niryo_one_msgs_s__rosidl_typesupport_introspection_c
+[29.313s] [100%] Built target niryo_one_msgs_s__rosidl_typesupport_fastrtps_c
+[29.329s] Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs -- -j4 -l4
+[29.831s] Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs
+[29.844s] -- Install configuration: ""
+[29.848s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/rosidl_interfaces/niryo_one_msgs
+[29.851s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.json
+[29.852s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/DigitalIOState.json
+[29.852s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/HardwareStatus.json
+[29.853s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/LogStatus.json
+[29.853s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/MatlabMoveResult.json
+[29.854s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ObjectPose.json
+[29.854s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RPY.json
+[29.856s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Position.json
+[29.857s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ProcessState.json
+[29.858s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ShiftPose.json
+[29.859s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/TrajectoryPlan.json
+[29.860s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotMoveCommand.json
+[29.861s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotState.json
+[29.861s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Sequence.json
+[29.861s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SequenceAutorunStatus.json
+[29.862s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SoftwareVersion.json
+[29.862s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ToolCommand.json
+[29.863s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Trajectory.json
+[29.864s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.json
+[29.866s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[29.868s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[29.868s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_move_command.h
+[29.869s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence.h
+[29.869s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/process_state.h
+[29.871s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/object_pose.h
+[29.872s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory_plan.h
+[29.872s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/position.h
+[29.873s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/digital_io_state.h
+[29.874s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_state.h
+[29.874s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/log_status.h
+[29.875s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/matlab_move_result.h
+[29.876s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_generator_c__visibility_control.h
+[29.876s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rpy.h
+[29.876s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/software_version.h
+[29.877s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[29.880s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__functions.h
+[29.880s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__functions.h
+[29.880s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.h
+[29.880s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__functions.h
+[29.881s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__functions.h
+[29.882s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.h
+[29.882s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__functions.c
+[29.883s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__functions.h
+[29.883s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__description.c
+[29.884s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__functions.c
+[29.884s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__functions.h
+[29.885s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__description.c
+[29.886s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__functions.h
+[29.887s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__functions.h
+[29.887s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__functions.h
+[29.887s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__functions.h
+[29.888s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__functions.h
+[29.889s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__functions.h
+[29.889s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__functions.c
+[29.889s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__struct.h
+[29.890s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.c
+[29.890s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.c
+[29.891s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.h
+[29.891s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.h
+[29.891s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__struct.h
+[29.892s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__description.c
+[29.892s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.c
+[29.893s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.h
+[29.893s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.h
+[29.893s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.c
+[29.894s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__description.c
+[29.894s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__functions.c
+[29.895s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.h
+[29.895s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.c
+[29.895s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.c
+[29.896s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__description.c
+[29.896s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__description.c
+[29.897s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__description.c
+[29.897s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__description.c
+[29.898s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__functions.h
+[29.898s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__description.c
+[29.898s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__functions.c
+[29.900s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.h
+[29.900s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__functions.h
+[29.900s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__functions.c
+[29.900s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__struct.h
+[29.900s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__struct.h
+[29.900s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.c
+[29.900s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__functions.c
+[29.901s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__functions.h
+[29.901s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__description.c
+[29.902s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__functions.h
+[29.902s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.h
+[29.902s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__struct.h
+[29.903s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__struct.h
+[29.903s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__description.c
+[29.904s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__functions.h
+[29.904s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.c
+[29.905s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__struct.h
+[29.905s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.h
+[29.905s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.h
+[29.906s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.c
+[29.907s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__struct.h
+[29.907s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__description.c
+[29.907s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.h
+[29.908s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.h
+[29.908s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.h
+[29.908s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__struct.h
+[29.909s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__description.c
+[29.910s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__description.c
+[29.911s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__functions.c
+[29.911s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.h
+[29.911s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__functions.c
+[29.911s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__struct.h
+[29.911s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__struct.h
+[29.911s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.c
+[29.912s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__struct.h
+[29.912s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__functions.h
+[29.912s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__functions.c
+[29.913s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.c
+[29.913s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__struct.h
+[29.913s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__functions.c
+[29.914s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c
+[29.914s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__description.c
+[29.915s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__struct.h
+[29.915s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__functions.c
+[29.916s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__functions.c
+[29.916s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.h
+[29.916s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__functions.c
+[29.917s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__functions.c
+[29.917s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__description.c
+[29.917s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__functions.c
+[29.919s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__struct.h
+[29.919s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.c
+[29.919s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.c
+[29.919s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.c
+[29.919s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.h
+[29.919s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.h
+[29.920s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__struct.h
+[29.920s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.c
+[29.920s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__description.c
+[29.920s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.c
+[29.920s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__struct.h
+[29.920s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__struct.h
+[29.920s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__functions.c
+[29.920s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.c
+[29.920s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__functions.c
+[29.921s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__description.c
+[29.921s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/shift_pose.h
+[29.921s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/conveyor_feedback.h
+[29.921s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/tool_command.h
+[29.921s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence_autorun_status.h
+[29.921s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/hardware_status.h
+[29.921s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory.h
+[29.922s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[29.922s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/change_hardware_version.h
+[29.922s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[29.922s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c
+[29.922s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__description.c
+[29.923s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__functions.c
+[29.923s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__struct.h
+[29.924s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__functions.h
+[29.924s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.h
+[29.924s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/library_path.sh
+[29.924s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/library_path.dsv
+[29.925s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_c.so
+[29.926s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_c.so" to ""
+[29.926s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[29.926s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[29.927s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[29.927s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_fastrtps_c.h
+[29.927s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_fastrtps_c.h
+[29.927s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_fastrtps_c.h
+[29.927s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_fastrtps_c.h
+[29.927s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_fastrtps_c.h
+[29.927s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_fastrtps_c.h
+[29.927s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_fastrtps_c.h
+[29.928s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_fastrtps_c.h
+[29.928s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_fastrtps_c.h
+[29.928s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_fastrtps_c.h
+[29.928s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_fastrtps_c.h
+[29.928s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_fastrtps_c.h
+[29.928s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_fastrtps_c.h
+[29.928s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_fastrtps_c.h
+[29.929s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_fastrtps_c.h
+[29.929s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_fastrtps_c.h
+[29.929s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_fastrtps_c.h
+[29.929s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_fastrtps_c.h
+[29.929s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[29.929s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[29.929s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[29.929s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_fastrtps_c.h
+[29.930s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so
+[29.930s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[29.931s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[29.931s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[29.931s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_state.hpp
+[29.931s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/software_version.hpp
+[29.931s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/tool_command.hpp
+[29.931s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/shift_pose.hpp
+[29.931s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory_plan.hpp
+[29.932s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/log_status.hpp
+[29.932s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_move_command.hpp
+[29.932s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory.hpp
+[29.932s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/digital_io_state.hpp
+[29.932s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/position.hpp
+[29.933s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[29.933s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__builder.hpp
+[29.933s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__traits.hpp
+[29.933s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.hpp
+[29.934s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__builder.hpp
+[29.934s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__builder.hpp
+[29.934s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__builder.hpp
+[29.934s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__builder.hpp
+[29.934s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__struct.hpp
+[29.934s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.hpp
+[29.935s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__traits.hpp
+[29.935s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.hpp
+[29.935s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.hpp
+[29.935s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.hpp
+[29.935s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__traits.hpp
+[29.936s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.hpp
+[29.936s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.hpp
+[29.936s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__builder.hpp
+[29.936s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__traits.hpp
+[29.937s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__struct.hpp
+[29.937s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__struct.hpp
+[29.937s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__struct.hpp
+[29.937s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.hpp
+[29.937s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__builder.hpp
+[29.937s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__struct.hpp
+[29.937s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__struct.hpp
+[29.938s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__builder.hpp
+[29.938s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.hpp
+[29.938s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__builder.hpp
+[29.938s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__traits.hpp
+[29.938s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__traits.hpp
+[29.939s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__builder.hpp
+[29.939s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__traits.hpp
+[29.939s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.hpp
+[29.939s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__struct.hpp
+[29.939s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__traits.hpp
+[29.939s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__struct.hpp
+[29.940s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__struct.hpp
+[29.940s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__struct.hpp
+[29.940s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__traits.hpp
+[29.940s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__traits.hpp
+[29.940s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__struct.hpp
+[29.941s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.hpp
+[29.941s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__traits.hpp
+[29.941s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__struct.hpp
+[29.941s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__traits.hpp
+[29.941s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__builder.hpp
+[29.941s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__struct.hpp
+[29.942s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.hpp
+[29.942s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.hpp
+[29.942s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__struct.hpp
+[29.942s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__traits.hpp
+[29.942s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__struct.hpp
+[29.942s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__traits.hpp
+[29.943s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__builder.hpp
+[29.943s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__traits.hpp
+[29.943s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__struct.hpp
+[29.943s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__traits.hpp
+[29.944s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__builder.hpp
+[29.944s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.hpp
+[29.944s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__traits.hpp
+[29.944s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__builder.hpp
+[29.945s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__traits.hpp
+[29.945s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__struct.hpp
+[29.945s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__struct.hpp
+[29.945s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__builder.hpp
+[29.946s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__builder.hpp
+[29.946s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.hpp
+[29.946s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__builder.hpp
+[29.946s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.hpp
+[29.947s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.hpp
+[29.947s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__builder.hpp
+[29.947s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.hpp
+[29.947s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/object_pose.hpp
+[29.947s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/matlab_move_result.hpp
+[29.948s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence.hpp
+[29.948s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/conveyor_feedback.hpp
+[29.948s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rpy.hpp
+[29.948s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/process_state.hpp
+[29.948s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence_autorun_status.hpp
+[29.949s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[29.949s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/hardware_status.hpp
+[29.949s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[29.949s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[29.949s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__builder.hpp
+[29.949s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__traits.hpp
+[29.950s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__struct.hpp
+[29.950s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.hpp
+[29.950s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/change_hardware_version.hpp
+[29.951s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[29.951s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[29.951s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[29.951s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_fastrtps_cpp.hpp
+[29.951s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_fastrtps_cpp.hpp
+[29.951s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_fastrtps_cpp.hpp
+[29.951s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_fastrtps_cpp.hpp
+[29.952s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_fastrtps_cpp.hpp
+[29.952s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_fastrtps_cpp.hpp
+[29.952s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/dds_fastrtps
+[29.952s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_fastrtps_cpp.hpp
+[29.952s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_fastrtps_cpp.hpp
+[29.952s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_fastrtps_cpp.hpp
+[29.952s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_fastrtps_cpp.hpp
+[29.952s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_fastrtps_cpp.hpp
+[29.953s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_fastrtps_cpp.hpp
+[29.953s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_fastrtps_cpp.hpp
+[29.953s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_fastrtps_cpp.hpp
+[29.953s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_fastrtps_cpp.hpp
+[29.953s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_fastrtps_cpp.hpp
+[29.953s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_fastrtps_cpp.hpp
+[29.953s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_fastrtps_cpp.hpp
+[29.954s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[29.954s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[29.954s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[29.954s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/dds_fastrtps
+[29.954s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_fastrtps_cpp.hpp
+[29.954s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so
+[29.955s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[29.955s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[29.955s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[29.956s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[29.956s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_introspection_c.h
+[29.956s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_introspection_c.h
+[29.956s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_introspection_c.h
+[29.956s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_introspection_c.h
+[29.956s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_introspection_c.h
+[29.956s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.c
+[29.957s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.c
+[29.957s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.c
+[29.957s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.c
+[29.957s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_introspection_c.h
+[29.958s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.c
+[29.958s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.c
+[29.958s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_introspection_c.h
+[29.959s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.c
+[29.959s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_introspection_c.h
+[29.959s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.c
+[29.960s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.c
+[29.960s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_introspection_c.h
+[29.960s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_introspection_c.h
+[29.961s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_introspection_c.h
+[29.961s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_introspection_c.h
+[29.961s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_introspection_c.h
+[29.961s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.c
+[29.961s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_introspection_c.h
+[29.962s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_introspection_c.h
+[29.962s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_introspection_c.h
+[29.962s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.c
+[29.963s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c
+[29.963s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.c
+[29.963s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.c
+[29.963s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.c
+[29.964s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.c
+[29.964s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_introspection_c.h
+[29.964s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.c
+[29.964s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.c
+[29.965s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_introspection_c.h
+[29.965s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[29.965s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[29.965s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[29.965s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c
+[29.965s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_introspection_c.h
+[29.966s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_c.so
+[29.966s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_c.so" to ""
+[29.967s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_c.so
+[29.968s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_c.so" to ""
+[29.968s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs
+[29.968s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg
+[29.968s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail
+[29.968s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.cpp
+[29.968s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_introspection_cpp.hpp
+[29.968s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.cpp
+[29.969s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.cpp
+[29.969s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_introspection_cpp.hpp
+[29.969s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.cpp
+[29.969s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.cpp
+[29.969s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_introspection_cpp.hpp
+[29.970s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_introspection_cpp.hpp
+[29.970s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_introspection_cpp.hpp
+[29.970s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.cpp
+[29.970s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_introspection_cpp.hpp
+[29.970s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.cpp
+[29.970s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_introspection_cpp.hpp
+[29.970s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_introspection_cpp.hpp
+[29.970s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_introspection_cpp.hpp
+[29.971s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.cpp
+[29.971s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.cpp
+[29.971s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.cpp
+[29.971s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_introspection_cpp.hpp
+[29.971s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.cpp
+[29.971s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_introspection_cpp.hpp
+[29.971s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.cpp
+[29.972s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.cpp
+[29.972s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.cpp
+[29.972s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.cpp
+[29.972s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.cpp
+[29.972s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_introspection_cpp.hpp
+[29.972s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_introspection_cpp.hpp
+[29.972s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_introspection_cpp.hpp
+[29.972s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_introspection_cpp.hpp
+[29.973s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_introspection_cpp.hpp
+[29.973s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_introspection_cpp.hpp
+[29.973s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.cpp
+[29.973s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.cpp
+[29.973s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_introspection_cpp.hpp
+[29.973s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv
+[29.974s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail
+[29.974s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.cpp
+[29.974s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_introspection_cpp.hpp
+[29.974s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so
+[29.975s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[29.976s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_cpp.so
+[29.976s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_cpp.so" to ""
+[29.977s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/pythonpath.sh
+[29.977s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/pythonpath.dsv
+[29.977s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info
+[29.977s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/SOURCES.txt
+[29.978s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/PKG-INFO
+[29.978s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/dependency_links.txt
+[29.978s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/top_level.txt
+[29.978s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs
+[29.979s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/__init__.py
+[29.979s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg
+[29.979s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/__init__.py
+[29.979s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_software_version.py
+[29.979s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence_autorun_status.py
+[29.979s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence_autorun_status_s.c
+[29.980s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback_s.c
+[29.980s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_tool_command_s.c
+[29.980s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_digital_io_state.py
+[29.980s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_hardware_status_s.c
+[29.980s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory_plan.py
+[29.980s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_state.py
+[29.980s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_shift_pose_s.c
+[29.981s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_digital_io_state_s.c
+[29.981s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence_s.c
+[29.981s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_matlab_move_result.py
+[29.981s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_object_pose.py
+[29.981s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_shift_pose.py
+[29.981s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence.py
+[29.981s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory.py
+[29.982s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_process_state.py
+[29.982s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_rpy.py
+[29.982s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_move_command.py
+[29.982s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback.py
+[29.982s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_log_status.py
+[29.982s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_position_s.c
+[29.982s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory_s.c
+[29.983s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_hardware_status.py
+[29.983s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_software_version_s.c
+[29.983s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_move_command_s.c
+[29.983s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_state_s.c
+[29.983s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_rpy_s.c
+[29.983s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_position.py
+[29.983s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_log_status_s.c
+[29.983s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_tool_command.py
+[29.984s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_object_pose_s.c
+[29.984s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_matlab_move_result_s.c
+[29.984s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_process_state_s.c
+[29.984s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory_plan_s.c
+[29.984s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so
+[29.984s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so
+[29.984s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so
+[29.985s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[29.985s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_c.c
+[29.985s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[29.985s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv
+[29.985s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/__init__.py
+[29.986s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version.py
+[29.986s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version_s.c
+[30.072s] Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs'...
+[30.072s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/__init__.py'...
+[30.072s] Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg'...
+[30.073s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/__init__.py'...
+[30.073s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback.py'...
+[30.073s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_digital_io_state.py'...
+[30.073s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_hardware_status.py'...
+[30.073s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_log_status.py'...
+[30.073s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_matlab_move_result.py'...
+[30.073s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_object_pose.py'...
+[30.073s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_position.py'...
+[30.073s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_process_state.py'...
+[30.074s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_move_command.py'...
+[30.074s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_state.py'...
+[30.074s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_rpy.py'...
+[30.074s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence.py'...
+[30.074s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence_autorun_status.py'...
+[30.074s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_shift_pose.py'...
+[30.074s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_software_version.py'...
+[30.074s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_tool_command.py'...
+[30.074s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory.py'...
+[30.075s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory_plan.py'...
+[30.075s] Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv'...
+[30.075s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/__init__.py'...
+[30.075s] Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version.py'...
+[30.080s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so
+[30.081s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so" to ""
+[30.082s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so
+[30.082s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so" to ""
+[30.082s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so
+[30.082s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so" to ""
+[30.083s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_py.so
+[30.084s] -- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_py.so" to ""
+[30.085s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.idl
+[30.085s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/DigitalIOState.idl
+[30.085s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/HardwareStatus.idl
+[30.085s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/LogStatus.idl
+[30.085s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/MatlabMoveResult.idl
+[30.085s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ObjectPose.idl
+[30.085s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RPY.idl
+[30.085s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Position.idl
+[30.085s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ProcessState.idl
+[30.086s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ShiftPose.idl
+[30.086s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/TrajectoryPlan.idl
+[30.086s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotMoveCommand.idl
+[30.086s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotState.idl
+[30.086s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Sequence.idl
+[30.086s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SequenceAutorunStatus.idl
+[30.086s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SoftwareVersion.idl
+[30.086s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ToolCommand.idl
+[30.087s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Trajectory.idl
+[30.087s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.idl
+[30.087s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.msg
+[30.087s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/DigitalIOState.msg
+[30.088s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/HardwareStatus.msg
+[30.088s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/LogStatus.msg
+[30.088s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/MatlabMoveResult.msg
+[30.088s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ObjectPose.msg
+[30.088s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RPY.msg
+[30.088s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Position.msg
+[30.089s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ProcessState.msg
+[30.089s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ShiftPose.msg
+[30.089s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/TrajectoryPlan.msg
+[30.089s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotMoveCommand.msg
+[30.089s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotState.msg
+[30.090s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Sequence.msg
+[30.090s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SequenceAutorunStatus.msg
+[30.091s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SoftwareVersion.msg
+[30.091s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ToolCommand.msg
+[30.092s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Trajectory.msg
+[30.092s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.srv
+[30.093s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/package_run_dependencies/niryo_one_msgs
+[30.093s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/parent_prefix_path/niryo_one_msgs
+[30.095s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/ament_prefix_path.sh
+[30.095s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/ament_prefix_path.dsv
+[30.095s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/path.sh
+[30.095s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/path.dsv
+[30.095s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.bash
+[30.095s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.sh
+[30.095s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.zsh
+[30.095s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.dsv
+[30.095s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.dsv
+[30.096s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/packages/niryo_one_msgs
+[30.097s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport.cmake
+[30.097s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport-noconfig.cmake
+[30.098s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[30.098s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[30.099s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cppExport.cmake
+[30.099s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[30.099s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[30.100s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport.cmake
+[30.100s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[30.100s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport.cmake
+[30.100s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[30.101s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[30.101s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[30.101s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport.cmake
+[30.101s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[30.102s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_pyExport.cmake
+[30.102s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_pyExport-noconfig.cmake
+[30.102s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake-extras.cmake
+[30.102s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[30.102s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[30.103s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[30.103s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[30.103s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[30.103s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[30.103s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgsConfig.cmake
+[30.103s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgsConfig-version.cmake
+[30.103s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.xml
+[30.106s] Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs

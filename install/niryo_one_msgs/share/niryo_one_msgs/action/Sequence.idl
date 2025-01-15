@@ -1,0 +1,31 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from niryo_one_msgs/action/Sequence.action
+// generated code does not contain a copyright notice
+
+#include "niryo_one_msgs/msg/Sequence.idl"
+
+module niryo_one_msgs {
+  module action {
+    @verbatim (language="comment", text=
+      "goal")
+    struct Sequence_Goal {
+      int32 cmd_type;
+
+      int32 sequence_id;
+
+      niryo_one_msgs::msg::Sequence sequence;
+    };
+    @verbatim (language="comment", text=
+      "result")
+    struct Sequence_Result {
+      int32 status;
+
+      string message;
+    };
+    @verbatim (language="comment", text=
+      "feedback")
+    struct Sequence_Feedback {
+      uint8 structure_needs_at_least_one_member;
+    };
+  };
+};

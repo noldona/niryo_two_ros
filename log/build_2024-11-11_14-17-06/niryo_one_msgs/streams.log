@@ -1,0 +1,15 @@
+[0.033s] Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/noldona/niryo/niryo_two_ros/src/niryo_one_msgs -DCMAKE_INSTALL_PREFIX=/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs
+[0.059s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.336s] -- Found std_msgs: 5.3.5 (/opt/ros/jazzy/share/std_msgs/cmake)
+[0.374s] -- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.389s] -- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.406s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.426s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.475s] -- Found geometry_msgs: 5.3.5 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[0.508s] -- Found moveit_msgs: 2.5.0 (/opt/ros/jazzy/share/moveit_msgs/cmake)
+[0.927s] [31mCMake Error at CMakeLists.txt:17 (rosidl_generate_interfaces):
+[0.927s]   Unknown CMake command "rosidl_generate_interfaces".
+[0.927s] 
+[0.927s] -- Configuring incomplete, errors occurred!
+[0.929s] [0m
+[0.933s] Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs' returned '1': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/noldona/niryo/niryo_two_ros/src/niryo_one_msgs -DCMAKE_INSTALL_PREFIX=/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs

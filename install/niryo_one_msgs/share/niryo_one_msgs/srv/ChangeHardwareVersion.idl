@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/ChangeHardwareVersion.srv
+// generated code does not contain a copyright notice
+
+
+module niryo_one_msgs {
+  module srv {
+    struct ChangeHardwareVersion_Request {
+      int32 old_version;
+
+      int32 new_version;
+    };
+    struct ChangeHardwareVersion_Response {
+      int32 status;
+
+      string message;
+    };
+  };
+};

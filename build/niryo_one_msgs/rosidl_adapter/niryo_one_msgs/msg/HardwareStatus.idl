@@ -1,0 +1,41 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from niryo_one_msgs/msg/HardwareStatus.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module niryo_one_msgs {
+  module msg {
+    struct HardwareStatus {
+      std_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "Raspberry Pi board")
+      int32 rpi_temperature;
+
+      @verbatim (language="comment", text=
+        "Robot version : 1 (previous one) or 2 (current one)")
+      int32 hardware_version;
+
+      @verbatim (language="comment", text=
+        "Motors")
+      boolean connection_up;
+
+      string error_message;
+
+      int32 calibration_needed;
+
+      boolean calibration_in_progress;
+
+      sequence<string> motor_names;
+
+      sequence<string> motor_types;
+
+      sequence<int32> temperatures;
+
+      sequence<double> voltages;
+
+      sequence<int32> hardware_errors;
+    };
+  };
+};

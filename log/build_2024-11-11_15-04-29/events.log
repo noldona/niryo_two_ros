@@ -1,0 +1,656 @@
+[0.000000] (-) TimerEvent: {}
+[0.000187] (-) JobUnselected: {'identifier': 'niryo_one'}
+[0.000347] (-) JobUnselected: {'identifier': 'niryo_one_bringup'}
+[0.000599] (-) JobUnselected: {'identifier': 'niryo_one_camera'}
+[0.000760] (-) JobUnselected: {'identifier': 'niryo_one_commander'}
+[0.000924] (-) JobUnselected: {'identifier': 'niryo_one_rpi'}
+[0.000975] (niryo_one_msgs) JobQueued: {'identifier': 'niryo_one_msgs', 'dependencies': OrderedDict()}
+[0.001040] (niryo_one_msgs) JobStarted: {'identifier': 'niryo_one_msgs'}
+[0.009395] (niryo_one_msgs) JobProgress: {'identifier': 'niryo_one_msgs', 'progress': 'cmake'}
+[0.010080] (niryo_one_msgs) JobProgress: {'identifier': 'niryo_one_msgs', 'progress': 'build'}
+[0.010819] (niryo_one_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', '--', '-j4', '-l4'], 'cwd': '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'noldona', 'SSH_CLIENT': '192.168.1.27 54479 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/bin/helpers/browser.sh', 'HOME': '/home/noldona', 'OLDPWD': '/home/noldona/niryo/niryo_two_ros/src', 'TERM_PROGRAM_VERSION': '1.95.1', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-96c21b78-96a7-4480-95cb-023c7baad8c3.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/node', 'SSL_CERT_FILE': '/usr/lib/ssl/cert.pem', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'noldona', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '1652', 'PATH': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'SSL_CERT_DIR': '/usr/lib/ssl/certs', 'LANG': 'en_US.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-b4e09deed3.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '192.168.1.27 54479 192.168.1.14 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.051145] (niryo_one_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.099820] (-) TimerEvent: {}
+[0.163379] (niryo_one_msgs) StdoutLine: {'line': b'-- Found std_msgs: 5.3.5 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[0.190394] (niryo_one_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.199874] (niryo_one_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.200068] (-) TimerEvent: {}
+[0.213580] (niryo_one_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.228873] (niryo_one_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.264025] (niryo_one_msgs) StdoutLine: {'line': b'-- Found geometry_msgs: 5.3.5 (/opt/ros/jazzy/share/geometry_msgs/cmake)\n'}
+[0.283168] (niryo_one_msgs) StdoutLine: {'line': b'-- Found moveit_msgs: 2.5.0 (/opt/ros/jazzy/share/moveit_msgs/cmake)\n'}
+[0.300191] (-) TimerEvent: {}
+[0.400516] (-) TimerEvent: {}
+[0.500928] (-) TimerEvent: {}
+[0.596394] (niryo_one_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)\n'}
+[0.601042] (-) TimerEvent: {}
+[0.604370] (niryo_one_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.4 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[0.701136] (-) TimerEvent: {}
+[0.801399] (-) TimerEvent: {}
+[0.901699] (-) TimerEvent: {}
+[1.001959] (-) TimerEvent: {}
+[1.102254] (-) TimerEvent: {}
+[1.134788] (niryo_one_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[1.202386] (-) TimerEvent: {}
+[1.302667] (-) TimerEvent: {}
+[1.402952] (-) TimerEvent: {}
+[1.503236] (-) TimerEvent: {}
+[1.603544] (-) TimerEvent: {}
+[1.703838] (-) TimerEvent: {}
+[1.804158] (-) TimerEvent: {}
+[1.808614] (niryo_one_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.904301] (-) TimerEvent: {}
+[2.004583] (-) TimerEvent: {}
+[2.072228] (niryo_one_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.075049] (niryo_one_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[2.104690] (-) TimerEvent: {}
+[2.205353] (-) TimerEvent: {}
+[2.305602] (-) TimerEvent: {}
+[2.405857] (-) TimerEvent: {}
+[2.447639] (niryo_one_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[2.505965] (-) TimerEvent: {}
+[2.563886] (niryo_one_msgs) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.1 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[2.589678] (niryo_one_msgs) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.592635] (niryo_one_msgs) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.597733] (niryo_one_msgs) StdoutLine: {'line': b'-- Configuring done (2.6s)\n'}
+[2.606063] (-) TimerEvent: {}
+[2.706302] (-) TimerEvent: {}
+[2.740805] (niryo_one_msgs) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[2.747368] (niryo_one_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs\n'}
+[2.793881] (niryo_one_msgs) StdoutLine: {'line': b'[  1%] Built target niryo_one_msgs__rosidl_generator_type_description\n'}
+[2.808309] (-) TimerEvent: {}
+[2.810199] (niryo_one_msgs) StdoutLine: {'line': b'[  1%] Built target ament_cmake_python_copy_niryo_one_msgs\n'}
+[2.825994] (niryo_one_msgs) StdoutLine: {'line': b'[  1%] Built target niryo_one_msgs__cpp\n'}
+[2.880174] (niryo_one_msgs) StdoutLine: {'line': b'[ 29%] Built target niryo_one_msgs__rosidl_generator_c\n'}
+[2.908398] (-) TimerEvent: {}
+[2.959353] (niryo_one_msgs) StdoutLine: {'line': b'[ 38%] Built target niryo_one_msgs__rosidl_typesupport_cpp\n'}
+[2.984291] (niryo_one_msgs) StdoutLine: {'line': b'[ 48%] Built target niryo_one_msgs__rosidl_typesupport_fastrtps_c\n'}
+[3.011294] (-) TimerEvent: {}
+[3.014328] (niryo_one_msgs) StdoutLine: {'line': b'[ 58%] Built target niryo_one_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[3.050399] (niryo_one_msgs) StdoutLine: {'line': b'[ 68%] Built target niryo_one_msgs__rosidl_typesupport_introspection_c\n'}
+[3.087367] (niryo_one_msgs) StdoutLine: {'line': b'[ 78%] Built target niryo_one_msgs__rosidl_typesupport_c\n'}
+[3.111394] (-) TimerEvent: {}
+[3.149621] (niryo_one_msgs) StdoutLine: {'line': b'[ 88%] Built target niryo_one_msgs__rosidl_typesupport_introspection_cpp\n'}
+[3.190785] (niryo_one_msgs) StdoutLine: {'line': b'[ 88%] Built target niryo_one_msgs\n'}
+[3.204372] (niryo_one_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[3.211487] (-) TimerEvent: {}
+[3.239758] (niryo_one_msgs) StdoutLine: {'line': b'[ 88%] Built target niryo_one_msgs__py\n'}
+[3.256486] (niryo_one_msgs) StdoutLine: {'line': b'writing niryo_one_msgs.egg-info/PKG-INFO\n'}
+[3.257819] (niryo_one_msgs) StdoutLine: {'line': b'writing dependency_links to niryo_one_msgs.egg-info/dependency_links.txt\n'}
+[3.259011] (niryo_one_msgs) StdoutLine: {'line': b'writing top-level names to niryo_one_msgs.egg-info/top_level.txt\n'}
+[3.311927] (-) TimerEvent: {}
+[3.324970] (niryo_one_msgs) StdoutLine: {'line': b'[ 97%] Built target niryo_one_msgs__rosidl_generator_py\n'}
+[3.372748] (niryo_one_msgs) StdoutLine: {'line': b"reading manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'\n"}
+[3.374429] (niryo_one_msgs) StdoutLine: {'line': b"writing manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'\n"}
+[3.376300] (niryo_one_msgs) StdoutLine: {'line': b'[ 98%] Built target niryo_one_msgs_s__rosidl_typesupport_c\n'}
+[3.384066] (niryo_one_msgs) StdoutLine: {'line': b'[ 99%] Built target niryo_one_msgs_s__rosidl_typesupport_fastrtps_c\n'}
+[3.385073] (niryo_one_msgs) StdoutLine: {'line': b'[100%] Built target niryo_one_msgs_s__rosidl_typesupport_introspection_c\n'}
+[3.411116] (niryo_one_msgs) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_niryo_one_msgs_egg\n'}
+[3.412001] (-) TimerEvent: {}
+[3.425772] (niryo_one_msgs) CommandEnded: {'returncode': 0}
+[3.512276] (-) TimerEvent: {}
+[3.613174] (-) TimerEvent: {}
+[3.713657] (-) TimerEvent: {}
+[3.814100] (-) TimerEvent: {}
+[3.858564] (niryo_one_msgs) JobProgress: {'identifier': 'niryo_one_msgs', 'progress': 'install'}
+[3.869226] (niryo_one_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs'], 'cwd': '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'noldona', 'SSH_CLIENT': '192.168.1.27 54479 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/bin/helpers/browser.sh', 'HOME': '/home/noldona', 'OLDPWD': '/home/noldona/niryo/niryo_two_ros/src', 'TERM_PROGRAM_VERSION': '1.95.1', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-96c21b78-96a7-4480-95cb-023c7baad8c3.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/node', 'SSL_CERT_FILE': '/usr/lib/ssl/cert.pem', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'noldona', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '1652', 'PATH': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'SSL_CERT_DIR': '/usr/lib/ssl/certs', 'LANG': 'en_US.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-b4e09deed3.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '192.168.1.27 54479 192.168.1.14 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[3.879719] (niryo_one_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.880503] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/rosidl_interfaces/niryo_one_msgs\n'}
+[3.880762] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.json\n'}
+[3.881100] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/DigitalIOState.json\n'}
+[3.881415] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/HardwareStatus.json\n'}
+[3.881700] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/LogStatus.json\n'}
+[3.881810] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/MatlabMoveResult.json\n'}
+[3.881962] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ObjectPose.json\n'}
+[3.882162] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RPY.json\n'}
+[3.882350] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Position.json\n'}
+[3.882558] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ProcessState.json\n'}
+[3.882835] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ShiftPose.json\n'}
+[3.883087] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/TrajectoryPlan.json\n'}
+[3.883243] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotMoveCommand.json\n'}
+[3.883477] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotState.json\n'}
+[3.883650] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Sequence.json\n'}
+[3.883864] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SequenceAutorunStatus.json\n'}
+[3.884073] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SoftwareVersion.json\n'}
+[3.884184] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ToolCommand.json\n'}
+[3.884292] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Trajectory.json\n'}
+[3.884393] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.json\n'}
+[3.884488] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[3.884589] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[3.884683] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_move_command.h\n'}
+[3.884778] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence.h\n'}
+[3.884873] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/process_state.h\n'}
+[3.884968] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/object_pose.h\n'}
+[3.885062] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory_plan.h\n'}
+[3.885156] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/position.h\n'}
+[3.885285] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/digital_io_state.h\n'}
+[3.885583] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_state.h\n'}
+[3.885820] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/log_status.h\n'}
+[3.886011] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/matlab_move_result.h\n'}
+[3.886219] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[3.886389] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rpy.h\n'}
+[3.886490] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/software_version.h\n'}
+[3.886624] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[3.886766] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__functions.h\n'}
+[3.887075] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__functions.h\n'}
+[3.887434] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.h\n'}
+[3.887574] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__functions.h\n'}
+[3.887671] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__functions.h\n'}
+[3.887812] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.h\n'}
+[3.887920] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__functions.c\n'}
+[3.888164] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__functions.h\n'}
+[3.888452] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__description.c\n'}
+[3.888778] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__functions.c\n'}
+[3.889068] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__functions.h\n'}
+[3.889408] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__description.c\n'}
+[3.889751] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__functions.h\n'}
+[3.889978] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__functions.h\n'}
+[3.890348] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__functions.h\n'}
+[3.890523] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__functions.h\n'}
+[3.890778] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__functions.h\n'}
+[3.891015] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__functions.h\n'}
+[3.891269] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__functions.c\n'}
+[3.891413] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__struct.h\n'}
+[3.891523] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.c\n'}
+[3.891628] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.c\n'}
+[3.891725] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.h\n'}
+[3.891887] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.h\n'}
+[3.892125] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__struct.h\n'}
+[3.892272] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__description.c\n'}
+[3.892414] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.c\n'}
+[3.892556] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.h\n'}
+[3.892701] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.h\n'}
+[3.892835] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.c\n'}
+[3.892969] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__description.c\n'}
+[3.893077] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__functions.c\n'}
+[3.893226] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.h\n'}
+[3.893459] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.c\n'}
+[3.893590] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.c\n'}
+[3.893773] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__description.c\n'}
+[3.893881] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__description.c\n'}
+[3.894018] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__description.c\n'}
+[3.894153] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__description.c\n'}
+[3.894314] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__functions.h\n'}
+[3.894457] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__description.c\n'}
+[3.894592] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__functions.c\n'}
+[3.894689] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.h\n'}
+[3.894881] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__functions.h\n'}
+[3.894993] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__functions.c\n'}
+[3.895115] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__struct.h\n'}
+[3.895236] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__struct.h\n'}
+[3.895358] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.c\n'}
+[3.895454] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__functions.c\n'}
+[3.895565] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__functions.h\n'}
+[3.895688] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__description.c\n'}
+[3.895813] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__functions.h\n'}
+[3.896038] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.h\n'}
+[3.896281] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__struct.h\n'}
+[3.896659] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__struct.h\n'}
+[3.896869] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__description.c\n'}
+[3.896969] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__functions.h\n'}
+[3.897078] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.c\n'}
+[3.897173] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__struct.h\n'}
+[3.897316] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.h\n'}
+[3.897459] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.h\n'}
+[3.897565] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.c\n'}
+[3.897726] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__struct.h\n'}
+[3.897877] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__description.c\n'}
+[3.898013] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.h\n'}
+[3.898148] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.h\n'}
+[3.898292] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.h\n'}
+[3.898424] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__struct.h\n'}
+[3.898546] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__description.c\n'}
+[3.898826] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__description.c\n'}
+[3.899183] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__functions.c\n'}
+[3.899510] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.h\n'}
+[3.899751] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__functions.c\n'}
+[3.899862] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__struct.h\n'}
+[3.899964] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__struct.h\n'}
+[3.900063] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.c\n'}
+[3.900159] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__struct.h\n'}
+[3.900445] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__functions.h\n'}
+[3.900570] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__functions.c\n'}
+[3.900666] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.c\n'}
+[3.900761] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__struct.h\n'}
+[3.900853] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__functions.c\n'}
+[3.900948] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c\n'}
+[3.901042] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__description.c\n'}
+[3.901135] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__struct.h\n'}
+[3.901229] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__functions.c\n'}
+[3.901338] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__functions.c\n'}
+[3.901442] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.h\n'}
+[3.901542] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__functions.c\n'}
+[3.901635] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__functions.c\n'}
+[3.901760] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__description.c\n'}
+[3.901860] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__functions.c\n'}
+[3.901971] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__struct.h\n'}
+[3.902066] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.c\n'}
+[3.902159] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.c\n'}
+[3.902260] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.c\n'}
+[3.902364] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.h\n'}
+[3.902457] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.h\n'}
+[3.902552] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__struct.h\n'}
+[3.902650] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.c\n'}
+[3.902744] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__description.c\n'}
+[3.902936] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.c\n'}
+[3.903033] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__struct.h\n'}
+[3.903126] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__struct.h\n'}
+[3.903222] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__functions.c\n'}
+[3.903333] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.c\n'}
+[3.903436] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__functions.c\n'}
+[3.903539] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__description.c\n'}
+[3.903636] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/shift_pose.h\n'}
+[3.903733] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/conveyor_feedback.h\n'}
+[3.903828] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/tool_command.h\n'}
+[3.903923] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence_autorun_status.h\n'}
+[3.904019] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/hardware_status.h\n'}
+[3.904117] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory.h\n'}
+[3.904219] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[3.904334] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/change_hardware_version.h\n'}
+[3.904439] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[3.904543] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c\n'}
+[3.904639] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__description.c\n'}
+[3.904735] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__functions.c\n'}
+[3.904828] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__struct.h\n'}
+[3.904921] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__functions.h\n'}
+[3.905016] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.h\n'}
+[3.905108] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/library_path.sh\n'}
+[3.905202] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/library_path.dsv\n'}
+[3.905328] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_c.so\n'}
+[3.905433] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[3.905532] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[3.905631] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[3.905734] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_fastrtps_c.h\n'}
+[3.905836] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_fastrtps_c.h\n'}
+[3.905935] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_fastrtps_c.h\n'}
+[3.906033] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_fastrtps_c.h\n'}
+[3.906131] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_fastrtps_c.h\n'}
+[3.906227] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_fastrtps_c.h\n'}
+[3.906342] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_fastrtps_c.h\n'}
+[3.906438] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_fastrtps_c.h\n'}
+[3.906531] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_fastrtps_c.h\n'}
+[3.906626] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_fastrtps_c.h\n'}
+[3.906719] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_fastrtps_c.h\n'}
+[3.906811] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_fastrtps_c.h\n'}
+[3.906908] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_fastrtps_c.h\n'}
+[3.907004] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_fastrtps_c.h\n'}
+[3.907112] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_fastrtps_c.h\n'}
+[3.907206] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_fastrtps_c.h\n'}
+[3.907313] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_fastrtps_c.h\n'}
+[3.907410] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_fastrtps_c.h\n'}
+[3.907513] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[3.907605] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[3.907696] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[3.907788] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_fastrtps_c.h\n'}
+[3.907885] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[3.907980] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[3.908073] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[3.908167] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_state.hpp\n'}
+[3.908281] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/software_version.hpp\n'}
+[3.908382] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/tool_command.hpp\n'}
+[3.908475] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/shift_pose.hpp\n'}
+[3.908610] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory_plan.hpp\n'}
+[3.908708] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/log_status.hpp\n'}
+[3.908802] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/robot_move_command.hpp\n'}
+[3.908896] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/trajectory.hpp\n'}
+[3.908993] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/digital_io_state.hpp\n'}
+[3.909142] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/position.hpp\n'}
+[3.909245] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[3.909350] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__builder.hpp\n'}
+[3.909444] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__traits.hpp\n'}
+[3.909537] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.hpp\n'}
+[3.909630] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__builder.hpp\n'}
+[3.909730] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__builder.hpp\n'}
+[3.909825] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__builder.hpp\n'}
+[3.909918] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__builder.hpp\n'}
+[3.910011] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__struct.hpp\n'}
+[3.910113] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.hpp\n'}
+[3.910207] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__traits.hpp\n'}
+[3.910362] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.hpp\n'}
+[3.910468] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.hpp\n'}
+[3.910562] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.hpp\n'}
+[3.910656] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__traits.hpp\n'}
+[3.910753] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.hpp\n'}
+[3.910844] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.hpp\n'}
+[3.910936] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__builder.hpp\n'}
+[3.911028] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__traits.hpp\n'}
+[3.911120] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__struct.hpp\n'}
+[3.911213] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__struct.hpp\n'}
+[3.914431] (-) TimerEvent: {}
+[3.914577] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__struct.hpp\n'}
+[3.914708] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.hpp\n'}
+[3.914811] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__builder.hpp\n'}
+[3.914908] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__struct.hpp\n'}
+[3.915017] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__struct.hpp\n'}
+[3.915114] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__builder.hpp\n'}
+[3.915213] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.hpp\n'}
+[3.915331] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__builder.hpp\n'}
+[3.915430] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__traits.hpp\n'}
+[3.915531] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__traits.hpp\n'}
+[3.915629] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__builder.hpp\n'}
+[3.915726] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__traits.hpp\n'}
+[3.915822] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.hpp\n'}
+[3.915918] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__struct.hpp\n'}
+[3.916012] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__traits.hpp\n'}
+[3.916117] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__struct.hpp\n'}
+[3.916213] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__struct.hpp\n'}
+[3.916326] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__struct.hpp\n'}
+[3.916422] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__traits.hpp\n'}
+[3.916516] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__traits.hpp\n'}
+[3.916615] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__struct.hpp\n'}
+[3.916710] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.hpp\n'}
+[3.916805] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__traits.hpp\n'}
+[3.916899] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__struct.hpp\n'}
+[3.917000] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__traits.hpp\n'}
+[3.917094] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__builder.hpp\n'}
+[3.917187] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__struct.hpp\n'}
+[3.919427] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.hpp\n'}
+[3.919547] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.hpp\n'}
+[3.919645] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__struct.hpp\n'}
+[3.919742] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__traits.hpp\n'}
+[3.919837] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__struct.hpp\n'}
+[3.919932] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__traits.hpp\n'}
+[3.920024] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__builder.hpp\n'}
+[3.920119] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__traits.hpp\n'}
+[3.920212] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__struct.hpp\n'}
+[3.920321] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__traits.hpp\n'}
+[3.920751] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__builder.hpp\n'}
+[3.920867] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.hpp\n'}
+[3.920967] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__traits.hpp\n'}
+[3.921064] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__builder.hpp\n'}
+[3.921159] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__traits.hpp\n'}
+[3.921270] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__struct.hpp\n'}
+[3.921385] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__struct.hpp\n'}
+[3.921486] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__builder.hpp\n'}
+[3.921590] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__builder.hpp\n'}
+[3.921705] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.hpp\n'}
+[3.921805] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__builder.hpp\n'}
+[3.921903] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.hpp\n'}
+[3.922000] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.hpp\n'}
+[3.922095] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__builder.hpp\n'}
+[3.922190] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.hpp\n'}
+[3.925434] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/object_pose.hpp\n'}
+[3.925559] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/matlab_move_result.hpp\n'}
+[3.925660] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence.hpp\n'}
+[3.925759] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/conveyor_feedback.hpp\n'}
+[3.925911] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rpy.hpp\n'}
+[3.926010] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/process_state.hpp\n'}
+[3.926104] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/sequence_autorun_status.hpp\n'}
+[3.926200] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[3.926679] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/hardware_status.hpp\n'}
+[3.926791] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[3.926889] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[3.926985] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__builder.hpp\n'}
+[3.927082] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__traits.hpp\n'}
+[3.927189] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__struct.hpp\n'}
+[3.927297] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.hpp\n'}
+[3.927395] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/change_hardware_version.hpp\n'}
+[3.927488] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[3.927583] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[3.927677] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[3.927769] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.927871] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.927970] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.928064] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.928158] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.931522] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.931731] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/dds_fastrtps\n'}
+[3.931840] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.931940] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.932038] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.932135] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.932234] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.932353] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.932459] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.932558] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.932654] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.932751] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.932848] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.932943] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.933039] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[3.933136] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[3.933234] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[3.935541] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/dds_fastrtps\n'}
+[3.935648] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.935745] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[3.935840] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[3.935954] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[3.936051] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[3.936144] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_introspection_c.h\n'}
+[3.937151] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_introspection_c.h\n'}
+[3.937358] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_introspection_c.h\n'}
+[3.937463] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_introspection_c.h\n'}
+[3.937559] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_introspection_c.h\n'}
+[3.937667] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.c\n'}
+[3.937765] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.c\n'}
+[3.937858] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.c\n'}
+[3.937953] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.c\n'}
+[3.938049] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_introspection_c.h\n'}
+[3.938145] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.c\n'}
+[3.938267] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.c\n'}
+[3.938375] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_introspection_c.h\n'}
+[3.938469] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.c\n'}
+[3.938562] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_introspection_c.h\n'}
+[3.938658] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.c\n'}
+[3.938752] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.c\n'}
+[3.938844] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_introspection_c.h\n'}
+[3.938937] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_introspection_c.h\n'}
+[3.939029] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_introspection_c.h\n'}
+[3.939122] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_introspection_c.h\n'}
+[3.939215] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_introspection_c.h\n'}
+[3.939336] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.c\n'}
+[3.939440] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_introspection_c.h\n'}
+[3.939546] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_introspection_c.h\n'}
+[3.939643] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_introspection_c.h\n'}
+[3.939739] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.c\n'}
+[3.939835] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c\n'}
+[3.939931] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.c\n'}
+[3.940029] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.c\n'}
+[3.940126] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.c\n'}
+[3.940228] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.c\n'}
+[3.941175] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_introspection_c.h\n'}
+[3.941308] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.c\n'}
+[3.941412] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.c\n'}
+[3.941509] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_introspection_c.h\n'}
+[3.941605] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[3.941702] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[3.941844] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[3.941953] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c\n'}
+[3.942053] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_introspection_c.h\n'}
+[3.942153] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_c.so\n'}
+[3.942255] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_c.so\n'}
+[3.942373] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[3.942469] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[3.942565] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[3.942659] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__type_support.cpp\n'}
+[3.942754] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.942852] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__type_support.cpp\n'}
+[3.942947] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__type_support.cpp\n'}
+[3.943040] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.943144] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/process_state__type_support.cpp\n'}
+[3.943245] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__type_support.cpp\n'}
+[3.943351] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.943446] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.943542] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.943635] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__type_support.cpp\n'}
+[3.943728] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.943820] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__type_support.cpp\n'}
+[3.943913] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.944006] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/object_pose__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.944101] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.944204] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/log_status__type_support.cpp\n'}
+[3.944338] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/hardware_status__type_support.cpp\n'}
+[3.944440] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory__type_support.cpp\n'}
+[3.944536] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.944633] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/digital_io_state__type_support.cpp\n'}
+[3.944728] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.944822] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__type_support.cpp\n'}
+[3.944918] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/trajectory_plan__type_support.cpp\n'}
+[3.945016] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.cpp\n'}
+[3.945115] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__type_support.cpp\n'}
+[3.945218] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_move_command__type_support.cpp\n'}
+[3.945396] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/tool_command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.945495] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/rpy__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.945589] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.945696] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/matlab_move_result__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.945790] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/sequence_autorun_status__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.945883] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/robot_state__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.945979] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/shift_pose__type_support.cpp\n'}
+[3.946073] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/software_version__type_support.cpp\n'}
+[3.946171] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/position__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.946276] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[3.946378] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[3.946472] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.cpp\n'}
+[3.946566] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.946661] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[3.946759] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_cpp.so\n'}
+[3.946857] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/pythonpath.sh\n'}
+[3.946954] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/pythonpath.dsv\n'}
+[3.947051] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info\n'}
+[3.947150] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/SOURCES.txt\n'}
+[3.947251] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/PKG-INFO\n'}
+[3.947371] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/dependency_links.txt\n'}
+[3.947472] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/top_level.txt\n'}
+[3.947575] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs\n'}
+[3.947673] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/__init__.py\n'}
+[3.947774] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg\n'}
+[3.947883] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/__init__.py\n'}
+[3.947980] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_software_version.py\n'}
+[3.948075] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence_autorun_status.py\n'}
+[3.948170] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence_autorun_status_s.c\n'}
+[3.948282] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback_s.c\n'}
+[3.948386] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_tool_command_s.c\n'}
+[3.948488] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_digital_io_state.py\n'}
+[3.948583] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_hardware_status_s.c\n'}
+[3.948677] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory_plan.py\n'}
+[3.948771] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_state.py\n'}
+[3.948865] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_shift_pose_s.c\n'}
+[3.948958] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_digital_io_state_s.c\n'}
+[3.949055] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence_s.c\n'}
+[3.949151] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_matlab_move_result.py\n'}
+[3.951304] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_object_pose.py\n'}
+[3.951483] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_shift_pose.py\n'}
+[3.951578] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_sequence.py\n'}
+[3.951672] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory.py\n'}
+[3.951767] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_process_state.py\n'}
+[3.951861] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_rpy.py\n'}
+[3.951954] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_move_command.py\n'}
+[3.952053] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback.py\n'}
+[3.952147] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_log_status.py\n'}
+[3.953280] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_position_s.c\n'}
+[3.953475] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory_s.c\n'}
+[3.953583] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_hardware_status.py\n'}
+[3.953677] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_software_version_s.c\n'}
+[3.953775] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_move_command_s.c\n'}
+[3.953869] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_robot_state_s.c\n'}
+[3.953966] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_rpy_s.c\n'}
+[3.954058] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_position.py\n'}
+[3.954150] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_log_status_s.c\n'}
+[3.954250] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_tool_command.py\n'}
+[3.954353] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_object_pose_s.c\n'}
+[3.954447] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_matlab_move_result_s.c\n'}
+[3.954539] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_process_state_s.c\n'}
+[3.954641] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_trajectory_plan_s.c\n'}
+[3.954735] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so\n'}
+[3.954830] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so\n'}
+[3.954923] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so\n'}
+[3.955017] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[3.955110] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_c.c\n'}
+[3.955204] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[3.957567] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv\n'}
+[3.957683] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/__init__.py\n'}
+[3.957784] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version.py\n'}
+[3.957894] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version_s.c\n'}
+[3.963851] (niryo_one_msgs) StdoutLine: {'line': b"Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs'...\n"}
+[3.964233] (niryo_one_msgs) StdoutLine: {'line': b"Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/__init__.py'...\n"}
+[3.964374] (niryo_one_msgs) StdoutLine: {'line': b"Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg'...\n"}
+[3.964483] (niryo_one_msgs) StdoutLine: {'line': b"Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv'...\n"}
+[3.971868] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so\n'}
+[3.972090] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so\n'}
+[3.972631] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so\n'}
+[3.972772] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_py.so\n'}
+[3.974653] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.idl\n'}
+[3.974801] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/DigitalIOState.idl\n'}
+[3.974952] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/HardwareStatus.idl\n'}
+[3.975109] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/LogStatus.idl\n'}
+[3.975250] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/MatlabMoveResult.idl\n'}
+[3.975391] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ObjectPose.idl\n'}
+[3.975529] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RPY.idl\n'}
+[3.975630] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Position.idl\n'}
+[3.975769] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ProcessState.idl\n'}
+[3.975931] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ShiftPose.idl\n'}
+[3.976034] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/TrajectoryPlan.idl\n'}
+[3.976181] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotMoveCommand.idl\n'}
+[3.976323] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotState.idl\n'}
+[3.976427] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Sequence.idl\n'}
+[3.976589] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SequenceAutorunStatus.idl\n'}
+[3.976697] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SoftwareVersion.idl\n'}
+[3.976800] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ToolCommand.idl\n'}
+[3.976939] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Trajectory.idl\n'}
+[3.977069] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.idl\n'}
+[3.977180] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.msg\n'}
+[3.977336] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/DigitalIOState.msg\n'}
+[3.977462] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/HardwareStatus.msg\n'}
+[3.977563] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/LogStatus.msg\n'}
+[3.977703] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/MatlabMoveResult.msg\n'}
+[3.977833] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ObjectPose.msg\n'}
+[3.977931] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RPY.msg\n'}
+[3.978065] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Position.msg\n'}
+[3.978178] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ProcessState.msg\n'}
+[3.978353] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ShiftPose.msg\n'}
+[3.978460] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/TrajectoryPlan.msg\n'}
+[3.978598] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotMoveCommand.msg\n'}
+[3.978695] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/RobotState.msg\n'}
+[3.978842] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Sequence.msg\n'}
+[3.978979] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SequenceAutorunStatus.msg\n'}
+[3.979077] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/SoftwareVersion.msg\n'}
+[3.979179] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ToolCommand.msg\n'}
+[3.979339] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/Trajectory.msg\n'}
+[3.979474] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.srv\n'}
+[3.979580] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/package_run_dependencies/niryo_one_msgs\n'}
+[3.979676] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/parent_prefix_path/niryo_one_msgs\n'}
+[3.979806] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/ament_prefix_path.sh\n'}
+[3.979902] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/ament_prefix_path.dsv\n'}
+[3.980032] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/path.sh\n'}
+[3.980154] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/path.dsv\n'}
+[3.980569] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.bash\n'}
+[3.980714] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.sh\n'}
+[3.980850] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.zsh\n'}
+[3.980991] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.dsv\n'}
+[3.981125] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.dsv\n'}
+[3.981284] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/packages/niryo_one_msgs\n'}
+[3.981401] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport.cmake\n'}
+[3.981572] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[3.981711] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[3.981812] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[3.981943] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cppExport.cmake\n'}
+[3.982042] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[3.982188] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[3.982306] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[3.982414] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[3.982582] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport.cmake\n'}
+[3.982704] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[3.982804] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[3.982901] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[3.982998] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[3.983094] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[3.983189] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_pyExport.cmake\n'}
+[3.983303] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_pyExport-noconfig.cmake\n'}
+[3.983403] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[3.983504] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[3.983599] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[3.983694] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[3.983789] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[3.983884] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[3.983980] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[3.984093] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgsConfig.cmake\n'}
+[3.984190] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgsConfig-version.cmake\n'}
+[3.984303] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.xml\n'}
+[3.988441] (niryo_one_msgs) CommandEnded: {'returncode': 0}
+[4.014545] (-) TimerEvent: {}
+[4.114796] (-) TimerEvent: {}
+[4.215092] (-) TimerEvent: {}
+[4.315598] (-) TimerEvent: {}
+[4.415930] (-) TimerEvent: {}
+[4.503846] (niryo_one_msgs) JobEnded: {'identifier': 'niryo_one_msgs', 'rc': 0}
+[4.504830] (-) EventReactorShutdown: {}

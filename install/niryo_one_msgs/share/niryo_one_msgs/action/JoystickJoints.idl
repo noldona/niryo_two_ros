@@ -1,0 +1,26 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from niryo_one_msgs/action/JoystickJoints.action
+// generated code does not contain a copyright notice
+
+
+module niryo_one_msgs {
+  module action {
+    @verbatim (language="comment", text=
+      "goal")
+    struct JoystickJoints_Goal {
+      sequence<double> joy_values;
+
+      double duration;
+    };
+    @verbatim (language="comment", text=
+      "result")
+    struct JoystickJoints_Result {
+      int32 has_succeeded;
+    };
+    @verbatim (language="comment", text=
+      "feedback ")
+    struct JoystickJoints_Feedback {
+      boolean is_in_joints_limit;
+    };
+  };
+};

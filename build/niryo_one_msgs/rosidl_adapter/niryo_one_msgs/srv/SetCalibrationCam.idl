@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/SetCalibrationCam.srv
+// generated code does not contain a copyright notice
+
+
+module niryo_one_msgs {
+  module srv {
+    struct SetCalibrationCam_Request {
+      string name;
+    };
+    module SetCalibrationCam_Response_Constants {
+      const int32 SUCCESSFULLY_SET = 0;
+      const int32 OVERWRITTEN = 1;
+      const int32 NOT_SET = -1;
+    };
+    struct SetCalibrationCam_Response {
+      int32 status;
+    };
+  };
+};

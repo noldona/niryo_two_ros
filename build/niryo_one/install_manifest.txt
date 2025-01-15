@@ -1,0 +1,15 @@
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/ament_index/resource_index/package_run_dependencies/niryo_one
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/ament_index/resource_index/parent_prefix_path/niryo_one
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/environment/ament_prefix_path.sh
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/environment/ament_prefix_path.dsv
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/environment/path.sh
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/environment/path.dsv
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/local_setup.bash
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/local_setup.sh
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/local_setup.zsh
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/local_setup.dsv
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/package.dsv
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/ament_index/resource_index/packages/niryo_one
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/cmake/niryo_oneConfig.cmake
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/cmake/niryo_oneConfig-version.cmake
+/home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/package.xml

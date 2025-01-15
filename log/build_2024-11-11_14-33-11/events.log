@@ -1,0 +1,372 @@
+[0.000000] (-) TimerEvent: {}
+[0.000283] (-) JobUnselected: {'identifier': '?'}
+[0.000524] (-) JobUnselected: {'identifier': 'niryo_one'}
+[0.000663] (-) JobUnselected: {'identifier': 'niryo_one_bringup'}
+[0.000812] (-) JobUnselected: {'identifier': 'niryo_one_camera'}
+[0.000858] (-) JobUnselected: {'identifier': 'niryo_one_commander'}
+[0.000920] (-) JobUnselected: {'identifier': 'niryo_one_rpi'}
+[0.001067] (niryo_one_msgs) JobQueued: {'identifier': 'niryo_one_msgs', 'dependencies': OrderedDict()}
+[0.001122] (niryo_one_msgs) JobStarted: {'identifier': 'niryo_one_msgs'}
+[0.008989] (niryo_one_msgs) JobProgress: {'identifier': 'niryo_one_msgs', 'progress': 'cmake'}
+[0.009642] (niryo_one_msgs) JobProgress: {'identifier': 'niryo_one_msgs', 'progress': 'build'}
+[0.010347] (niryo_one_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', '--', '-j4', '-l4'], 'cwd': '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'noldona', 'SSH_CLIENT': '192.168.1.27 54479 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/bin/helpers/browser.sh', 'HOME': '/home/noldona', 'OLDPWD': '/home/noldona/niryo/niryo_two_ros/src', 'TERM_PROGRAM_VERSION': '1.95.1', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-96c21b78-96a7-4480-95cb-023c7baad8c3.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/node', 'SSL_CERT_FILE': '/usr/lib/ssl/cert.pem', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'noldona', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '1652', 'PATH': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'SSL_CERT_DIR': '/usr/lib/ssl/certs', 'LANG': 'en_US.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-b4e09deed3.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '192.168.1.27 54479 192.168.1.14 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.036021] (niryo_one_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.099830] (-) TimerEvent: {}
+[0.200116] (-) TimerEvent: {}
+[0.257444] (niryo_one_msgs) StdoutLine: {'line': b'-- Found std_msgs: 5.3.5 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[0.283831] (niryo_one_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.293721] (niryo_one_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.300232] (-) TimerEvent: {}
+[0.306017] (niryo_one_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.320589] (niryo_one_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.353702] (niryo_one_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)\n'}
+[0.364140] (niryo_one_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.4 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[0.400331] (-) TimerEvent: {}
+[0.500611] (-) TimerEvent: {}
+[0.600907] (-) TimerEvent: {}
+[0.701233] (-) TimerEvent: {}
+[0.801485] (-) TimerEvent: {}
+[0.901728] (-) TimerEvent: {}
+[1.002005] (-) TimerEvent: {}
+[1.026444] (niryo_one_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[1.102091] (-) TimerEvent: {}
+[1.202375] (-) TimerEvent: {}
+[1.302660] (-) TimerEvent: {}
+[1.402954] (-) TimerEvent: {}
+[1.503280] (-) TimerEvent: {}
+[1.603566] (-) TimerEvent: {}
+[1.703841] (-) TimerEvent: {}
+[1.804156] (-) TimerEvent: {}
+[1.849539] (niryo_one_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.904294] (-) TimerEvent: {}
+[2.004587] (-) TimerEvent: {}
+[2.104858] (-) TimerEvent: {}
+[2.163520] (niryo_one_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.167506] (niryo_one_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[2.204946] (-) TimerEvent: {}
+[2.305224] (-) TimerEvent: {}
+[2.306107] (niryo_one_msgs) StdoutLine: {'line': b'-- Found PythonExtra: /usr/bin/python3  \n'}
+[2.405320] (-) TimerEvent: {}
+[2.505633] (-) TimerEvent: {}
+[2.605916] (-) TimerEvent: {}
+[2.706226] (-) TimerEvent: {}
+[2.806509] (-) TimerEvent: {}
+[2.879394] (niryo_one_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[2.906597] (-) TimerEvent: {}
+[2.929410] (niryo_one_msgs) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.1 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[2.946257] (niryo_one_msgs) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.947668] (niryo_one_msgs) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.951031] (niryo_one_msgs) StdoutLine: {'line': b'-- Configuring done (2.9s)\n'}
+[3.006702] (-) TimerEvent: {}
+[3.024233] (niryo_one_msgs) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[3.028465] (niryo_one_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs\n'}
+[3.072911] (niryo_one_msgs) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating type hashes for ROS interfaces\x1b[0m\n'}
+[3.081466] (niryo_one_msgs) StdoutLine: {'line': b'[  2%] Built target ament_cmake_python_copy_niryo_one_msgs\n'}
+[3.106823] (-) TimerEvent: {}
+[3.209234] (-) TimerEvent: {}
+[3.309691] (-) TimerEvent: {}
+[3.395373] (niryo_one_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[3.396440] (niryo_one_msgs) StdoutLine: {'line': b'creating niryo_one_msgs.egg-info\n'}
+[3.409799] (-) TimerEvent: {}
+[3.411944] (niryo_one_msgs) StdoutLine: {'line': b'[  2%] Built target niryo_one_msgs__rosidl_generator_type_description\n'}
+[3.424893] (niryo_one_msgs) StdoutLine: {'line': b'[  4%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[3.428461] (niryo_one_msgs) StdoutLine: {'line': b'writing niryo_one_msgs.egg-info/PKG-INFO\n'}
+[3.428587] (niryo_one_msgs) StdoutLine: {'line': b'writing dependency_links to niryo_one_msgs.egg-info/dependency_links.txt\n'}
+[3.428697] (niryo_one_msgs) StdoutLine: {'line': b'writing top-level names to niryo_one_msgs.egg-info/top_level.txt\n'}
+[3.428802] (niryo_one_msgs) StdoutLine: {'line': b"writing manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'\n"}
+[3.446659] (niryo_one_msgs) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[3.509897] (-) TimerEvent: {}
+[3.518436] (niryo_one_msgs) StdoutLine: {'line': b"reading manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'\n"}
+[3.520199] (niryo_one_msgs) StdoutLine: {'line': b"writing manifest file 'niryo_one_msgs.egg-info/SOURCES.txt'\n"}
+[3.569152] (niryo_one_msgs) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_build_niryo_one_msgs_egg\n'}
+[3.610004] (-) TimerEvent: {}
+[3.710724] (-) TimerEvent: {}
+[3.813230] (-) TimerEvent: {}
+[3.913780] (-) TimerEvent: {}
+[3.988888] (niryo_one_msgs) StdoutLine: {'line': b'[  6%] Built target niryo_one_msgs__cpp\n'}
+[4.013904] (-) TimerEvent: {}
+[4.019247] (niryo_one_msgs) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c.o\x1b[0m\n'}
+[4.022206] (niryo_one_msgs) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/conveyor_feedback__functions.c.o\x1b[0m\n'}
+[4.026234] (niryo_one_msgs) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/msg/detail/conveyor_feedback__description.c.o\x1b[0m\n'}
+[4.026550] (niryo_one_msgs) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/srv/detail/change_hardware_version__description.c.o\x1b[0m\n'}
+[4.114065] (-) TimerEvent: {}
+[4.214586] (-) TimerEvent: {}
+[4.256339] (niryo_one_msgs) StdoutLine: {'line': b'[ 18%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/srv/detail/change_hardware_version__functions.c.o\x1b[0m\n'}
+[4.296722] (niryo_one_msgs) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_c.dir/rosidl_generator_c/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c.o\x1b[0m\n'}
+[4.314679] (-) TimerEvent: {}
+[4.368887] (niryo_one_msgs) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library libniryo_one_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[4.414789] (-) TimerEvent: {}
+[4.428598] (niryo_one_msgs) StdoutLine: {'line': b'[ 22%] Built target niryo_one_msgs__rosidl_generator_c\n'}
+[4.457777] (niryo_one_msgs) StdoutLine: {'line': b'[ 25%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.461741] (niryo_one_msgs) StdoutLine: {'line': b'[ 27%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.467738] (niryo_one_msgs) StdoutLine: {'line': b'[ 29%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[4.476800] (niryo_one_msgs) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[4.516271] (-) TimerEvent: {}
+[4.616697] (-) TimerEvent: {}
+[4.717122] (-) TimerEvent: {}
+[4.817562] (-) TimerEvent: {}
+[4.864476] (niryo_one_msgs) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/msg/conveyor_feedback__type_support.cpp.o\x1b[0m\n'}
+[4.917663] (-) TimerEvent: {}
+[4.931526] (niryo_one_msgs) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.cpp.o\x1b[0m\n'}
+[4.934717] (niryo_one_msgs) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c.o\x1b[0m\n'}
+[4.987200] (niryo_one_msgs) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c.o\x1b[0m\n'}
+[5.017774] (-) TimerEvent: {}
+[5.021848] (niryo_one_msgs) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/msg/detail/dds_fastrtps/conveyor_feedback__type_support.cpp.o\x1b[0m\n'}
+[5.057771] (niryo_one_msgs) StdoutLine: {'line': b'[ 45%] \x1b[32m\x1b[1mLinking C shared library libniryo_one_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[5.119403] (-) TimerEvent: {}
+[5.131787] (niryo_one_msgs) StdoutLine: {'line': b'[ 45%] Built target niryo_one_msgs__rosidl_typesupport_introspection_c\n'}
+[5.137243] (niryo_one_msgs) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/niryo_one_msgs/srv/change_hardware_version__type_support.cpp.o\x1b[0m\n'}
+[5.148372] (niryo_one_msgs) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/niryo_one_msgs/srv/detail/change_hardware_version__type_support.cpp.o\x1b[0m\n'}
+[5.211308] (niryo_one_msgs) StdoutLine: {'line': b'[ 52%] \x1b[32m\x1b[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[5.219510] (-) TimerEvent: {}
+[5.268531] (niryo_one_msgs) StdoutLine: {'line': b'[ 52%] Built target niryo_one_msgs__rosidl_typesupport_c\n'}
+[5.286259] (niryo_one_msgs) StdoutLine: {'line': b'[ 54%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[5.320559] (-) TimerEvent: {}
+[5.420971] (-) TimerEvent: {}
+[5.521422] (-) TimerEvent: {}
+[5.629358] (-) TimerEvent: {}
+[5.729948] (-) TimerEvent: {}
+[5.830489] (-) TimerEvent: {}
+[5.900390] (niryo_one_msgs) StdoutLine: {'line': b'[ 56%] \x1b[32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/msg/conveyor_feedback__type_support.cpp.o\x1b[0m\n'}
+[5.929887] (niryo_one_msgs) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/niryo_one_msgs/srv/detail/dds_fastrtps/change_hardware_version__type_support.cpp.o\x1b[0m\n'}
+[5.931386] (-) TimerEvent: {}
+[6.031766] (-) TimerEvent: {}
+[6.076573] (niryo_one_msgs) StdoutLine: {'line': b'[ 61%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[6.119706] (niryo_one_msgs) StdoutLine: {'line': b'[ 63%] \x1b[32m\x1b[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[6.134235] (-) TimerEvent: {}
+[6.234561] (-) TimerEvent: {}
+[6.256880] (niryo_one_msgs) StdoutLine: {'line': b'[ 63%] Built target niryo_one_msgs__rosidl_typesupport_introspection_cpp\n'}
+[6.269084] (niryo_one_msgs) StdoutLine: {'line': b'[ 65%] \x1b[32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/niryo_one_msgs/srv/change_hardware_version__type_support.cpp.o\x1b[0m\n'}
+[6.334674] (-) TimerEvent: {}
+[6.435170] (-) TimerEvent: {}
+[6.535953] (-) TimerEvent: {}
+[6.636438] (-) TimerEvent: {}
+[6.665770] (niryo_one_msgs) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/msg/detail/conveyor_feedback__type_support_c.cpp.o\x1b[0m\n'}
+[6.667612] (niryo_one_msgs) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/niryo_one_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/niryo_one_msgs/srv/detail/change_hardware_version__type_support_c.cpp.o\x1b[0m\n'}
+[6.736552] (-) TimerEvent: {}
+[6.838324] (-) TimerEvent: {}
+[6.941263] (-) TimerEvent: {}
+[7.041755] (-) TimerEvent: {}
+[7.116700] (niryo_one_msgs) StdoutLine: {'line': b'[ 72%] \x1b[32m\x1b[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[7.141869] (-) TimerEvent: {}
+[7.159957] (niryo_one_msgs) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[7.242270] (-) TimerEvent: {}
+[7.295062] (niryo_one_msgs) StdoutLine: {'line': b'[ 75%] Built target niryo_one_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[7.328526] (niryo_one_msgs) StdoutLine: {'line': b'[ 75%] Built target niryo_one_msgs__rosidl_typesupport_cpp\n'}
+[7.342373] (-) TimerEvent: {}
+[7.442688] (-) TimerEvent: {}
+[7.543023] (-) TimerEvent: {}
+[7.564786] (niryo_one_msgs) StdoutLine: {'line': b'[ 77%] \x1b[32m\x1b[1mLinking CXX shared library libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[7.643169] (-) TimerEvent: {}
+[7.656472] (niryo_one_msgs) StdoutLine: {'line': b'[ 77%] Built target niryo_one_msgs__rosidl_typesupport_fastrtps_c\n'}
+[7.676590] (niryo_one_msgs) StdoutLine: {'line': b'[ 77%] Built target niryo_one_msgs\n'}
+[7.701845] (niryo_one_msgs) StdoutLine: {'line': b'[ 79%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[7.743236] (-) TimerEvent: {}
+[7.843562] (-) TimerEvent: {}
+[7.943868] (-) TimerEvent: {}
+[8.044146] (-) TimerEvent: {}
+[8.144389] (-) TimerEvent: {}
+[8.230534] (niryo_one_msgs) StdoutLine: {'line': b'[ 79%] Built target niryo_one_msgs__py\n'}
+[8.244526] (-) TimerEvent: {}
+[8.252254] (niryo_one_msgs) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/srv/_change_hardware_version_s.c.o\x1b[0m\n'}
+[8.252558] (niryo_one_msgs) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs__rosidl_generator_py.dir/rosidl_generator_py/niryo_one_msgs/msg/_conveyor_feedback_s.c.o\x1b[0m\n'}
+[8.344632] (-) TimerEvent: {}
+[8.444922] (-) TimerEvent: {}
+[8.480070] (niryo_one_msgs) StdoutLine: {'line': b'[ 86%] \x1b[32m\x1b[1mLinking C shared library libniryo_one_msgs__rosidl_generator_py.so\x1b[0m\n'}
+[8.533871] (niryo_one_msgs) StdoutLine: {'line': b'[ 86%] Built target niryo_one_msgs__rosidl_generator_py\n'}
+[8.546558] (-) TimerEvent: {}
+[8.561197] (niryo_one_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs_s__rosidl_typesupport_c.dir/rosidl_generator_py/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[8.561586] (niryo_one_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[8.562881] (niryo_one_msgs) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding C object CMakeFiles/niryo_one_msgs_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[8.646662] (-) TimerEvent: {}
+[8.721169] (niryo_one_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[8.722104] (niryo_one_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[8.722267] (niryo_one_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so\x1b[0m\n'}
+[8.747296] (-) TimerEvent: {}
+[8.759984] (niryo_one_msgs) StdoutLine: {'line': b'[100%] Built target niryo_one_msgs_s__rosidl_typesupport_fastrtps_c\n'}
+[8.761029] (niryo_one_msgs) StdoutLine: {'line': b'[100%] Built target niryo_one_msgs_s__rosidl_typesupport_c\n'}
+[8.761730] (niryo_one_msgs) StdoutLine: {'line': b'[100%] Built target niryo_one_msgs_s__rosidl_typesupport_introspection_c\n'}
+[8.775728] (niryo_one_msgs) CommandEnded: {'returncode': 0}
+[8.847413] (-) TimerEvent: {}
+[8.857690] (niryo_one_msgs) JobProgress: {'identifier': 'niryo_one_msgs', 'progress': 'install'}
+[8.869005] (niryo_one_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs'], 'cwd': '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'noldona', 'SSH_CLIENT': '192.168.1.27 54479 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/bin/helpers/browser.sh', 'HOME': '/home/noldona', 'OLDPWD': '/home/noldona/niryo/niryo_two_ros/src', 'TERM_PROGRAM_VERSION': '1.95.1', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-96c21b78-96a7-4480-95cb-023c7baad8c3.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/node', 'SSL_CERT_FILE': '/usr/lib/ssl/cert.pem', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'noldona', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '1652', 'PATH': '/home/noldona/.vscode-server/cli/servers/Stable-65edc4939843c90c34d61f4ce11704f09d3e5cb6/server/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'SSL_CERT_DIR': '/usr/lib/ssl/certs', 'LANG': 'en_US.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-b4e09deed3.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '192.168.1.27 54479 192.168.1.14 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[8.879426] (niryo_one_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[8.880059] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/rosidl_interfaces/niryo_one_msgs\n'}
+[8.880267] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.json\n'}
+[8.880522] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.json\n'}
+[8.880819] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[8.881008] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[8.881264] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[8.881414] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[8.881568] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__functions.h\n'}
+[8.881796] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__description.c\n'}
+[8.882032] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.h\n'}
+[8.882274] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c\n'}
+[8.882553] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__functions.c\n'}
+[8.882782] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__struct.h\n'}
+[8.883004] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/conveyor_feedback.h\n'}
+[8.883169] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[8.883356] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/change_hardware_version.h\n'}
+[8.883570] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[8.883759] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c\n'}
+[8.883974] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__description.c\n'}
+[8.884198] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__functions.c\n'}
+[8.884372] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__struct.h\n'}
+[8.884526] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__functions.h\n'}
+[8.884678] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.h\n'}
+[8.885099] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/library_path.sh\n'}
+[8.885313] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/library_path.dsv\n'}
+[8.885649] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_c.so\n'}
+[8.885848] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_c.so" to ""\n'}
+[8.886075] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[8.886271] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[8.886459] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[8.886701] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_fastrtps_c.h\n'}
+[8.887020] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[8.887312] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[8.887612] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[8.887913] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_fastrtps_c.h\n'}
+[8.888196] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[8.888502] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[8.888781] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[8.888970] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[8.889338] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[8.889732] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__builder.hpp\n'}
+[8.889946] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__traits.hpp\n'}
+[8.890225] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.hpp\n'}
+[8.890589] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__struct.hpp\n'}
+[8.890833] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/conveyor_feedback.hpp\n'}
+[8.891107] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[8.891324] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[8.891514] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[8.891695] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__builder.hpp\n'}
+[8.891869] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__traits.hpp\n'}
+[8.892310] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__struct.hpp\n'}
+[8.892572] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.hpp\n'}
+[8.892767] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/change_hardware_version.hpp\n'}
+[8.893092] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[8.893330] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[8.893604] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[8.893842] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/dds_fastrtps\n'}
+[8.894014] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[8.894196] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[8.894518] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[8.894704] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[8.894870] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/dds_fastrtps\n'}
+[8.895053] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[8.895431] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[8.895622] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[8.895927] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[8.896163] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[8.896418] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[8.896591] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_introspection_c.h\n'}
+[8.896753] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.c\n'}
+[8.896912] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[8.897080] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[8.897301] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[8.897524] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.c\n'}
+[8.897678] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_introspection_c.h\n'}
+[8.897827] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_c.so\n'}
+[8.897999] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[8.898268] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_c.so\n'}
+[8.898493] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_c.so" to ""\n'}
+[8.898662] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs\n'}
+[8.898883] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg\n'}
+[8.899150] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail\n'}
+[8.899397] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__rosidl_typesupport_introspection_cpp.hpp\n'}
+[8.899662] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/msg/detail/conveyor_feedback__type_support.cpp\n'}
+[8.899934] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv\n'}
+[8.900115] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail\n'}
+[8.900352] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__type_support.cpp\n'}
+[8.900507] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/include/niryo_one_msgs/niryo_one_msgs/srv/detail/change_hardware_version__rosidl_typesupport_introspection_cpp.hpp\n'}
+[8.900747] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[8.900912] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[8.901147] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_cpp.so\n'}
+[8.901388] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[8.901569] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/pythonpath.sh\n'}
+[8.901824] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/pythonpath.dsv\n'}
+[8.902006] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info\n'}
+[8.902731] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/SOURCES.txt\n'}
+[8.902877] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/PKG-INFO\n'}
+[8.903012] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/dependency_links.txt\n'}
+[8.903147] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs-0.0.0-py3.12.egg-info/top_level.txt\n'}
+[8.903320] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs\n'}
+[8.903467] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/__init__.py\n'}
+[8.903624] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg\n'}
+[8.903763] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/__init__.py\n'}
+[8.903899] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback_s.c\n'}
+[8.904030] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback.py\n'}
+[8.904155] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so\n'}
+[8.907556] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so\n'}
+[8.907710] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so\n'}
+[8.907834] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[8.907958] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_c.c\n'}
+[8.908521] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/_niryo_one_msgs_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[8.908702] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv\n'}
+[8.908835] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/__init__.py\n'}
+[8.908959] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version.py\n'}
+[8.909073] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version_s.c\n'}
+[8.947502] (-) TimerEvent: {}
+[8.951993] (niryo_one_msgs) StdoutLine: {'line': b"Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs'...\n"}
+[8.952234] (niryo_one_msgs) StdoutLine: {'line': b"Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/__init__.py'...\n"}
+[8.952358] (niryo_one_msgs) StdoutLine: {'line': b"Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg'...\n"}
+[8.952464] (niryo_one_msgs) StdoutLine: {'line': b"Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/__init__.py'...\n"}
+[8.952565] (niryo_one_msgs) StdoutLine: {'line': b"Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/msg/_conveyor_feedback.py'...\n"}
+[8.952680] (niryo_one_msgs) StdoutLine: {'line': b"Listing '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv'...\n"}
+[8.952784] (niryo_one_msgs) StdoutLine: {'line': b"Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/__init__.py'...\n"}
+[8.952887] (niryo_one_msgs) StdoutLine: {'line': b"Compiling '/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/srv/_change_hardware_version.py'...\n"}
+[8.958679] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so\n'}
+[8.958995] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[8.959255] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so\n'}
+[8.959586] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_introspection_c.so" to ""\n'}
+[8.959792] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so\n'}
+[8.960099] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages/niryo_one_msgs/niryo_one_msgs_s__rosidl_typesupport_c.so" to ""\n'}
+[8.960261] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_py.so\n'}
+[8.960606] (niryo_one_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/lib/libniryo_one_msgs__rosidl_generator_py.so" to ""\n'}
+[8.960744] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.idl\n'}
+[8.960893] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.idl\n'}
+[8.961038] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/msg/ConveyorFeedback.msg\n'}
+[8.961190] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/srv/ChangeHardwareVersion.srv\n'}
+[8.961340] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/package_run_dependencies/niryo_one_msgs\n'}
+[8.961483] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/parent_prefix_path/niryo_one_msgs\n'}
+[8.961676] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/ament_prefix_path.sh\n'}
+[8.961843] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/ament_prefix_path.dsv\n'}
+[8.961988] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/path.sh\n'}
+[8.962139] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/environment/path.dsv\n'}
+[8.962273] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.bash\n'}
+[8.962441] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.sh\n'}
+[8.962566] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.zsh\n'}
+[8.962699] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/local_setup.dsv\n'}
+[8.962926] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.dsv\n'}
+[8.963074] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/ament_index/resource_index/packages/niryo_one_msgs\n'}
+[8.963188] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport.cmake\n'}
+[8.963301] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[8.963398] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[8.963495] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[8.963591] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_cppExport.cmake\n'}
+[8.963738] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[8.963889] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[8.964028] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[8.964152] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[8.964266] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport.cmake\n'}
+[8.964405] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[8.964540] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[8.964640] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[8.964775] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[8.964896] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[8.965040] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_pyExport.cmake\n'}
+[8.965218] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/export_niryo_one_msgs__rosidl_generator_pyExport-noconfig.cmake\n'}
+[8.965364] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[8.965501] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[8.965637] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[8.965824] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[8.965961] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[8.966130] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[8.966244] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[8.966344] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgsConfig.cmake\n'}
+[8.966440] (niryo_one_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/cmake/niryo_one_msgsConfig-version.cmake\n'}
+[8.966587] (niryo_one_msgs) StdoutLine: {'line': b'-- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs/share/niryo_one_msgs/package.xml\n'}
+[8.968563] (niryo_one_msgs) CommandEnded: {'returncode': 0}
+[9.047597] (-) TimerEvent: {}
+[9.083687] (niryo_one_msgs) JobEnded: {'identifier': 'niryo_one_msgs', 'rc': 0}
+[9.084776] (-) EventReactorShutdown: {}

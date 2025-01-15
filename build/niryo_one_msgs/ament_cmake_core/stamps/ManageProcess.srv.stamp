@@ -1,0 +1,5 @@
+uint8 action  # start, stop, restart, kill, start_all, stop_all
+string name
+---
+int32 status
+string message

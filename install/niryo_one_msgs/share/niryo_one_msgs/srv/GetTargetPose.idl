@@ -1,0 +1,37 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/GetTargetPose.srv
+// generated code does not contain a copyright notice
+
+#include "niryo_one_msgs/msg/RobotState.idl"
+
+module niryo_one_msgs {
+  module srv {
+    module GetTargetPose_Request_Constants {
+      const string GRIP_AUTO = "auto";
+    };
+    struct GetTargetPose_Request {
+      string workspace;
+
+      string grip;
+
+      @verbatim (language="comment", text=
+        "Used if grip_name = GRIP_AUTO")
+      int32 tool_id;
+
+      float height_offset;
+
+      float x_rel;
+
+      float y_rel;
+
+      float yaw_rel;
+    };
+    struct GetTargetPose_Response {
+      int32 status;
+
+      string message;
+
+      niryo_one_msgs::msg::RobotState target_pose;
+    };
+  };
+};

@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "niryo_one_msgs/srv/GetWorkspaceList_Request",
+      "fields": [
+        {
+          "name": "structure_needs_at_least_one_member",
+          "type": {
+            "type_id": 3,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "niryo_one_msgs/srv/GetWorkspaceList_Request",
+      "hash_string": "RIHS01_0e786b45fedf768262930a75561cb19b047b5bc14280b3d60c4a2d43d9d1fad5"
+    }
+  ]
+}

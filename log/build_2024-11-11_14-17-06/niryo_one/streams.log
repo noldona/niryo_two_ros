@@ -1,0 +1,20 @@
+[0.026s] Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/noldona/niryo/niryo_two_ros/build/niryo_one -- -j4 -l4
+[0.332s] Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/noldona/niryo/niryo_two_ros/build/niryo_one -- -j4 -l4
+[0.369s] Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/noldona/niryo/niryo_two_ros/build/niryo_one
+[0.380s] -- Install configuration: ""
+[0.380s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/ament_index/resource_index/package_run_dependencies/niryo_one
+[0.380s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/ament_index/resource_index/parent_prefix_path/niryo_one
+[0.381s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/environment/ament_prefix_path.sh
+[0.382s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/environment/ament_prefix_path.dsv
+[0.382s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/environment/path.sh
+[0.382s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/environment/path.dsv
+[0.382s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/local_setup.bash
+[0.382s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/local_setup.sh
+[0.383s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/local_setup.zsh
+[0.383s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/local_setup.dsv
+[0.383s] -- Installing: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/package.dsv
+[0.383s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/ament_index/resource_index/packages/niryo_one
+[0.383s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/cmake/niryo_oneConfig.cmake
+[0.383s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/cmake/niryo_oneConfig-version.cmake
+[0.383s] -- Up-to-date: /home/noldona/niryo/niryo_two_ros/install/niryo_one/share/niryo_one/package.xml
+[0.394s] Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/noldona/niryo/niryo_two_ros/build/niryo_one

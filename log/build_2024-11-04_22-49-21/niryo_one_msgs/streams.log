@@ -1,0 +1,48 @@
+[0.013s] Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/noldona/niryo/niryo_two_ros/src/niryo_one_msgs -DCMAKE_INSTALL_PREFIX=/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs
+[0.169s] -- The C compiler identification is GNU 13.2.0
+[0.296s] -- The CXX compiler identification is GNU 13.2.0
+[0.330s] -- Detecting C compiler ABI info
+[0.467s] -- Detecting C compiler ABI info - done
+[0.486s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.487s] -- Detecting C compile features
+[0.488s] -- Detecting C compile features - done
+[0.499s] -- Detecting CXX compiler ABI info
+[0.685s] -- Detecting CXX compiler ABI info - done
+[0.699s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.699s] -- Detecting CXX compile features
+[0.701s] -- Detecting CXX compile features - done
+[0.708s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.877s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.011s] -- Found std_msgs: 5.3.5 (/opt/ros/jazzy/share/std_msgs/cmake)
+[1.149s] -- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[1.181s] -- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[1.234s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.287s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.363s] -- Found geometry_msgs: 5.3.5 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[1.425s] -- Found actionlib_msgs: 5.3.5 (/opt/ros/jazzy/share/actionlib_msgs/cmake)
+[1.426s] [0mCMake Deprecation Warning at /opt/ros/jazzy/share/actionlib_msgs/cmake/actionlib_msgsConfig.cmake:31 (message):
+[1.426s]   Package 'actionlib_msgs' is deprecated (This package will be removed in a
+[1.426s]   future ROS distro, once the ROS 1 bridge supports actions.)
+[1.426s] Call Stack (most recent call first):
+[1.426s]   CMakeLists.txt:14 (find_package)
+[1.427s] 
+[1.427s] [0m
+[1.480s] [31mCMake Error at CMakeLists.txt:15 (find_package):
+[1.480s]   By not providing "Findmoveit_msgs.cmake" in CMAKE_MODULE_PATH this project
+[1.480s]   has asked CMake to find a package configuration file provided by
+[1.480s]   "moveit_msgs", but CMake did not find one.
+[1.480s] 
+[1.480s]   Could not find a package configuration file provided by "moveit_msgs" with
+[1.481s]   any of the following names:
+[1.481s] 
+[1.481s]     moveit_msgsConfig.cmake
+[1.481s]     moveit_msgs-config.cmake
+[1.481s] 
+[1.481s]   Add the installation prefix of "moveit_msgs" to CMAKE_PREFIX_PATH or set
+[1.481s]   "moveit_msgs_DIR" to a directory containing one of the above files.  If
+[1.481s]   "moveit_msgs" provides a separate development package or SDK, be sure it
+[1.481s]   has been installed.
+[1.481s] 
+[1.481s] [0m
+[1.482s] -- Configuring incomplete, errors occurred!
+[1.493s] Invoked command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_msgs' returned '1': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/noldona/niryo/niryo_two_ros/src/niryo_one_msgs -DCMAKE_INSTALL_PREFIX=/home/noldona/niryo/niryo_two_ros/install/niryo_one_msgs

@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/SetDigitalIO.srv
+// generated code does not contain a copyright notice
+
+
+module niryo_one_msgs {
+  module srv {
+    struct SetDigitalIO_Request {
+      uint8 pin;
+
+      uint8 value;
+    };
+    struct SetDigitalIO_Response {
+      int32 status;
+
+      string message;
+    };
+  };
+};

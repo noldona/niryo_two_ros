@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "niryo_one_msgs/srv/PushAirVacuumPump_Response",
+      "fields": [
+        {
+          "name": "state",
+          "type": {
+            "type_id": 3,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "niryo_one_msgs/srv/PushAirVacuumPump_Response",
+      "hash_string": "RIHS01_197433463bb8b99fa1d8e50f9e99db8a7f8e95199cb087b9c2a1dba32df26913"
+    }
+  ]
+}

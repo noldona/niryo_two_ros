@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from niryo_one_msgs/srv/SetBool.srv
+// generated code does not contain a copyright notice
+
+
+module niryo_one_msgs {
+  module srv {
+    struct SetBool_Request {
+      boolean value;
+    };
+    struct SetBool_Response {
+      int32 status;
+
+      string message;
+    };
+  };
+};

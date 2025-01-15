@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "niryo_one_msgs/action/Sequence_Feedback",
+      "fields": [
+        {
+          "name": "structure_needs_at_least_one_member",
+          "type": {
+            "type_id": 3,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "niryo_one_msgs/action/Sequence_Feedback",
+      "hash_string": "RIHS01_53d0e4ddbbf712e3c9ad6e21f0985c18016aa6c932101cbba97945c33f416343"
+    }
+  ]
+}
