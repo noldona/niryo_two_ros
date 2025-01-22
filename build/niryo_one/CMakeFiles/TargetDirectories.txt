@@ -1,9 +1,0 @@
-/home/noldona/niryo/niryo_two_ros/build/niryo_one/CMakeFiles/uninstall.dir
-/home/noldona/niryo/niryo_two_ros/build/niryo_one/CMakeFiles/niryo_one_uninstall.dir
-/home/noldona/niryo/niryo_two_ros/build/niryo_one/CMakeFiles/test.dir
-/home/noldona/niryo/niryo_two_ros/build/niryo_one/CMakeFiles/edit_cache.dir
-/home/noldona/niryo/niryo_two_ros/build/niryo_one/CMakeFiles/rebuild_cache.dir
-/home/noldona/niryo/niryo_two_ros/build/niryo_one/CMakeFiles/list_install_components.dir
-/home/noldona/niryo/niryo_two_ros/build/niryo_one/CMakeFiles/install.dir
-/home/noldona/niryo/niryo_two_ros/build/niryo_one/CMakeFiles/install/local.dir
-/home/noldona/niryo/niryo_two_ros/build/niryo_one/CMakeFiles/install/strip.dir

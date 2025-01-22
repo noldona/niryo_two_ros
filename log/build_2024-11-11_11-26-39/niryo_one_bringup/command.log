@@ -1,1 +1,0 @@
-Invoking command in '/home/noldona/niryo/niryo_two_ros/build/niryo_one_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/noldona/niryo/niryo_two_ros/src/niryo_one_bringup -DCMAKE_INSTALL_PREFIX=/home/noldona/niryo/niryo_two_ros/install/niryo_one_bringup
