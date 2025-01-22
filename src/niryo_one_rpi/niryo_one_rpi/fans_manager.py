@@ -1,8 +1,10 @@
-from time.time import sleep
-
 from gpiozero import DigitalOutputDevice
 from std_msgs.msg import Bool
 from rclpy.node import Node
+from rclpy.clock import Clock
+from rclpy.clock import ClockType
+from rclpy.duration import Duration
+from rclpy.executors import ExternalShutdownException
 import rclpy
 
 FAN_1_GPIO = 27
@@ -18,16 +20,22 @@ class FansManager(Node):
 
         # Activate fans for 5 seconds to give an audio signal to the user
         self.set_fans(True)
-        sleep(5)
+        Clock(ClockType.SYSTEM_TIME).sleep_for(Duration(seconds=5))
         self.set_fans(not self.learning_mode_on)
 
         self.learning_mode_subscriber = self.create_subscription(
-            Bool, 'niryo_one/learning_mode', self.learning_mode_cb, 10)
+            Bool, '/niryo_one/learning_mode', self.learning_mode_cb, 10)
+
+    def __del__(self) -> None:
+        if self.fan1 is not None:
+            self.fan1.close()
+        if self.fan2 is not None:
+            self.fan2.close()
 
     def setup_fans(self) -> None:
         self.fan1 = DigitalOutputDevice(FAN_1_GPIO, inital_value=False)
         self.fan2 = DigitalOutputDevice(FAN_2_GPIO, inital_value=False)
-        sleep(0.05)
+        Clock(ClockType.SYSTEM_TIME).sleep_for(Duration(seconds=0.05))
         self.get_logger().info("------ RPI FANS SETUP OK ------")
 
     def set_fans(self, activate: bool) -> None:
@@ -50,7 +58,7 @@ def main():
 
     try:
         rclpy.spin(fans_manager)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         fans_manager.destroy_node()

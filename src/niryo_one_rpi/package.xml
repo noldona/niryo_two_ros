@@ -10,10 +10,10 @@
   <depend>rclpy</depend>
   <depend>std_msgs</depend>
   <depend>niryo_one_msgs</depend>
-  <run_depend>python-flask</run_depend>
-  <run_depend>python-pymodbus</run_depend>
-  <run_depend>python-serial</run_depend>
-  <run_depend>gpiozero</run_depend>
+  <exec_depend>python-flask</exec_depend>
+  <exec_depend>python-pymodbus</exec_depend>
+  <exec_depend>python-serial</exec_depend>
+  <exec_depend>gpiozero</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

@@ -17,3 +17,8 @@ class IoMode(Enum):
 class IoState(Enum):
     LOW = 0
     HIGH = 1
+
+
+def setattrs(_self, **kwargs):
+    for k, v in kwargs.items():
+        setattr(_self, k, v)

@@ -1,14 +1,13 @@
-from enum import Enum
-
 from gpiozero import DigitalInputDevice, DigitalOutputDevice
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 import rclpy
 
 from niryo_one_msgs.msg import DigitalIOState
 from niryo_one_msgs.srv import GetDigitalIO
 from niryo_one_msgs.srv import SetDigitalIO
 
-from niryo_one_rpi.rpi_ros_utils import IoMode, IoState
+from niryo_one_rpi.rpi_ros_utils import IoMode, IoState, setattrs
 
 GPIO_1_A = 2
 GPIO_1_B = 3
@@ -103,16 +102,18 @@ class DigitalIOPanel(Node):
         }
 
         self.digital_io_publisher = self.create_publisher(
-            DigitalIOState, 'niryo_one/rpi/digital_io_state', 1)
+            DigitalIOState, '/niryo_one/rpi/digital_io_state', 1)
         timer_period = 1.0 / self.publish_io_state_frequency
         self.timer = self.create_timer(timer_period, self.publish_io_state)
 
         self.get_io_server = self.create_service(
-            GetDigitalIO, 'niryo_one/rpi/get_digital_io', self.get_io_cb)
-        self.set_io_mode_server = self.create_service(SetDigitalIO, 'niryo_one/rpi/set_digital_io_mode',
-                                                      self.set_io_mode_cb)
-        self.set_io_state_server = self.create_service(SetDigitalIO, 'niryo_one/rpi/set_digital_io_state',
-                                                       self.set_io_state_cb)
+            GetDigitalIO, '/niryo_one/rpi/get_digital_io', self.get_io_cb)
+        self.set_io_mode_server = self.create_service(
+            SetDigitalIO, '/niryo_one/rpi/set_digital_io_mode',
+            self.set_io_mode_cb)
+        self.set_io_state_server = self.create_service(
+            SetDigitalIO, '/niryo_one/rpi/set_digital_io_state',
+            self.set_io_state_cb)
 
         self.get_logger().info('--- Niryo One - Digital I/O Panel - Started ---')
 
@@ -133,52 +134,72 @@ class DigitalIOPanel(Node):
         msg.states = states
         self.digital_io_publisher.publish(msg)
 
-    @staticmethod
-    def create_response(status: int, message: str):
-        return {'status': status, 'message': message}
-
-    def get_io_cb(self, req: GetDigitalIO):
+    def get_io_cb(self, req: GetDigitalIO.Request, resp: GetDigitalIO.Response) -> GetDigitalIO.Response:
         try:
             io = self.digitalIOs[req.pin]
-            return {
-                'status': 200,
-                'message': 'OK',
-                'pin': io.pin,
-                'name': io.name,
-                'mode': io.get_mode(),
-                'state': io.get_state()
-            }
+            setattrs(resp,
+                     status=200,
+                     message='OK',
+                     pin=io.pin,
+                     name=io.name,
+                     mode=io.get_mode(),
+                     state=io.get_state()
+                     )
         except:
-            return self.create_response(400, "No GPIO found with this pin number ({})".format(req.pin))
+            setattrs(resp,
+                     status=400,
+                     message=f'No GPIO found with this pin number ({req.pin})')
+        finally:
+            return resp
 
-    def set_io_mode_cb(self, req: SetDigitalIO):
+    def set_io_mode_cb(self, req: SetDigitalIO.Request, resp: SetDigitalIO.Response) -> SetDigitalIO.Response:
         try:
             io = self.digitalIOs[req.pin]
             if io.name.startswith('SW'):
-                return self.create_response(400, "Can't change mode for switch pin, mode is fixed to OUTPUT")
+                setattrs(resp,
+                         status=400,
+                         message="Can't change mode for switch pin")
+                return resp
 
             # Set mode
             io.set_mode(req.value)
 
-            return self.create_response(200, "Successfully set IO mode for Pin {}".format(io.pin))
+            setattrs(resp,
+                     status=200,
+                     message=f"Successfully set IO mode for Pin {io.pin}")
+            return resp
         except:
-            return self.create_response(400, "No GPIO found with this pin number ({})".format(req.pin))
+            setattrs(resp,
+                     status=400,
+                     message=f"No GPIO found with this pin number ({req.pin})")
+            return resp
 
-    def set_io_state_cb(self, req: SetDigitalIO):
+    def set_io_state_cb(self, req: SetDigitalIO.Request, resp: SetDigitalIO.Response) -> SetDigitalIO.Response:
         try:
             io = self.digitalIOs[req.pin]
             if io.get_mode() != IoMode.OUT:
-                return self.create_response(400, "This PIN ({}) is set as input, you can't change its state".format(io.pin))
+                setattrs(resp,
+                         status=400,
+                         message=f"This PIN ({io.pin}) is set as input, you can't change its state")
+                return resp
 
             # Set state
             success = io.set_state(req.value)
 
             if success:
-                return self.create_response(200, "Successfully set IO state for PIN {}".format(io.pin))
+                setattrs(resp,
+                         status=200,
+                         message=f"Successfully set IO state for Pin {io.pin}")
+                return resp
             else:
-                return self.create_response(400, "Error: Could no set IO state for PIN {}".format(io.pin))
+                setattrs(resp,
+                         status=400,
+                         message=f"Error: Could no set IO state for Pin {io.pin}")
         except:
-            return self.create_response(400, "No GPIO found with this pin number ({})".format(req.pin))
+            setattrs(resp,
+                     status=400,
+                     message=f"No GPIO found with this pin number ({req.pin})")
+            return resp
 
 
 def main():
@@ -187,7 +208,7 @@ def main():
 
     try:
         rclpy.spin(digital_io_panel)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         digital_io_panel.destroy_node()
