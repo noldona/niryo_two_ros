@@ -19,6 +19,8 @@ class IoState(Enum):
     HIGH = 1
 
 
-def setattrs(_self, **kwargs):
+def create_response(_resp, **kwargs):
     for k, v in kwargs.items():
-        setattr(_self, k, v)
+        setattr(_resp, k, v)
+
+    return _resp

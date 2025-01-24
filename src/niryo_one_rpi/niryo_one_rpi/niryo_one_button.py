@@ -10,7 +10,7 @@ from niryo_one_rpi.rpi_ros_utils import *
 
 from std_msgs.msg import Bool, Int32
 from niryo_one_msgs.srv import SetInt
-from niryo_one_rpi.rpi_ros_utils import setattrs
+from niryo_one_rpi.rpi_ros_utils import create_response
 
 BUTTON_GPIO = 4
 
@@ -77,13 +77,11 @@ class NiryoButton(Node):
         elif req.value == ButtonMode.DO_NOTHING.value:
             msg = "Successfully changed button mode to disabled"
         else:
-            setattrs(resp, status=400, message='Invalid button mode')
-            return resp
+            return create_response(resp, status=400, message='Invalid button mode')
 
         self.button_mode = ButtonMode(req.value)
         self.last_time_button_mode_changed = self.get_clock().now()
-        setattrs(resp, status=200, message=msg)
-        return resp
+        return create_response(resp, status=200, message=msg)
 
     def monitor_button_mode(self):
         duration = self.get_clock().now() - self.last_time_button_mode_changed

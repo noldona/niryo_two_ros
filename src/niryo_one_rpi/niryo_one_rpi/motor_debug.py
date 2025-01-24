@@ -12,7 +12,8 @@ class MotorDebug(Node):
     def __init__(self):
         super().__init__('motor_debug')
 
-        self.hw_version = self.declare_parameter('/niryo_one/hardware_version')
+        self.hw_version = self.declare_parameter(
+            '/niryo_one/hardware_version').value
         self.change_motor_config_server = self.create_service(
             ChangeMotorConfig, 'niryo_one/change_motor_config',
             self.change_motor_config_cb)

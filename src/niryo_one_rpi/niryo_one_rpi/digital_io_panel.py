@@ -7,7 +7,7 @@ from niryo_one_msgs.msg import DigitalIOState
 from niryo_one_msgs.srv import GetDigitalIO
 from niryo_one_msgs.srv import SetDigitalIO
 
-from niryo_one_rpi.rpi_ros_utils import IoMode, IoState, setattrs
+from niryo_one_rpi.rpi_ros_utils import IoMode, IoState, create_response
 
 GPIO_1_A = 2
 GPIO_1_B = 3
@@ -85,10 +85,8 @@ class DigitalIOPanel(Node):
     def __init__(self) -> None:
         super().__init__('digital_io_panel')
 
-        self.declare_parameter('"publish_io_state_frequency')
-
-        self.publish_io_state_frequency = self.get_parameter(
-            'publish_io_state_frequency')
+        self.publish_io_state_frequency = self.declare_parameter(
+            '~publish_io_state_frequency').value
 
         self.digitalIOs = {
             GPIO_1_A: DigitalPin(GPIO_1_A, GPIO_1_A_NAME),
@@ -137,69 +135,61 @@ class DigitalIOPanel(Node):
     def get_io_cb(self, req: GetDigitalIO.Request, resp: GetDigitalIO.Response) -> GetDigitalIO.Response:
         try:
             io = self.digitalIOs[req.pin]
-            setattrs(resp,
-                     status=200,
-                     message='OK',
-                     pin=io.pin,
-                     name=io.name,
-                     mode=io.get_mode(),
-                     state=io.get_state()
-                     )
+            return create_response(resp,
+                                   status=200,
+                                   message='OK',
+                                   pin=io.pin,
+                                   name=io.name,
+                                   mode=io.get_mode(),
+                                   state=io.get_state()
+                                   )
         except:
-            setattrs(resp,
-                     status=400,
-                     message=f'No GPIO found with this pin number ({req.pin})')
-        finally:
-            return resp
+            return create_response(resp,
+                                   status=400,
+                                   message=f'No GPIO found with this pin number ({req.pin})')
 
     def set_io_mode_cb(self, req: SetDigitalIO.Request, resp: SetDigitalIO.Response) -> SetDigitalIO.Response:
         try:
             io = self.digitalIOs[req.pin]
             if io.name.startswith('SW'):
-                setattrs(resp,
-                         status=400,
-                         message="Can't change mode for switch pin")
-                return resp
+                return create_response(resp,
+                                       status=400,
+                                       message="Can't change mode for switch pin")
 
             # Set mode
             io.set_mode(req.value)
 
-            setattrs(resp,
-                     status=200,
-                     message=f"Successfully set IO mode for Pin {io.pin}")
-            return resp
+            return create_response(resp,
+                                   status=200,
+                                   message=f"Successfully set IO mode for Pin {io.pin}")
         except:
-            setattrs(resp,
-                     status=400,
-                     message=f"No GPIO found with this pin number ({req.pin})")
-            return resp
+            return create_response(resp,
+                                   status=400,
+                                   message=f"No GPIO found with this pin number ({req.pin})")
 
     def set_io_state_cb(self, req: SetDigitalIO.Request, resp: SetDigitalIO.Response) -> SetDigitalIO.Response:
         try:
             io = self.digitalIOs[req.pin]
             if io.get_mode() != IoMode.OUT:
-                setattrs(resp,
-                         status=400,
-                         message=f"This PIN ({io.pin}) is set as input, you can't change its state")
-                return resp
+                return create_response(resp,
+                                       status=400,
+                                       message=f"This PIN ({io.pin}) is set as input, you can't change its state")
 
             # Set state
             success = io.set_state(req.value)
 
             if success:
-                setattrs(resp,
-                         status=200,
-                         message=f"Successfully set IO state for Pin {io.pin}")
-                return resp
+                return create_response(resp,
+                                       status=200,
+                                       message=f"Successfully set IO state for Pin {io.pin}")
             else:
-                setattrs(resp,
-                         status=400,
-                         message=f"Error: Could no set IO state for Pin {io.pin}")
+                return create_response(resp,
+                                       status=400,
+                                       message=f"Error: Could no set IO state for Pin {io.pin}")
         except:
-            setattrs(resp,
-                     status=400,
-                     message=f"No GPIO found with this pin number ({req.pin})")
-            return resp
+            return create_response(resp,
+                                   status=400,
+                                   message=f"No GPIO found with this pin number ({req.pin})")
 
 
 def main():

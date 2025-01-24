@@ -1,7 +1,5 @@
-from gpiozero import Button
+from niryo_one_rpi.niryo_one_rpi.rpi_ros_utils import create_response
 from rclpy.node import Node
-from rclpy.clock import Clock
-from rclpy.clock import ClockType
 from rclpy.duration import Duration
 from rclpy.executors import ExternalShutdownException
 import rclpy
@@ -17,10 +15,10 @@ class RosLogManager(Node):
         super.__init__('ros_log_manager')
 
         self.log_size_threshold = self.declare_parameter(
-            '~ros_log_size_treshold')
-        self.log_path = self.declare_parameter('~ros_log_location')
+            '~ros_log_size_treshold').value
+        self.log_path = self.declare_parameter('~ros_log_location').value
         self.should_purge_log_on_startup_file = self.declare_parameter(
-            '~should_purge_ros_log_on_startup_file')
+            '~should_purge_ros_log_on_startup_file').value
         self.purge_log_on_startup = self.should_purge_log_on_startup()
 
         # Clean logs on startup if param is true
@@ -77,18 +75,70 @@ class RosLogManager(Node):
         except subprocess.CalledProcessError:
             return False
 
+    def should_purge_log_on_startup(self):
+        if os.path.isfile(self.should_purge_log_on_startup_file):
+            with open(self.should_purge_log_on_startup_file 'r') as f:
+                for line in f:
+                    if not (line.startswith('#') or len(line) == 0):
+                        condition = line.rstrip()
+                        if condition == "true":
+                            return True
+                        return False
+        return False
+
+    def change_purge_log_on_startup(self, condition):
+        with open(self.should_purge_log_on_startup_file, 'w') as f:
+            if condition:
+                value = "true"
+            else:
+                value = "false"
+            f.write(value)
+
+        # After writing, read new value from file
+        self.purge_log_on_startup = self.should_purge_log_on_startup()
+
+    #
+    # ----- ROS Interface below -----
+    #
+
+    def purge_logs_cb(self, req: SetInt.Request, resp: SetInt.Response) -> SetInt.Response:
+        self.get_logger().warn('Purge ROS logs on user request')
+        if self.purge_log():
+            return create_response(resp,
+                                   status=200,
+                                   message="ROS logs have been purged. Following logs will be discarded. If you want to get logs, you need to restart the robot")
+        return create_response(resp,
+                               status=400,
+                               message="Unable to remove ROS logs")
+
+    def change_purge_log_on_startup_cb(self, req: SetInt.Request, resp: SetInt.Response) -> SetInt.Response:
+        if req.value == 1:
+            self.change_purge_log_on_startup(True)
+        else:
+            self.change_purge_log_on_startup(False)
+        return create_response(resp,
+                               status=200,
+                               message="Purge log on startup value has been changed")
+
+    def publish_log_status(self):
+        msg = LogStatus()
+        msg.header.stamp = self.get_clock().now()
+        msg.log_size = self.get_log_size()
+        msg.available_disk_size = self.get_available_disk_size()
+        msg.purge_log_on_startup = self.purge_log_on_startup
+        self.log_status_publisher.publish(msg)
 
 
 def main():
     rclpy.init()
-    niryo_button = NiryoButton()
+    ros_log_manager = RosLogManager()
 
     try:
-        rclpy.spin(niryo_button)
+        rclpy.spin(ros_log_manager)
     except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
-        niryo_button.destroy_node()
+        ros_log_manager.destroy_node()
         rclpy.shutdown()
 
 

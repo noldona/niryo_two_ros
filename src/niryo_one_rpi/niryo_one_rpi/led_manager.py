@@ -13,7 +13,7 @@ from niryo_one_msgs.msg import HardwareStatus
 from niryo_one_msgs.srv import SetInt
 from niryo_one_msgs.srv import SetLeds
 
-from niryo_one_rpi.rpi_ros_utils import LedState, setattrs
+from niryo_one_rpi.rpi_ros_utils import LedState, create_response
 
 LED_GPIO_R = 18
 LED_GPIO_G = 24
@@ -110,12 +110,10 @@ class LEDManager(Node):
         elif req.value == LedState.WAIT_HOTSPOT:
             self.state = LedState.WAIT_HOTSPOT
         else:
-            setattrs(resp, status=400, message='Not yet implemented')
-            return resp
+            return create_response(resp, status=400, message='Not yet implemented')
 
         self.set_led_from_state(dxl_leds=True)
-        setattrs(resp, status=200, message='Set LED OK')
-        return resp
+        return create_response(resp, status=200, message='Set LED OK')
 
 
 def main():

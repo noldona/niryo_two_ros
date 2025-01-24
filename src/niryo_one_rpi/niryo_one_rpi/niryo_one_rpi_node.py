@@ -12,14 +12,15 @@ class NiryoOneRpi(Node):
         super().__init__('niryo_one_rpi')
 
         self.wifi_manager_enabled = self.declare_parameter(
-            '~wifi_manager_enabled')
+            '~wifi_manager_enabled').value
         self.launch_ros_pprocesses = self.declare_parameter(
-            '~launch_ros_processes')
+            '~launch_ros_processes').value
         self.modbus_server_enabled = self.declare_parameter(
-            '~modbus_server_enabled')
+            '~modbus_server_enabled').value
         self.modbus_server_address = self.declare_parameter(
-            '~modbus_server_address')
-        self.modbus_server_port = self.declare_parameter('~modbus_server_port')
+            '~modbus_server_address').value
+        self.modbus_server_port = self.declare_parameter(
+            '~modbus_server_port').value
         self.niryo_one_ros_setup = None
 
         if self.launch_ros_pprocesses:
