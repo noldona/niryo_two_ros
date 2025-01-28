@@ -113,17 +113,17 @@ class NiryoOneRosSetup(Node):
                 self.stop_all_processes()
                 return create_response(200, "All processes have been stopped")
             elif action == ProcessActionType.START:
-                self.start_process_from_name(
+                self.start_proccess_by_name(
                     process_name, start_dependencies=True)
                 return create_response(200, "Process has been started")
             elif action == ProcessActionType.STOP:
-                self.stop_process_from_name(process_name)
+                self.stop_process_by_name(process_name)
                 return create_response(200, "Process has been stopped")
             elif action == ProcessActionType.RESTART:
-                self.restart_process_from_name(process_name)
+                self.restart_process_by_name(process_name)
                 return create_response(200, "Process has been restarted")
             elif action == ProcessActionType.KILL:
-                self.kill_process_from_name(process_name)
+                self.kill_process_by_name(process_name)
                 return create_response(200, "Process has been killed")
         except ProcessNotFound as e:
             return create_response(400, str(e))
@@ -154,7 +154,7 @@ class NiryoOneRosSetup(Node):
         for p in self.process_list:
             self.stop_process(p)
 
-    def get_process_from_name(self, name: str) -> Process:
+    def get_process_by_name(self, name: str) -> Process:
         p = None
         for process in self.process_list:
             if process.name == name:
@@ -167,7 +167,7 @@ class NiryoOneRosSetup(Node):
     def get_dependency_procecss_list(self, process: Process) -> list:
         dep_name_list = process.dependencies
         try:
-            return list(map(lambda dep_name: self.get_process_from_name(dep_name), dep_name_list))
+            return list(map(lambda dep_name: self.get_process_by_name(dep_name), dep_name_list))
         except ProcessNotFound as e:
             self.get_logger().warn(
                 "Some dependency names are incorrect. Check your setup.yaml file to fix it")
@@ -211,20 +211,20 @@ class NiryoOneRosSetup(Node):
     def kill_process(process: Process) -> None:
         process.kill()
 
-    def start_proccess_from_name(self, name: str, start_dependencies=False) -> None:
-        process = self.get_process_from_name(name)
+    def start_proccess_by_name(self, name: str, start_dependencies=False) -> None:
+        process = self.get_process_by_name(name)
         self.start_process(process, start_dependencies)
 
-    def stop_process_from_name(self, name: str) -> None:
-        process = self.get_process_from_name(name)
+    def stop_process_by_name(self, name: str) -> None:
+        process = self.get_process_by_name(name)
         self.stop_process(process)
 
-    def restart_process_from_name(self, name: str) -> None:
-        process = self.get_process_from_name(name)
+    def restart_process_by_name(self, name: str) -> None:
+        process = self.get_process_by_name(name)
         self.restart_process(process)
 
-    def kill_process_from_name(self, name: str) -> None:
-        process = self.get_process_from_name(name)
+    def kill_process_by_name(self, name: str) -> None:
+        process = self.get_process_by_name(name)
         self.kill_process(process)
 
 
