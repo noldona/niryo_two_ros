@@ -77,7 +77,7 @@ class RosLogManager(Node):
 
     def should_purge_log_on_startup(self):
         if os.path.isfile(self.should_purge_log_on_startup_file):
-            with open(self.should_purge_log_on_startup_file 'r') as f:
+            with open(self.should_purge_log_on_startup_file, 'r') as f:
                 for line in f:
                     if not (line.startswith('#') or len(line) == 0):
                         condition = line.rstrip()
