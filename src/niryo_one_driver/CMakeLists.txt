@@ -12,29 +12,89 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(ament_cmake_python REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(rclpy REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(hardware_interface REQUIRED)
+find_package(controller_manager REQUIRED)
+find_package(control_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(trajectory_msgs REQUIRED)
+find_package(niryo_one_msgs REQUIRED)
+find_package(mcp_can_rpi REQUIRED)
+find_package(dynamixel_sdk REQUIRED)
+find_package(urdf REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(ament_index_cpp REQUIRED)
 
 include_directories(include)
+include_directories(/opt/ros/jazzy/include/ament_index_cpp)
 
 # Create Cpp executable
-add_executable(talker src/publisher_lambda_function.cpp)
-ament_target_dependencies(talker rclcpp std_msgs)
+# add_executable(change_hardware_version src/utils/change_hardware_version.cpp)
+
+# add_executable(motor_offset_file_handler src/utils/motor_offset_file_handler.cpp)
+# add_executable(niryo_one_can_driver src/hw_driver/niryo_one_can_driver.cpp)
+# add_executable(dxl_driver src/hw_driver/dxl_driver.cpp)
+# add_executable(xl320_driver src/hw_driver/xl320_driver.cpp)
+# add_executable(xl430_driver src/hw_driver/xl430_driver.cpp)
+# add_executable(dxl_communication src/hw_comm/dxl_communication.cpp)
+# add_executable(can_communication src/hw_comm/can_communication.cpp)
+# add_executable(niryo_one_communication src/hw_comm/niryo_one_communication.cpp)
+# add_executable(fake_communication src/hw_comm/fake_communication.cpp)
+
+# # add_executable(test_motors src/test_motors.cpp)
+# add_executable(ros_interface src/ros_interface.cpp)
+# add_executable(rpi_diagnostics src/rpi_diagnostics.cpp)
+# add_executable(niryo_one_hardware_interface src/niryo_one_hardware_interface.cpp)
+add_executable(niryo_one_driver_node src/niryo_one_driver_node.cpp)
+
+# ament_target_dependencies(change_hardware_version rclcpp ament_index_cpp)
+
+# ament_target_dependencies(motor_offset_file_handler rclcpp)
+# ament_target_dependencies(niryo_one_can_driver rclcpp mcp_can_rpi)
+# ament_target_dependencies(dxl_driver rclcpp dynamixel_sdk)
+# ament_target_dependencies(xl320_driver rclcpp dynamixel_sdk)
+# ament_target_dependencies(xl430_driver rclcpp dynamixel_sdk)
+# ament_target_dependencies(dxl_communication rclcpp dynamixel_sdk)
+# ament_target_dependencies(can_communication rclcpp mcp_can_rpi)
+# ament_target_dependencies(niryo_one_communication rclcpp dynamixel_sdk mcp_can_rpi)
+# ament_target_dependencies(fake_communication rclcpp)
+
+# # ament_target_dependencies(test_motors rclcpp std_msgs control_msgs sensor_msgs urdf niryo_one_msgs)
+# ament_target_dependencies(ros_interface rclcpp dynamixel_sdk mcp_can_rpi niryo_one_msgs std_msgs control_msgs sensor_msgs urdf)
+# ament_target_dependencies(rpi_diagnostics rclcpp)
+# ament_target_dependencies(niryo_one_hardware_interface rclcpp hardware_interface)
+ament_target_dependencies(niryo_one_driver_node rclcpp controller_manager hardware_interface dynamixel_sdk mcp_can_rpi niryo_one_msgs std_msgs control_msgs sensor_msgs urdf)
+
+# target_link_libraries(change_hardware_version
+# ament_index_cpp
+# )
+
+# target_link_libraries(ros_interface rclcpp)
+# target_include_directories(change_hardware_version PRIVATE
+# $<BUILD_INTERFACE:${ament_index_cpp_INCLUDE_DIRS}>
+# $<INSTALL_INTERFACE:include>)
 
 # Install Cpp executables
 install(TARGETS
-  talker
-  DESTINATION lib/${PROJECT_NAME}
-)
 
-# Install Python modules
-ament_python_install_package(${PROJECT_NAME})
+  # change_hardware_version
 
-# Install Python executables
-install(PROGRAMS
-  scripts/subscriber_member_function.py
+  # motor_offset_file_handler
+  # niryo_one_can_driver
+  # dxl_driver
+  # xl320_driver
+  # xl430_driver
+  # dxl_communication
+  # can_communication
+  # niryo_one_communication
+  # fake_communication
+
+  # # test_motors
+  # ros_interface
+  # rpi_diagnostics
+  # niryo_one_hardware_interface
+  niryo_one_driver_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
