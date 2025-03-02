@@ -6,65 +6,80 @@ NiryoOneHardwareInterface::NiryoOneHardwareInterface(
 	RCLCPP_INFO(rclcpp::get_logger("NiryoOneHardwareInterface"),
 			"Starting NiryoOne Hardware Interface...");
 
+	std::vector<hardware_interface::StateInterface> state_interfaces;
 	// connect and register joint state interface
-	hardware_interface::JointStateHandle state_handle1(
-			"joint_1", &pos[0], &vel[0], &eff[0]);
-	joint_state_interface.registerHandle(state_handle1);
-	hardware_interface::JointStateHandle state_handle2(
-			"joint_2", &pos[1], &vel[1], &eff[1]);
-	joint_state_interface.registerHandle(state_handle2);
-	hardware_interface::JointStateHandle state_handle3(
-			"joint_3", &pos[2], &vel[2], &eff[2]);
-	joint_state_interface.registerHandle(state_handle3);
-	hardware_interface::JointStateHandle state_handle4(
-			"joint_4", &pos[3], &vel[3], &eff[3]);
-	joint_state_interface.registerHandle(state_handle4);
-	hardware_interface::JointStateHandle state_handle5(
-			"joint_5", &pos[4], &vel[4], &eff[4]);
-	joint_state_interface.registerHandle(state_handle5);
-	hardware_interface::JointStateHandle state_handle6(
-			"joint_6", &pos[5], &vel[5], &eff[5]);
-	joint_state_interface.registerHandle(state_handle6);
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_1", hardware_interface::HW_IF_POSITION, &pos[0]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_1", hardware_interface::HW_IF_VELOCITY, &vel[0]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_1", hardware_interface::HW_IF_EFFORT, &eff[0]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_2", hardware_interface::HW_IF_POSITION, &pos[1]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_2", hardware_interface::HW_IF_VELOCITY, &vel[1]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_2", hardware_interface::HW_IF_EFFORT, &eff[1]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_3", hardware_interface::HW_IF_POSITION, &pos[2]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_3", hardware_interface::HW_IF_VELOCITY, &vel[2]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_3", hardware_interface::HW_IF_EFFORT, &eff[2]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_4", hardware_interface::HW_IF_POSITION, &pos[3]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_4", hardware_interface::HW_IF_VELOCITY, &vel[3]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_4", hardware_interface::HW_IF_EFFORT, &eff[3]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_5", hardware_interface::HW_IF_POSITION, &pos[4]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_5", hardware_interface::HW_IF_VELOCITY, &vel[4]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_5", hardware_interface::HW_IF_EFFORT, &eff[4]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_6", hardware_interface::HW_IF_POSITION, &pos[5]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_6", hardware_interface::HW_IF_VELOCITY, &vel[5]));
+	state_interfaces.push_back(hardware_interface::StateInterface(
+			"joint_6", hardware_interface::HW_IF_EFFORT, &eff[5]));
 
-	registerInterface(&joint_state_interface);
+	this->joint_state_interface = std::move(state_interfaces);
 
 	// connect and register joint position interface
-	hardware_interface::JointHandle position_handle1(
-			joint_state_interface.getHandle("joint_1"), &cmd[0]);
-	joint_position_interface.registerHandle(position_handle1);
-	hardware_interface::JointHandle position_handle2(
-			joint_state_interface.getHandle("joint_2"), &cmd[1]);
-	joint_position_interface.registerHandle(position_handle2);
-	hardware_interface::JointHandle position_handle3(
-			joint_state_interface.getHandle("joint_3"), &cmd[2]);
-	joint_position_interface.registerHandle(position_handle3);
-	hardware_interface::JointHandle position_handle4(
-			joint_state_interface.getHandle("joint_4"), &cmd[3]);
-	joint_position_interface.registerHandle(position_handle4);
-	hardware_interface::JointHandle position_handle5(
-			joint_state_interface.getHandle("joint_5"), &cmd[4]);
-	joint_position_interface.registerHandle(position_handle5);
-	hardware_interface::JointHandle position_handle6(
-			joint_state_interface.getHandle("joint_6"), &cmd[5]);
-	joint_position_interface.registerHandle(position_handle6);
+	std::vector<hardware_interface::CommandInterface> cmd_interfaces;
+	cmd_interfaces.push_back(hardware_interface::CommandInterface(
+			"joint_1", hardware_interface::HW_IF_POSITION, &cmd[0]));
+	cmd_interfaces.push_back(hardware_interface::CommandInterface(
+			"joint_2", hardware_interface::HW_IF_POSITION, &cmd[1]));
+	cmd_interfaces.push_back(hardware_interface::CommandInterface(
+			"joint_3", hardware_interface::HW_IF_POSITION, &cmd[2]));
+	cmd_interfaces.push_back(hardware_interface::CommandInterface(
+			"joint_4", hardware_interface::HW_IF_POSITION, &cmd[3]));
+	cmd_interfaces.push_back(hardware_interface::CommandInterface(
+			"joint_5", hardware_interface::HW_IF_POSITION, &cmd[4]));
+	cmd_interfaces.push_back(hardware_interface::CommandInterface(
+			"joint_6", hardware_interface::HW_IF_POSITION, &cmd[5]));
 
-	registerInterface(&joint_position_interface);
+	this->joint_position_interface = std::move(cmd_interfaces);
 
 	RCLCPP_INFO(rclcpp::get_logger("NiryoOneHardwareInterface"),
 			"Interfaces registered.");
 }
 
 void NiryoOneHardwareInterface::setCommandToCurrentPosition() {
-	joint_position_interface.getHandle("joint_1").setCommand(pos[0]);
-	joint_position_interface.getHandle("joint_2").setCommand(pos[1]);
-	joint_position_interface.getHandle("joint_3").setCommand(pos[2]);
-	joint_position_interface.getHandle("joint_4").setCommand(pos[3]);
-	joint_position_interface.getHandle("joint_5").setCommand(pos[4]);
-	joint_position_interface.getHandle("joint_6").setCommand(pos[5]);
+	joint_position_interface.at(0).set_value(pos[0]);
+	joint_position_interface.at(1).set_value(pos[1]);
+	joint_position_interface.at(2).set_value(pos[2]);
+	joint_position_interface.at(3).set_value(pos[3]);
+	joint_position_interface.at(4).set_value(pos[4]);
+	joint_position_interface.at(5).set_value(pos[5]);
 }
 
-void NiryoOneHardwareInterface::read() {
-	// RCLCPP_INFO(rclcpp::get_logger("NiryoOneHardwareInterface"), "Read sensor values");
+hardware_interface::return_type NiryoOneHardwareInterface::read(
+		const rclcpp::Time &time, const rclcpp::Duration &period) {
+	//ROS_INFO("Read sensor values");
 
 	double pos_to_read[6] = {0.0};
 
@@ -76,16 +91,21 @@ void NiryoOneHardwareInterface::read() {
 	pos[3] = pos_to_read[3];
 	pos[4] = pos_to_read[4];
 	pos[5] = pos_to_read[5];
+
+	return hardware_interface::return_type::OK;
 }
 
-void NiryoOneHardwareInterface::write() {
-	// For debugging
-	// pos[0] = cmd[0];
-	// pos[1] = cmd[1];
-	// pos[2] = cmd[2];
-	// pos[3] = cmd[3];
-	// pos[4] = cmd[4];
-	// pos[5] = cmd[5];
+hardware_interface::return_type NiryoOneHardwareInterface::write(
+		const rclcpp::Time &time, const rclcpp::Duration &period) {
+	// for debugging
+	//pos[0] = cmd[0];
+	//pos[1] = cmd[1];
+	//pos[2] = cmd[2];
+	//pos[3] = cmd[3];
+	//pos[4] = cmd[4];
+	//pos[5] = cmd[5];
 
 	comm->sendPositionToRobot(cmd);
+
+	return hardware_interface::return_type::OK;
 }

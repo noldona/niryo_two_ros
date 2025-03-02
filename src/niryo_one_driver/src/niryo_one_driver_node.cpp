@@ -18,9 +18,8 @@
 */
 
 #include "controller_manager/controller_manager.hpp"
-// #include "hardware_interface/joint_command_interface.hpp"
-// #include "hardware_interface/joint_state_interface.hpp"
-// #include "hardware_interface/robot_hw.hpp"
+#include "hardware_interface/resource_manager.hpp"
+#include "hardware_interface/system_interface.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include <memory>
 #include <sensor_msgs/msg/joint_state.hpp>
@@ -45,7 +44,7 @@ class NiryoOneDriver: public rclcpp::Node {
 
 	std::shared_ptr<CommunicationBase> comm;
 
-	std::shared_ptr<NiryoOneHardwareInterface> robot;
+	std::unique_ptr<NiryoOneHardwareInterface> robot;
 	std::shared_ptr<controller_manager::ControllerManager> cm;
 
 	std::shared_ptr<RosInterface> ros_interface;
@@ -56,48 +55,54 @@ class NiryoOneDriver: public rclcpp::Node {
 
 	std::shared_ptr<std::thread> ros_control_thread;
 
-	rclcpp::Node nh_;
-
 	bool flag_reset_controllers;
 
-	rclcpp::Subscriber
+	rclcpp::Subscription<std_msgs::msg::MultiArrayDimension>::SharedPtr
 			reset_controller_subscriber;  // workaround to compensate missed steps
-	rorclcpps::Subscriber trajectory_result_subscriber;
+	rclcpp::Subscription<control_msgs::action::FollowJointTrajectory_Result>::
+			SharedPtr trajectory_result_subscriber;
+	rclcpp::Clock clock = rclcpp::Clock();
 
 	public:
 	void rosControlLoop() {
-		rclcpp::Time last_time = rclcpp::Time::now();
-		rclcpp::Time current_time = rclcpp::Time::now();
-		rclcpp::Duration elapsed_time;
+		rclcpp::Time last_time = clock.now();
+		rclcpp::Time current_time = clock.now();
+		rclcpp::Duration elapsed_time =
+				rclcpp::Duration(current_time - last_time);
 
 		while (rclcpp::ok()) {
-			robot->read();
-			current_time = rclcpp::Time::now();
+			current_time = clock.now();
 			elapsed_time = rclcpp::Duration(current_time - last_time);
 			last_time = current_time;
+			robot->read(current_time, elapsed_time);
 
 			if (flag_reset_controllers) {
 				robot->setCommandToCurrentPosition();
-				cm->update(rclcpp::Time::now(), elapsed_time, true);
+				cm->update(clock.now(), elapsed_time);
 				flag_reset_controllers = false;
 			} else {
-				cm->update(rclcpp::Time::now(), elapsed_time, false);
+				cm->update(clock.now(), elapsed_time);
 			}
-			robot->write();
+			robot->write(current_time, elapsed_time);
 
 			ros_control_loop_rate->sleep();
 		}
 	}
 
-	NiryoOneDriver() {
+	NiryoOneDriver(): Node("niryo_one_driver") {
 		reset_controller_subscriber =
-				nh_.subscribe("/niryo_one/steppers_reset_controller", 10,
-						&NiryoOneDriver::callbackTrajectoryGoal, this);
+				this->create_subscription<std_msgs::msg::MultiArrayDimension>(
+						"/niryo_one/reset_controllers", 10,
+						std::bind(&NiryoOneDriver::callbackTrajectoryGoal, this,
+								std::placeholders::_1));
 
-		trajectory_result_subscriber =
-				nh_.subscribe("/niryo_one_follow_joint_trajectory_controller/"
-							  "follow_joint_trajectory/result",
-						10, &NiryoOneDriver::callbackTrajectoryResult, this);
+		trajectory_result_subscriber = this->create_subscription<
+				control_msgs::action::FollowJointTrajectory_Result>(
+				"/niryo_one_follow_joint_trajectory_controller/"
+				"follow_joint_trajectory/result",
+				10,
+				std::bind(&NiryoOneDriver::callbackTrajectoryResult, this,
+						std::placeholders::_1));
 
 		this->declare_parameter(
 				"/niryo_one/hardware_version", rclcpp::PARAMETER_INTEGER);
@@ -137,19 +142,28 @@ class NiryoOneDriver: public rclcpp::Node {
 		RCLCPP_INFO(this->get_logger(),
 				"NiryoOne communication has been successfully started");
 
-		rclcpp::Duration(0.1).sleep();
+		rclcpp::sleep_for(std::chrono::milliseconds(100));
 		flag_reset_controllers = true;
 
 		RCLCPP_INFO(this->get_logger(), "Start hardware control loop");
 		comm->manageHardwareConnection();
-		rclcpp::Duration(0.5).sleep();
+		rclcpp::sleep_for(std::chrono::milliseconds(500));
 
 		RCLCPP_INFO(this->get_logger(), "Start hardware interface");
 		robot.reset(new NiryoOneHardwareInterface(comm.get()));
 
 		RCLCPP_INFO(this->get_logger(), "Create controller manager");
-		cm.reset(new controller_manager::ControllerManager(robot.get(), nh_));
-		rclcpp::Duration(0.1).sleep();
+		std::unique_ptr<NiryoOneHardwareResourceManager> rm =
+				std::make_unique<NiryoOneHardwareResourceManager>(
+						this->get_node_clock_interface(),
+						this->get_node_logging_interface());
+		// rm->add_system_interface(robot.get());
+		std::shared_ptr<rclcpp::Executor> executor =
+				std::make_shared<rclcpp::executors::SingleThreadedExecutor>();
+		cm = std::make_shared<controller_manager::ControllerManager>(
+				std::move(rm), executor, "control_manager", "",
+				rclcpp::NodeOptions());
+		rclcpp::sleep_for(std::chrono::milliseconds(100));
 
 		RCLCPP_INFO(this->get_logger(), "Starting ROS control thread...");
 		ros_control_loop_rate.reset(new rclcpp::Rate(ros_control_frequency));
@@ -184,16 +198,17 @@ class NiryoOneDriver: public rclcpp::Node {
      *  This behavior is used in robot_commander node.
      *
      */
-	void callbackTrajectoryGoal(const std_msgs::Empty &msg) {
+	void callbackTrajectoryGoal(const std_msgs::msg::MultiArrayDimension &msg) {
 		RCLCPP_INFO(this->get_logger(), "Received trajectory GOAL");
 		robot->setCommandToCurrentPosition();  // set current command to encoder position
-		cm->update(rclcpp::Time::now(), rclcpp::Duration(0.00),
-				true);  // reset controllers to allow a discontinuity in position command
+		cm->update(clock.now(),
+				rclcpp::Duration(std::chrono::seconds(
+						0)));  // reset controllers to allow a discontinuity in position command
 		comm->synchronizeMotors(true);
 	}
 
 	void callbackTrajectoryResult(
-			const control_msgs::FollowJointTrajectoryActionResult &msg) {
+			const control_msgs::action::FollowJointTrajectory_Result &msg) {
 		RCLCPP_INFO(this->get_logger(), "Received trajectory RESULT");
 		comm->synchronizeMotors(false);
 	}
@@ -203,5 +218,5 @@ int main(int argc, char **argv) {
 	rclcpp::init(argc, argv);
 	rclcpp::spin(std::make_shared<NiryoOneDriver>());
 	rclcpp::shutdown();
-	RCLCPP_INFO(node->get_logger(), "shutdown node");
+	RCLCPP_INFO(rclcpp::get_logger("NiryoOneDriverNode"), "shutdown node");
 }

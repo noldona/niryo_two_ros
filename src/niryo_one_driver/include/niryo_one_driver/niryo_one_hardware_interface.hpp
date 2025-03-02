@@ -1,32 +1,54 @@
 #ifndef NIRYO_HARDWARE_INTERFACE_H
 #define NIRYO_HARDWARE_INTERFACE_H
 
-#include "rclcpp/rclcpp.hpp"
-#include <hardware_interface/joint_command_interface.hpp>
-#include <hardware_interface/joint_state_interface.hpp>
-#include <hardware_interface/robot_hw.hpp>
 #include <memory>
+// #include <hardware_interface/command_interface.hpp>
+// #include <hardware_interface/state_interface.hpp>
+#include <hardware_interface/resource_manager.hpp>
+#include <hardware_interface/system_interface.hpp>
+#include <rclcpp/rclcpp.hpp>
 
 #include "niryo_one_driver/communication_base.hpp"
 
-class NiryoOneHardwareInterface: public hardware_interface::RobotHW {
+class NiryoOneHardwareResourceManager:
+	public hardware_interface::ResourceManager {
+	public:
+	NiryoOneHardwareResourceManager(
+			rclcpp::node_interfaces::NodeClockInterface::SharedPtr
+					clock_interface,
+			rclcpp::node_interfaces::NodeLoggingInterface::SharedPtr
+					logger_interface):
+		hardware_interface::ResourceManager(clock_interface, logger_interface) {
+	}
+
+	bool shutdown_components() {
+		return true;
+	}
+
+	private:
+};
+
+class NiryoOneHardwareInterface: public hardware_interface::SystemInterface {
 	public:
 	NiryoOneHardwareInterface(CommunicationBase *niryo_one_comm);
 
-	void read();
+	hardware_interface::return_type read(
+			const rclcpp::Time &time, const rclcpp::Duration &period);
 
-	void write();
+	hardware_interface::return_type write(
+			const rclcpp::Time &time, const rclcpp::Duration &period);
 
-	// Custom
+	// custom
 	void setCommandToCurrentPosition();
+	bool shutdown_components() {
+		return true;
+	}
 
 	private:
-	ros::NodeHandle nh_;
-
 	CommunicationBase *comm;
 
-	hardware_interface::JointStateInterface joint_state_interface;
-	hardware_interface::PositionJointInterface joint_position_interface;
+	std::vector<hardware_interface::StateInterface> joint_state_interface;
+	std::vector<hardware_interface::CommandInterface> joint_position_interface;
 
 	double cmd[6] = {0, 0.64, -1.39, 0, 0, 0};
 	double pos[6] = {0, 0.64, -1.39, 0, 0, 0};
