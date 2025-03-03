@@ -1,38 +1,79 @@
-<launch>
+import os
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
+import yaml
+from ament_index_python.packages import get_package_share_directory
 
-    <!-- set to true if you want to launch ROS on your computer 
-        - controller will just echo position command
-        - all hardware relative stuff is deactivated            -->
-    <arg name="simulation_mode" default="false" />
-    <!-- set to true to disable hardware communication for CAN bus (Niryo Steppers)
-     or DXl bus (DEBUG PURPOSES) -->
-    <arg name="disable_can_for_debug" default="false" />
-    <arg name="disable_dxl_for_debug" default="false" />
 
-    <node name="niryo_one_driver" pkg="niryo_one_driver" type="niryo_one_driver" output="screen">
+def load_yaml(package_name, file_name):
+    """Helper function to load YAML files."""
+    file_path = os.path.join(get_package_share_directory(package_name), 'config', file_name)
+    with open(file_path, 'r') as file:
+        return yaml.safe_load(file)
 
-        <rosparam file="$(find niryo_one_bringup)/config/niryo_one_driver.yaml" /> 
-    
-        <param name="fake_communication" type="bool" value="$(arg simulation_mode)" />
-    
-        <param name="can_enabled" type="bool" value="true"  unless="$(arg disable_can_for_debug)" />
-        <param name="can_enabled" type="bool" value="false" if="$(arg disable_can_for_debug)" />
-        <param name="dxl_enabled" type="bool" value="true"  unless="$(arg disable_dxl_for_debug)" />
-        <param name="dxl_enabled" type="bool" value="false" if="$(arg disable_dxl_for_debug)" />
-    </node>
-    
-    <node name="niryo_one_tools" pkg="niryo_one_tools" type="tool_controller.py" output="screen" respawn="false"> 
-        <rosparam file="$(find niryo_one_tools)/config/end_effectors.yaml" />
-    </node>
 
-    <!-- Load controller settings -->
-    <rosparam file="$(find niryo_one_driver)/config/niryo_one_controllers.yaml" command="load"/>
-  
-    <!-- spawn controllers -->
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" 
-        args="joint_state_controller niryo_one_follow_joint_trajectory_controller
-        --shutdown-timeout 1"/>
+def generate_launch_description():
+    # Declare launch arguments
+    simulation_mode_arg = DeclareLaunchArgument(
+        'simulation_mode', default_value='false', description="Enable simulation mode"
+    )
+    disable_can_arg = DeclareLaunchArgument(
+        'disable_can_for_debug', default_value='false', description="Disable CAN communication"
+    )
+    disable_dxl_arg = DeclareLaunchArgument(
+        'disable_dxl_for_debug', default_value='false', description="Disable DXL communication"
+    )
 
-    <!-- robot state publisher -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" />
-</launch>
+    # Load configuration files
+    driver_config = load_yaml('niryo_one_bringup', 'niryo_one_driver.yaml')
+    end_effector_config = load_yaml('niryo_one_tools', 'end_effectors.yaml')
+    controller_config = load_yaml('niryo_one_driver', 'niryo_one_controllers.yaml')
+
+    # Nodes
+    niryo_one_driver = Node(
+        package='niryo_one_driver',
+        executable='niryo_one_driver',
+        name='niryo_one_driver',
+        output='screen',
+        parameters=[{
+            'fake_communication': LaunchConfiguration('simulation_mode'),
+            'can_enabled': LaunchConfiguration('disable_can_for_debug').perform(None) == 'false',
+            'dxl_enabled': LaunchConfiguration('disable_dxl_for_debug').perform(None) == 'false',
+        }, driver_config]  # Load additional params from YAML
+    )
+
+    niryo_one_tools = Node(
+        package='niryo_one_tools',
+        executable='tool_controller.py',
+        name='niryo_one_tools',
+        output='screen',
+        parameters=[end_effector_config]  # Load YAML config
+    )
+
+    controller_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        name='controller_spawner',
+        output='screen',
+        arguments=['joint_state_controller', 'niryo_one_follow_joint_trajectory_controller', '--shutdown-timeout', '1']
+    )
+
+    robot_state_publisher = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        output='screen'
+    )
+
+    # Return launch description
+    return LaunchDescription([
+        simulation_mode_arg,
+        disable_can_arg,
+        disable_dxl_arg,
+        niryo_one_driver,
+        niryo_one_tools,
+        controller_spawner,
+        robot_state_publisher
+    ])
