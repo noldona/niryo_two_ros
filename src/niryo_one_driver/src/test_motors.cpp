@@ -1,28 +1,34 @@
 #include "niryo_one_driver/test_motors.hpp"
 
 NiryoOneTestMotor::NiryoOneTestMotor(): Node("test_motors") {
-	this->getJointsLimits();
+	getJointsLimits();
 
 	reset_stepper_publisher = this->create_publisher<std_msgs::msg::Empty>(
 			"/niryo_one/steppers_reset_controller", 1000);
 	calibrate_motor_client = this->create_client<niryo_one_msgs::srv::SetInt>(
 			"/niryo_one/calibrate_motors");
 
-	this->traj_client_ = new TrajClient("/niryo_one_follow_joint_trajectory_"
-										"controller/follow_joint_trajectory",
-			true);
+	traj_client_ = rclcpp_action::create_client<
+			control_msgs::action::FollowJointTrajectory>(this,
+			"/niryo_one_follow_joint_trajectory_controller/"
+			"follow_joint_trajectory");
+
 	joint_state_subscriber =
 			this->create_subscription<sensor_msgs::msg::JointState>(
-					"/joint_states", 10, &NiryoOneTestMotor::callbackJointSate);
+					"/joint_states", 10,
+					std::bind(&NiryoOneTestMotor::callbackJointSate, this,
+							std::placeholders::_1));
+
+	this->declare_parameter("robot_description", rclcpp::PARAMETER_STRING);
 
 	RCLCPP_INFO(this->get_logger(), "Test motors up");
 }
 
 void NiryoOneTestMotor::callbackJointSate(
-		const sensor_msgs::msg::JointState &msg) {
-	this->_current_joint_pose.resize(this->_n_joints);
+		const sensor_msgs::msg::JointState::SharedPtr msg) {
+	_current_joint_pose.resize(this->_n_joints);
 	for (int i = 0; i < this->_n_joints; ++i) {
-		this->_current_joint_pose[i] = msg.position[i];
+		this->_current_joint_pose[i] = msg->position[i];
 	}
 }
 
@@ -31,7 +37,7 @@ bool NiryoOneTestMotor::runTest(int nb_loops) {
 
 	RCLCPP_INFO(this->get_logger(), "Reset Controller");
 	std_msgs::msg::Empty reset_controller_topic;
-	reset_stepper_publisher.publish(reset_controller_topic);
+	reset_stepper_publisher->publish(reset_controller_topic);
 	rclcpp::sleep_for(std::chrono::milliseconds(50));
 
 	bool state;
@@ -73,7 +79,7 @@ bool NiryoOneTestMotor::runTest(int nb_loops) {
 			}
 		}
 	}
-	this->enable_test = false;
+	enable_test = false;
 
 	return true;
 }
@@ -83,9 +89,8 @@ void NiryoOneTestMotor::stopTest() {
 		this->enable_test = false;
 		RCLCPP_INFO(this->get_logger(), "Reset Controller");
 		std_msgs::msg::Empty reset_controller_topic;
-		reset_stepper_publisher.publish(reset_controller_topic);
+		reset_stepper_publisher->publish(reset_controller_topic);
 	}
-	return;
 }
 
 bool NiryoOneTestMotor::getJointsLimits() {
@@ -104,14 +109,11 @@ bool NiryoOneTestMotor::getJointsLimits() {
 		if (!urdf->initString(urdf_str)) {
 			RCLCPP_ERROR(this->get_logger(),
 					"Failed to parse URDF contained in "
-					"'robot_description' parameter (name: "
-							<< this->get_name() << ").");
+					"'robot_description' parameter (name: %s).",
+					this->get_name());
 			return false;
 		}
-	} else if (
-			!urdf->initParam(
-					"robot_description"))  // Check for robot_description in root
-	{
+	} else {
 		RCLCPP_ERROR(this->get_logger(),
 				"Failed to parse URDF contained in "
 				"'robot_description' parameter");
@@ -139,20 +141,49 @@ bool NiryoOneTestMotor::getJointsLimits() {
 void NiryoOneTestMotor::startTrajectory(
 		control_msgs::action::FollowJointTrajectory_Goal goal) {
 	RCLCPP_INFO(this->get_logger(), "Send trajectory");
-	while (!traj_client_->waitForServer(rclcpp::Duration(5.0))) {
+	auto send_goal_options = rclcpp_action::Client<
+			control_msgs::action::FollowJointTrajectory>::SendGoalOptions();
+	send_goal_options.goal_response_callback = [this](auto future) {
+		auto goal_handle = future.get();
+		if (!goal_handle) {
+			RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
+		} else {
+			RCLCPP_INFO(this->get_logger(),
+					"Goal accepted by server, waiting for result...");
+		}
+	};
+	send_goal_options.result_callback = [this](auto result) {
+		switch (result.code) {
+			case rclcpp_action::ResultCode::SUCCEEDED:
+				RCLCPP_INFO(this->get_logger(), "Goal successed!");
+				break;
+			case rclcpp_action::ResultCode::ABORTED:
+				RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
+				break;
+			case rclcpp_action::ResultCode::CANCELED:
+				RCLCPP_ERROR(this->get_logger(), "Goal was canceled");
+				break;
+			default:
+				RCLCPP_ERROR(this->get_logger(), "Unknown result code");
+				break;
+		}
+	};
+
+	while (!traj_client_->wait_for_action_server(std::chrono::seconds(5))) {
 		RCLCPP_INFO(this->get_logger(),
 				"Waiting for the joint_trajectory_action server");
 	}
 
 	// When to start the trajectory: 1s from now
 	goal.trajectory.header.stamp =
-			rclcpp::Clock().now() + rclcpp::Duration(1.0);
-	this->traj_client_->sendGoal(goal);
+			rclcpp::Clock().now() + rclcpp::Duration(std::chrono::seconds(1));
+	auto goal_handle_future =
+			traj_client_->async_send_goal(goal, send_goal_options);
 }
 
 bool NiryoOneTestMotor::playTrajectory(
 		control_msgs::action::FollowJointTrajectory_Goal goal) {
-	if (!this->enable_test) {
+	if (!enable_test) {
 		return true;
 	}
 
@@ -163,24 +194,15 @@ bool NiryoOneTestMotor::playTrajectory(
 
 	for (int i = 0; i < _n_joints; ++i) {
 		rounded_target[i] =
-				round(goal.trajectory.points[goal.trajectory.points.size() - 1]
-								.positions[i] *
-						10) /
-				10;
-	}
-	// Wait for trajectory completion
-	while (!getState().isDone() && rclcpp::ok() && this->enable_test) {
-		rclcpp::sleep_for(std::chrono::milliseconds(100));
+				round(goal.trajectory.points.back().positions[i] * 10) / 10;
 	}
 
 	rclcpp::sleep_for(std::chrono::milliseconds(300));
 	for (int i = 0; i < _n_joints; ++i) {
-		double goal_joint =
-				goal.trajectory.points[goal.trajectory.points.size() - 1]
-						.positions[i];
-		if (this->enable_test &&
-				((this->_current_joint_pose[i] < goal_joint - 0.1) ||
-						(this->_current_joint_pose[i] > goal_joint + 0.1))) {
+		double goal_joint = goal.trajectory.points.back().positions[i];
+		if (enable_test &&
+				((_current_joint_pose[i] < goal_joint - 0.1) ||
+						(_current_joint_pose[i] > goal_joint + 0.1))) {
 			return false;
 		}
 	}
@@ -188,35 +210,17 @@ bool NiryoOneTestMotor::playTrajectory(
 	return true;
 }
 
-control_msgs::action::FollowJointTrajectory_Goal
+control_msgs::action::FollowJointTrajectory::Goal
 		NiryoOneTestMotor::armExtensionTrajectory(
 				std::vector<double> joint_positions) {
 	// Our goal variable
 	control_msgs::action::FollowJointTrajectory_Goal goal;
+	goal.trajectory.joint_names = _joint_names;
 
-	// We will have two waypoints in this goal trajectory
-	goal.trajectory.points.resize(1);
-
-	// First trajectory point
-	int ind = 0;
-	goal.trajectory.joint_names.resize(this->_n_joints);
-	goal.trajectory.points[ind].positions.resize(this->_n_joints);
-	goal.trajectory.points[ind].velocities.resize(this->_n_joints);
-
-	for (int j = 0; j < this->_n_joints; ++j) {
-		// First, the joint names, which apply to all waypoints
-		goal.trajectory.joint_names[j] = this->_joint_names[j];
-		// Positions
-		goal.trajectory.points[ind].positions[j] = joint_positions[j];
-		// Velocities
-		goal.trajectory.points[ind].velocities[j] = 0.0;
-	}
-	// To be reached 1 second after starting along the trajectory
-	goal.trajectory.points[ind].time_from_start = rclcpp::Duration(3);
+	trajectory_msgs::msg::JointTrajectoryPoint point;
+	point.positions = joint_positions;
+	point.time_from_start = rclcpp::Duration(std::chrono::seconds(3));
+	goal.trajectory.points.push_back(point);
 
 	return goal;
-}
-
-actionlib::SimpleClientGoalState NiryoOneTestMotor::getState() {
-	return traj_client_->getState();
 }

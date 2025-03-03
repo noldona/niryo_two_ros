@@ -36,55 +36,55 @@ void RosInterface::init(CommunicationBase *niryo_one_comm,
 	this->calibration_needed = 0;
 }
 
-// void RosInterface::callbackTestMotors(const std::shared_ptr<niryo_one_msgs::srv::SetInt::Request> req,
-// 		std::shared_ptr<niryo_one_msgs::srv::SetInt::Response> res) {
-// 	if (this->motor_test_status == 1) {
-// 		this->test_motor.stopTest();
-// 		this->learning_mode_on = true;
-// 		this->comm->activateLearningMode(this->learning_mode_on);
-// 		return true;
-// 	}
+void RosInterface::callbackTestMotors(
+		const std::shared_ptr<niryo_one_msgs::srv::SetInt::Request> req,
+		std::shared_ptr<niryo_one_msgs::srv::SetInt::Response> res) {
+	if (this->motor_test_status == 1) {
+		this->test_motor.stopTest();
+		this->learning_mode_on = true;
+		this->comm->activateLearningMode(this->learning_mode_on);
+		return;
+	}
 
-// 	this->motor_test_status = 1;
-// 	if (this->calibration_needed) {
-// 		this->learning_mode_on = false;
-// 		this->comm->activateLearningMode(this->learning_mode_on);
+	this->motor_test_status = 1;
+	if (this->calibration_needed) {
+		this->learning_mode_on = false;
+		this->comm->activateLearningMode(this->learning_mode_on);
 
-// 		int calibration_mode = 1;
-// 		std::string result_message = "";
-// 		int result = comm->allowMotorsCalibrationToStart(
-// 				calibration_mode, result_message);
+		int calibration_mode = 1;
+		std::string result_message = "";
+		int result = comm->allowMotorsCalibrationToStart(
+				calibration_mode, result_message);
 
-// 		rclcpp::sleep_for(std::chrono::seconds(1));
-// 		while (calibration_in_progress) {
-// 			rclcpp::sleep_for(std::chrono::milliseconds(50));
-// 		}
+		rclcpp::sleep_for(std::chrono::seconds(1));
+		while (calibration_in_progress) {
+			rclcpp::sleep_for(std::chrono::milliseconds(50));
+		}
 
-// 		this->learning_mode_on = true;
-// 		rclcpp::sleep_for(std::chrono::seconds(1));
-// 	}
+		this->learning_mode_on = true;
+		rclcpp::sleep_for(std::chrono::seconds(1));
+	}
 
-// 	this->learning_mode_on = false;
-// 	this->comm->activateLearningMode(this->learning_mode_on);
+	this->learning_mode_on = false;
+	this->comm->activateLearningMode(this->learning_mode_on);
 
-// 	bool status = this->test_motor.runTest(req.value);
+	bool status = this->test_motor.runTest(req->value);
 
-// 	this->learning_mode_on = true;
-// 	this->comm->activateLearningMode(this->learning_mode_on);
+	this->learning_mode_on = true;
+	this->comm->activateLearningMode(this->learning_mode_on);
 
-// 	if (status) {
-// 		this->motor_test_status = 0;
-// 		res.status = 200;
-// 		res.message = "Success";
-// 		RCLCPP_INFO(this->get_logger(), "Motor debug has ended with success");
-// 	} else {
-// 		this->motor_test_status = -1;
-// 		res.status = 400;
-// 		res.message = "Fail";
-// 		RCLCPP_ERROR(this->get_logger(), "Motor debug has ended with failure");
-// 	}
-// 	return true;
-// }
+	if (status) {
+		this->motor_test_status = 0;
+		res->status = 200;
+		res->message = "Success";
+		RCLCPP_INFO(this->get_logger(), "Motor debug has ended with success");
+	} else {
+		this->motor_test_status = -1;
+		res->status = 400;
+		res->message = "Fail";
+		RCLCPP_ERROR(this->get_logger(), "Motor debug has ended with failure");
+	}
+}
 
 void RosInterface::callbackCalibrateMotors(
 		const std::shared_ptr<niryo_one_msgs::srv::SetInt::Request> req,
@@ -300,9 +300,11 @@ void RosInterface::startServiceServers() {
 							this, std::placeholders::_1,
 							std::placeholders::_2));
 
-	// this->test_motors_server = this->create_service<niryo_one_msgs::srv::SetInt>(
-	// 		"niryo_one/test_motors",
-	// 		&RosInterface::callbackTestMotors);
+	this->test_motors_server =
+			this->create_service<niryo_one_msgs::srv::SetInt>(
+					"niryo_one/test_motors",
+					std::bind(&RosInterface::callbackTestMotors, this,
+							std::placeholders::_1, std::placeholders::_2));
 
 	this->activate_learning_mode_server =
 			this->create_service<niryo_one_msgs::srv::SetInt>(

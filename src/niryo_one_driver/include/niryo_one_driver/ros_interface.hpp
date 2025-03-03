@@ -10,7 +10,7 @@
 #include "niryo_one_driver/change_hardware_version.hpp"
 #include "niryo_one_driver/communication_base.hpp"
 #include "niryo_one_driver/rpi_diagnostics.hpp"
-// #include "niryo_one_driver/test_motors.hpp"
+#include "niryo_one_driver/test_motors.hpp"
 
 #include "niryo_one_msgs/srv/set_int.hpp"
 #include "niryo_one_msgs/srv/set_leds.hpp"
@@ -48,7 +48,7 @@ class RosInterface: public rclcpp::Node {
 	CommunicationBase *comm;
 	RpiDiagnostics *rpi_diagnostics;
 
-	// NiryoOneTestMotor test_motor;
+	NiryoOneTestMotor test_motor;
 
 	bool *flag_reset_controllers;
 	int hardware_version;
@@ -94,7 +94,7 @@ class RosInterface: public rclcpp::Node {
 	rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
 			request_new_calibration_server;
 
-	// rclcpp::Service<niryo_one::srv::SetInt>::SharedPtr test_motors_server;
+	rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr test_motors_server;
 
 	rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
 			activate_learning_mode_server;
@@ -129,8 +129,9 @@ class RosInterface: public rclcpp::Node {
 			update_conveyor_id_server;
 
 	// Callbacks
-	// void callbackTestMotors(niryo_one_msgs::srv::SetInt::Request &req,
-	// 		niryo_one_msgs::srv::SetInt::Response &res);
+	void callbackTestMotors(
+			const std::shared_ptr<niryo_one_msgs::srv::SetInt::Request> req,
+			std::shared_ptr<niryo_one_msgs::srv::SetInt::Response> res);
 
 	void callbackCalibrateMotors(
 			const std::shared_ptr<niryo_one_msgs::srv::SetInt::Request> req,

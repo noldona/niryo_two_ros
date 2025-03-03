@@ -12,24 +12,22 @@
 
 #include <urdf/model.h>
 
+#include <std_msgs/msg/empty.hpp>
 #include <std_msgs/msg/float64_multi_array.hpp>
 #include <std_msgs/msg/int64_multi_array.hpp>
-// #include <moveit/move_group_interface/move_group_interface.h>
 
-// #include <actionlib/client/simple_action_client.h>
+#include <action_msgs/msg/goal_status.hpp>
 #include <control_msgs/action/follow_joint_trajectory.hpp>
+#include <rclcpp_action/rclcpp_action.hpp>
+#include <sensor_msgs/msg/joint_state.hpp>
 
 #include "niryo_one_msgs/srv/set_bool.hpp"
 #include "niryo_one_msgs/srv/set_int.hpp"
-
-#include <sensor_msgs/msg/joint_state.hpp>
-#include <std_msgs/msg/empty.hpp>
 
 typedef control_msgs::action::FollowJointTrajectory TrajClient;
 
 class NiryoOneTestMotor: public rclcpp::Node {
 	private:
-	rclcpp::Node nh;
 	rclcpp::Client<niryo_one_msgs::srv::SetInt>::SharedPtr
 			calibrate_motor_client;
 	rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr
@@ -37,7 +35,9 @@ class NiryoOneTestMotor: public rclcpp::Node {
 
 	rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr reset_stepper_publisher;
 
-	TrajClient *traj_client_;
+	std::shared_ptr<
+			rclcpp_action::Client<control_msgs::action::FollowJointTrajectory>>
+			traj_client_;
 
 	std::vector<double> pose_start {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
@@ -53,17 +53,17 @@ class NiryoOneTestMotor: public rclcpp::Node {
 	public:
 	NiryoOneTestMotor();
 
-	void callbackJointSate(const sensor_msgs::msg::JointState &msg);
+	void callbackJointSate(const sensor_msgs::msg::JointState::SharedPtr msg);
 
 	bool getJointsLimits();
 
 	bool runTest(int nb_loops);
 	void stopTest();
-	void startTrajectory(control_msgs::action::FollowJointTrajectory_Goal goal);
-	bool playTrajectory(control_msgs::action::FollowJointTrajectory_Goal goal);
+	void startTrajectory(
+			control_msgs::action::FollowJointTrajectory::Goal goal);
+	bool playTrajectory(control_msgs::action::FollowJointTrajectory::Goal goal);
 
-	control_msgs::action::FollowJointTrajectory_Goal armExtensionTrajectory(
+	control_msgs::action::FollowJointTrajectory::Goal armExtensionTrajectory(
 			std::vector<double> joint_positions);
-	actionlib::SimpleClientGoalState getState();
 };
 #endif

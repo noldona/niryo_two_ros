@@ -41,8 +41,7 @@ add_executable(${PROJECT_NAME}
   src/hw_comm/can_communication.cpp
   src/hw_comm/niryo_one_communication.cpp
   src/hw_comm/fake_communication.cpp
-
-  # src/test_motors.cpp
+  src/test_motors.cpp
   src/ros_interface.cpp
   src/rpi_diagnostics.cpp
   src/niryo_one_hardware_interface.cpp
