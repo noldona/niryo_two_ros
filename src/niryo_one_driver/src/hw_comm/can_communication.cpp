@@ -37,28 +37,27 @@ int CanCommunication::init(int hardware_version) {
 	this->conveyor_id_2_direction = 1;
 	this->update_id = false;
 
-	this->declare_parameter("~spi_channel", rclcpp::PARAMETER_INTEGER);
-	this->declare_parameter("~spi_baudrate", rclcpp::PARAMETER_INTEGER);
-	this->declare_parameter("~gpio_can_interrupt", rclcpp::PARAMETER_INTEGER);
-	this->spi_channel = this->get_parameter("~spi_channel").as_int();
-	this->spi_baudrate = this->get_parameter("~spi_baudrate").as_int();
+	this->declare_parameter("spi_channel", rclcpp::PARAMETER_INTEGER);
+	this->declare_parameter("spi_baudrate", rclcpp::PARAMETER_INTEGER);
+	this->declare_parameter("gpio_can_interrupt", rclcpp::PARAMETER_INTEGER);
+	this->spi_channel = this->get_parameter("spi_channel").as_int();
+	this->spi_baudrate = this->get_parameter("spi_baudrate").as_int();
 	this->gpio_can_interrupt =
-			this->get_parameter("~gpio_can_interrupt").as_int();
+			this->get_parameter("gpio_can_interrupt").as_int();
 
 	// Set frequencies for hw control loop
 	this->declare_parameter(
-			"~can_hardware_control_loop_frequuency", rclcpp::PARAMETER_DOUBLE);
+			"can_hardware_control_loop_frequuency", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("can_hw_write_frequency", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter(
-			"~can_hw_write_frequency", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"~can_hw_check_connection_frequency", rclcpp::PARAMETER_DOUBLE);
+			"can_hw_check_connection_frequency", rclcpp::PARAMETER_DOUBLE);
 	this->hw_control_loop_frequency =
-			this->get_parameter("~can_hardware_control_loop_frequuency")
+			this->get_parameter("can_hardware_control_loop_frequuency")
 					.as_double();
 	this->hw_write_frequency =
-			this->get_parameter("~can_hw_write_frequency").as_double();
+			this->get_parameter("can_hw_write_frequency").as_double();
 	this->hw_check_connection_frequency =
-			this->get_parameter("~can_hw_check_connection_frequency")
+			this->get_parameter("can_hw_check_connection_frequency")
 					.as_double();
 
 	RCLCPP_INFO(rclcpp::get_logger("CanCommunication"),
@@ -73,9 +72,9 @@ int CanCommunication::init(int hardware_version) {
 	resetHardwareControlLoopRates();
 
 	// Set calibration timeouut
-	this->declare_parameter("~calibration_timeout", rclcpp::PARAMETER_INTEGER);
+	this->declare_parameter("calibration_timeout", rclcpp::PARAMETER_INTEGER);
 	this->calibration_timeout =
-			this->get_parameter("~calibration_timeout").as_int();
+			this->get_parameter("calibration_timeout").as_int();
 	RCLCPP_INFO(rclcpp::get_logger("CanCommunication"),
 			"NiryoStepper calibration timeout: %d seconds",
 			this->calibration_timeout);
@@ -88,16 +87,14 @@ int CanCommunication::init(int hardware_version) {
 	debug_error_message = "No connection with CAN motors has been made yet";
 
 	// Get connected motors from parameters
-	this->declare_parameter("/niryo_one/motors/can_required_motors",
-			rclcpp::PARAMETER_INTEGER_ARRAY);
-	this->declare_parameter("/niryo_one/motors/can_authorized_motors",
-			rclcpp::PARAMETER_INTEGER_ARRAY);
+	this->declare_parameter(
+			"can_required_motors", rclcpp::PARAMETER_INTEGER_ARRAY);
+	this->declare_parameter(
+			"can_authorized_motors", rclcpp::PARAMETER_INTEGER_ARRAY);
 	this->required_steppers_ids =
-			this->get_parameter("/niryo_one/motors/can_required_motors")
-					.as_integer_array();
+			this->get_parameter("can_required_motors").as_integer_array();
 	this->allowed_steppers_ids =
-			this->get_parameter("/niryo_one/motors/can_authorized_motors")
-					.as_integer_array();
+			this->get_parameter("can_authorized_motors").as_integer_array();
 	this->required_steppers_ids.insert(this->required_steppers_ids.end(),
 			this->required_steppers_ids.begin(),
 			this->required_steppers_ids.end());
@@ -111,34 +108,20 @@ int CanCommunication::init(int hardware_version) {
 	// Get gear ratios from parameters
 	double gear_ratio_1, gear_ratio_2, gear_ratio_3, gear_ratio_4, gear_ratio_5,
 			gear_ratio_6, gear_ratio_7;
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_1_gear_ratio", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_2_gear_ratio", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_3_gear_ratio", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_4_gear_ratio", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_5_gear_ratio", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_6_gear_ratio", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_7_gear_ratio", rclcpp::PARAMETER_DOUBLE);
-	gear_ratio_1 = this->get_parameter("/niryo_one/motors/stepper_1_gear_ratio")
-						   .as_double();
-	gear_ratio_2 = this->get_parameter("/niryo_one/motors/stepper_2_gear_ratio")
-						   .as_double();
-	gear_ratio_3 = this->get_parameter("/niryo_one/motors/stepper_3_gear_ratio")
-						   .as_double();
-	gear_ratio_4 = this->get_parameter("/niryo_one/motors/stepper_4_gear_ratio")
-						   .as_double();
-	gear_ratio_5 = this->get_parameter("/niryo_one/motors/stepper_5_gear_ratio")
-						   .as_double();
-	gear_ratio_6 = this->get_parameter("/niryo_one/motors/stepper_6_gear_ratio")
-						   .as_double();
-	gear_ratio_7 = this->get_parameter("/niryo_one/motors/stepper_7_gear_ratio")
-						   .as_double();
+	this->declare_parameter("stepper_1_gear_ratio", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("stepper_2_gear_ratio", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("stepper_3_gear_ratio", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("stepper_4_gear_ratio", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("stepper_5_gear_ratio", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("stepper_6_gear_ratio", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("stepper_7_gear_ratio", rclcpp::PARAMETER_DOUBLE);
+	gear_ratio_1 = this->get_parameter("stepper_1_gear_ratio").as_double();
+	gear_ratio_2 = this->get_parameter("stepper_2_gear_ratio").as_double();
+	gear_ratio_3 = this->get_parameter("stepper_3_gear_ratio").as_double();
+	gear_ratio_4 = this->get_parameter("stepper_4_gear_ratio").as_double();
+	gear_ratio_5 = this->get_parameter("stepper_5_gear_ratio").as_double();
+	gear_ratio_6 = this->get_parameter("stepper_6_gear_ratio").as_double();
+	gear_ratio_7 = this->get_parameter("stepper_7_gear_ratio").as_double();
 	RCLCPP_INFO(rclcpp::get_logger("CanCommunication"),
 			"Gear ratios: (1: %1f, 2: %1f, 3: %1f, 4: %1f, 5: %1f, 6: %1f, 7: "
 			"%1f",
@@ -147,105 +130,75 @@ int CanCommunication::init(int hardware_version) {
 
 	// Get home position from parameters
 	double home_position_1, home_position_2, home_position_3, home_position_4;
-	this->declare_parameter("/niryo_one/motors/stepper_1_home_position",
-			rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter("/niryo_one/motors/stepper_2_home_position",
-			rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter("/niryo_one/motors/stepper_3_home_position",
-			rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter("/niryo_one/motors/stepper_4_home_position",
-			rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_1_home_position", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_2_home_position", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_3_home_position", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_4_home_position", rclcpp::PARAMETER_DOUBLE);
 	home_position_1 =
-			this->get_parameter("/niryo_one/motors/stepper_1_home_position")
-					.as_double();
+			this->get_parameter("stepper_1_home_position").as_double();
 	home_position_2 =
-			this->get_parameter("/niryo_one/motors/stepper_2_home_position")
-					.as_double();
+			this->get_parameter("stepper_2_home_position").as_double();
 	home_position_3 =
-			this->get_parameter("/niryo_one/motors/stepper_3_home_position")
-					.as_double();
+			this->get_parameter("stepper_3_home_position").as_double();
 	home_position_4 =
-			this->get_parameter("/niryo_one/motors/stepper_4_home_position")
-					.as_double();
+			this->get_parameter("stepper_4_home_position").as_double();
 	RCLCPP_INFO(rclcpp::get_logger("CanCommunication"),
 			"Home positions: (1: %1f, 2: %1f, 3: %1f, 4: %1f)", home_position_1,
 			home_position_2, home_position_3, home_position_4);
 
 	double offset_position_1, offset_position_2, offset_position_3,
 			offset_position_4;
-	this->declare_parameter("/niryo_one/motors/stepper_1_offset_position",
-			rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter("/niryo_one/motors/stepper_2_offset_position",
-			rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter("/niryo_one/motors/stepper_3_offset_position",
-			rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter("/niryo_one/motors/stepper_4_offset_position",
-			rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_1_offset_position", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_2_offset_position", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_3_offset_position", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_4_offset_position", rclcpp::PARAMETER_DOUBLE);
 	offset_position_1 =
-			this->get_parameter("/niryo_one/motors/stepper_1_offset_position")
-					.as_double();
+			this->get_parameter("stepper_1_offset_position").as_double();
 	offset_position_2 =
-			this->get_parameter("/niryo_one/motors/stepper_2_offset_position")
-					.as_double();
+			this->get_parameter("stepper_2_offset_position").as_double();
 	offset_position_3 =
-			this->get_parameter("/niryo_one/motors/stepper_3_offset_position")
-					.as_double();
+			this->get_parameter("stepper_3_offset_position").as_double();
 	offset_position_4 =
-			this->get_parameter("/niryo_one/motors/stepper_4_offset_position")
-					.as_double();
+			this->get_parameter("stepper_4_offset_position").as_double();
 	RCLCPP_INFO(rclcpp::get_logger("CanCommunication"),
 			"Angle offsets: (1: %1f, 2: %1f, 3: %1f, 4: %1f)",
 			offset_position_1, offset_position_2, offset_position_3,
 			offset_position_4);
 
 	double direction_1, direction_2, direction_3, direction_4;
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_1_direction", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_2_direction", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_3_direction", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"/niryo_one/motors/stepper_4_direction", rclcpp::PARAMETER_DOUBLE);
-	direction_1 = this->get_parameter("/niryo_one/motors/stepper_1_direction")
-						  .as_double();
-	direction_2 = this->get_parameter("/niryo_one/motors/stepper_2_direction")
-						  .as_double();
-	direction_3 = this->get_parameter("/niryo_one/motors/stepper_3_direction")
-						  .as_double();
-	direction_4 = this->get_parameter("/niryo_one/motors/stepper_4_direction")
-						  .as_double();
+	this->declare_parameter("stepper_1_direction", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("stepper_2_direction", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("stepper_3_direction", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("stepper_4_direction", rclcpp::PARAMETER_DOUBLE);
+	direction_1 = this->get_parameter("stepper_1_direction").as_double();
+	direction_2 = this->get_parameter("stepper_2_direction").as_double();
+	direction_3 = this->get_parameter("stepper_3_direction").as_double();
+	direction_4 = this->get_parameter("stepper_4_direction").as_double();
 
 	int64_t max_effort_1, max_effort_2, max_effort_3, max_effort_4,
 			max_effort_5, max_effort_6, max_effort_7;
-	this->declare_parameter("/niryo_one/motors/stepper_1_max_effort",
-			rclcpp::PARAMETER_INTEGER);
-	this->declare_parameter("/niryo_one/motors/stepper_2_max_effort",
-			rclcpp::PARAMETER_INTEGER);
-	this->declare_parameter("/niryo_one/motors/stepper_3_max_effort",
-			rclcpp::PARAMETER_INTEGER);
-	this->declare_parameter("/niryo_one/motors/stepper_4_max_effort",
-			rclcpp::PARAMETER_INTEGER);
-	this->declare_parameter("/niryo_one/motors/stepper_5_max_effort",
-			rclcpp::PARAMETER_INTEGER);
-	this->declare_parameter("/niryo_one/motors/stepper_6_max_effort",
-			rclcpp::PARAMETER_INTEGER);
-	this->declare_parameter("/niryo_one/motors/stepper_7_max_effort",
-			rclcpp::PARAMETER_INTEGER);
-	max_effort_1 = this->get_parameter("/niryo_one/motors/stepper_1_max_effort")
-						   .as_int();
-	max_effort_2 = this->get_parameter("/niryo_one/motors/stepper_2_max_effort")
-						   .as_int();
-	max_effort_3 = this->get_parameter("/niryo_one/motors/stepper_3_max_effort")
-						   .as_int();
-	max_effort_4 = this->get_parameter("/niryo_one/motors/stepper_4_max_effort")
-						   .as_int();
-	max_effort_5 = this->get_parameter("/niryo_one/motors/stepper_5_max_effort")
-						   .as_int();
-	max_effort_6 = this->get_parameter("/niryo_one/motors/stepper_6_max_effort")
-						   .as_int();
-	max_effort_7 = this->get_parameter("/niryo_one/motors/stepper_7_max_effort")
-						   .as_int();
+	this->declare_parameter("stepper_1_max_effort", rclcpp::PARAMETER_INTEGER);
+	this->declare_parameter("stepper_2_max_effort", rclcpp::PARAMETER_INTEGER);
+	this->declare_parameter("stepper_3_max_effort", rclcpp::PARAMETER_INTEGER);
+	this->declare_parameter("stepper_4_max_effort", rclcpp::PARAMETER_INTEGER);
+	this->declare_parameter("stepper_5_max_effort", rclcpp::PARAMETER_INTEGER);
+	this->declare_parameter("stepper_6_max_effort", rclcpp::PARAMETER_INTEGER);
+	this->declare_parameter("stepper_7_max_effort", rclcpp::PARAMETER_INTEGER);
+	max_effort_1 = this->get_parameter("stepper_1_max_effort").as_int();
+	max_effort_2 = this->get_parameter("stepper_2_max_effort").as_int();
+	max_effort_3 = this->get_parameter("stepper_3_max_effort").as_int();
+	max_effort_4 = this->get_parameter("stepper_4_max_effort").as_int();
+	max_effort_5 = this->get_parameter("stepper_5_max_effort").as_int();
+	max_effort_6 = this->get_parameter("stepper_6_max_effort").as_int();
+	max_effort_7 = this->get_parameter("stepper_7_max_effort").as_int();
 
 	// Create motors with previous params
 	this->m1 = StepperMotorState("Stepper Axis 1", CAN_MOTOR_1_ID, gear_ratio_1,

@@ -30,9 +30,9 @@ void RpiDiagnostics::startReadingData() {
 
 void RpiDiagnostics::readHardwareDataLoop() {
 	this->declare_parameter(
-			"~read_rpi_diagnostics_frequency", rclcpp::PARAMETER_DOUBLE);
+			"read_rpi_diagnostics_frequency", rclcpp::PARAMETER_DOUBLE);
 	double read_rpi_diagnostics_frequency =
-			this->get_parameter("~read_rpi_diagnostics_frequency").as_double();
+			this->get_parameter("read_rpi_diagnostics_frequency").as_double();
 	rclcpp::Rate read_rpi_diagnostics_rate =
 			rclcpp::Rate(read_rpi_diagnostics_frequency);
 

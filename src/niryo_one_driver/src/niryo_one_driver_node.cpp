@@ -104,10 +104,9 @@ class NiryoOneDriver: public rclcpp::Node {
 				std::bind(&NiryoOneDriver::callbackTrajectoryResult, this,
 						std::placeholders::_1));
 
-		this->declare_parameter(
-				"/niryo_one/hardware_version", rclcpp::PARAMETER_INTEGER);
+		this->declare_parameter("hardware_version", rclcpp::PARAMETER_INTEGER);
 		this->hardware_version =
-				this->get_parameter("/niryo_one/hardware_version").as_int();
+				this->get_parameter("hardware_version").as_int();
 
 		if (hardware_version != 1 && hardware_version != 2) {
 			RCLCPP_ERROR(this->get_logger(),
@@ -116,13 +115,13 @@ class NiryoOneDriver: public rclcpp::Node {
 		}
 
 		this->declare_parameter(
-				"~ros_control_loop_frequency", rclcpp::PARAMETER_DOUBLE);
+				"ros_control_loop_frequency", rclcpp::PARAMETER_DOUBLE);
 		double ros_control_frequency =
-				this->get_parameter("~ros_control_loop_frequency").as_double();
+				this->get_parameter("ros_control_loop_frequency").as_double();
 
-		this->declare_parameter("~fake_communication", rclcpp::PARAMETER_BOOL);
+		this->declare_parameter("fake_communication", rclcpp::PARAMETER_BOOL);
 		bool fake_communication =
-				this->get_parameter("~fake_communication").as_bool();
+				this->get_parameter("fake_communication").as_bool();
 
 		RCLCPP_INFO(this->get_logger(),
 				"Starting niryo_one driver thread (frequency : %lf)",

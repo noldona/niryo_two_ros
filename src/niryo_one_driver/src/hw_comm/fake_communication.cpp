@@ -7,28 +7,21 @@ FakeCommunication::FakeCommunication(int hardware_version) {
 
 	this->hardware_version = hardware_version;
 
-	this->declare_parameter("/niryo_one/motors/stepper_1_home_position",
-			rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter("/niryo_one/motors/stepper_2_home_position",
-			rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter("/niryo_one/motors/stepper_3_home_position",
-			rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter("/niryo_one/motors/stepper_4_home_position",
-			rclcpp::PARAMETER_DOUBLE);
-	double pos_0 =
-			this->get_parameter("/niryo_one/motors/stepper_1_home_position")
-					.as_double();
-	double pos_1 =
-			this->get_parameter("/niryo_one/motors/stepper_2_home_position")
-					.as_double();
-	double pos_2 =
-			this->get_parameter("/niryo_one/motors/stepper_3_home_position")
-					.as_double();
+	this->declare_parameter(
+			"stepper_1_home_position", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_2_home_position", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_3_home_position", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter(
+			"stepper_4_home_position", rclcpp::PARAMETER_DOUBLE);
+	double pos_0 = this->get_parameter("stepper_1_home_position").as_double();
+	double pos_1 = this->get_parameter("stepper_2_home_position").as_double();
+	double pos_2 = this->get_parameter("stepper_3_home_position").as_double();
 
 	if (hardware_version == 1) {
 		double pos_3 =
-				this->get_parameter("/niryo_one/motors/stepper_4_home_position")
-						.as_double();
+				this->get_parameter("stepper_4_home_position").as_double();
 
 		this->echo_pos[0] = pos_0;
 		this->echo_pos[1] = pos_1;

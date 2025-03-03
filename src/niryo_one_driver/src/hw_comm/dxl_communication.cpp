@@ -37,28 +37,26 @@ int DxlCommunication::init(int hardware_version) {
 	}
 
 	// Get params from ROS
-	this->declare_parameter("~dxl_uart_device_name", rclcpp::PARAMETER_STRING);
-	this->declare_parameter("~dxl_baudrate", rclcpp::PARAMETER_INTEGER);
+	this->declare_parameter("dxl_uart_device_name", rclcpp::PARAMETER_STRING);
+	this->declare_parameter("dxl_baudrate", rclcpp::PARAMETER_INTEGER);
 	this->declare_parameter(
-			"~dxl_hardware_control_loo_frequency", rclcpp::PARAMETER_DOUBLE);
+			"dxl_hardware_control_loo_frequency", rclcpp::PARAMETER_DOUBLE);
+	this->declare_parameter("dxl_hw_write_frequency", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter(
-			"~dxl_hw_write_frequency", rclcpp::PARAMETER_DOUBLE);
+			"dxl_hw_data_read_frequency", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter(
-			"~dxl_hw_data_read_frequency", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter(
-			"~dxl_hw_status_read_frequency", rclcpp::PARAMETER_DOUBLE);
-	this->device_name =
-			this->get_parameter("~dxl_uart_device_name").as_string();
-	this->uart_baudrate = this->get_parameter("~dxl_baudrate").as_int();
+			"dxl_hw_status_read_frequency", rclcpp::PARAMETER_DOUBLE);
+	this->device_name = this->get_parameter("dxl_uart_device_name").as_string();
+	this->uart_baudrate = this->get_parameter("dxl_baudrate").as_int();
 	this->hw_control_loop_frequency =
-			this->get_parameter("~dxl_hardware_control_loo_frequency")
+			this->get_parameter("dxl_hardware_control_loo_frequency")
 					.as_double();
 	this->hw_data_write_frequency =
-			this->get_parameter("~dxl_hw_write_frequency").as_double();
+			this->get_parameter("dxl_hw_write_frequency").as_double();
 	this->hw_data_read_frequency =
-			this->get_parameter("~dxl_hw_data_read_frequency").as_double();
+			this->get_parameter("dxl_hw_data_read_frequency").as_double();
 	this->hw_status_read_frequency =
-			this->get_parameter("~dxl_hw_status_read_frequency").as_double();
+			this->get_parameter("dxl_hw_status_read_frequency").as_double();
 
 	RCLCPP_INFO(this->get_logger(), "Start Dxl communication (%lf Hz)",
 			this->hw_control_loop_frequency);
@@ -87,16 +85,14 @@ int DxlCommunication::init(int hardware_version) {
 			"No connection with Dynamixel motors has been made yet";
 
 	// Get required and authorized motor IDs
-	this->declare_parameter("/niryo_one/motors/dxl_required_motors",
-			rclcpp::PARAMETER_INTEGER_ARRAY);
-	this->declare_parameter("/niryo_one/motors/dxl_authorized_motors",
-			rclcpp::PARAMETER_INTEGER_ARRAY);
+	this->declare_parameter(
+			"dxl_required_motors", rclcpp::PARAMETER_INTEGER_ARRAY);
+	this->declare_parameter(
+			"dxl_authorized_motors", rclcpp::PARAMETER_INTEGER_ARRAY);
 	std::vector<long int> required_dxl_ids =
-			this->get_parameter("/niryo_one/motors/dxl_required_motors")
-					.as_integer_array();
+			this->get_parameter("dxl_required_motors").as_integer_array();
 	std::vector<long int> allowed_dxl_ids =
-			this->get_parameter("/niryo_one/motors/dxl_authorized_motores")
-					.as_integer_array();
+			this->get_parameter("dxl_authorized_motores").as_integer_array();
 
 	this->required_motors_ids.insert(this->required_motors_ids.end(),
 			required_dxl_ids.begin(), required_dxl_ids.end());

@@ -10,16 +10,12 @@ void RosInterface::init(CommunicationBase *niryo_one_comm,
 	this->hardware_version = hardware_version;
 	this->last_connection_up_flag = true;
 
-	this->declare_parameter(
-			"/niryo_one/info/image_version", rclcpp::PARAMETER_STRING);
-	this->declare_parameter(
-			"/niryo_one/info/ros_version", rclcpp::PARAMETER_STRING);
+	this->declare_parameter("image_version", rclcpp::PARAMETER_STRING);
+	this->declare_parameter("ros_version", rclcpp::PARAMETER_STRING);
 	this->rpi_image_version =
-			this->get_parameter("/niryo_one/info/image_version")
-					.get_value<std::string>();
+			this->get_parameter("image_version").get_value<std::string>();
 	this->ros_niryo_one_version =
-			this->get_parameter("/niryo_one/info/ros_version")
-					.get_value<std::string>();
+			this->get_parameter("ros_version").get_value<std::string>();
 
 	// Trim string
 	this->rpi_image_version.erase(
@@ -381,9 +377,9 @@ void RosInterface::startServiceServers() {
 
 void RosInterface::publishHardwareStatus() {
 	this->declare_parameter(
-			"~publish_hw_status_frequency", rclcpp::PARAMETER_DOUBLE);
+			"publish_hw_status_frequency", rclcpp::PARAMETER_DOUBLE);
 	double publish_hw_status_frequency =
-			this->get_parameter("~publish_hw_status_frequency").as_double();
+			this->get_parameter("publish_hw_status_frequency").as_double();
 	rclcpp::Rate publish_hardware_status_rate =
 			rclcpp::Rate(publish_hw_status_frequency);
 
@@ -439,9 +435,9 @@ void RosInterface::publishHardwareStatus() {
 
 void RosInterface::publishSoftwareVersion() {
 	this->declare_parameter(
-			"~publish_software_version_frequency", rclcpp::PARAMETER_DOUBLE);
+			"publish_software_version_frequency", rclcpp::PARAMETER_DOUBLE);
 	double publish_software_version_frequency =
-			this->get_parameter("~publish_software_version_frequency")
+			this->get_parameter("publish_software_version_frequency")
 					.as_double();
 	rclcpp::Rate publish_software_version_rate =
 			rclcpp::Rate(publish_software_version_frequency);
@@ -464,9 +460,9 @@ void RosInterface::publishSoftwareVersion() {
 
 void RosInterface::publishLearningMode() {
 	this->declare_parameter(
-			"~publish_learning_mode_frequency", rclcpp::PARAMETER_DOUBLE);
+			"publish_learning_mode_frequency", rclcpp::PARAMETER_DOUBLE);
 	double publish_learning_mode_frequency =
-			this->get_parameter("~publish_learning_mode_frequency").as_double();
+			this->get_parameter("publish_learning_mode_frequency").as_double();
 	rclcpp::Rate publish_learning_mode_rate =
 			rclcpp::Rate(publish_learning_mode_frequency);
 

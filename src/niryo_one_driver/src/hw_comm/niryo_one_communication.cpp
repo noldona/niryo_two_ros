@@ -3,14 +3,14 @@
 NiryoOneCommunication::NiryoOneCommunication(int hardware_version) {
 	this->hardware_version = hardware_version;
 
-	this->declare_parameter("~can_enabled", rclcpp::PARAMETER_BOOL);
-	this->declare_parameter("~dxl_enabled", rclcpp::PARAMETER_BOOL);
-	this->declare_parameter("~niryo_one_hw_check_connection_frequency",
+	this->declare_parameter("can_enabled", rclcpp::PARAMETER_BOOL);
+	this->declare_parameter("dxl_enabled", rclcpp::PARAMETER_BOOL);
+	this->declare_parameter("niryo_one_hw_check_connection_frequency",
 			rclcpp::PARAMETER_DOUBLE);
-	this->can_enabled = this->get_parameter("~can_enabled").as_bool();
-	this->dxl_enabled = this->get_parameter("~dxl_enabled").as_bool();
+	this->can_enabled = this->get_parameter("can_enabled").as_bool();
+	this->dxl_enabled = this->get_parameter("dxl_enabled").as_bool();
 	this->niryo_one_hw_check_connection_frequency =
-			this->get_parameter("~niryo_one_hw_check_connection_frequency")
+			this->get_parameter("niryo_one_hw_check_connection_frequency")
 					.as_double();
 
 	if (!this->can_enabled) {
