@@ -68,8 +68,8 @@ def generate_launch_description():
                 niryo_one_stepper_config,
                 {
                     'fake_communication': False,
-                    'can_enabled': False,
-                    'dxl_enabled': False,
+                    'can_enabled': True,
+                    'dxl_enabled': True,
                 },
             ],
         ),

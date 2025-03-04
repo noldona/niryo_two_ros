@@ -11,7 +11,7 @@ int RpiDiagnostics::getRpiCpuTemperature() {
 }
 
 void RpiDiagnostics::readCpuTemperature() {
-#ifdef __arm__
+#ifdef __aarch64__
 	std::fstream cpu_temp_file(
 			"/sys/class/thermal/thermal_zone0/temp", std::ios_base::in);
 

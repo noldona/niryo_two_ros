@@ -241,7 +241,7 @@ void RosInterface::callbackChangeHardwareVersion(
 		std::shared_ptr<niryo_one_msgs::srv::ChangeHardwareVersion::Response>
 				res) {
 	int result = change_hardware_version_and_reboot(
-			req->old_version, req->new_version);
+			shared_from_this(), req->old_version, req->new_version);
 	if (result == CHANGE_HW_VERSION_OK) {
 		res->status = 200;
 		res->message = "Successfully changed hardware version.";

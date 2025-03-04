@@ -7,7 +7,7 @@
 #include <string>
 #include <thread>
 
-#include "dynamixel_sdk/dynamixel_sdk.h"
+#include "dynamixel_sdk/dynamixel_sdk.hpp"
 #include "niryo_one_driver/dxl_motor_state.hpp"
 #include "niryo_one_driver/xl320_driver.hpp"
 #include "niryo_one_driver/xl430_driver.hpp"

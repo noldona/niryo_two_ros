@@ -1,7 +1,7 @@
 #ifndef RPI_DIAGNOSTICS_H
 #define RPI_DIAGNOSTICS_H
 
-#ifdef __arm__
+#ifdef __aarch64__
 #include <fstream>
 #endif
 

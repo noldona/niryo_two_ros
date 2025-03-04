@@ -13,6 +13,7 @@
 #define CHANGE_HW_VERSION_FAIL -1
 #define CHANGE_HW_VERSION_NOT_ARM -2
 
-int change_hardware_version_and_reboot(int old_version, int new_version);
+int change_hardware_version_and_reboot(
+		std::shared_ptr<rclcpp::Node> node, int old_version, int new_version);
 
 #endif

@@ -269,7 +269,7 @@ void NiryoOneCommunication::checkHardwareVersionFromDxlMotors() {
 			(detected_version == 2 && this->hardware_version == 1)) {
 		// change version (V1->V2 or V2->V1) and reboot
 		change_hardware_version_and_reboot(
-				this->hardware_version, detected_version);
+				shared_from_this(), this->hardware_version, detected_version);
 	}
 }
 

@@ -1,12 +1,14 @@
 #include "niryo_one_driver/change_hardware_version.hpp"
 
-int change_hardware_version_and_reboot(int old_version, int new_version) {
-#ifdef __arm__
+int change_hardware_version_and_reboot(
+		std::shared_ptr<rclcpp::Node> node, int old_version, int new_version) {
+#ifdef __aarch64__
 
 	std::ostringstream text;
 
 	// Get launch file path
-	std::string folder_path = ros::package::getPath("niryo_one_bringup");
+	std::string folder_path =
+			ament_index_cpp::get_package_share_directory("niryo_one_bringup");
 	std::string file_path = folder_path + "/launch/niryo_one_base.launch";
 
 	std::ifstream in_file(file_path.c_str());
@@ -61,8 +63,9 @@ int change_hardware_version_and_reboot(int old_version, int new_version) {
 			"to V%d)",
 			old_version, new_version);
 
-	bool reboot = rclcpp::Parameters::get_value<bool>(
-			"/niryo_one/reboot_when_auto_change_version");
+	bool reboot =
+			node->get_parameter("/niryo_one/reboot_when_auto_change_version")
+					.as_bool();
 
 	if (reboot) {
 		RCLCPP_INFO(rclcpp::get_logger("ChangeHardwareVersion"),

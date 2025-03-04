@@ -5,7 +5,7 @@
     Base class for Dynamixel motor driver (dynamixel protocol 2.0 only)
 */
 
-#include "dynamixel_sdk/dynamixel_sdk.h"
+#include "dynamixel_sdk/dynamixel_sdk.hpp"
 #include <vector>
 
 #define DXL_LEN_ONE_BYTE 1

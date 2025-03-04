@@ -1,7 +1,7 @@
 #ifndef NIRYO_CAN_DRIVER_H
 #define NIRYO_CAN_DRIVER_H
 
-#include "mcp_can_rpi/mcp_can_rpi.h"
+#include "mcp_can_rpi/mcp_can_rpi.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include <memory>
 

@@ -47,12 +47,12 @@ int CanCommunication::init(int hardware_version) {
 
 	// Set frequencies for hw control loop
 	this->declare_parameter(
-			"can_hardware_control_loop_frequuency", rclcpp::PARAMETER_DOUBLE);
+			"can_hardware_control_loop_frequency", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter("can_hw_write_frequency", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter(
 			"can_hw_check_connection_frequency", rclcpp::PARAMETER_DOUBLE);
 	this->hw_control_loop_frequency =
-			this->get_parameter("can_hardware_control_loop_frequuency")
+			this->get_parameter("can_hardware_control_loop_frequency")
 					.as_double();
 	this->hw_write_frequency =
 			this->get_parameter("can_hw_write_frequency").as_double();
@@ -182,19 +182,17 @@ int CanCommunication::init(int hardware_version) {
 	direction_4 = this->get_parameter("stepper_4_direction").as_double();
 
 	int64_t max_effort_1, max_effort_2, max_effort_3, max_effort_4,
-			max_effort_5, max_effort_6, max_effort_7;
+			max_effort_6, max_effort_7;
 	this->declare_parameter("stepper_1_max_effort", rclcpp::PARAMETER_INTEGER);
 	this->declare_parameter("stepper_2_max_effort", rclcpp::PARAMETER_INTEGER);
 	this->declare_parameter("stepper_3_max_effort", rclcpp::PARAMETER_INTEGER);
 	this->declare_parameter("stepper_4_max_effort", rclcpp::PARAMETER_INTEGER);
-	this->declare_parameter("stepper_5_max_effort", rclcpp::PARAMETER_INTEGER);
 	this->declare_parameter("stepper_6_max_effort", rclcpp::PARAMETER_INTEGER);
 	this->declare_parameter("stepper_7_max_effort", rclcpp::PARAMETER_INTEGER);
 	max_effort_1 = this->get_parameter("stepper_1_max_effort").as_int();
 	max_effort_2 = this->get_parameter("stepper_2_max_effort").as_int();
 	max_effort_3 = this->get_parameter("stepper_3_max_effort").as_int();
 	max_effort_4 = this->get_parameter("stepper_4_max_effort").as_int();
-	max_effort_5 = this->get_parameter("stepper_5_max_effort").as_int();
 	max_effort_6 = this->get_parameter("stepper_6_max_effort").as_int();
 	max_effort_7 = this->get_parameter("stepper_7_max_effort").as_int();
 

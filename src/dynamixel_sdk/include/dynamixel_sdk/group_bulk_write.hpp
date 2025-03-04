@@ -1,12 +1,3 @@
-/*
- * port_handler.h
- * Copyright (c) 2017, Niryo
- * All rights reserved.
- *
- * This library is an adaptation of dynamixel_sdk library for Raspberry Pi 3 with wiringPi
- * See license below
- */
-
 /*******************************************************************************
 * Copyright (c) 2016, ROBOTIS CO., LTD.
 * All rights reserved.
@@ -39,62 +30,56 @@
 
 /* Author: zerom, Ryu Woon Jung (Leon) */
 
-#ifndef DYNAMIXEL_SDK_INCLUDE_DYNAMIXEL_SDK_LINUX_PORTHANDLERLINUX_H_
-#define DYNAMIXEL_SDK_INCLUDE_DYNAMIXEL_SDK_LINUX_PORTHANDLERLINUX_H_
+#ifndef DYNAMIXEL_SDK_INCLUDE_DYNAMIXEL_SDK_GROUPBULKWRITE_H_
+#define DYNAMIXEL_SDK_INCLUDE_DYNAMIXEL_SDK_GROUPBULKWRITE_H_
 
+#include "dynamixel_sdk/packet_handler.hpp"
+#include "dynamixel_sdk/port_handler.hpp"
+#include <map>
+#include <vector>
 
-#include "dynamixel_sdk/port_handler.h"
+namespace dynamixel {
 
-namespace dynamixel
-{
+	class WINDECLSPEC GroupBulkWrite {
+		private:
+		PortHandler *port_;
+		PacketHandler *ph_;
 
-class PortHandlerLinux : public PortHandler
-{
- private:
-  int     socket_fd_;
-  int     baudrate_;
-  char    port_name_[30];
+		std::vector<uint8_t> id_list_;
+		std::map<uint8_t, uint16_t> address_list_;  // <id, start_address>
+		std::map<uint8_t, uint16_t> length_list_;  // <id, data_length>
+		std::map<uint8_t, uint8_t *> data_list_;  // <id, data>
 
-  double  packet_start_time_;
-  double  packet_timeout_;
-  double  tx_time_per_byte;
+		bool is_param_changed_;
 
-  bool    setupPort(const int cflag_baud);
-  bool    setCustomBaudrate(int speed);
-  int     getCFlagBaud(const int baudrate);
+		uint8_t *param_;
+		uint16_t param_length_;
 
-  double  getCurrentTime();
-  double  getTimeSinceStart();
+		void makeParam();
 
- public:
-  PortHandlerLinux(const char *port_name);
-  virtual ~PortHandlerLinux() { closePort(); }
+		public:
+		GroupBulkWrite(PortHandler *port, PacketHandler *ph);
+		~GroupBulkWrite() {
+			clearParam();
+		}
 
-  bool    setupGpio();
-  void    gpioHigh();
-  void    gpioLow();
+		PortHandler *getPortHandler() {
+			return port_;
+		}
+		PacketHandler *getPacketHandler() {
+			return ph_;
+		}
 
-  bool    openPort();
-  void    closePort();
-  void    clearPort();
+		bool addParam(uint8_t id, uint16_t start_address, uint16_t data_length,
+				uint8_t *data);
+		void removeParam(uint8_t id);
+		bool changeParam(uint8_t id, uint16_t start_address,
+				uint16_t data_length, uint8_t *data);
+		void clearParam();
 
-  void    setPortName(const char *port_name);
-  char   *getPortName();
-
-  bool    setBaudRate(const int baudrate);
-  int     getBaudRate();
-
-  int     getBytesAvailable();
-
-  int     readPort(uint8_t *packet, int length);
-  int     writePort(uint8_t *packet, int length);
-
-  void    setPacketTimeout(uint16_t packet_length);
-  void    setPacketTimeout(double msec);
-  bool    isPacketTimeout();
-};
+		int txPacket();
+	};
 
 }
 
-
-#endif /* DYNAMIXEL_SDK_INCLUDE_DYNAMIXEL_SDK_LINUX_PORTHANDLERLINUX_H_ */
+#endif /* DYNAMIXEL_SDK_INCLUDE_DYNAMIXEL_SDK_GROUPBULKWRITE_H_ */

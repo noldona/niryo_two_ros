@@ -22,10 +22,10 @@ niryo_one_driver:
             # --> Commented ids will make associated motor disable (and thus not
             # trigger an error if not connected)
             # Before editing, please be sure that you know what you're doing
-            - 1 # Axis 1 enabled if not commented
-            - 2 # Axis 2 enabled if not commented
-            - 3 # Axis 3 enabled if not commented
-            - 4 # Axis 4 enabled if not commented
+            - 1  # Axis 1 enabled if not commented
+            - 2  # Axis 2 enabled if not commented
+            - 3  # Axis 3 enabled if not commented
+            - 4  # Axis 4 enabled if not commented
 
         dxl_required_motors:  # axis 5 and 6 of Niryo One.
             # Edit only for debug purposes (ex : you want to test some motors
