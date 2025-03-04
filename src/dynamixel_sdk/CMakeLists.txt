@@ -30,7 +30,7 @@ endif()
 execute_process(COMMAND uname -m COMMAND tr -d '\n' OUTPUT_VARIABLE ARCHITECTURE)
 message(WARNING "Architecture: ${ARCHITECTURE}")
 
-if(${ARCHITECTURE} MATCHES "arm")
+if(${ARCHITECTURE} MATCHES "aarch64")
   message(WARNING "writingPi library is required - arm processor")
   target_link_libraries(dynamixel_sdk
     -lwiringPi
