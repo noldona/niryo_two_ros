@@ -27,6 +27,18 @@ else()
   add_library(dynamixel_sdk SHARED ${DYNAMIXEL_SDK_SOURCES} src/port_handler_linux.cpp)
 endif()
 
+execute_process(COMMAND uname -m COMMAND tr -d '\n' OUTPUT_VARIABLE ARCHITECTURE)
+message(WARNING "Architecture: ${ARCHITECTURE}")
+
+if(${ARCHITECTURE} MATCHES "arm")
+  message(WARNING "writingPi library is required - arm processor")
+  target_link_libraries(dynamixel_sdk
+    -lwiringPi
+  )
+else()
+  message(WARNING "wiringPi library not required")
+endif()
+
 install(
   DIRECTORY include/
   DESTINATION include/
