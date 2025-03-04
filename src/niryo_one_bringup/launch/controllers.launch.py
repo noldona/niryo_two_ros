@@ -67,11 +67,9 @@ def generate_launch_description():
                 niryo_one_motors_config,
                 niryo_one_stepper_config,
                 {
-                    'fake_communication': simulation_mode,
-                    'can_enabled': LaunchConfiguration(
-                        'disable_can_for_debug') == 'false',
-                    'dxl_enabled': LaunchConfiguration(
-                        'disable_can_for_debug') == 'false',
+                    'fake_communication': False,
+                    'can_enabled': False,
+                    'dxl_enabled': False,
                 },
             ],
         ),

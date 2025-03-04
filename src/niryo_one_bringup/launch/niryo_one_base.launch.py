@@ -48,7 +48,7 @@ def generate_launch_description():
             output='screen',
             parameters=[
                 niryo_one_driver_config,
-                {'fake_communication': simulation_mode},
+                {'fake_communication': LaunchConfiguration('simulation_mode')},
                 {'can_enabled': [LaunchConfiguration(
                     'disable_can_for_debug') == 'false']},
                 {'dxl_enabled': [LaunchConfiguration(

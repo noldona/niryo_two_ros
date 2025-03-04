@@ -106,27 +106,25 @@ int CanCommunication::init(int hardware_version) {
 			this->allowed_steppers_ids.end());
 
 	// Get gear ratios from parameters
-	double gear_ratio_1, gear_ratio_2, gear_ratio_3, gear_ratio_4, gear_ratio_5,
-			gear_ratio_6, gear_ratio_7;
+	double gear_ratio_1, gear_ratio_2, gear_ratio_3, gear_ratio_4, gear_ratio_6,
+			gear_ratio_7;
 	this->declare_parameter("stepper_1_gear_ratio", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter("stepper_2_gear_ratio", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter("stepper_3_gear_ratio", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter("stepper_4_gear_ratio", rclcpp::PARAMETER_DOUBLE);
-	this->declare_parameter("stepper_5_gear_ratio", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter("stepper_6_gear_ratio", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter("stepper_7_gear_ratio", rclcpp::PARAMETER_DOUBLE);
 	gear_ratio_1 = this->get_parameter("stepper_1_gear_ratio").as_double();
 	gear_ratio_2 = this->get_parameter("stepper_2_gear_ratio").as_double();
 	gear_ratio_3 = this->get_parameter("stepper_3_gear_ratio").as_double();
 	gear_ratio_4 = this->get_parameter("stepper_4_gear_ratio").as_double();
-	gear_ratio_5 = this->get_parameter("stepper_5_gear_ratio").as_double();
 	gear_ratio_6 = this->get_parameter("stepper_6_gear_ratio").as_double();
 	gear_ratio_7 = this->get_parameter("stepper_7_gear_ratio").as_double();
 	RCLCPP_INFO(rclcpp::get_logger("CanCommunication"),
-			"Gear ratios: (1: %1f, 2: %1f, 3: %1f, 4: %1f, 5: %1f, 6: %1f, 7: "
+			"Gear ratios: (1: %1f, 2: %1f, 3: %1f, 4: %1f, 6: %1f, 7: "
 			"%1f",
 			gear_ratio_1, gear_ratio_2, gear_ratio_3, gear_ratio_4,
-			gear_ratio_5, gear_ratio_6, gear_ratio_7);
+			gear_ratio_6, gear_ratio_7);
 
 	// Get home position from parameters
 	double home_position_1, home_position_2, home_position_3, home_position_4;
