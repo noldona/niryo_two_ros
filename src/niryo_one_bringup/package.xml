@@ -3,7 +3,7 @@
 <package format="3">
   <name>niryo_one_bringup</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Provides roslaunch scripts to start Niryo One packages and ros params</description>
   <maintainer email="julianagil@todo.todo">julianagil</maintainer>
   <license>GPL-3.0-only</license>
 
