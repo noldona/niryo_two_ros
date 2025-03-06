@@ -17,13 +17,11 @@ set(MCP_CAN_RPI_SOURCES
 add_library(mcp_can_rpi SHARED ${MCP_CAN_RPI_SOURCES} src/mcp_can_rpi.cpp)
 
 execute_process(COMMAND uname -m COMMAND tr -d '\n' OUTPUT_VARIABLE ARCHITECTURE)
-message(WARNING "Architecture: $${ARCHITECTURE}")
+message(WARNING "Architecture: ${ARCHITECTURE}")
 
 if(${ARCHITECTURE} MATCHES "aarch64")
   message(WARNING "writingPi library is required - arm processor")
-  target_link_libraries(dynamixel_sdk
-    -lwiringPi
-  )
+  ament_target_dependencies(${PROJECT_NAME} lwiringPi)
 else()
   message(WARNING "wiringPi library not required")
 endif()

@@ -32,9 +32,7 @@ message(WARNING "Architecture: ${ARCHITECTURE}")
 
 if(${ARCHITECTURE} MATCHES "aarch64")
   message(WARNING "writingPi library is required - arm processor")
-  target_link_libraries(dynamixel_sdk
-    -lwiringPi
-  )
+  ament_target_dependencies(${PROJECT_NAME} lwiringPi)
 else()
   message(WARNING "wiringPi library not required")
 endif()
