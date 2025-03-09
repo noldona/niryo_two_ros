@@ -40,7 +40,7 @@ int DxlCommunication::init(int hardware_version) {
 	this->declare_parameter("dxl_uart_device_name", rclcpp::PARAMETER_STRING);
 	this->declare_parameter("dxl_baudrate", rclcpp::PARAMETER_INTEGER);
 	this->declare_parameter(
-			"dxl_hardware_control_loo_frequency", rclcpp::PARAMETER_DOUBLE);
+			"dxl_hardware_control_loop_frequency", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter("dxl_hw_write_frequency", rclcpp::PARAMETER_DOUBLE);
 	this->declare_parameter(
 			"dxl_hw_data_read_frequency", rclcpp::PARAMETER_DOUBLE);
@@ -49,7 +49,7 @@ int DxlCommunication::init(int hardware_version) {
 	this->device_name = this->get_parameter("dxl_uart_device_name").as_string();
 	this->uart_baudrate = this->get_parameter("dxl_baudrate").as_int();
 	this->hw_control_loop_frequency =
-			this->get_parameter("dxl_hardware_control_loo_frequency")
+			this->get_parameter("dxl_hardware_control_loop_frequency")
 					.as_double();
 	this->hw_data_write_frequency =
 			this->get_parameter("dxl_hw_write_frequency").as_double();
@@ -92,7 +92,7 @@ int DxlCommunication::init(int hardware_version) {
 	std::vector<long int> required_dxl_ids =
 			this->get_parameter("dxl_required_motors").as_integer_array();
 	std::vector<long int> allowed_dxl_ids =
-			this->get_parameter("dxl_authorized_motores").as_integer_array();
+			this->get_parameter("dxl_authorized_motors").as_integer_array();
 
 	this->required_motors_ids.insert(this->required_motors_ids.end(),
 			required_dxl_ids.begin(), required_dxl_ids.end());
@@ -1193,7 +1193,7 @@ int DxlCommunication::scanAndCheck() {
 			this->debug_error_message = "Failed to scan Dynamixel bus.";
 		}
 		RCLCPP_WARN(this->get_logger(),
-				"Broadcast ping failed , result : %d (-3001: timeout, -3002: "
+				"Broadcast ping failed, result : %d (-3001: timeout, -3002: "
 				"corrupted packet)",
 				result);
 		return result;

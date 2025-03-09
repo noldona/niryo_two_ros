@@ -193,6 +193,8 @@ class CanCommunication: public rclcpp::Node {
 	int32_t rad_pos_to_steps(
 			double position_rad, double gear_ratio, double direction);
 	double steps_to_rad_pos(int32_t steps, double gear_ratio, double direction);
+
+	rclcpp::Clock clock = rclcpp::Clock();
 };
 
 #endif

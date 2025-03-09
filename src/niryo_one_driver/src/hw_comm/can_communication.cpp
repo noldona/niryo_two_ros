@@ -1477,7 +1477,7 @@ int CanCommunication::scanAndCheck() {
 		this->debug_error_message =
 				"Failed to scan motors, CAN us is too busy. Will retry...";
 		RCLCPP_WARN(rclcpp::get_logger("CanCommunication"),
-				"Failed to scan motors, CAN bus is too busy (counter max: d)",
+				"Failed to scan motors, CAN bus is too busy (counter max: %d)",
 				counter);
 		return CAN_SCAN_BUSY;
 	}
@@ -1492,12 +1492,15 @@ int CanCommunication::scanAndCheck() {
 	bool m6_ok = true;
 	bool m7_ok = true;
 
-	double time_begin_scan = time(NULL);
+	double time_begin_scan = clock.now().seconds();
 	double min_time_to_wait = 0.25;
 	double timeout = 0.5;
 
 	while (!m1_ok || !m2_ok || !m3_ok || !m4_ok || !m6_ok || !m7_ok ||
-			(time(NULL) - time_begin_scan < min_time_to_wait)) {
+			(clock.now().seconds() - time_begin_scan < min_time_to_wait)) {
+		RCLCPP_INFO(rclcpp::get_logger("CanCommunication"), 
+			"M1_OK : %d, M2_OK : %d, M3_OK : %d, M4_OK : %d, M6_OK : %d, M7_OK : %d, time: %2f",
+			m1_ok, m2_ok, m3_ok, m4_ok, m6_ok, m7_ok, time(NULL) - time_begin_scan);
 		rclcpp::sleep_for(std::chrono::milliseconds(1));
 
 		if (this->can->canReadData()) {

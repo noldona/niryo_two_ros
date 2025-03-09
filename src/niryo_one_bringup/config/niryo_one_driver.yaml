@@ -10,7 +10,7 @@ niryo_one_driver:
   ros__parameters:
     # Dynamixel bus
     dxl_baudrate: 1000000
-    dxl_uart_device_name: "/dev/serial0"
+    dxl_uart_device_name: "/dev/ttyAMA0"
 
     # CAN bus
     spi_channel: 0

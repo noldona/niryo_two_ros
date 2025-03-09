@@ -530,6 +530,7 @@ int Protocol2PacketHandler::broadcastPing(
 	txpacket[PKT_INSTRUCTION] = INST_PING;
 
 	result = txPacket(port, txpacket);
+	printf("[BroadcastPing] TxPacket result: %d", result);
 	if (result != COMM_SUCCESS) {
 		port->is_using_ = false;
 		return result;
@@ -547,10 +548,16 @@ int Protocol2PacketHandler::broadcastPing(
 
 	port->is_using_ = false;
 
-	if (rx_length == 0) return COMM_RX_TIMEOUT;
+	if (rx_length == 0) {
+		printf("[BroadcastPing] Empty RX");
+		return COMM_RX_TIMEOUT;
+	}
 
 	while (1) {
-		if (rx_length < STATUS_LENGTH) return COMM_RX_CORRUPT;
+		if (rx_length < STATUS_LENGTH) {
+			printf("[BroadcastPing] RX too short");
+			return COMM_RX_CORRUPT;
+		}
 
 		uint16_t idx = 0;
 
@@ -578,6 +585,7 @@ int Protocol2PacketHandler::broadcastPing(
 
 				if (rx_length == 0) return result;
 			} else {
+				printf("[BroadcastPing] Packet corrupt");
 				result = COMM_RX_CORRUPT;
 
 				// remove header (0xFF 0xFF 0xFD)

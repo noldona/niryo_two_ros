@@ -37,7 +37,8 @@ INT8U NiryoCanDriver::init() {
 	}
 
 	// set mode to normal
-	this->mcp_can->setMode(MCP_NORMAL);
+	result = this->mcp_can->setMode(MCP_NORMAL);
+	RCLCPP_INFO(rclcpp::get_logger("NiryoCanDriver"), "Result mode can : %d", result);
 
 	rclcpp::sleep_for(std::chrono::milliseconds(50));
 	return result;
