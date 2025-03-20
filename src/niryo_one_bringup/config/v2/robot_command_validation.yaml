@@ -5,7 +5,7 @@
 # (taken from urdf)
 #
 
-niryo_one_driver:
+/**:
     ros__parameters:
         joint_limits:
             j1:

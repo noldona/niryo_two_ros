@@ -13,6 +13,8 @@
   <test_depend>python3-pytest</test_depend>
 
   <exec_depend>niryo_one_driver</exec_depend>
+  <exec_depend>niryo_one_tools</exec_depend>
+  <exec_depend>niryo_one_description</exec_depend>
 
   <export>
     <build_type>ament_python</build_type>
