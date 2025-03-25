@@ -3,7 +3,7 @@
 	<xacro:macro name="niryo_one_ros2_control" params="name">
 		<ros2_control name="${name}" type="system">
 			<hardware>
-				<plugin>niryo_one_hardware/NiryoOneHardwareCan</plugin>
+				<plugin>niryo_one_hardware/NiryoOneHardware</plugin>
 				<param name="hardware_version">2</param>  <!-- /niryo_one/hardware_version -->
 				<param name="use_sim">false</param>  <!-- ~fake_communication -->
 

@@ -1,16 +1,9 @@
 <library path="niryo_one_hardware">
-	<class name="niryo_one_hardware/NiryoOneHardwareCan"
-			type="niryo_one_hardware::NiryoOneHardwareCan"
+	<class name="niryo_one_hardware/NiryoOneHardware"
+			type="niryo_one_hardware::NiryoOneHardware"
 			base_class_type="hardware_interface::SystemInterface">
 		<description>
-			Robot hardware plugin for Niryo One CAN stepper motors
-		</description>
-	</class>
-	<class name="niryo_one_hardware/NiryoOneHardwareDxl"
-			type="niryo_one_hardware::NiryoOneHardwareDxl"
-			base_class_type="hardware_interface::SystemInterface">
-		<description>
-			Robot hardware plugin for Niryo One DXL servos
+			Robot hardware plugin for Niryo One
 		</description>
 	</class>
 	<class name="niryo_one_hardware/NiryoOneController"
