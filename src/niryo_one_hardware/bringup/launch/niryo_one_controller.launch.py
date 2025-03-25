@@ -97,12 +97,19 @@ def generate_launch_description():
         )
     )
 
+    joint_state_publisher_node = Node(
+        package="joint_state_publisher_gui",
+        executable="joint_state_publisher_gui",
+        condition=IfCondition(gui),
+    )
+
     nodes = [
         control_node,
         robot_state_pub_node,
         robot_controller_spawner,
         delay_rviz_after_joint_state_broadcaster_spawner,
         delay_joint_state_broadcaster_spawner_after_robot_controller_spawner,
+        joint_state_publisher_node,
     ]
 
     return LaunchDescription(declared_arguments + nodes)
