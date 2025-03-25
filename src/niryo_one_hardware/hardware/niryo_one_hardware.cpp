@@ -29,12 +29,14 @@ namespace niryo_one_hardware {
 		}
 
 		// Get hardware parameters
+		RCLCPP_INFO(get_logger(), "Getting hardware parameters");
 		cfg_.hardware_version = stoi(info_.hardware_parameters
 						["hardware_version"]);  // /niryo_one/hardware_version
 		cfg_.use_sim = stob(
 				info_.hardware_parameters["use_sim"]);  // ~fake_communication
 
 		// Fake communication config
+		RCLCPP_INFO(get_logger(), "Getting Fake Communication parameters");
 		cfg_.fc_cfg.pos_0 = stod(info_.hardware_parameters
 						["stepper_1_home_position"]);  // /niryo_one/motors/stepper_1_home_position
 		cfg_.fc_cfg.pos_1 = stod(info_.hardware_parameters
@@ -45,6 +47,7 @@ namespace niryo_one_hardware {
 						["stepper_4_home_position"]);  // /niryo_one/motors/stepper_4_home_position
 
 		// Niryo One Communication config
+		RCLCPP_INFO(get_logger(), "Getting Niryo One Communication parameters");
 		cfg_.noc_cfg.can_enabled =
 				stob(info_.hardware_parameters["can_enabled"]);  // ~can_enabled
 		cfg_.noc_cfg.dxl_enabled =
@@ -57,6 +60,7 @@ namespace niryo_one_hardware {
 						["reboot"]);  // /niryo_one/reboot_when_auto_change_version
 
 		// Can Communication config
+		RCLCPP_INFO(get_logger(), "Getting Can Communication parameters");
 		cfg_.noc_cfg.can_cfg.spi_channel =
 				stoi(info_.hardware_parameters["spi_channel"]);  // ~spi_channel
 		cfg_.noc_cfg.can_cfg.spi_baudrate = stoi(
@@ -125,14 +129,13 @@ namespace niryo_one_hardware {
 						["max_effort_3"]);  // /niryo_one/motors/stepper_3_max_effort
 		cfg_.noc_cfg.can_cfg.max_effort_4 = stoi(info_.hardware_parameters
 						["max_effort_4"]);  // /niryo_one/motors/stepper_4_max_effort
-		cfg_.noc_cfg.can_cfg.max_effort_5 = stoi(info_.hardware_parameters
-						["max_effort_5"]);  // /niryo_one/motors/stepper_5_max_effort
 		cfg_.noc_cfg.can_cfg.max_effort_6 = stoi(info_.hardware_parameters
 						["max_effort_6"]);  // /niryo_one/motors/stepper_6_max_effort
 		cfg_.noc_cfg.can_cfg.max_effort_7 = stoi(info_.hardware_parameters
 						["max_effort_7"]);  // /niryo_one/motors/stepper_7_max_effort
 
 		// Dxl Communication config
+		RCLCPP_INFO(get_logger(), "Getting Dxl Communication parameters");
 		cfg_.noc_cfg.dxl_cfg.device_name =
 				info_.hardware_parameters
 						["device_name"];  // ~dxl_uart_device_name

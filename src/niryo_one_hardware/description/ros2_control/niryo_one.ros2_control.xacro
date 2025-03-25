@@ -25,7 +25,7 @@
 				<param name="gpio_can_interrupt">25</param>  <!-- ~gpio_can_interrupt -->
 				<param name="can_hw_control_loop_frequency">1500.0</param>  <!-- ~can_hardware_control_loop_frequency -->
 				<param name="can_hw_write_frequency">50.0</param>  <!-- ~can_hardware_write_frequency -->
-				<param name="can_hw_check_connection_frequncy">3.0</param>  <!-- ~can_hardware_check_connection_frequency -->
+				<param name="can_hw_check_connection_frequency">3.0</param>  <!-- ~can_hardware_check_connection_frequency -->
 				<param name="calibration_timeout">40</param>  <!-- ~calibration_timeout -->
 				<param name="required_steppers_ids">1,2,3</param>  <!-- /niryo_one/motors/can_required_motors -->
 				<param name="allowed_steppers_ids">1,2,3,6,7</param>  <!-- /niryo_one/motors/can_authorized_motors -->
