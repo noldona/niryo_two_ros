@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:macro name="niryo_one_ros2_control" params="name">
+		<ros2_control name="${name}" type="system">
+			<hardware>
+				<plugin>niryo_one_hardware/NiryoOneHardwareCan</plugin>
+				<param name="hardware_version">2</param>  <!-- /niryo_one/hardware_version -->
+				<param name="use_sim">false</param>  <!-- ~fake_communication -->
+
+				<!-- Fake Communication -->
+				<param name="stepper_1_home_position">0.0</param>  <!-- /niryo_one/motors/stepper_1_home_position -->
+				<param name="stepper_2_home_position">0.64</param>  <!-- /niryo_one/motors/stepper_2_home_position -->
+				<param name="stepper_3_home_position">-1.39</param>  <!-- /niryo_one/motors/stepper_3_home_position -->
+				<param name="stepper_4_home_position">0.0</param>  <!-- /niryo_one/motors/stepper_4_home_position -->
+
+				<!-- Niryo One Communication -->
+				<param name="can_enabled">true</param>  <!-- ~can_enabled -->
+				<param name="dxl_enabled">true</param>  <!-- ~dxl_enabled -->
+				<param name="niryo_one_hw_check_connection_frequency">2.0</param>  <!-- niryo_one_hw_check_connection_frequency -->
+				<param name="reboot">true</param>  <!-- /niryo_one/reboot_when_auto_change_version -->
+
+				<!-- Can Communication -->
+				<param name="spi_channel">0</param>  <!-- ~spi_channel -->
+				<param name="spi_baudrate">1000000</param>  <!-- ~spi_baudrate -->
+				<param name="gpio_can_interrupt">25</param>  <!-- ~gpio_can_interrupt -->
+				<param name="can_hw_control_loop_frequency">1500.0</param>  <!-- ~can_hardware_control_loop_frequency -->
+				<param name="can_hw_write_frequency">50.0</param>  <!-- ~can_hardware_write_frequency -->
+				<param name="can_hw_check_connection_frequncy">3.0</param>  <!-- ~can_hardware_check_connection_frequency -->
+				<param name="calibration_timeout">40</param>  <!-- ~calibration_timeout -->
+				<param name="required_steppers_ids">1,2,3</param>  <!-- /niryo_one/motors/can_required_motors -->
+				<param name="allowed_steppers_ids">1,2,3,6,7</param>  <!-- /niryo_one/motors/can_authorized_motors -->
+				<param name="gear_ratio_1">6.0625</param>  <!-- /niryo_one/motors/stepper_1_gear_ratio -->
+				<param name="gear_ratio_2">8.3125</param>  <!-- /niryo_one/motors/stepper_2_gear_ratio -->
+				<param name="gear_ratio_3">7.875</param>  <!-- /niryo_one/motors/stepper_3_gear_ratio -->
+				<param name="gear_ratio_4">5.0</param>  <!-- /niryo_one/motors/stepper_4_gear_ratio -->
+				<param name="gear_ratio_6">5.0</param>  <!-- /niryo_one/motors/stepper_6_gear_ratio -->
+				<param name="gear_ratio_7">5.0</param>  <!-- /niryo_one/motors/stepper_7_gear_ratio -->
+				<param name="home_position_1">0.0</param>  <!-- /niryo_one/motors/stepper_1_home_position -->
+				<param name="home_position_2">0.640187</param>  <!-- /niryo_one/motors/stepper_2_home_position -->
+				<param name="home_position_3">-1.397485</param>  <!-- /niryo_one/motors/stepper_3_home_position -->
+				<param name="home_position_4">0.0</param>  <!-- /niryo_one/motors/stepper_4_home_position -->
+				<param name="offset_position_1">3.05433</param>  <!-- /niryo_one/motors/stepper_1_offset_position -->
+				<param name="offset_position_2">0.640187</param>  <!-- /niryo_one/motors/stepper_2_offset_position -->
+				<param name="offset_position_3">-1.397485</param>  <!-- /niryo_one/motors/stepper_3_offset_position -->
+				<param name="offset_position_4">2.791</param>  <!-- /niryo_one/motors/stepper_4_offset_position -->
+				<param name="direction_1">-1.0</param>  <!-- /niryo_one/motors/stepper_1_direction -->
+				<param name="direction_2">-1.0</param>  <!-- /niryo_one/motors/stepper_2_direction -->
+				<param name="direction_3">1.0</param>  <!-- /niryo_one/motors/stepper_3_direction -->
+				<param name="direction_4">-1.0</param>  <!-- /niryo_one/motors/stepper_4_direction -->
+				<param name="max_effort_1">90</param>  <!-- /niryo_one/motors/stepper_1_max_effort -->
+				<param name="max_effort_2">130</param>  <!-- /niryo_one/motors/stepper_2_max_effort -->
+				<param name="max_effort_3">120</param>  <!-- /niryo_one/motors/stepper_3_max_effort -->
+				<param name="max_effort_4">90</param>  <!-- /niryo_one/motors/stepper_4_max_effort -->
+				<param name="max_effort_6">90</param>  <!-- /niryo_one/motors/stepper_6_max_effort -->
+				<param name="max_effort_7">90</param>  <!-- /niryo_one/motors/stepper_7_max_effort -->
+
+				<!-- Dxl Communication -->
+				<param name="device_name">/dev/ttyAMA0</param>  <!-- ~dxl_uart_device_name -->
+				<param name="uart_baudrate">1000000</param>  <!-- ~dxl_baudrate -->
+				<param name="dxl_hw_control_loop_frequency">100.0</param>  <!-- ~dxl_hardware_control_loop_frequency -->
+				<param name="dxl_hw_write_frequency">50.0</param>  <!-- ~dxl_hw_write_frequency -->
+				<param name="dxl_hw_data_read_frequency">15.0</param>  <!-- ~dxl_hw_data_read_frequency -->
+				<param name="dxl_hw_status_read_frequency">0.5</param>  <!-- ~dxl_hw_status_read_frequency -->
+				<param name="required_dxl_ids">2,3,6</param>  <!-- /niryo_one/motors/dxl_required_motors -->
+				<param name="allowed_dxl_ids">2,3,6,11,12,13,31</param>  <!-- /niryo_one/motors/dxl_authorized_motors -->
+
+			</hardware>
+
+			<joint name="joint_1">
+				<command_interface name="position">
+					<param name="min">${-2*pi}</param>
+					<param name="max">${2*pi}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="min">-3.15</param>
+					<param name="max">3.15</param>
+				</command_interface>
+				<state_interface name="position">
+					<param name="initial_value">0.0</param>
+				</state_interface>
+				<state_interface name="velocity" />
+			</joint>
+
+			<joint name="joint_2">
+				<command_interface name="position">
+					<param name="min">${-2*pi}</param>
+					<param name="max">${2*pi}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="min">-3.15</param>
+					<param name="max">3.15</param>
+				</command_interface>
+				<state_interface name="position">
+					<param name="initial_value">0.64</param>
+				</state_interface>
+				<state_interface name="velocity" />
+			</joint>
+
+			<joint name="joint_3">
+				<command_interface name="position">
+					<param name="min">${-pi}</param>
+					<param name="max">${pi}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="min">-3.15</param>
+					<param name="max">3.15</param>
+				</command_interface>
+				<state_interface name="position">
+					<param name="initial_value">-1.39</param>
+				</state_interface>
+				<state_interface name="velocity" />
+			</joint>
+
+			<joint name="joint_4">
+				<command_interface name="position">
+					<param name="min">${-2*pi}</param>
+					<param name="max">${2*pi}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="min">-3.2</param>
+					<param name="max">3.2</param>
+				</command_interface>
+				<state_interface name="position">
+					<param name="initial_value">0.0</param>
+				</state_interface>
+				<state_interface name="velocity" />
+			</joint>
+
+			<joint name="joint_5">
+				<command_interface name="position">
+					<param name="min">${-2*pi}</param>
+					<param name="max">${2*pi}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="min">-3.2</param>
+					<param name="max">3.2</param>
+				</command_interface>
+				<state_interface name="position">
+					<param name="initial_value">0.0</param>
+				</state_interface>
+				<state_interface name="velocity" />
+			</joint>
+
+			<joint name="joint_6">
+				<command_interface name="position">
+					<param name="min">${-2*pi}</param>
+					<param name="max">${2*pi}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="min">-3.2</param>
+					<param name="max">3.2</param>
+				</command_interface>
+				<state_interface name="position">
+					<param name="initial_value">0.0</param>
+				</state_interface>
+				<state_interface name="velocity" />
+			</joint>
+		</ros2_control>
+	</xacro:macro>
+</robot>

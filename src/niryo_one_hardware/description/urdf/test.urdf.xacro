@@ -1,25 +1,9 @@
 <?xml version="1.0"?>
-
-<!--
-	niryo_one.urdf.xacro
-	Copyright (C) 2017 Niryo
-	All rights reserved.
-
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="niryo_one">
+	<!-- Import niryo_one macro -->
+
+	<!-- create link fixed to the "world" -->
+	<link name="world" />
 
 	<!-- Properties -->
 
@@ -51,127 +35,194 @@
 
 
 	<!-- Links -->
-
-	<link name="world"/>
-
 	<link name="base_link">
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/collada/base_link.dae" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/collada/base_link.dae"/>
 			</geometry>
 		</visual>
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/stl/base_link.stl" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/stl/base_link.stl"/>
 			</geometry>
 		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
 	</link>
 
-	<link name="shoulder_link">
+
+	<!-- <xacro:create_link
+		link_name="shoulder_link"
+		xyz_offset="0 0 0"
+		rpy_offset="0 0 0"
+		mesh_package="niryo_one_description"
+		mesh_name="shoulder_link"
+	/>
+	<link name="base_link">
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/collada/shoulder_link.dae" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/collada/base_link.dae"/>
 			</geometry>
 		</visual>
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/stl/shoulder_link.stl" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/stl/base_link.stl"/>
 			</geometry>
 		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
 	</link>
 
-	<link name="arm_link">
+
+	<xacro:create_link
+		link_name="arm_link"
+		xyz_offset="0 0 0"
+		rpy_offset="0 0 0"
+		mesh_package="niryo_one_description"
+		mesh_name="arm_link"
+	/>
+	<link name="base_link">
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/collada/arm_link.dae" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/collada/base_link.dae"/>
 			</geometry>
 		</visual>
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/stl/arm_link.stl" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/stl/base_link.stl"/>
 			</geometry>
 		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
 	</link>
 
-	<link name="elbow_link">
+	<xacro:create_link
+		link_name="elbow_link"
+		xyz_offset="0 0 0"
+		rpy_offset="0 0 0"
+		mesh_package="niryo_one_description"
+		mesh_name="elbow_link"
+	/>
+	<link name="base_link">
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/collada/elbow_link.dae" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/collada/base_link.dae"/>
 			</geometry>
 		</visual>
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/stl/elbow_link.stl" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/stl/base_link.stl"/>
 			</geometry>
 		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
 	</link>
 
-	<link name="forearm_link">
+	<xacro:create_link
+		link_name="forearm_link"
+		xyz_offset="0 0 0"
+		rpy_offset="0 0 0"
+		mesh_package="niryo_one_description"
+		mesh_name="forearm_link"
+	/>
+	<link name="base_link">
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/collada/forearm_link.dae" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/collada/base_link.dae"/>
 			</geometry>
 		</visual>
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/stl/forearm_link.stl" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/stl/base_link.stl"/>
 			</geometry>
 		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
 	</link>
 
-	<link name="wrist_link">
+	<xacro:create_link
+		link_name="wrist_link"
+		xyz_offset="0 0 0"
+		rpy_offset="0 0 0"
+		mesh_package="niryo_one_description"
+		mesh_name="wrist_link"
+	/>
+	<link name="base_link">
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/collada/wrist_link.dae" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/collada/base_link.dae"/>
 			</geometry>
 		</visual>
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/stl/wrist_link.stl" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/stl/base_link.stl"/>
 			</geometry>
 		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
 	</link>
 
-	<link name="hand_link">
+	<xacro:create_link
+		link_name="hand_link"
+		xyz_offset="0 0 0"
+		rpy_offset="0 0 0"
+		mesh_package="niryo_one_description"
+		mesh_name="hand_link"
+	/>
+	<link name="base_link">
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/collada/hand_link.dae" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/collada/base_link.dae"/>
 			</geometry>
 		</visual>
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://niryo_one_description/meshes/v2/stl/hand_link.stl" />
+		  		<mesh filename="package://niryo_one_description/meshes/v2/stl/base_link.stl"/>
 			</geometry>
 		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
 	</link>
 
-	<link name="tool_link">
-	</link>
-
+	<link name="tool_link" /> -->
 
 	<!--Joints -->
-
-	<joint name="joint_world" type="fixed">
+	<joint name="base_joint" type="fixed">
 		<parent link="world" />
 		<child link="base_link" />
 		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
 	</joint>
 
-	<joint name="joint_1" type="revolute">
+	<!-- <joint name="joint_1" type="revolute">
 		<parent link="base_link" />
 		<child link="shoulder_link" />
 		<origin xyz="0 0 ${distance_origin_shoulder_z}" rpy="0 0 0" />
@@ -223,12 +274,9 @@
 		<parent link="hand_link" />
 		<child link="tool_link" />
 		<origin xyz="0 0 ${distance_hand_tool}" rpy="${-PI/2} ${-PI/2} 0" />
-	</joint>
+	</joint> -->
 
-	<ros2_control name="niryo_one_ros2_control" type="system">
-		<hardware>
-			<plugin>niryo_one_driver/niryo_one_hardware_interface/NiryoOneHardwareInterface</plugin>
-		</hardware>
-	</ros2_control>
-
+	<!-- Import niryo_one_ros2_control description -->
+	<!-- <xacro:include filename="$(find niryo_one_hardware)/ros2_control/niryo_one.ros2_control.xacro" />
+	<xacro:niryo_one_ros2_control name="niryo_one" /> -->
 </robot>

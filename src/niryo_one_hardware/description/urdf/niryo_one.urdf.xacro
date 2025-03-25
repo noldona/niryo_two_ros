@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="niryo_one">
+	<!-- Import niryo_one macro -->
+	<!-- <xacro:include filename="$(find niryo_one_description)/urdf/v2/niryo_one.urdf.xacro" /> -->
+	<xacro:include filename="$(find niryo_one_description)/urdf/v2/niryo_one_description.urdf.xacro" />
+
+	<!-- create link fixed to the "world" -->
+	<link name="world" />
+
+	<xacro:niryo_one_description />
+
+	<!-- Import niryo_one_ros2_control description -->
+	<xacro:include filename="$(find niryo_one_hardware)/ros2_control/niryo_one.ros2_control.xacro" />
+	<xacro:niryo_one_ros2_control name="niryo_one" />
+</robot>
