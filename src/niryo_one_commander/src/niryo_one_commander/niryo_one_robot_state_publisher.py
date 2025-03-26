@@ -17,10 +17,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import rospy
-import tf
+import rclpy
+from rclpy.node import Node
+import tf2_py as tf
+import tf2_ros
+import geometry_msgs
 from niryo_one_commander.moveit_utils import get_rpy_from_quaternion
-from tf.transformations import quaternion_from_euler
+from tf_transformations import quaternion_from_euler
 
 # from std_msgs.msg import Float64
 from niryo_one_msgs.msg import RobotState
@@ -28,22 +31,23 @@ from geometry_msgs.msg import Quaternion
 
 PI = 3.14159
 
+class NiryoRobotStatePublisher(Node):
 
-class NiryoRobotStatePublisher:
-
-    def __init__(self):
+    def __init__(self, **kwargs):
+        super().__init__('niryo_one_robot_state_publisher', **kwargs)
 
         # Tf listener (position + rpy) of end effector tool
         self.position = [0, 0, 0]
         self.rpy = [0, 0, 0]
-        self.tf_listener = tf.TransformListener()
+        self.buffer = tf2_ros.Buffer()
+        self.tf_listener = tf2_ros.TransformListener(self.buffer,self)
 
         # State publisher
-        self.niryo_one_robot_state_publisher = rospy.Publisher(
-            '/niryo_one/robot_state', RobotState, queue_size=5)
+        self.niryo_one_robot_state_publisher = self.create_publisher(
+            RobotState, '/niryo_one/robot_state', queue_size=5)
 
         # Get params from rosparams
-        rate_tf_listener = rospy.get_param("/niryo_one/robot_state/rate_tf_listener")
+        rate_tf_listener = self.get_parameter("/niryo_one/robot_state/rate_tf_listener").get_parameter_value().integer_value
         rate_publish_state = rospy.get_param("/niryo_one/robot_state/rate_publish_state")
 
         rospy.Timer(rospy.Duration(1.0 / rate_tf_listener), self.get_robot_pose)

@@ -17,14 +17,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import rospy
+import rclpy
+from rclpy.node import Node
 import threading
 
 from actionlib_msgs.msg import GoalStatus
 
 from trajectory_msgs.msg import JointTrajectory
-from control_msgs.msg import FollowJointTrajectoryActionGoal
-from control_msgs.msg import FollowJointTrajectoryActionResult
+from control_msgs.action import FollowJointTrajectory
 
 # from niryo_one_commander.move_group_arm import MoveGroupArm
 from niryo_one_commander.robot_commander_exception import RobotCommanderException
@@ -33,15 +33,18 @@ from niryo_one_commander.command_status import CommandStatus
 TrajectoryTimeOutMin = 3
 
 
-class ArmCommander:
+class ArmCommander(Node):
 
-    def __init__(self, move_group_arm):
+    def __init__(self, move_group_arm, **kwargs):
+        super().__init__('arm_commander', **kwargs)
+
         self.move_group_arm = move_group_arm
         self.traj_finished_event = threading.Event()
         self.current_goal_id = None
         self.current_goal_result = GoalStatus.LOST
-        rospy.Subscriber('/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/goal',
-                         FollowJointTrajectoryActionGoal, self.callback_current_goal)
+        self.create_subscription(FollowJointTrajectoryActionGoal,
+                        '/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/goal',
+                        self.callback_current_goal)
 
         rospy.Subscriber('/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/result',
                          FollowJointTrajectoryActionResult, self.callback_goal_result)

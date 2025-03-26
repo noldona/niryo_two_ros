@@ -18,31 +18,42 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import rospy
+import threading
+import rclpy
+from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 from position_manager import PositionManager
 from trajectory_manager import TrajectoryManager
 from niryo_one_robot_state_publisher import NiryoRobotStatePublisher
 from robot_commander import RobotCommander
 
+class NiryoOneCommanderNode(Node):
 
-class NiryoOneCommanderNode:
+    def __init__(self, **kwargs):
+        super().__init__('niryo_one_commander', **kwargs)
 
-    def __init__(self):
         # Publish robot state (position, orientation, tool)
         self.niryo_one_robot_state_publisher = NiryoRobotStatePublisher()
 
         # Position Manager
-        positions_dir = rospy.get_param("~positions_dir")
+        positions_dir = self.declare_parameter("positions_dir")
         self.pos_manager = PositionManager(positions_dir)
         # trajectory_manager
-        trajectories_dir = rospy.get_param("~trajectories_dir")
+        trajectories_dir = self.declare_parameter("trajectories_dir")
         self.traj_manager = TrajectoryManager(trajectories_dir)
         # robot commander
         self.robot_commander = RobotCommander(self.pos_manager, self.traj_manager)
         self.robot_commander.start()
 
+def main():
+    rclpy.init()
+
+    try:
+        rclpy.spin(NiryoOneCommanderNode())
+    except (ExternalShutdownException, KeyboardInterrupt):
+        pass
+    finally:
+        rclpy.try_shutdown()
 
 if __name__ == '__main__':
-    rospy.init_node('niryo_one_commander')
-    niryo_one_commander_node = NiryoOneCommanderNode()
-    rospy.spin()
+    main()
