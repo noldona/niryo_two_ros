@@ -274,10 +274,13 @@ void CanCommunication::stopHardwareControlLoop() {
 	RCLCPP_INFO(rclcpp::get_logger("Can Communication"),
 			"CanComm : Stop hardware control loop");
 	for (int i = 0; i < motors.size(); i++) {
+		RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Resetting state, motor %d", i);
 		motors.at(i)->resetState();
 	}
 	m6.resetState();
+	RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Resetting state, motor 6");
 	m7.resetState();
+	RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Resetting state, motor 7");
 	hw_control_loop_keep_alive = false;
 }
 
@@ -1317,6 +1320,7 @@ bool CanCommunication::isConnectionOk() {
  */
 int CanCommunication::scanAndCheck() {
 	int counter = 0;
+	RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Scanning motors...");
 
 	while (hw_is_busy && counter < 100) {
 		rclcpp::sleep_for(std::chrono::microseconds(TIME_TO_WAIT_IF_BUSY));
@@ -1346,11 +1350,15 @@ int CanCommunication::scanAndCheck() {
 	double min_time_to_wait = 0.25;
 	double timeout = 0.5;
 
+	RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Checking motors...");
+
 	while (!m1_ok || !m2_ok || !m3_ok || !m4_ok || !m6_ok || !m7_ok ||
 			(clock.now().seconds() - time_begin_scan < min_time_to_wait)) {
 		rclcpp::sleep_for(std::chrono::milliseconds(1));  // check at 1000 Hz
+		RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "M1: %d, M2: %d, M3: %d, M4: %d, M6: %d, M7: %d", m1_ok, m2_ok, m3_ok, m4_ok, m6_ok, m7_ok);
 
 		if (can->canReadData()) {
+			RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Reading data...");
 			long unsigned int rxId;
 			unsigned char len;
 			unsigned char rxBuf[8];
@@ -1379,6 +1387,7 @@ int CanCommunication::scanAndCheck() {
 				return CAN_SCAN_NOT_ALLOWED;
 			}
 		}
+		RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Motors Checked");
 
 		if (clock.now().seconds() - time_begin_scan > timeout) {
 			RCLCPP_ERROR(rclcpp::get_logger("Can Communication"),
@@ -1409,7 +1418,7 @@ int CanCommunication::scanAndCheck() {
 		}
 	}
 
-	//RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "CAN Connection ok");
+	RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "CAN Connection ok");
 	hw_is_busy = false;
 	is_can_connection_ok = true;
 	debug_error_message = "";

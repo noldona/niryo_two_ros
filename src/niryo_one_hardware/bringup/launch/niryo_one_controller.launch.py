@@ -18,8 +18,16 @@ def generate_launch_description():
             description="Start Rviz2 automatically with this launch file.",
         )
     )
+    gui = LaunchConfiguration("gui")
 
     # Get URDF via xacro
+    params_path = PathJoinSubstitution(
+        [
+            FindPackageShare("niryo_one_hardware"),
+            "config",
+            "niryo_one_hardware_params.yaml",
+        ]
+    )
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -28,8 +36,11 @@ def generate_launch_description():
                 [
                     FindPackageShare("niryo_one_hardware"),
                     "urdf",
-                    "niryo_one.urdf.xacro"]
+                    "niryo_one.urdf.xacro",
+                ],
             ),
+            " params_path:=",
+            params_path
         ]
     )
     robot_description = {"robot_description": robot_description_content}
@@ -51,15 +62,30 @@ def generate_launch_description():
         executable="ros2_control_node",
         parameters=[robot_controllers],
         output="both",
+        prefix=['gdb -ex run --args'],
     )
     robot_state_pub_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
         output="both",
         parameters=[robot_description],
+        prefix=['gdb -ex run --args'],
     )
 
-    gui = LaunchConfiguration("gui")
+    joint_state_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_state_broadcaster"],
+        prefix=['gdb -ex run --args'],
+    )
+
+    robot_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["niryo_one_controller", "--param-file", robot_controllers],
+        prefix=['gdb -ex run --args'],
+    )
+
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
@@ -67,18 +93,6 @@ def generate_launch_description():
         output="log",
         arguments=["-d", rviz_config_file],
         condition=IfCondition(gui),
-    )
-
-    joint_state_broadcaster_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_state_broadcaster"],
-    )
-
-    robot_controller_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["niryo_one_controller", "--param-file", robot_controllers],
     )
 
     # Delay rviz start after `joint_state_broadcaster`
