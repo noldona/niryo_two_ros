@@ -100,7 +100,6 @@ bool MCP_CAN::setupSpi() {
 *********************************************************************************************************/
 bool MCP_CAN::canReadData() {
 #ifdef __aarch64__
-	printf("Reading Data");
 	return !digitalRead(gpio_can_interrupt);
 #else
 	return false;

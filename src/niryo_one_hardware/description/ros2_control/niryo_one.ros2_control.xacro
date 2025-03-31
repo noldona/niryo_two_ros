@@ -160,6 +160,25 @@
 				</state_interface>
 				<state_interface name="velocity" />
 			</joint>
+
+			<gpio name="hardware">
+				<command_interface name="test_motors" />
+				<command_interface name="calibrate_motors" />
+				<command_interface name="request_new_calibration" />
+				<command_interface name="activate_learning_mode" />
+				<command_interface name="activate_leds" />
+				<command_interface name="ping_and_set_dxl_tool" />
+				<command_interface name="ping_and_set_conveyor" />
+				<command_interface name="control_conveyor" />
+				<command_interface name="update_id_conveyor" />
+				<command_interface name="open_gripper" />
+				<command_interface name="close_gripper" />
+				<command_interface name="pull_air_vacuum_pump" />
+				<command_interface name="push_air_vacuum_pump" />
+				<command_interface name="change_hardware_version" />
+				<command_interface name="send_custom_dxl_value" />
+				<command_interface name="reboot_motors" />
+			</gpio>
 		</ros2_control>
 	</xacro:macro>
 </robot>

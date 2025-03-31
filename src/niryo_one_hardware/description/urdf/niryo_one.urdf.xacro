@@ -4,9 +4,6 @@
 	<!-- <xacro:include filename="$(find niryo_one_description)/urdf/v2/niryo_one.urdf.xacro" /> -->
 	<xacro:include filename="$(find niryo_one_description)/urdf/v2/niryo_one_description.urdf.xacro" />
 
-	<!-- create link fixed to the "world" -->
-	<link name="world" />
-
 	<xacro:niryo_one_description />
 
 	<!-- Import niryo_one_ros2_control description -->

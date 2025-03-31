@@ -34,6 +34,8 @@
 
 
 		<!-- Links -->
+		<link name="world" />
+
 		<xacro:create_link
 			link_name="base_link"
 			xyz_offset="0 0 0"

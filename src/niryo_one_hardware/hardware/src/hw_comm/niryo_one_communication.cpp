@@ -211,6 +211,7 @@ int NiryoOneCommunication::moveConveyor(uint8_t id, bool activate,
 	message = "Can problem";
 	return CONVEYOR_CONTROL_ERROR;
 }
+
 int NiryoOneCommunication::updateIdConveyor(
 		uint8_t old_id, uint8_t new_id, std::string &message) {
 	if (can_enabled) {
@@ -235,6 +236,7 @@ void NiryoOneCommunication::getConveyorFeedBack(uint8_t conveyor_id,
 				conveyor_id, connection_state, running, speed, direction);
 	}
 }
+
 void NiryoOneCommunication::checkHardwareVersionFromDxlMotors() {
 	// Check if hardware_version is compatible
 	// The purpose here is retro-compatibility with version 1.

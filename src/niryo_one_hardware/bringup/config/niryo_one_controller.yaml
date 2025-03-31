@@ -24,3 +24,23 @@ niryo_one_controller:
     state_interfaces:
       - position
       - velocity
+
+    gpios:
+      - hardware
+    gpio_interfaces:
+      - test_motors
+      - calibrate_motors
+      - request_new_calibration
+      - activate_learning_mode
+      - activate_leds
+      - ping_and_set_dxl_tool
+      - ping_and_set_conveyor
+      - control_conveyor
+      - update_id_conveyor
+      - open_gripper
+      - close_gripper
+      - pull_air_vacuum_pump
+      - push_air_vacuum_pump
+      - change_hardware_version
+      - send_custom_dxl_value
+      - reboot_motors

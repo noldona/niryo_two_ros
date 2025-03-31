@@ -45,9 +45,9 @@ int CanCommunication::init(int hardware_version, CanCommunicationConfig cfg) {
 	gpio_can_interrupt = cfg.gpio_can_interrupt;
 
 	// set frequencies for hw control loop
-	this->hw_control_loop_frequency = hw_control_loop_frequency;
-	this->hw_write_frequency = hw_write_frequency;
-	this->hw_check_connection_frequency = hw_check_connection_frequency;
+	hw_control_loop_frequency = cfg.hw_control_loop_frequency;
+	hw_write_frequency = cfg.hw_write_frequency;
+	hw_check_connection_frequency = cfg.hw_check_connection_frequency;
 
 	RCLCPP_INFO(rclcpp::get_logger("Can Communication"),
 			"Start CAN communication (%lf Hz)", hw_control_loop_frequency);
@@ -274,13 +274,16 @@ void CanCommunication::stopHardwareControlLoop() {
 	RCLCPP_INFO(rclcpp::get_logger("Can Communication"),
 			"CanComm : Stop hardware control loop");
 	for (int i = 0; i < motors.size(); i++) {
-		RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Resetting state, motor %d", i);
+		RCLCPP_INFO(rclcpp::get_logger("Can Communication"),
+				"Resetting state, motor %d", i);
 		motors.at(i)->resetState();
 	}
 	m6.resetState();
-	RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Resetting state, motor 6");
+	RCLCPP_INFO(rclcpp::get_logger("Can Communication"),
+			"Resetting state, motor 6");
 	m7.resetState();
-	RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Resetting state, motor 7");
+	RCLCPP_INFO(rclcpp::get_logger("Can Communication"),
+			"Resetting state, motor 7");
 	hw_control_loop_keep_alive = false;
 }
 
@@ -1355,10 +1358,13 @@ int CanCommunication::scanAndCheck() {
 	while (!m1_ok || !m2_ok || !m3_ok || !m4_ok || !m6_ok || !m7_ok ||
 			(clock.now().seconds() - time_begin_scan < min_time_to_wait)) {
 		rclcpp::sleep_for(std::chrono::milliseconds(1));  // check at 1000 Hz
-		RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "M1: %d, M2: %d, M3: %d, M4: %d, M6: %d, M7: %d", m1_ok, m2_ok, m3_ok, m4_ok, m6_ok, m7_ok);
+		RCLCPP_INFO(rclcpp::get_logger("Can Communication"),
+				"M1: %d, M2: %d, M3: %d, M4: %d, M6: %d, M7: %d", m1_ok, m2_ok,
+				m3_ok, m4_ok, m6_ok, m7_ok);
 
 		if (can->canReadData()) {
-			RCLCPP_INFO(rclcpp::get_logger("Can Communication"), "Reading data...");
+			RCLCPP_INFO(
+					rclcpp::get_logger("Can Communication"), "Reading data...");
 			long unsigned int rxId;
 			unsigned char len;
 			unsigned char rxBuf[8];

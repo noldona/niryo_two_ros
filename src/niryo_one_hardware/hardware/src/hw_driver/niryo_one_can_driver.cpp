@@ -2,10 +2,13 @@
 
 NiryoCanDriver::NiryoCanDriver(
 		int spi_channel, int spi_baudrate, INT8U gpio_can_interrupt) {
+	RCLCPP_INFO(rclcpp::get_logger("Niryo One Driver"),
+			"Setting up CAN connection");
 	mcp_can.reset(new MCP_CAN(spi_channel, spi_baudrate, gpio_can_interrupt));
 }
 
 bool NiryoCanDriver::setupInterruptGpio() {
+	RCLCPP_INFO(rclcpp::get_logger("Niryo One Driver"), "Setting up CAN GPIO");
 	if (!mcp_can->setupInterruptGpio()) {
 		printf("Failed to start gpio");
 		return CAN_GPIO_FAILINIT;
@@ -14,6 +17,7 @@ bool NiryoCanDriver::setupInterruptGpio() {
 }
 
 bool NiryoCanDriver::setupSpi() {
+	RCLCPP_INFO(rclcpp::get_logger("Niryo One Driver"), "Setting up SPI");
 	if (!mcp_can->setupSpi()) {
 		printf("Failed to start spi");
 		return CAN_SPI_FAILINIT;

@@ -181,6 +181,7 @@ namespace niryo_one_hardware {
 		// for (const auto &[name, descr] : joint_command_interfaces_) {
 		// 	set_command(name, 0.0);
 		// }
+		comm_->init();
 
 		RCLCPP_INFO(get_logger(), "Successfully configured!");
 
@@ -240,6 +241,10 @@ namespace niryo_one_hardware {
 
 	return_type NiryoOneHardware::read(
 			const rclcpp::Time & /*time*/, const rclcpp::Duration &period) {
+		double pos_to_read[6] = {0.0};
+
+		comm_->getCurrentPosition(pos_to_read);
+
 		for (std::size_t i = 0; i < info_.joints.size(); ++i) {
 			const auto name_vel = info_.joints[i].name + "/" +
 					hardware_interface::HW_IF_VELOCITY;
@@ -247,10 +252,17 @@ namespace niryo_one_hardware {
 					hardware_interface::HW_IF_POSITION;
 
 			// If simulating, echo the commands back out as the state
-			set_state(name_vel, get_command(name_vel));
-			set_state(name_pos,
-					get_state(name_pos) +
-							get_state(name_vel) * period.seconds());
+			if (cfg_.use_sim) {
+				set_state(name_vel, get_command(name_vel));
+				set_state(name_pos,
+						get_state(name_pos) +
+								get_state(name_vel) * period.seconds());
+			} else {
+				double prev_pos = get_state(name_pos);
+				set_state(name_pos, pos_to_read[i]);
+				set_state(name_vel,
+						(pos_to_read[i] - prev_pos) / period.seconds());
+			}
 		}
 
 		return return_type::OK;
@@ -258,6 +270,29 @@ namespace niryo_one_hardware {
 
 	return_type NiryoOneHardware::write(const rclcpp::Time & /*time*/,
 			const rclcpp::Duration & /*period*/) {
+		if (!cfg_.use_sim) {
+			double pos_to_write[6] = {
+					get_command(info_.joints[0].name + "/" +
+							hardware_interface::HW_IF_POSITION),
+					get_command(info_.joints[1].name + "/" +
+							hardware_interface::HW_IF_POSITION),
+					get_command(info_.joints[2].name + "/" +
+							hardware_interface::HW_IF_POSITION),
+					get_command(info_.joints[3].name + "/" +
+							hardware_interface::HW_IF_POSITION),
+					get_command(info_.joints[4].name + "/" +
+							hardware_interface::HW_IF_POSITION),
+					get_command(info_.joints[5].name + "/" +
+							hardware_interface::HW_IF_POSITION)};
+			RCLCPP_INFO(get_logger(),
+					"Writing positions, J1: %d, J2: %d, J3: %d, J4: %d, J5: "
+					"%d, J6: %d",
+					pos_to_write[0], pos_to_write[1], pos_to_write[2],
+					pos_to_write[3], pos_to_write[4], pos_to_write[5]);
+
+			comm_->sendPositionToRobot(pos_to_write);
+		}
+
 		return return_type::OK;
 	}
 }
