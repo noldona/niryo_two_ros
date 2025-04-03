@@ -17,8 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-import threading
 import rclpy
 from rclpy.node import Node
 from rclpy.executors import ExternalShutdownException
@@ -30,16 +28,16 @@ from robot_commander import RobotCommander
 class NiryoOneCommanderNode(Node):
 
     def __init__(self, **kwargs):
-        super().__init__('niryo_one_commander', **kwargs)
+        super().__init__('niryo_one_commander_node', **kwargs)
 
         # Publish robot state (position, orientation, tool)
         self.niryo_one_robot_state_publisher = NiryoRobotStatePublisher()
 
         # Position Manager
-        positions_dir = self.declare_parameter("positions_dir")
+        positions_dir = self.declare_parameter("~positions_dir").value
         self.pos_manager = PositionManager(positions_dir)
         # trajectory_manager
-        trajectories_dir = self.declare_parameter("trajectories_dir")
+        trajectories_dir = self.declare_parameter("~trajectories_dir").value
         self.traj_manager = TrajectoryManager(trajectories_dir)
         # robot commander
         self.robot_commander = RobotCommander(self.pos_manager, self.traj_manager)
@@ -47,12 +45,14 @@ class NiryoOneCommanderNode(Node):
 
 def main():
     rclpy.init()
+    niryo_one_commander_node = NiryoOneCommanderNode()
 
     try:
-        rclpy.spin(NiryoOneCommanderNode())
+        rclpy.spin(niryo_one_commander_node)
     except (ExternalShutdownException, KeyboardInterrupt):
         pass
     finally:
+        niryo_one_commander_node.destroy_node()
         rclpy.try_shutdown()
 
 if __name__ == '__main__':

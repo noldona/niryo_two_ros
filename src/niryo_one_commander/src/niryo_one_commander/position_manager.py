@@ -18,38 +18,49 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import rospy
+import rclpy
+from rclpy.executors import ExternalShutdownException
+from rclpy.node import Node
 from niryo_one_commander.position.position import Position
 from niryo_one_commander.niryo_one_file_exception import NiryoOneFileException
 from niryo_one_commander.position.position_file_handler import PositionFileHandler
 from niryo_one_commander.position.position_command_type import PositionCommandType
 from niryo_one_commander.robot_commander_exception import RobotCommanderException
 from niryo_one_commander.parameters_validation import ParametersValidation
-from niryo_one_commander.moveit_utils import get_forward_kinematic
+from niryo_one_commander.moveit_utils import get_rpy_from_quaternion
 
 from niryo_one_msgs.msg import Position as PositionMessage
 from niryo_one_msgs.srv import GetPositionList
-
 from niryo_one_msgs.srv import ManagePosition
 from niryo_one_msgs.msg import RPY
 from geometry_msgs.msg import Point
 from geometry_msgs.msg import Quaternion
+from moveit_msgs.msg import RobotState
+from moveit_msgs.srv import GetPositionFK
+from std_msgs.msg import Header
 
 
-class PositionManager:
+class PositionManager(Node):
 
-    def __init__(self, position_dir):
+    def __init__(self, position_dir, **kwargs):
+        super().__init__('position_manager', **kwargs)
+        
         self.fh = PositionFileHandler(position_dir)
-        self.manage_position_server = rospy.Service('/niryo_one/position/manage_position', ManagePosition,
+        self.manage_position_server = self.create_service(ManagePosition, 
+                                                    '/niryo_one/position/manage_position',
                                                     self.callback_manage_position)
-        rospy.loginfo("service manage position created")
+        self.get_logger().info("service manage position created")
 
-        self.get_position_list_server = rospy.Service(
-            '/niryo_one/position/get_position_list', GetPositionList, self.callback_get_position_list)
-        rospy.loginfo("get list position created")
+        self.get_position_list_server = self.create_service(
+            GetPositionList, '/niryo_one/position/get_position_list', self.callback_get_position_list)
+        self.get_logger().info("get list position created")
 
-        self.validation = rospy.get_param("/niryo_one/robot_command_validation")
+        self.validation = self.declare_parameter("/niryo_one/robot_command_validation").value
         self.parameters_validation = ParametersValidation(self.validation)
+
+        self.fk_client = self.create_client(GetPositionFK, 'compute_fk')
+        while not self.fk_client.wait_for_service(timeout_sec=2.0):
+            self.get_logger().error('Service call failed, waiting again...')
 
     @staticmethod
     def create_position_response(status, message, position=None):
@@ -124,10 +135,10 @@ class PositionManager:
         try:
             self.parameters_validation.validate_joints(position_data.joints)
         except RobotCommanderException as e:
-            rospy.logwarn("Invalid joints value when updating position : " + str(e.message))
+            self.get_logger().warn("Invalid joints value when updating position : " + str(e.message))
             return False, "Could not update position : " + str(e.message)
         position.joints = position_data.joints
-        (position.point, position.rpy, position.quaternion) = get_forward_kinematic(position.joints)
+        (position.point, position.rpy, position.quaternion) = self.get_forward_kinematic(position.joints)
         try:
             self.fh.write_position(position)
         except NiryoOneFileException as e:
@@ -147,10 +158,10 @@ class PositionManager:
         try:
             self.parameters_validation.validate_joints(position.joints)
         except RobotCommanderException as e:
-            rospy.logwarn("Invalid joints values when creating position : " + str(e.message))
+            self.get_logger().warn("Invalid joints values when creating position : " + str(e.message))
             return None, "Failed to create new position : " + str(e.message)
         try:
-            (position.point, position.rpy, position.quaternion) = get_forward_kinematic(position.joints)
+            (position.point, position.rpy, position.quaternion) = self.get_forward_kinematic(position.joints)
             self.fh.write_position(position)
             return position.name, "Position has been created"
         except NiryoOneFileException as e:
@@ -182,7 +193,51 @@ class PositionManager:
             except NiryoOneFileException as e:
                 pass
         return position_list
+    
+    def get_forward_kinematic(self, joints):
+        try:
+            self.fk_client.wait_for_service(timeout_sec=2.0)
+        except (rclpy.exceptions.ROSInterruptException) as e:
+            self.get_logger().error("Service call failed:", e)
+            return None
+        try:
+            moveit_fk = GetPositionFK.Request()
+            fk_link = ['base_link', 'tool_link']
+            joint_names = ['joint_1', 'joint_2', 'joint_3', 'joint_4', 'joint_5', 'joint_6']
+            header = Header(0, self.get_clock().now().to_msg(), "/world")
+            rs = RobotState()
+            rs.joint_state.name = joint_names
+            rs.joint_state.position = joints
+            request = moveit_fk(header, fk_link, rs)
+            future = self.fk_client.call_async(request)
+            response = future.result()
+        except Exception as e:
+            self.get_logger().error("Service call failed:", e)
+            return None
 
+        quaternion = [response.pose_stamped[1].pose.orientation.x, response.pose_stamped[1].pose.orientation.y,
+                    response.pose_stamped[1].pose.orientation.z, response.pose_stamped[1].pose.orientation.w]
+        rpy = get_rpy_from_quaternion(quaternion)
+        quaternion = Position.Quaternion(round(quaternion[0], 3), round(quaternion[1], 3), round(quaternion[2], 3),
+                                        round(quaternion[3], 3))
+        point = Position.Point(round(response.pose_stamped[1].pose.position.x, 3),
+                            round(response.pose_stamped[1].pose.position.y, 3),
+                            round(response.pose_stamped[1].pose.position.z, 3))
+        rpy = Position.RPY(round(rpy[0], 3), round(rpy[1], 3), round(rpy[2], 3))
+        self.get_logger().info("kinematic forward has been calculated ")
+        return point, rpy, quaternion
+
+def main():
+    rclpy.init()
+    position_manager = PositionManager()
+
+    try:
+        rclpy.spin(position_manager)
+    except (ExternalShutdownException, KeyboardInterrupt):
+        pass
+    finally:
+        position_manager.destroy_node()
+        rclpy.try_shutdown()
 
 if __name__ == '__main__':
-    pass
+    main()

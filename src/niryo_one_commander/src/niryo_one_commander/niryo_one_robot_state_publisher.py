@@ -19,9 +19,12 @@
 
 import rclpy
 from rclpy.node import Node
-import tf2_py as tf
+from rclpy.executors import ExternalShutdownException
+from rclpy.timer import Timer
+from rclpy.duration import Duration
+from rclpy.time import Time
 import tf2_ros
-import geometry_msgs
+from tf2_ros import TransformException, LookupException, ConnectivityException, ExtrapolationException
 from niryo_one_commander.moveit_utils import get_rpy_from_quaternion
 from tf_transformations import quaternion_from_euler
 
@@ -39,21 +42,21 @@ class NiryoRobotStatePublisher(Node):
         # Tf listener (position + rpy) of end effector tool
         self.position = [0, 0, 0]
         self.rpy = [0, 0, 0]
-        self.buffer = tf2_ros.Buffer()
-        self.tf_listener = tf2_ros.TransformListener(self.buffer,self)
+        self.tf_buffer = tf2_ros.Buffer()
+        self.tf_listener = tf2_ros.TransformListener(self.tf_buffer,self)
 
         # State publisher
         self.niryo_one_robot_state_publisher = self.create_publisher(
-            RobotState, '/niryo_one/robot_state', queue_size=5)
+            RobotState, '/niryo_one/robot_state', queue_size=10)
 
         # Get params from rosparams
-        rate_tf_listener = self.get_parameter("/niryo_one/robot_state/rate_tf_listener").get_parameter_value().integer_value
-        rate_publish_state = rospy.get_param("/niryo_one/robot_state/rate_publish_state")
+        rate_tf_listener = self.declare_parameter("/niryo_one/robot_state/rate_tf_listener").value
+        rate_publish_state = self.declare_parameter("/niryo_one/robot_state/rate_publish_state").value
 
-        rospy.Timer(rospy.Duration(1.0 / rate_tf_listener), self.get_robot_pose)
-        rospy.Timer(rospy.Duration(1.0 / rate_publish_state), self.publish_state)
+        Timer(Duration(1.0 / rate_tf_listener), self.get_robot_pose)
+        Timer(Duration(1.0 / rate_publish_state), self.publish_state)
 
-        rospy.loginfo("Started Niryo One robot state publisher")
+        self.get_logger().info("Started Niryo One robot state publisher")
 
     @staticmethod
     def get_orientation_from_angles(r, p, y):
@@ -67,11 +70,11 @@ class NiryoRobotStatePublisher(Node):
 
     def get_robot_pose(self, event):
         try:
-            (pos, rot) = self.tf_listener.lookupTransform('base_link', 'tool_link', rospy.Time(0))
+            (pos, rot) = self.tf_buffer.lookup_transform('base_link', 'tool_link', Time(0))
             self.position = pos
             self.rpy = get_rpy_from_quaternion(rot)
-        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
-            rospy.loginfo("TF fail")
+        except (TransformException, LookupException, ConnectivityException, ExtrapolationException):
+            self.get_logger().info("TF fail")
 
     def publish_state(self, event):
         msg = RobotState()
@@ -82,3 +85,18 @@ class NiryoRobotStatePublisher(Node):
         msg.rpy.pitch = self.rpy[1]
         msg.rpy.yaw = self.rpy[2]
         self.niryo_one_robot_state_publisher.publish(msg)
+
+def main():
+    rclpy.init()
+    niryo_robot_state_publisher = NiryoRobotStatePublisher()
+
+    try:
+        rclpy.spin(niryo_robot_state_publisher)
+    except (ExternalShutdownException, KeyboardInterrupt):
+        pass
+    finally:
+        niryo_robot_state_publisher.destroy_node()
+        rclpy.try_shutdown()
+
+if __name__ == '__main__':
+    main()

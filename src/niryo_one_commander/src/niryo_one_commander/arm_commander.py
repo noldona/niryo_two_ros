@@ -19,41 +19,43 @@
 
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 import threading
 
-from actionlib_msgs.msg import GoalStatus
+from action_msgs.msg import GoalStatus
 
 from trajectory_msgs.msg import JointTrajectory
 from control_msgs.action import FollowJointTrajectory
 
-# from niryo_one_commander.move_group_arm import MoveGroupArm
+from niryo_one_commander.move_group_arm import MoveGroupArm
 from niryo_one_commander.robot_commander_exception import RobotCommanderException
 from niryo_one_commander.command_status import CommandStatus
 
 TrajectoryTimeOutMin = 3
 
-
 class ArmCommander(Node):
 
     def __init__(self, move_group_arm, **kwargs):
         super().__init__('arm_commander', **kwargs)
-
+        
         self.move_group_arm = move_group_arm
         self.traj_finished_event = threading.Event()
         self.current_goal_id = None
         self.current_goal_result = GoalStatus.LOST
-        self.create_subscription(FollowJointTrajectoryActionGoal,
-                        '/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/goal',
-                        self.callback_current_goal)
+        self.create_subscription(FollowJointTrajectory.Goal,
+                                '/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/goal',
+                                self.callback_current_goal)
 
-        rospy.Subscriber('/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/result',
-                         FollowJointTrajectoryActionResult, self.callback_goal_result)
+        self.create_subscription(FollowJointTrajectory.Result,
+                                '/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/result',
+                                self.callback_goal_result)
 
         # Direct topic to joint_trajectory_controller
         # Used ONLY when goal is aborted, to enter position hold mode
-        self.joint_trajectory_publisher = rospy.Publisher(
+        self.joint_trajectory_publisher = self.create_publisher(
+            JointTrajectory,
             '/niryo_one_follow_joint_trajectory_controller/command',
-            JointTrajectory, queue_size=10)
+            queue_size=10)
 
     def execute_plan(self, plan):
         if plan:
@@ -97,54 +99,54 @@ class ArmCommander(Node):
 
     def set_position_hold_mode(self):
         msg = JointTrajectory()
-        msg.header.stamp = rospy.Time.now()
+        msg.header.stamp = self.get_clock().now().to_msg()
         msg.points = []
         self.joint_trajectory_publisher.publish(msg)
 
     def stop_current_plan(self):
-        rospy.loginfo("Send STOP to arm")
+        self.get_logger().info("Send STOP to arm")
         self.move_group_arm.stop()
 
     def set_joint_target(self, joint_array):
         try:
             self.move_group_arm.set_joint_value_target(joint_array)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_position_target(self, x, y, z):
         try:
             self.move_group_arm.set_position_target(x, y, z)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_rpy_target(self, roll, pitch, yaw):
         try:
             self.move_group_arm.set_rpy_target(roll, pitch, yaw)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_pose_target(self, x, y, z, roll, pitch, yaw):
         try:
             self.move_group_arm.set_pose_target(x, y, z, roll, pitch, yaw)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_pose_quat_target(self, pose_msg):
         try:
             self.move_group_arm.set_pose_quat_target(pose_msg)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_shift_pose_target(self, axis_number, value):
         try:
             self.move_group_arm.set_shift_pose_target(axis_number, value)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_max_velocity_scaling_factor(self, percentage):
         try:
             self.move_group_arm.set_max_velocity_scaling_factor(percentage)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(400, str(e))
 
     @staticmethod
@@ -157,13 +159,29 @@ class ArmCommander(Node):
 
     def callback_current_goal(self, msg):
         self.current_goal_id = msg.goal_id.id
-        rospy.loginfo("Arm commander - Got a goal id : " + str(self.current_goal_id))
+        self.get_logger().info("Arm commander - Got a goal id : " + str(self.current_goal_id))
 
     def callback_goal_result(self, msg):
         if msg.status.goal_id.id == self.current_goal_id:
-            # rospy.loginfo("Receive result, goal_id matches.")
+            # self.node.get_logger().info("Receive result, goal_id matches.")
             self.current_goal_result = msg.status.status
-            rospy.loginfo("Arm commander - Result : " + str(self.current_goal_result))
+            self.get_logger().info("Arm commander - Result : " + str(self.current_goal_result))
             self.traj_finished_event.set()
         else:
-            rospy.loginfo("Arm commander - Received result, WRONG GOAL ID")
+            self.get_logger().info("Arm commander - Received result, WRONG GOAL ID")
+
+def main():
+    rclpy.init()
+    move_group_arm = MoveGroupArm()
+    arm_commander = ArmCommander(move_group_arm)
+
+    try:
+        rclpy.spin(arm_commander)
+    except (ExternalShutdownException, KeyboardInterrupt):
+        pass
+    finally:
+        arm_commander.destroy_node()
+        rclpy.try_shutdown()
+
+if __name__ == '__main__':
+    main()

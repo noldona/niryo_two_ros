@@ -17,20 +17,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import rospy
+import rclpy
+from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
+import moveit
+import moveit_py
 import moveit_commander
+import rclpy.timer
 
+class MoveGroupArm(Node):
 
-class MoveGroupArm:
-
-    def __init__(self):
+    def __init__(self, **kwargs):
+        super().__init__('move_group_arm', **kwargs)
+        
         # Get params from rosparams
-        reference_frame = rospy.get_param("~reference_frame")
-        move_group_commander_name = rospy.get_param("~move_group_commander_name")
-        allow_replanning = rospy.get_param("~allow_replanning")
-        goal_joint_tolerance = rospy.get_param("~goal_joint_tolerance")
-        goal_position_tolerance = rospy.get_param("~goal_position_tolerance")
-        goal_orientation_tolerance = rospy.get_param("~goal_orientation_tolerance")
+        reference_frame = self.declare_parameter("~reference_frame").value
+        move_group_commander_name = self.declare_parameter("~move_group_commander_name").value
+        allow_replanning = self.declare_parameter("~allow_replanning").value
+        goal_joint_tolerance = self.declare_parameter("~goal_joint_tolerance").value
+        goal_position_tolerance = self.declare_parameter("~goal_position_tolerance").value
+        goal_orientation_tolerance = self.declare_parameter("~goal_orientation_tolerance").value
 
         # Set reference_frame
         self.reference_frame = reference_frame
@@ -39,12 +45,12 @@ class MoveGroupArm:
         move_group_arm_ok = False
         while not move_group_arm_ok:
             try:
-                rospy.loginfo("Trying to get 'arm' group from moveit...")
+                self.get_logger().info("Trying to get 'arm' group from moveit...")
                 self.arm = moveit_commander.MoveGroupCommander(move_group_commander_name)
                 move_group_arm_ok = True
             except RuntimeError as e:
-                rospy.loginfo(e)
-                rospy.sleep(1.0)
+                self.get_logger().info(e)
+                rclpy.timer.Rate(1.0).sleep()
 
         # Get end effector link
         self.end_effector_link = self.arm.get_end_effector_link()
@@ -58,13 +64,13 @@ class MoveGroupArm:
         self.arm.set_goal_position_tolerance(goal_position_tolerance)
         self.arm.set_goal_orientation_tolerance(goal_orientation_tolerance)
 
-        rospy.loginfo("Successfully connected to move_group." +
+        self.get_logger().info("Successfully connected to move_group." +
                       "\n" + "Started group     : " + str(self.arm.get_name()) +
                       "\n" + "Planning_frame    : " + str(self.arm.get_planning_frame()) +
                       "\n" + "Reference frame   : " + str(self.reference_frame) +
                       "\n" + "End effector link : " + str(self.end_effector_link))
 
-        rospy.loginfo("Arm Moveit Commander has been started")
+        self.get_logger().info("Arm Moveit Commander has been started")
 
     """
     MoveitCommander documentation :
@@ -105,3 +111,18 @@ class MoveGroupArm:
 
     def set_max_velocity_scaling_factor(self, percentage):
         self.arm.set_max_velocity_scaling_factor(percentage)
+
+def main():
+    rclpy.init()
+    move_group_arm = MoveGroupArm()
+
+    try:
+        rclpy.spin(move_group_arm)
+    except (ExternalShutdownException, KeyboardInterrupt):
+        pass
+    finally:
+        move_group_arm.destroy_node()
+        rclpy.try_shutdown()
+
+if __name__ == '__main__':
+    main()
