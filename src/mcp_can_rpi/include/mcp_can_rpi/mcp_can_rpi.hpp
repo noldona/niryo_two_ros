@@ -62,7 +62,7 @@ extern "C" {
 class MCP_CAN {
 	private:
 	INT8U m_nExtFlg;  // Identifier Type
-			// Extended (29 bit) or Standard (11 bit)
+	// Extended (29 bit) or Standard (11 bit)
 	INT32U m_nID;  // CAN ID
 	INT8U m_nDlc;  // Data Length Code
 	INT8U m_nDta[MAX_CHAR_IN_MESSAGE];  // Data array
@@ -76,11 +76,11 @@ class MCP_CAN {
 	INT8U gpio_can_interrupt;
 
 	/*********************************************************************************************************
- *  mcp2515 driver function 
+ *  mcp2515 driver function
  *********************************************************************************************************/
 	// private:
 	private:
-	struct timespec delay_spi_can = {0};
+	struct timespec delay_spi_can = {0, 0};
 
 	void spiTransfer(uint8_t byte_number, unsigned char *buf);
 

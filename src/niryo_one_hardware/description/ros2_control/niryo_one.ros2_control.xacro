@@ -6,9 +6,9 @@
 	<xacro:property name="mp" value="${xacro.load_yaml(params_path)}" />
 
 	<xacro:macro name="niryo_one_ros2_control" params="name">
-		<ros2_control name="${name}" type="system">
+		<ros2_control name="${name}_can" type="system">
 			<hardware>
-				<plugin>niryo_one_hardware/NiryoOneHardware</plugin>
+				<plugin>niryo_one_hardware/NiryoOneHardwareCan</plugin>
 				<param name="hardware_version">${mp['hardware_version']}</param>  <!-- /niryo_one/hardware_version -->
 				<param name="use_sim">${mp['use_sim']}</param>  <!-- ~fake_communication -->
 
@@ -58,20 +58,17 @@
 				<param name="max_effort_4">${mp['max_effort_4']}</param>  <!-- /niryo_one/motors/stepper_4_max_effort -->
 				<param name="max_effort_6">${mp['max_effort_6']}</param>  <!-- /niryo_one/motors/stepper_6_max_effort -->
 				<param name="max_effort_7">${mp['max_effort_7']}</param>  <!-- /niryo_one/motors/stepper_7_max_effort -->
-
-				<!-- Dxl Communication -->
-				<param name="device_name">${mp['device_name']}</param>  <!-- ~dxl_uart_device_name -->
-				<param name="uart_baudrate">${mp['uart_baudrate']}</param>  <!-- ~dxl_baudrate -->
-				<param name="dxl_hw_control_loop_frequency">${mp['dxl_hw_control_loop_frequency']}</param>  <!-- ~dxl_hardware_control_loop_frequency -->
-				<param name="dxl_hw_write_frequency">${mp['dxl_hw_write_frequency']}</param>  <!-- ~dxl_hw_write_frequency -->
-				<param name="dxl_hw_data_read_frequency">${mp['dxl_hw_data_read_frequency']}</param>  <!-- ~dxl_hw_data_read_frequency -->
-				<param name="dxl_hw_status_read_frequency">${mp['dxl_hw_status_read_frequency']}</param>  <!-- ~dxl_hw_status_read_frequency -->
-				<param name="required_dxl_ids">${mp['required_dxl_ids']}</param>  <!-- /niryo_one/motors/dxl_required_motors -->
-				<param name="allowed_dxl_ids">${mp['allowed_dxl_ids']}</param>  <!-- /niryo_one/motors/dxl_authorized_motors -->
-
 			</hardware>
 
 			<joint name="joint_1">
+				<param name="id">1</param>
+				<param name="name">Stepper Axis 1</param>
+				<param name="gear_ratio">${mp['gear_ratio_1']}</param>
+				<param name="home_position">${mp['home_position_1']}</param>
+				<param name="offset_position">${mp['offset_position_1']}</param>
+				<param name="direction">${mp['direction_1']}</param>
+				<param name="max_effort">${mp['max_effort_1']}</param>
+				<param name="firmware_version">2.0.0</param>
 				<command_interface name="position">
 					<param name="min">${-2*pi}</param>
 					<param name="max">${2*pi}</param>
@@ -80,13 +77,30 @@
 					<param name="min">-3.15</param>
 					<param name="max">3.15</param>
 				</command_interface>
+				<command_interface name="torque" />
+				<command_interface name="mirco_steps" />
+				<command_interface name="max_effort" />
 				<state_interface name="position">
 					<param name="initial_value">0.0</param>
 				</state_interface>
 				<state_interface name="velocity" />
+				<state_interface name="torque" />
+				<state_interface name="temperature" />
+				<state_interface name="hardware_error" />
+				<state_interface name="enabled">
+					<param name="initial_value">false</param>
+				</state_interface>
 			</joint>
 
 			<joint name="joint_2">
+				<param name="id">2</param>
+				<param name="name">Stepper Axis 2</param>
+				<param name="gear_ratio">${mp['gear_ratio_2']}</param>
+				<param name="home_position">${mp['home_position_2']}</param>
+				<param name="offset_position">${mp['offset_position_2']}</param>
+				<param name="direction">${mp['direction_2']}</param>
+				<param name="max_effort">${mp['max_effort_2']}</param>
+				<param name="firmware_version">2.0.0</param>
 				<command_interface name="position">
 					<param name="min">${-2*pi}</param>
 					<param name="max">${2*pi}</param>
@@ -95,13 +109,30 @@
 					<param name="min">-3.15</param>
 					<param name="max">3.15</param>
 				</command_interface>
+				<command_interface name="torque" />
+				<command_interface name="mirco_steps" />
+				<command_interface name="max_effort" />
 				<state_interface name="position">
 					<param name="initial_value">0.64</param>
 				</state_interface>
 				<state_interface name="velocity" />
+				<state_interface name="torque" />
+				<state_interface name="temperature" />
+				<state_interface name="hardware_error" />
+				<state_interface name="enabled">
+					<param name="initial_value">false</param>
+				</state_interface>
 			</joint>
 
 			<joint name="joint_3">
+				<param name="id">3</param>
+				<param name="name">Stepper Axis 3</param>
+				<param name="gear_ratio">${mp['gear_ratio_3']}</param>
+				<param name="home_position">${mp['home_position_3']}</param>
+				<param name="offset_position">${mp['offset_position_3']}</param>
+				<param name="direction">${mp['direction_3']}</param>
+				<param name="max_effort">${mp['max_effort_3']}</param>
+				<param name="firmware_version">2.0.0</param>
 				<command_interface name="position">
 					<param name="min">${-pi}</param>
 					<param name="max">${pi}</param>
@@ -110,75 +141,20 @@
 					<param name="min">-3.15</param>
 					<param name="max">3.15</param>
 				</command_interface>
+				<command_interface name="torque" />
+				<command_interface name="mirco_steps" />
+				<command_interface name="max_effort" />
 				<state_interface name="position">
 					<param name="initial_value">-1.39</param>
 				</state_interface>
 				<state_interface name="velocity" />
-			</joint>
-
-			<joint name="joint_4">
-				<command_interface name="position">
-					<param name="min">${-2*pi}</param>
-					<param name="max">${2*pi}</param>
-				</command_interface>
-				<command_interface name="velocity">
-					<param name="min">-3.2</param>
-					<param name="max">3.2</param>
-				</command_interface>
-				<state_interface name="position">
-					<param name="initial_value">0.0</param>
+				<state_interface name="torque" />
+				<state_interface name="temperature" />
+				<state_interface name="hardware_error" />
+				<state_interface name="enabled">
+					<param name="initial_value">false</param>
 				</state_interface>
-				<state_interface name="velocity" />
 			</joint>
-
-			<joint name="joint_5">
-				<command_interface name="position">
-					<param name="min">${-2*pi}</param>
-					<param name="max">${2*pi}</param>
-				</command_interface>
-				<command_interface name="velocity">
-					<param name="min">-3.2</param>
-					<param name="max">3.2</param>
-				</command_interface>
-				<state_interface name="position">
-					<param name="initial_value">0.0</param>
-				</state_interface>
-				<state_interface name="velocity" />
-			</joint>
-
-			<joint name="joint_6">
-				<command_interface name="position">
-					<param name="min">${-2*pi}</param>
-					<param name="max">${2*pi}</param>
-				</command_interface>
-				<command_interface name="velocity">
-					<param name="min">-3.2</param>
-					<param name="max">3.2</param>
-				</command_interface>
-				<state_interface name="position">
-					<param name="initial_value">0.0</param>
-				</state_interface>
-				<state_interface name="velocity" />
-			</joint>
-
-			<gpio name="hardware">
-				<command_interface name="test_motors" />
-				<command_interface name="calibrate_motors" />
-				<command_interface name="request_new_calibration" />
-				<command_interface name="activate_learning_mode" />
-				<command_interface name="activate_leds" />
-				<command_interface name="ping_and_set_dxl_tool" />
-				<command_interface name="ping_and_set_conveyor" />
-				<command_interface name="control_conveyor" />
-				<command_interface name="update_id_conveyor" />
-				<command_interface name="open_gripper" />
-				<command_interface name="close_gripper" />
-				<command_interface name="pull_air_vacuum_pump" />
-				<command_interface name="push_air_vacuum_pump" />
-				<command_interface name="change_hardware_version" />
-				<command_interface name="send_custom_dxl_value" />
-				<command_interface name="reboot_motors" />
-			</gpio>
 		</ros2_control>
 	</xacro:macro>
 </robot>

@@ -55,7 +55,7 @@ bool FakeCommunication::isConnectionOk() {
 }
 
 int FakeCommunication::allowMotorsCalibrationToStart(
-		int mode, std::string &result_message) {
+		int mode, std::string & /*result_message*/) {
 	RCLCPP_INFO(rclcpp::get_logger("Fake Communication"),
 			"Motor calibration with mode : %d", mode);
 	return 200;
@@ -92,7 +92,7 @@ void FakeCommunication::rebootMotors() {
 }
 
 void FakeCommunication::getHardwareStatus(bool *is_connection_ok,
-		std::string &error_message, int *calibration_needed,
+		std::string & /*error_message*/, int *calibration_needed,
 		bool *calibration_in_progress, std::vector<std::string> &motor_names,
 		std::vector<std::string> &motor_types,
 		std::vector<int32_t> &temperatures, std::vector<double> &voltages,

@@ -30,8 +30,8 @@ int change_hardware_version_and_reboot(
 			std::to_string(new_version);
 
 	size_t pos = str.find(str_search);
-	if (pos == -1) {
-		if (str.find(str_replace) != -1) {
+	if ((int) pos == -1) {
+		if ((int) str.find(str_replace) != -1) {
 			RCLCPP_WARN(rclcpp::get_logger("Change Hardware Version"),
 					"Change hardware version : Version is already correct "
 					"(V%d)",

@@ -45,6 +45,15 @@
 #include "std_msgs/msg/int8_multi_array.hpp"
 
 namespace niryo_one_hardware {
+	enum CommandInterfaces {
+		CALIBRATE_MODE = 4,
+		CALIBRATE_MOTORS_ASYNC_STATUS = 5
+	};
+
+	// enum StateInterfaces {
+
+	// };
+
 	class NiryoOneController: public controller_interface::ControllerInterface {
 		public:
 		NiryoOneController();
@@ -73,8 +82,6 @@ namespace niryo_one_hardware {
 		std::vector<std::string> joint_names_;
 		std::vector<std::string> command_interface_types_;
 		std::vector<std::string> state_interface_types_;
-		std::vector<std::string> gpio_names_;
-		std::vector<std::string> gpio_interface_types_;
 
 		rclcpp::Subscription<trajectory_msgs::msg::JointTrajectory>::SharedPtr
 				joint_command_subscriber_;
@@ -93,157 +100,74 @@ namespace niryo_one_hardware {
 				hardware_interface::LoanedCommandInterface>>
 				joint_velocity_command_interface_;
 		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedCommandInterface>>
+				joint_torque_command_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedCommandInterface>>
+				joint_micro_steps_command_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedCommandInterface>>
+				joint_max_effort_command_interface_;
+		std::vector<std::reference_wrapper<
 				hardware_interface::LoanedStateInterface>>
 				joint_position_state_interface_;
 		std::vector<std::reference_wrapper<
 				hardware_interface::LoanedStateInterface>>
 				joint_velocity_state_interface_;
 		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_torque_state_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_temperature_state_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_hardware_error_state_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_enabled_state_interface_;
+
+		std::vector<std::reference_wrapper<
 				hardware_interface::LoanedCommandInterface>>
-				gpio_command_interface_;
-
-		// Additional Commands
-		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
-				calibrate_motors_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::SetInt::Request>>
-				calibrate_motors_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::SetInt::Request>
-				calibrate_motors_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
-				request_new_calibration_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::SetInt::Request>>
-				request_new_calibration_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::SetInt::Request>
-				request_new_calibration_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
-				test_motors_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::SetInt::Request>>
-				test_motors_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::SetInt::Request> test_motors_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
-				activate_learning_mode_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::SetInt::Request>>
-				activate_learning_mode_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::SetInt::Request>
-				activate_learning_mode_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::SetLeds>::SharedPtr
-				activate_leds_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::SetLeds::Request>>
-				activate_leds_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::SetLeds::Request>
-				activate_leds_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::PingDxlTool>::SharedPtr
-				ping_and_set_dxl_tool_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::PingDxlTool::Request>>
-				ping_and_set_dxl_tool_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::PingDxlTool::Request>
-				ping_and_set_dxl_tool_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::OpenGripper>::SharedPtr
-				open_gripper_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::OpenGripper::Request>>
-				open_gripper_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::OpenGripper::Request>
-				open_gripper_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::CloseGripper>::SharedPtr
-				close_gripper_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::CloseGripper::Request>>
-				close_gripper_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::CloseGripper::Request>
-				close_gripper_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::PullAirVacuumPump>::SharedPtr
-				pull_air_vacuum_pump_server;
-		realtime_tools::RealtimeBuffer<std::shared_ptr<
-				niryo_one_msgs::srv::PullAirVacuumPump::Request>>
-				pull_air_vacuum_pump_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::PullAirVacuumPump::Request>
-				pull_air_vacuum_pump_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::PushAirVacuumPump>::SharedPtr
-				push_air_vacuum_pump_server;
-		realtime_tools::RealtimeBuffer<std::shared_ptr<
-				niryo_one_msgs::srv::PushAirVacuumPump::Request>>
-				push_air_vacuum_pump_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::PushAirVacuumPump::Request>
-				push_air_vacuum_pump_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::ChangeHardwareVersion>::SharedPtr
-				change_hardware_version_server;
-		realtime_tools::RealtimeBuffer<std::shared_ptr<
-				niryo_one_msgs::srv::ChangeHardwareVersion::Request>>
-				change_hardware_version_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::ChangeHardwareVersion::Request>
-				change_hardware_version_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::SendCustomDxlValue>::SharedPtr
-				send_custom_dxl_value_server;
-		realtime_tools::RealtimeBuffer<std::shared_ptr<
-				niryo_one_msgs::srv::SendCustomDxlValue::Request>>
-				send_custom_dxl_value_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::SendCustomDxlValue::Request>
-				send_custom_dxl_value_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
-				reboot_motors_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::SetInt::Request>>
-				reboot_motors_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::SetInt::Request>
-				reboot_motors_msg_;
-
-		// Conveyor services
-		rclcpp::Service<niryo_one_msgs::srv::SetConveyor>::SharedPtr
-				ping_and_set_stepper_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::SetConveyor::Request>>
-				ping_and_set_stepper_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::SetConveyor::Request>
-				ping_and_set_stepper_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::ControlConveyor>::SharedPtr
-				control_conveyor_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::ControlConveyor::Request>>
-				control_conveyor_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::ControlConveyor::Request>
-				control_conveyor_msg_;
-
-		rclcpp::Service<niryo_one_msgs::srv::UpdateConveyorId>::SharedPtr
-				update_conveyor_id_server;
-		realtime_tools::RealtimeBuffer<
-				std::shared_ptr<niryo_one_msgs::srv::UpdateConveyorId::Request>>
-				update_conveyor_id_external_ptr_;
-		std::shared_ptr<niryo_one_msgs::srv::UpdateConveyorId::Request>
-				update_conveyor_id_msg_;
+				niryo_one_command_interface_;
 
 		std::unordered_map<std::string,
 				std::vector<std::reference_wrapper<
 						hardware_interface::LoanedCommandInterface>> *>
 				command_interface_map_ = {
 						{"position", &joint_position_command_interface_},
-						{"velocity", &joint_velocity_command_interface_}};
+						{"velocity", &joint_velocity_command_interface_},
+						{"torque", &joint_torque_command_interface_},
+						{"mirco_steps", &joint_micro_steps_command_interface_},
+						{"max_effort", &joint_max_effort_command_interface_},
+						{"niryo_one", &niryo_one_command_interface_}};
 
 		std::unordered_map<std::string,
 				std::vector<std::reference_wrapper<
 						hardware_interface::LoanedStateInterface>> *>
 				state_interface_map_ = {
 						{"position", &joint_position_state_interface_},
-						{"velocity", &joint_velocity_state_interface_}};
+						{"velocity", &joint_velocity_state_interface_},
+						{"torque", &joint_torque_state_interface_},
+						{"temperature", &joint_temperature_state_interface_},
+						{"hardware_error",
+								&joint_hardware_error_state_interface_},
+						{"enabled", &joint_enabled_state_interface_}};
+
+		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
+				calibrate_motors_srv_;
+
+		rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr
+				calibrate_motors_sub;
+
+		static constexpr double ASYNC_WAITING = 2.0;
+
+		bool waitForAsyncCommand(std::function<double(void)> get_value);
+
+		private:
+		void callbackCalibrateMotors(
+				const niryo_one_msgs::srv::SetInt::Request::SharedPtr req,
+				niryo_one_msgs::srv::SetInt::Response::SharedPtr res);
 	};
 }  // namespace niryo_one_hardware
 

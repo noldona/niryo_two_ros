@@ -59,7 +59,7 @@ bool set_motors_calibration_offsets(
 
 	// Create text to write
 	std::string text_to_write = "";
-	for (int i = 0; i < motor_id_list.size(); i++) {
+	for (std::size_t i = 0; i < motor_id_list.size(); i++) {
 		text_to_write += std::to_string(motor_id_list.at(i));
 		text_to_write += ":";
 		text_to_write += std::to_string(steps_list.at(i));

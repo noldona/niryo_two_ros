@@ -36,6 +36,7 @@ set(CONTROLLER_INCLUDE_DEPENDS
   controller_interface
   realtime_tools
   trajectory_msgs
+  niryo_one_msgs
 )
 
 # Specify the required version of ros2_control
@@ -76,6 +77,7 @@ add_library(
   niryo_one_hardware
   SHARED
   hardware/niryo_one_hardware.cpp
+  hardware/niryo_one_hardware_can.cpp
   hardware/src/hw_comm/can_communication.cpp
   hardware/src/hw_comm/dxl_communication.cpp
   hardware/src/hw_comm/fake_communication.cpp
@@ -87,6 +89,7 @@ add_library(
   hardware/src/utils/change_hardware_version.cpp
   hardware/src/utils/motor_offset_file_handler.cpp
   controller/niryo_one_controller.cpp
+  hardware/src/utils/utilities.cpp
 )
 
 target_compile_features(niryo_one_hardware PUBLIC cxx_std_17)

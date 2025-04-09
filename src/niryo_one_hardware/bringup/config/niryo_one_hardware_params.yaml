@@ -5,7 +5,7 @@ stepper_2_home_position: 0.64
 stepper_3_home_position: -1.39
 stepper_4_home_position: 0.0
 can_enabled: 'true'
-dxl_enabled: 'false'
+dxl_enabled: 'true'
 niryo_one_hw_check_connection_frequency: 2.0
 reboot: 'true'
 
