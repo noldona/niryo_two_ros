@@ -14,6 +14,9 @@
 #include "niryo_one_hardware/motor_offset_file_handler.hpp"
 #include "niryo_one_hardware/niryo_one_can_driver.hpp"
 
+#include "niryo_one_hardware/interface_constants.hpp"
+// #include "niryo_one_hardware/test_motors.hpp"
+
 #define TIME_TO_WAIT_IF_BUSY 500  // microseconds
 
 // These IDs need to be used in niryo_one_motors.yaml to enable/disable some stepper motors
@@ -96,6 +99,9 @@ namespace niryo_one_hardware {
 
 		std::shared_ptr<NiryoCanDriver> can;
 
+		bool can_enabled;
+		double niryo_one_hw_check_connection_frequency;
+
 		// For hardware control
 		bool is_can_connection_ok;
 
@@ -133,8 +139,9 @@ namespace niryo_one_hardware {
 		std::atomic_bool async_thread_shutdown_;
 		bool initialized_;
 
-		static constexpr double ASYNC_WAITING = 2.0;
+		std::shared_ptr<std::thread> can_connection_loop_thread;
 
+		void manageCanConnection();
 		int scanAndCheck();
 		void setTorqueOn(bool on);
 		void stopHardwareControlLoop();
@@ -159,9 +166,26 @@ namespace niryo_one_hardware {
 				int calibr_timeout, std::vector<int> &sensor_offset_ids,
 				std::vector<int> &sensor_offset_steps);
 
-		void allowMotorsCalibrationToStart();
+		void calibrateMotors();
+		void requestNewCalibration();
+		void testMotors();
+		void activateLearningMode();
+		void activateLeds();
+		void pingAndSetDxlTool();
+		void openGripper();
+		void closeGripper();
+		void pullAirVacuumPump();
+		void pushAirVacuumPump();
+		void changeHardwareVersion();
+		void rebootMotors();
+
+		int allowMotorsCalibrationToStart(
+				int mode, std::string &result_message);
 		bool canProcessManualCalibration();
 		void validateMotorsCalibrationFromUserInput(int mode);
+		void hardwareControlRead();
+		void hardwareControlWrite();
+		void hardwareControlCheckConnection();
 	};
 }
 

@@ -13,6 +13,13 @@
 			Robot hardware plugin for Niryo One Stepper motors
 		</description>
 	</class>
+	<class name="niryo_one_hardware/NiryoOneHardwareDxl"
+			type="niryo_one_hardware::NiryoOneHardwareDxl"
+			base_class_type="hardware_interface::SystemInterface">
+		<description>
+			Robot hardware plugin for Niryo One dynamixel servos
+		</description>
+	</class>
 	<class name="niryo_one_hardware/NiryoOneController"
 			type="niryo_one_hardware::NiryoOneController"
 			base_class_type="controller_interface::ControllerInterface">

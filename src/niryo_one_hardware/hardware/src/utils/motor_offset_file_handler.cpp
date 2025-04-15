@@ -2,8 +2,10 @@
 
 #include "boost/filesystem.hpp"
 #include <exception>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <system_error>
 
 bool get_motors_calibration_offsets(
 		std::vector<int> &motor_id_list, std::vector<int> &steps_list) {
@@ -45,12 +47,12 @@ bool set_motors_calibration_offsets(
 	size_t found = file_name.find_last_of("/");
 	std::string folder_name = file_name.substr(0, found);
 
-	boost::filesystem::path filepath(file_name);
-	boost::filesystem::path directory(folder_name);
+	std::filesystem::path filepath(file_name);
+	std::filesystem::path directory(folder_name);
 
 	// Create dir if not exist
-	boost::system::error_code returned_error;
-	boost::filesystem::create_directories(directory, returned_error);
+	std::error_code returned_error;
+	std::filesystem::create_directories(directory, returned_error);
 	if (returned_error) {
 		RCLCPP_WARN(rclcpp::get_logger("Motor Offset File Handler"),
 				"Could not create directory : %s", folder_name.c_str());

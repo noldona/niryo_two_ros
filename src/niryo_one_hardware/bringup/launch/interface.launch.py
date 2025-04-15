@@ -39,7 +39,7 @@ def generate_launch_description():
 
     nodes = [
         rviz_node,
-        joint_state_publisher_node,
+        # joint_state_publisher_node,
     ]
 
     return LaunchDescription(declared_arguments + nodes)

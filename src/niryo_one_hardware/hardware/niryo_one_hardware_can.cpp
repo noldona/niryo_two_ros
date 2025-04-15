@@ -5,6 +5,27 @@
 #include <string>
 #include <vector>
 
+#include "niryo_one_msgs/srv/set_int.hpp"
+#include "niryo_one_msgs/srv/set_leds.hpp"
+
+#include "niryo_one_msgs/srv/close_gripper.hpp"
+#include "niryo_one_msgs/srv/open_gripper.hpp"
+#include "niryo_one_msgs/srv/ping_dxl_tool.hpp"
+#include "niryo_one_msgs/srv/pull_air_vacuum_pump.hpp"
+#include "niryo_one_msgs/srv/push_air_vacuum_pump.hpp"
+
+#include "niryo_one_msgs/srv/change_hardware_version.hpp"
+#include "niryo_one_msgs/srv/control_conveyor.hpp"
+#include "niryo_one_msgs/srv/send_custom_dxl_value.hpp"
+#include "niryo_one_msgs/srv/set_conveyor.hpp"
+#include "niryo_one_msgs/srv/update_conveyor_id.hpp"
+
+#include "niryo_one_msgs/msg/conveyor_feedback.hpp"
+#include "niryo_one_msgs/msg/hardware_status.hpp"
+#include "niryo_one_msgs/msg/software_version.hpp"
+#include "std_msgs/msg/bool.hpp"
+#include "std_msgs/msg/int8_multi_array.hpp"
+
 namespace niryo_one_hardware {
 	CallbackReturn NiryoOneHardwareCan::on_init(
 			const hardware_interface::HardwareInfo &info) {
@@ -24,6 +45,7 @@ namespace niryo_one_hardware {
 		}
 
 		use_sim = stob(info_.hardware_parameters["use_sim"]);
+		RCLCPP_INFO(get_logger(), "Using sim: %d", use_sim);
 		spi_channel = stoi(info_.hardware_parameters["spi_channel"]);
 		spi_baudrate = stoi(info_.hardware_parameters["spi_baudrate"]);
 		gpio_can_interrupt =
@@ -32,14 +54,47 @@ namespace niryo_one_hardware {
 				"SPI Channel: %d, Baudrate: %d, GPIO CAN Interrupt: %d",
 				spi_channel, spi_baudrate, gpio_can_interrupt);
 
-		is_can_connection_ok = false;
-		hw_is_busy = false;
+		can_enabled = stob(info_.hardware_parameters["can_enabled"]);
+		niryo_one_hw_check_connection_frequency = stod(info_.hardware_parameters
+						["niryo_one_hw_check_connection_frequency"]);
+		hw_control_loop_frequency = stod(
+				info_.hardware_parameters["can_hw_control_loop_frequency"]);
+		hw_write_frequency =
+				stod(info_.hardware_parameters["can_hw_write_frequency"]);
+		hw_check_connection_frequency = stod(
+				info_.hardware_parameters["can_hw_check_connection_frequency"]);
 
+		calibration_timeout =
+				stoi(info_.hardware_parameters["calibration_timeout"]);
+
+		// Start CAN driver
 		can.reset(new NiryoCanDriver(
 				spi_channel, spi_baudrate, gpio_can_interrupt));
 
+		is_can_connection_ok = false;
+		hw_is_busy = false;
+
 		async_thread_shutdown_ = false;
 		initialized_ = false;
+
+		torque_on = 0;
+
+		hw_is_busy = false;
+		hw_limited_mode = true;
+
+		write_position_enable = true;
+		write_torque_enable = false;
+		write_torque_on_enable = true;
+
+		write_synchronize_enable = false;
+		write_micro_steps_enable = true;
+		write_max_effort_enable = true;
+
+		waiting_for_user_trigger_calibration = false;
+		steppers_calibration_mode =
+				CAN_STEPPERS_CALIBRATION_MODE_AUTO;  // default
+		write_synchronize_begin_traj = true;
+		calibration_in_progress = false;
 
 		return CallbackReturn::SUCCESS;
 	}
@@ -48,23 +103,15 @@ namespace niryo_one_hardware {
 			export_unlisted_command_interface_descriptions() {
 		std::vector<hardware_interface::InterfaceDescription> interfaces;
 
-		hardware_interface::InterfaceInfo calibration_mode_info;
-		calibration_mode_info.name = "calibration_mode";
-		calibration_mode_info.data_type = "int";
-		hardware_interface::InterfaceDescription calibration_mode_desc =
-				hardware_interface::InterfaceDescription(
-						"niryo_one", calibration_mode_info);
-		interfaces.push_back(calibration_mode_desc);
-
-		hardware_interface::InterfaceInfo calibrate_motors_async_status_info;
-		calibrate_motors_async_status_info.name =
-				"calibrate_motors_async_status";
-		calibrate_motors_async_status_info.data_type = "int";
-		hardware_interface::InterfaceDescription
-				calibrate_motors_async_status_desc =
-						hardware_interface::InterfaceDescription("niryo_one",
-								calibrate_motors_async_status_info);
-		interfaces.push_back(calibrate_motors_async_status_desc);
+		for (std::map<CommandInterfaces, std::string>::iterator iter =
+						command_interface_names.begin();
+				iter != command_interface_names.end(); ++iter) {
+			hardware_interface::InterfaceInfo info;
+			info.name = iter->second;
+			hardware_interface::InterfaceDescription desc =
+					hardware_interface::InterfaceDescription("niryo_one", info);
+			interfaces.push_back(desc);
+		}
 
 		return interfaces;
 	}
@@ -90,9 +137,6 @@ namespace niryo_one_hardware {
 				return CallbackReturn::ERROR;
 			}
 		}
-
-		set_command("niryo_one/calibrate_motors_async_status", 0);
-		set_command("niryo_one/calibration_mode", -1);
 
 		async_thread_ = std::make_shared<std::thread>(
 				&NiryoOneHardwareCan::asyncThread, this);
@@ -121,82 +165,19 @@ namespace niryo_one_hardware {
 			const rclcpp_lifecycle::State & /*previous_state*/) {
 		RCLCPP_INFO(get_logger(), "Activating CAN hardware... please wait...");
 
-		// bool motors_ok = false;
-		// if (!is_can_connection_ok || new_calibration_requested) {
-		// 	new_calibration_requested = false;
-		// 	RCLCPP_WARN(get_logger(), "Stop CAN HW control");
-		// 	stopHardwareControlLoop();
-		// 	std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		for (auto joint : info_.joints) {
+			set_command(joint.name + "/" + hardware_interface::HW_IF_POSITION,
+					rad_pos_to_steps(stod(joint.parameters["home_position"]),
+							stod(joint.parameters["gear_ratio"]),
+							stod(joint.parameters["direction"])));
+			set_command(joint.name + "/mirco_steps", 8);
+			set_command(joint.name + "/max_effort",
+					stod(joint.parameters["max_effort"]));
+			set_state(joint.name + "/enabled", true);
+		}
 
-		// 	while (scanAndCheck() != CAN_SCAN_OK) {
-		// 		// Wait for connection to be up
-		// 		RCLCPP_WARN(get_logger(), "Scan to find stepper motors ...");
-		// 		std::this_thread::sleep_for(std::chrono::milliseconds(250));
-		// 	}
-
-		// 	// Once connected, set calibration flag
-		// 	RCLCPP_INFO(get_logger(), "Set calibration flag");
-		// 	waiting_for_user_trigger_calibration = false;
-
-		// 	// Deactivate motors
-		// 	setTorqueOn(false);
-
-		// 	startHardwareControlLoop(true);  // Limited mode
-		// 	motors_ok = false;
-
-		// 	while (!motors_ok) {
-		// 		int calibration_step1_result = CAN_STEPPERS_CALIBRATION_FAIL;
-		// 		int calibration_step2_result = CAN_STEPPERS_CALIBRATION_FAIL;
-
-		// 		// RCLCPP_INFO(get_logger(), "Starting Calibration");
-		// 		calibration_step1_result = calibrateMotors(1);
-		// 		if (calibration_step1_result == CAN_STEPPERS_CALIBRATION_OK) {
-		// 			calibration_step2_result = calibrateMotors(2);
-		// 		}
-
-		// 		if (calibration_step1_result == CAN_STEPPERS_CALIBRATION_OK &&
-		// 				calibration_step2_result ==
-		// 						CAN_STEPPERS_CALIBRATION_OK) {
-		// 			RCLCPP_INFO(get_logger(), "Calibration completed");
-		// 			motors_ok = true;
-		// 			new_calibration_requested = false;
-		// 			activateLearningMode(true);
-		// 		} else {
-		// 			// RCLCPP_INFO(
-		// 			// 		get_logger(), "Calibration failed, trying again");
-		// 			// Calibration is not OK, wait and retry
-		// 			if (!is_can_connection_ok) {
-		// 				while (scanAndCheck() != CAN_SCAN_OK) {
-		// 					// Wait for connection to be up
-		// 					RCLCPP_WARN(get_logger(),
-		// 							"Scan to find stepper motors...");
-		// 					std::this_thread::sleep_for(
-		// 							std::chrono::milliseconds(250));
-		// 				}
-		// 			}
-
-		// 			// Last calibration has failed, reset flag
-		// 			if (calibration_step1_result !=
-		// 					CAN_STEPPERS_CALIBRATION_WAITING_USER_INPUT) {
-		// 				waiting_for_user_trigger_calibration = true;
-		// 				// Go back to limited mode (during calibration, HW control loop is stopped)
-		// 				startHardwareControlLoop(true);
-		// 			}
-
-		// 			std::this_thread::sleep_for(std::chrono::milliseconds(250));
-		// 		}
-		// 	}
-
-		// 	RCLCPP_WARN(get_logger(), "Resume CAN HW control");
-		// 	activateLearningMode(true);
-		// 	startHardwareControlLoop(false);
-		// } else {
-		// 	// CAN connection OK and calibrated
-		// 	if (hw_limited_mode) {
-		// 		setTorqueOn(false);
-		// 		startHardwareControlLoop(false);
-		// 	}
-		// }
+		can_connection_loop_thread.reset(new std::thread(
+				std::bind(&NiryoOneHardwareCan::manageCanConnection, this)));
 
 		RCLCPP_INFO(get_logger(), "Successfully activated CAN hardware!");
 
@@ -235,19 +216,21 @@ namespace niryo_one_hardware {
 
 	return_type NiryoOneHardwareCan::read(
 			const rclcpp::Time & /*time*/, const rclcpp::Duration &period) {
-		for (std::size_t i = 0; i < info_.joints.size(); ++i) {
-			const auto name_pos = info_.joints[i].name + "/" +
-					hardware_interface::HW_IF_POSITION;
-			const auto name_vel = info_.joints[i].name + "/" +
-					hardware_interface::HW_IF_VELOCITY;
-			const auto name_tor = info_.joints[i].name + "/" +
-					hardware_interface::HW_IF_TORQUE;
-			const auto name_temp = info_.joints[i].name + "/" +
-					hardware_interface::HW_IF_TEMPERATURE;
-			const auto name_enabled = info_.joints[i].name + "/" + "enabled";
+		// RCLCPP_INFO(get_logger(), "Reading");
+		if (use_sim) {
+			for (std::size_t i = 0; i < info_.joints.size(); ++i) {
+				const auto name_pos = info_.joints[i].name + "/" +
+						hardware_interface::HW_IF_POSITION;
+				const auto name_vel = info_.joints[i].name + "/" +
+						hardware_interface::HW_IF_VELOCITY;
+				const auto name_tor = info_.joints[i].name + "/" +
+						hardware_interface::HW_IF_TORQUE;
+				const auto name_temp = info_.joints[i].name + "/" +
+						hardware_interface::HW_IF_TEMPERATURE;
+				const auto name_enabled =
+						info_.joints[i].name + "/" + "enabled";
 
-			// If simulating, echo the commands back out as the state
-			if (use_sim) {
+				// If simulating, echo the commands back out as the state
 				double prev_pos = get_state(name_pos);
 				set_state(name_pos, get_command(name_pos));
 				set_state(name_vel,
@@ -255,7 +238,14 @@ namespace niryo_one_hardware {
 				set_state(name_tor, get_command(name_tor));
 				set_state(name_temp, 0);
 				set_state(name_enabled, 1);
-			} else {
+			}
+		} else {
+			if (!hw_is_busy && hw_control_loop_keep_alive) {
+				hw_is_busy = true;
+				hardwareControlRead();
+				hardwareControlCheckConnection();
+
+				hw_is_busy = false;
 			}
 		}
 
@@ -264,7 +254,110 @@ namespace niryo_one_hardware {
 
 	return_type NiryoOneHardwareCan::write(const rclcpp::Time & /*time*/,
 			const rclcpp::Duration & /*period*/) {
+		// RCLCPP_INFO(get_logger(), "Writing");
+		if (use_sim) {
+			// Do nothing. Simulation is handled in read
+		} else {
+			hardwareControlWrite();
+		}
+
 		return return_type::OK;
+	}
+
+	void NiryoOneHardwareCan::manageCanConnection() {
+		if (!can_enabled) {
+			return;
+		}
+
+		rclcpp::Rate check_connection_rate =
+				rclcpp::Rate(niryo_one_hw_check_connection_frequency);
+		bool motors_ok = false;
+
+		while (rclcpp::ok()) {
+			if (!is_can_connection_ok || new_calibration_requested) {
+				new_calibration_requested = false;
+				RCLCPP_WARN(get_logger(), "Stop CAN HW control");
+				stopHardwareControlLoop();
+				std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+				while (scanAndCheck() != CAN_SCAN_OK) {
+					// Wait for connection to be up
+					RCLCPP_WARN(
+							get_logger(), "Scan to find stepper motors ...");
+					std::this_thread::sleep_for(std::chrono::milliseconds(250));
+				}
+
+				// Once connected, set calibration flag
+				RCLCPP_INFO(get_logger(), "Set calibration flag");
+				waiting_for_user_trigger_calibration = false;
+
+				// Deactivate motors
+				setTorqueOn(false);
+
+				startHardwareControlLoop(true);  // Limited mode
+				motors_ok = false;
+
+				if (!motors_ok) {
+					int calibration_step1_result =
+							CAN_STEPPERS_CALIBRATION_FAIL;
+					int calibration_step2_result =
+							CAN_STEPPERS_CALIBRATION_FAIL;
+
+					// RCLCPP_INFO(get_logger(), "Starting Calibration");
+					calibration_step1_result = calibrateMotors(1);
+					if (calibration_step1_result ==
+							CAN_STEPPERS_CALIBRATION_OK) {
+						calibration_step2_result = calibrateMotors(2);
+					}
+
+					if (calibration_step1_result ==
+									CAN_STEPPERS_CALIBRATION_OK &&
+							calibration_step2_result ==
+									CAN_STEPPERS_CALIBRATION_OK) {
+						RCLCPP_INFO(get_logger(), "Calibration completed");
+						motors_ok = true;
+						new_calibration_requested = false;
+						activateLearningMode(true);
+					} else {
+						RCLCPP_INFO(get_logger(),
+								"Calibration failed, trying again");
+						// Calibration is not OK, wait and retry
+						if (!is_can_connection_ok) {
+							while (scanAndCheck() != CAN_SCAN_OK) {
+								// Wait for connection to be up
+								RCLCPP_WARN(get_logger(),
+										"Scan to find stepper motors...");
+								std::this_thread::sleep_for(
+										std::chrono::milliseconds(250));
+							}
+						}
+
+						// Last calibration has failed, reset flag
+						if (calibration_step1_result !=
+								CAN_STEPPERS_CALIBRATION_WAITING_USER_INPUT) {
+							waiting_for_user_trigger_calibration = true;
+							// Go back to limited mode (during calibration, HW control loop is stopped)
+							startHardwareControlLoop(true);
+						}
+
+						// std::this_thread::sleep_for(std::chrono::milliseconds(250));
+					}
+				}
+
+				if (motors_ok) {
+					RCLCPP_WARN(get_logger(), "Resume CAN HW control");
+					activateLearningMode(true);
+					startHardwareControlLoop(false);
+				}
+			} else {
+				// CAN connection OK and calibrated
+				if (hw_limited_mode) {
+					setTorqueOn(false);
+					startHardwareControlLoop(false);
+				}
+			}
+			check_connection_rate.sleep();
+		}
 	}
 
 	int NiryoOneHardwareCan::scanAndCheck() {
@@ -371,7 +464,7 @@ namespace niryo_one_hardware {
 			set_state(name_tor, 0.0);
 			set_state(name_temp, 0.0);
 			set_state(name_hw_error, 0.0);
-			set_state(name_enabled, 0.0);
+			// set_state(name_enabled, 0.0);
 		}
 
 		hw_control_loop_keep_alive = false;
@@ -381,12 +474,21 @@ namespace niryo_one_hardware {
 		if (!on && is_can_connection_ok &&
 				waiting_for_user_trigger_calibration &&
 				!calibration_in_progress) {
+			RCLCPP_INFO(get_logger(),
+					"On: %d, Can Connection OK: %d, Waiting for User Trigger "
+					"Calibration: %d, Calibration In Progress: %d",
+					on, is_can_connection_ok,
+					waiting_for_user_trigger_calibration,
+					calibration_in_progress);
+			RCLCPP_INFO(get_logger(), "Setting torque OFF");
 			can->sendTorqueOnCommand(CAN_BROADCAST_ID,
-					false);  // Only to deactivate motores when waiting for calibration
+					false);  // Only to deactivate motors when waiting for calibration
 		} else if (hw_limited_mode) {
+			RCLCPP_INFO(get_logger(), "Setting torque OFF, write enable true");
 			torque_on = false;
 			write_torque_on_enable = true;
 		} else {
+			RCLCPP_INFO(get_logger(), "Setting torque ON, write enable true");
 			torque_on = on;
 			write_torque_on_enable = true;
 		}
@@ -529,16 +631,19 @@ namespace niryo_one_hardware {
 				sensor_offset_steps;  // Absolute steps at offset position
 
 		// 2. Send calibration cmd 1 + 2 + 3
+		RCLCPP_INFO(get_logger(), "Sending calibration for Joint 1");
 		if (sendCalibrationCommandForOneMotor(
 					info_.joints[0], 800, 1, calibration_timeout) != CAN_OK) {
 			return CAN_STEPPERS_CALIBRATION_FAIL;
 		}
 
+		RCLCPP_INFO(get_logger(), "Sending calibration for Joint 2");
 		if (sendCalibrationCommandForOneMotor(
 					info_.joints[1], 1100, 1, calibration_timeout) != CAN_OK) {
 			return CAN_STEPPERS_CALIBRATION_FAIL;
 		}
 
+		RCLCPP_INFO(get_logger(), "Sending calibration for Joint 3");
 		if (hardware_version == 2) {
 			if (sendCalibrationCommandForOneMotor(info_.joints[2], 1100, -1,
 						calibration_timeout) != CAN_OK) {
@@ -600,7 +705,7 @@ namespace niryo_one_hardware {
 	int NiryoOneHardwareCan::relativeMoveMotor(
 			hardware_interface::ComponentInfo joint, int steps, int delay,
 			bool wait) {
-		if (get_state(joint.name + "/enabled") == 0.0) {
+		if (!get_state(joint.name + "/enabled")) {
 			return CAN_OK;
 		}
 
@@ -648,8 +753,20 @@ namespace niryo_one_hardware {
 			return CAN_OK;
 		}
 
+		RCLCPP_INFO(get_logger(),
+				"Sending Calibration, Joint %d, Offset Position: %d, Delay: "
+				"%d, Direction: %d, Timeout: %d",
+				stoi(joint.parameters["id"]),
+				rad_pos_to_steps(stod(joint.parameters["offset_position"]),
+						stod(joint.parameters["gear_ratio"]),
+						stod(joint.parameters["direction"])),
+				delay_between_steps,
+				stoi(joint.parameters["direction"]) * calibration_direction,
+				calibr_timeout);
 		if (can->sendCalibrationCommand(stoi(joint.parameters["id"]),
-					stod(joint.parameters["offset_position"]),
+					rad_pos_to_steps(stod(joint.parameters["offset_position"]),
+							stod(joint.parameters["gear_ratio"]),
+							stod(joint.parameters["direction"])),
 					delay_between_steps,
 					stoi(joint.parameters["direction"]) * calibration_direction,
 					calibr_timeout) != CAN_OK) {
@@ -806,39 +923,341 @@ namespace niryo_one_hardware {
 	void NiryoOneHardwareCan::asyncThread() {
 		async_thread_shutdown_ = false;
 		while (!async_thread_shutdown_) {
-			allowMotorsCalibrationToStart();
+			calibrateMotors();
+			requestNewCalibration();
+			testMotors();
+			activateLearningMode();
+			activateLeds();
+			pingAndSetDxlTool();
+			openGripper();
+			closeGripper();
+			pullAirVacuumPump();
+			pushAirVacuumPump();
+			changeHardwareVersion();
+			rebootMotors();
 			std::this_thread::sleep_for(std::chrono::nanoseconds(20000000));
 		}
 	}
 
-	void NiryoOneHardwareCan::allowMotorsCalibrationToStart() {
-		// RCLCPP_INFO(get_logger(), "Allowing Motor Calibration");
-		auto status = get_command("niryo_one/calibrate_motors_async_status");
+	void NiryoOneHardwareCan::calibrateMotors() {
+		int32_t status =
+				unlisted_commands_
+						.at(CommandInterfaces::CALIBRATE_MOTORS_RESPONSE_STATUS)
+						->get_optional<double>()
+						.value_or(ASYNC_NONE);
 		if (status == ASYNC_WAITING) {
-			RCLCPP_INFO(get_logger(),
-					"Allowing Motor Calibration: Status Awaiting");
-			int mode = get_command("niryo_one/calibration_mode");
+			int calibration_mode =
+					unlisted_commands_
+							.at(CommandInterfaces::
+											CALIBRATE_MOTORS_REQUEST_VALUE)
+							->get_optional<double>()
+							.value();
 
+			std::string result_message = "";
+			int result = allowMotorsCalibrationToStart(
+					calibration_mode, result_message);
+
+			std::ignore =
+					unlisted_commands_
+							.at(CommandInterfaces::
+											CALIBRATE_MOTORS_RESPONSE_STATUS)
+							->set_value(result);
+		}
+	}
+
+	void NiryoOneHardwareCan::requestNewCalibration() {
+		// auto req =
+		// 		unlisted_commands_
+		// 				.at(CommandInterfaces::REQUEST_NEW_CALIBRATION_REQUEST)
+		// 				->get_optional<niryo_one_msgs::srv::SetInt::Request::
+		// 								SharedPtr>()
+		// 				.value_or(nullptr);
+		// if (req != nullptr) {
+		// 	niryo_one_msgs::srv::SetInt::Response::SharedPtr res =
+		// 			niryo_one_msgs::srv::SetInt::Response::SharedPtr();
+
+		// 	unlisted_commands_
+		// 			.at(CommandInterfaces::REQUEST_NEW_CALIBRATION_RESPONSE)
+		// 			->set_value<
+		// 					niryo_one_msgs::srv::SetInt::Response::SharedPtr>(
+		// 					res);
+		// }
+	}
+
+	void NiryoOneHardwareCan::testMotors() {
+		// auto req =
+		// 		unlisted_commands_.at(CommandInterfaces::TEST_MOTORS_REQUEST)
+		// 				->get_optional<niryo_one_msgs::srv::SetInt::Request::
+		// 								SharedPtr>()
+		// 				.value_or(nullptr);
+		// if (req != nullptr) {
+		// 	niryo_one_msgs::srv::SetInt::Response::SharedPtr res =
+		// 			niryo_one_msgs::srv::SetInt::Response::SharedPtr();
+
+		// 	// if (motor_test_status == 1) {
+		// 	// 	test_motor.stopTest();
+		// 	// 	activateLearningMode(true);
+		// 	// 	return true;
+		// 	// }
+
+		// 	// motor_test_status = 1;
+		// 	// // if (calibration_needed) {
+		// 	// // 	activateLearningMode(false);
+
+		// 	// // 	int calibration_mode = CAN_STEPPERS_CALIBRATION_MODE_AUTO;
+		// 	// // 	std::string result_message = "";
+		// 	// // 	int result = allowMotorsCalibrationToStart(
+		// 	// // 			calibration_mode, result_message);
+
+		// 	// // 	std::this_thread::sleep_for(std::chrono::seconds(1));
+		// 	// // 	while (calibration_in_progress) {
+		// 	// // 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
+		// 	// // 	}
+
+		// 	// // 	std::this_thread::sleep_for(std::chrono::seconds(1));
+		// 	// // }
+
+		// 	// activateLearningMode(false);
+
+		// 	// bool status = test_motor.runTest(req->value);
+
+		// 	// activateLearningMode(true);
+
+		// 	// if (status) {
+		// 	// 	motor_test_status = 0;
+		// 	// 	res->status = 200;
+		// 	// 	res->message = "Success";
+		// 	// 	RCLCPP_INFO(get_logger(), "Motor debug has ended with sucess");
+		// 	// } else {
+		// 	// 	motor_test_status = 1;
+		// 	// 	res->status = 400;
+		// 	// 	res->message = "Fail";
+		// 	// 	RCLCPP_INFO(get_logger(), "Motor debug has ended with failure");
+		// 	// }
+
+		// 	unlisted_commands_.at(CommandInterfaces::TEST_MOTORS_RESPONSE)
+		// 			->set_value<
+		// 					niryo_one_msgs::srv::SetInt::Response::SharedPtr>(
+		// 					res);
+		// }
+	}
+
+	void NiryoOneHardwareCan::activateLearningMode() {
+		int32_t status =
+				unlisted_commands_
+						.at(CommandInterfaces::
+										ACTIVATE_LEARNING_MODE_RESPONSE_STATUS)
+						->get_optional<double>()
+						.value_or(ASYNC_NONE);
+
+		if (status == ASYNC_WAITING) {
+			if (calibration_in_progress) {
+				std::ignore =
+						unlisted_commands_
+								.at(ACTIVATE_LEARNING_MODE_RESPONSE_STATUS)
+								->set_value(400);
+			} else {
+				bool learning_mode_on;
+				// if (calibration_needed == 1 || is_can_connection_ok) {
+				// 	// If CAN or DXL is disconnected, only allow activate learning mode
+				// 	learning_mode_on = true;
+				// } else {
+				learning_mode_on =
+						unlisted_commands_
+								.at(CommandInterfaces::
+												ACTIVATE_LEARNING_MODE_REQUEST_VALUE)
+								->get_optional<double>()
+								.value();
+				// }
+
+				activateLearningMode(learning_mode_on);
+
+				// Publish one time
+				std::ignore =
+						unlisted_commands_
+								.at(CommandInterfaces::
+												ACTIVATE_LEARNING_MODE_RESPONSE_STATUS)
+								->set_value(300);
+			}
+		}
+	}
+
+	void NiryoOneHardwareCan::activateLeds() {
+		// auto req =
+		// 		unlisted_commands_.at(CommandInterfaces::ACTIVATE_LEDS_REQUEST)
+		// 				->get_optional<niryo_one_msgs::srv::SetLeds::Request::
+		// 								SharedPtr>()
+		// 				.value_or(nullptr);
+		// if (req != nullptr) {
+		// 	niryo_one_msgs::srv::SetLeds::Response::SharedPtr res =
+		// 			niryo_one_msgs::srv::SetLeds::Response::SharedPtr();
+
+		// 	unlisted_commands_.at(CommandInterfaces::ACTIVATE_LEDS_RESPONSE)
+		// 			->set_value<
+		// 					niryo_one_msgs::srv::SetLeds::Response::SharedPtr>(
+		// 					res);
+		// }
+	}
+
+	void NiryoOneHardwareCan::pingAndSetDxlTool() {
+		// auto req =
+		// 		unlisted_commands_.at(CommandInterfaces::PING_DXL_TOOL_REQUEST)
+		// 				->get_optional<niryo_one_msgs::srv::PingDxlTool::
+		// 								Request::SharedPtr>()
+		// 				.value_or(nullptr);
+		// if (req != nullptr) {
+		// 	niryo_one_msgs::srv::PingDxlTool::Response::SharedPtr res =
+		// 			niryo_one_msgs::srv::PingDxlTool::Response::SharedPtr();
+
+		// 	unlisted_commands_.at(CommandInterfaces::PING_DXL_TOOL_RESPONSE)
+		// 			->set_value<niryo_one_msgs::srv::PingDxlTool::Response::
+		// 							SharedPtr>(res);
+		// }
+	}
+
+	void NiryoOneHardwareCan::openGripper() {
+		// auto req =
+		// 		unlisted_commands_.at(CommandInterfaces::OPEN_GRIPPER_REQUEST)
+		// 				->get_optional<niryo_one_msgs::srv::OpenGripper::
+		// 								Request::SharedPtr>()
+		// 				.value_or(nullptr);
+		// if (req != nullptr) {
+		// 	niryo_one_msgs::srv::OpenGripper::Response::SharedPtr res =
+		// 			niryo_one_msgs::srv::OpenGripper::Response::SharedPtr();
+
+		// 	unlisted_commands_.at(CommandInterfaces::OPEN_GRIPPER_RESPONSE)
+		// 			->set_value<niryo_one_msgs::srv::OpenGripper::Response::
+		// 							SharedPtr>(res);
+		// }
+	}
+
+	void NiryoOneHardwareCan::closeGripper() {
+		// auto req =
+		// 		unlisted_commands_.at(CommandInterfaces::CLOSE_GRIPPER_REQUEST)
+		// 				->get_optional<niryo_one_msgs::srv::CloseGripper::
+		// 								Request::SharedPtr>()
+		// 				.value_or(nullptr);
+		// if (req != nullptr) {
+		// 	niryo_one_msgs::srv::CloseGripper::Response::SharedPtr res =
+		// 			niryo_one_msgs::srv::CloseGripper::Response::SharedPtr();
+
+		// 	unlisted_commands_.at(CommandInterfaces::CLOSE_GRIPPER_RESPONSE)
+		// 			->set_value<niryo_one_msgs::srv::CloseGripper::Response::
+		// 							SharedPtr>(res);
+		// }
+	}
+
+	void NiryoOneHardwareCan::pullAirVacuumPump() {
+		// auto req =
+		// 		unlisted_commands_
+		// 				.at(CommandInterfaces::PULL_AIR_VACUUM_PUMP_REQUEST)
+		// 				->get_optional<niryo_one_msgs::srv::PullAirVacuumPump::
+		// 								Request::SharedPtr>()
+		// 				.value_or(nullptr);
+		// if (req != nullptr) {
+		// 	niryo_one_msgs::srv::PullAirVacuumPump::Response::SharedPtr res =
+		// 			niryo_one_msgs::srv::PullAirVacuumPump::Response::
+		// 					SharedPtr();
+
+		// 	unlisted_commands_
+		// 			.at(CommandInterfaces::PULL_AIR_VACUUM_PUMP_RESPONSE)
+		// 			->set_value<niryo_one_msgs::srv::PullAirVacuumPump::
+		// 							Response::SharedPtr>(res);
+		// }
+	}
+
+	void NiryoOneHardwareCan::pushAirVacuumPump() {
+		// auto req =
+		// 		unlisted_commands_
+		// 				.at(CommandInterfaces::PUSH_AIR_VACUUM_PUMP_REQUEST)
+		// 				->get_optional<niryo_one_msgs::srv::PushAirVacuumPump::
+		// 								Request::SharedPtr>()
+		// 				.value_or(nullptr);
+		// if (req != nullptr) {
+		// 	niryo_one_msgs::srv::PushAirVacuumPump::Response::SharedPtr res =
+		// 			niryo_one_msgs::srv::PushAirVacuumPump::Response::
+		// 					SharedPtr();
+
+		// 	unlisted_commands_
+		// 			.at(CommandInterfaces::PUSH_AIR_VACUUM_PUMP_RESPONSE)
+		// 			->set_value<niryo_one_msgs::srv::PushAirVacuumPump::
+		// 							Response::SharedPtr>(res);
+		// }
+	}
+
+	void NiryoOneHardwareCan::changeHardwareVersion() {
+		// auto req =
+		// 		unlisted_commands_
+		// 				.at(CommandInterfaces::CHANGE_HARDWARE_VERSION_REQUEST)
+		// 				->get_optional<
+		// 						niryo_one_msgs::srv::ChangeHardwareVersion::
+		// 								Request::SharedPtr>()
+		// 				.value_or(nullptr);
+		// if (req != nullptr) {
+		// 	niryo_one_msgs::srv::ChangeHardwareVersion::Response::SharedPtr
+		// 			res = niryo_one_msgs::srv::ChangeHardwareVersion::Response::
+		// 					SharedPtr();
+
+		// 	unlisted_commands_
+		// 			.at(CommandInterfaces::CHANGE_HANDWARE_VERSION_RESPONSE)
+		// 			->set_value<niryo_one_msgs::srv::ChangeHardwareVersion::
+		// 							Response::SharedPtr>(res);
+		// }
+	}
+
+	void NiryoOneHardwareCan::rebootMotors() {
+		// auto req =
+		// 		unlisted_commands_.at(CommandInterfaces::REBOOT_MOTORS_REQUEST)
+		// 				->get_optional<niryo_one_msgs::srv::SetInt::Request::
+		// 								SharedPtr>()
+		// 				.value_or(nullptr);
+		// if (req != nullptr) {
+		// 	niryo_one_msgs::srv::SetInt::Response::SharedPtr res =
+		// 			niryo_one_msgs::srv::SetInt::Response::SharedPtr();
+
+		// 	unlisted_commands_.at(CommandInterfaces::REBOOT_MOTORS_RESPONSE)
+		// 			->set_value<
+		// 					niryo_one_msgs::srv::SetInt::Response::SharedPtr>(
+		// 					res);
+		// }
+	}
+
+	int NiryoOneHardwareCan::allowMotorsCalibrationToStart(
+			int mode, std::string &result_message) {
+		if (can_enabled) {
 			if (mode == CAN_STEPPERS_CALIBRATION_MODE_MANUAL) {
 				RCLCPP_INFO(get_logger(),
 						"Allowing Motor Calibration: Manual calibration");
-				if (canProcessManualCalibration()) {
-					set_command("niryo_one/calibrate_motors_async_status", 400);
-					return;
+				if (!canProcessManualCalibration()) {
+					// set_command("niryo_one/calibrate_motors_async_status", 400);
+					return 400;
 				}
 			}
 			validateMotorsCalibrationFromUserInput(mode);
-
-			set_command("niryo_one/calibrate_motors_async_status", 200);
 		}
+
+		result_message = "Calibration is starting";
+		return 200;
 	}
 
 	bool NiryoOneHardwareCan::canProcessManualCalibration() {
 		// 1. Check if motors firmware version is OK
 		for (auto joint : info_.joints) {
 			if (get_state(joint.name + "/enabled")) {
-				std::string firmware_version =
-						joint.parameters["firmware_version"];
+				int v_major =
+						(int) get_state(joint.name + "/firmware_version_major");
+				int v_minor =
+						(int) get_state(joint.name + "/firmware_version_minor");
+				int v_patch =
+						(int) get_state(joint.name + "/firmware_version_patch");
+				std::string firmware_version = "";
+				firmware_version += std::to_string(v_major) + ".";
+				firmware_version += std::to_string(v_minor) + ".";
+				firmware_version += std::to_string(v_patch);
+				RCLCPP_INFO(get_logger(), "Joint: %s, Firmware: %s",
+						joint.parameters["id"].c_str(),
+						firmware_version.c_str());
+
 				if (firmware_version.length() == 0) {
 					RCLCPP_WARN(get_logger(),
 							"Can't process manual calibration: No firmware "
@@ -894,6 +1313,279 @@ namespace niryo_one_hardware {
 		if (mode == CAN_STEPPERS_CALIBRATION_MODE_MANUAL ||
 				mode == CAN_STEPPERS_CALIBRATION_MODE_AUTO) {
 			steppers_calibration_mode = mode;
+		}
+	}
+
+	void NiryoOneHardwareCan::hardwareControlRead() {
+		if (can->canReadData()) {
+			long unsigned int rxId;
+			unsigned char len;
+			unsigned char rxBuf[8];
+
+			can->readMsgBuf(&rxId, &len, rxBuf);
+
+			// o. This functionality will come later, to allow user to plug
+			// other CAN devices to RPI
+			// Development to do here: check if id >= 0x20
+			// IDs between 0x00 and 0x1F are reserved for Niryo One core
+			// communication.
+			// Those are lower IDs with higher priority, to ensure connection
+			// with motors is always up.
+			if (rxId >= 0x020) {
+				// Send frame to another place and return
+				// RCLCPP_INFO(get_logger(), "Frame will be sent somewhere else.");
+				// return;
+			}
+
+			// 1. Validate motor ID
+			int motor_id = rxId & 0x0F;  // 0x11 for ID 1, 0x12 for ID 2, ...
+
+			// TODO: handle conveyor belts
+
+			bool motor_found = false;
+			for (auto joint : info_.joints) {
+				if (motor_id == stoi(joint.parameters["id"])) {
+					set_state(joint.name + "/last_time_read",
+							get_clock()->now().seconds());
+					motor_found = true;
+					break;
+				}
+			}
+
+			if (!motor_found) {
+				RCLCPP_ERROR(get_logger(),
+						"Received CAN frame with wrong ID: %d", motor_id);
+				is_can_connection_ok = false;
+				return;
+			}
+
+			// 1.1 If ID OK, check control byte and fill data
+			int control_byte = rxBuf[0];
+
+			if (control_byte == CAN_DATA_POSITION) {
+				// RCLCPP_INFO(get_logger(), "Reading position data");
+				// Check length
+				if (len != 4) {
+					RCLCPP_ERROR(get_logger(),
+							"Position CAN frame should contain 4 data bytes");
+					return;
+				}
+
+				int32_t pos = (rxBuf[1] << 16) + (rxBuf[2] << 8) + rxBuf[3];
+				if (pos & (1 << 15)) {
+					pos = -1 * ((-pos + 1) & 0xFFFF);
+				}
+
+				// Fill data
+				for (auto joint : info_.joints) {
+					if (motor_id == stoi(joint.parameters["id"]) &&
+							get_state(joint.name + "/enabled")) {
+						double rad_pos = steps_to_rad_pos(pos,
+								stod(joint.parameters["gear_ratio"]),
+								stod(joint.parameters["direction"]));
+						set_state(joint.name + "/" +
+										hardware_interface::HW_IF_POSITION,
+								rad_pos);
+						break;
+					}
+				}
+			} else if (control_byte == CAN_DATA_DIAGNOSTICS) {
+				// Check data length
+				if (len != 4) {
+					RCLCPP_ERROR(get_logger(),
+							"Diagnostic CAN frame should contain 4 data bytes");
+					return;
+				}
+
+				int mode = rxBuf[1];
+				int driver_temp_raw = (rxBuf[2] << 8) + rxBuf[3];
+				double a = -0.00316;
+				double b = -12.924;
+				double c = 2367.7;
+				double v_temp = driver_temp_raw * 3.3 / 1024.0 * 1000.0;
+				int driver_temp =
+						int((-b - std::sqrt(b * b - 4 * a * (c - v_temp))) /
+										(2 * a) +
+								30);
+
+				// Fill data
+				for (auto joint : info_.joints) {
+					if (motor_id == stoi(joint.parameters["id"]) &&
+							get_state(joint.name + "/enabled")) {
+						set_state(joint.name + "/" +
+										hardware_interface::HW_IF_TEMPERATURE,
+								driver_temp);
+						break;
+					}
+				}
+			} else if (control_byte == CAN_DATA_FIRMWARE_VERSION) {
+				if (len != 4) {
+					RCLCPP_ERROR(get_logger(),
+							"Firmware version frame should contain 4 bytes");
+					return;
+				}
+
+				int v_major = rxBuf[1];
+				int v_minor = rxBuf[2];
+				int v_patch = rxBuf[3];
+
+				// Fill data
+				for (auto joint : info_.joints) {
+					if (motor_id == stoi(joint.parameters["id"]) &&
+							get_state(joint.name + "/enabled")) {
+						set_state(joint.name + "/firmware_version_major",
+								v_major);
+						set_state(joint.name + "/firmware_version_minor",
+								v_minor);
+						set_state(joint.name + "/firmware_version_patch",
+								v_patch);
+						break;
+					}
+				}
+			} else if (control_byte == CAN_DATA_CONVEYOR_STATE) {
+				// TODO: handle conveyor belts
+			}
+		}
+	}
+
+	void NiryoOneHardwareCan::hardwareControlWrite() {
+		// Write torque ON/OFF
+		if (write_torque_on_enable) {
+			if (can->sendTorqueOnCommand(CAN_BROADCAST_ID, torque_on) !=
+					CAN_OK) {
+				RCLCPP_ERROR(get_logger(), "Failed to send torque on");
+			} else {
+				write_torque_on_enable = false;
+			}
+		}
+
+		// Write synchronize position
+		if (write_synchronize_enable) {
+			bool synchronize_write_success = true;
+
+			for (auto joint : info_.joints) {
+				if (get_state(joint.name + "/enabled")) {
+					if (can->sendSynchronizePositionCommand(
+								stoi(joint.parameters["id"]),
+								write_synchronize_begin_traj) != CAN_OK) {
+						synchronize_write_success = false;
+					}
+				}
+			}
+
+			if (synchronize_write_success) {
+				write_synchronize_enable =
+						false;  // Disable writing after success
+			} else {
+				RCLCPP_ERROR(get_logger(),
+						"Failed to send synchronize position command");
+			}
+		}
+
+		// Write position
+		if (write_position_enable) {
+			// RCLCPP_INFO(get_logger(), "Writing position");
+			for (auto joint : info_.joints) {
+				double pos = rad_pos_to_steps(
+						get_command(joint.name + "/" +
+								hardware_interface::HW_IF_POSITION),
+						stod(joint.parameters["gear_ratio"]),
+						stod(joint.parameters["direction"]));
+				// RCLCPP_INFO(get_logger(), "Name: %s, Enabled: %f, Position: %f",
+				// 		joint.name.c_str(), get_state(joint.name + "/enabled"),
+				// 		pos);
+				if (get_state(joint.name + "/enabled")) {
+					if (can->sendPositionCommand(
+								stoi(joint.parameters["id"]), pos) != CAN_OK) {
+						RCLCPP_ERROR(get_logger(), "Failed to send position");
+					}
+				}
+			}
+		}
+
+		// Write micro steps
+		if (write_micro_steps_enable) {
+			bool mirco_steps_write_success = true;
+			for (auto joint : info_.joints) {
+				if (get_state(joint.name + "/enabled")) {
+					if (can->sendMicroStepsCommand(stoi(joint.parameters["id"]),
+								get_command(joint.name + "/mirco_steps")) !=
+							CAN_OK) {
+						mirco_steps_write_success = false;
+					}
+				}
+			}
+
+			if (mirco_steps_write_success) {
+				write_micro_steps_enable =
+						false;  // Disable writing after success
+			} else {
+				RCLCPP_ERROR(get_logger(), "Failed to send micro steps");
+			}
+		}
+
+		// Write max effort
+		if (write_max_effort_enable) {
+			bool max_effort_write_success = true;
+			for (auto joint : info_.joints) {
+				if (get_state(joint.name + "/enabled")) {
+					if (can->sendMaxEffortCommand(stoi(joint.parameters["id"]),
+								get_command(joint.name + "/max_effort")) !=
+							CAN_OK) {
+						max_effort_write_success = false;
+					}
+				}
+			}
+
+			if (max_effort_write_success) {
+				write_max_effort_enable = false;
+			} else {
+				RCLCPP_ERROR(get_logger(), "Failed to send max effort");
+			}
+		}
+	}
+
+	void NiryoOneHardwareCan::hardwareControlCheckConnection() {
+		if (!is_can_connection_ok) {
+			return;  // Don't check if connection is already lost
+		}
+
+		double time_now = get_clock()->now().seconds();
+		if (hw_check_connection_frequency > 5.0) {
+			hw_check_connection_frequency = 5.0;
+		}
+
+		double timeout_read = 1.0 / hw_check_connection_frequency;
+		int max_fail_counter = (int) (hw_check_connection_frequency + 0.5);
+
+		for (auto joint : info_.joints) {
+			if (get_state(joint.name + "/enabled")) {
+				if (time_now - get_state(joint.name + "/last_time_read") >
+						timeout_read *
+										get_state(joint.name +
+												"/hw_fail_counter") +
+								1) {
+					RCLCPP_ERROR(get_logger(),
+							"CAN connection problem with motor %d, hw fail "
+							"counter: %f",
+							stoi(joint.parameters["id"]),
+							get_state(joint.name + "/hw_fail_counter"));
+					if (get_state(joint.name + "/hw_fail_counter") >=
+							max_fail_counter) {
+						is_can_connection_ok = false;
+						RCLCPP_ERROR(get_logger(),
+								"Connection problem with CAN bus. "
+								"Motor %d is not connected;",
+								stoi(joint.parameters["id"]));
+						return;
+					}
+
+					set_state(joint.name + "/hw_fail_counter",
+							get_state(joint.name + "/hw_fail_counter") + 1);
+				} else {
+					set_state(joint.name + "/hw_fail_counter", 0);
+				}
+			}
 		}
 	}
 }

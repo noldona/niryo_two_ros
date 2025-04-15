@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 10  # Hz
+    update_rate: 100  # Hz
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
@@ -28,3 +28,8 @@ niryo_one_controller:
       - temperature
       - hardware_error
       - enabled
+      - hw_fail_counter
+      - last_time_read
+      - firmware_version_major
+      - firmware_version_minor
+      - firmware_version_patch

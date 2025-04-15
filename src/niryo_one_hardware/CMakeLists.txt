@@ -29,6 +29,7 @@ set(REF_GEN_INCLUDE_DEPENDS
   kdl_parser
   rclcpp
   trajectory_msgs
+  niryo_one_msgs
 )
 set(CONTROLLER_INCLUDE_DEPENDS
   pluginlib
@@ -78,6 +79,7 @@ add_library(
   SHARED
   hardware/niryo_one_hardware.cpp
   hardware/niryo_one_hardware_can.cpp
+  hardware/niryo_one_hardware_dxl.cpp
   hardware/src/hw_comm/can_communication.cpp
   hardware/src/hw_comm/dxl_communication.cpp
   hardware/src/hw_comm/fake_communication.cpp
@@ -90,6 +92,7 @@ add_library(
   hardware/src/utils/motor_offset_file_handler.cpp
   controller/niryo_one_controller.cpp
   hardware/src/utils/utilities.cpp
+  hardware/src/utils/interface_constants.cpp
 )
 
 target_compile_features(niryo_one_hardware PUBLIC cxx_std_17)

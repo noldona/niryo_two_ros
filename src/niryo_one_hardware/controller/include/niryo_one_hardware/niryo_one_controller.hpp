@@ -44,15 +44,9 @@
 #include "std_msgs/msg/bool.hpp"
 #include "std_msgs/msg/int8_multi_array.hpp"
 
+#include "niryo_one_hardware/interface_constants.hpp"
+
 namespace niryo_one_hardware {
-	enum CommandInterfaces {
-		CALIBRATE_MODE = 4,
-		CALIBRATE_MOTORS_ASYNC_STATUS = 5
-	};
-
-	// enum StateInterfaces {
-
-	// };
 
 	class NiryoOneController: public controller_interface::ControllerInterface {
 		public:
@@ -126,6 +120,21 @@ namespace niryo_one_hardware {
 		std::vector<std::reference_wrapper<
 				hardware_interface::LoanedStateInterface>>
 				joint_enabled_state_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_hw_fail_counter_state_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_last_time_read_state_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_firmware_version_major_state_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_firmware_version_minor_state_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_firmware_version_patch_state_interface_;
 
 		std::vector<std::reference_wrapper<
 				hardware_interface::LoanedCommandInterface>>
@@ -152,20 +161,108 @@ namespace niryo_one_hardware {
 						{"temperature", &joint_temperature_state_interface_},
 						{"hardware_error",
 								&joint_hardware_error_state_interface_},
-						{"enabled", &joint_enabled_state_interface_}};
+						{"enabled", &joint_enabled_state_interface_},
+						{"hw_fail_counter",
+								&joint_hw_fail_counter_state_interface_},
+						{"last_time_read",
+								&joint_last_time_read_state_interface_},
+						{"firmware_version_major",
+								&joint_firmware_version_major_state_interface_},
+						{"firmware_version_minor",
+								&joint_firmware_version_minor_state_interface_},
+						{"firmware_version_patch",
+								&joint_firmware_version_patch_state_interface_}};
 
 		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
 				calibrate_motors_srv_;
+		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
+				request_new_calibration_srv_;
 
-		rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr
-				calibrate_motors_sub;
+		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
+				test_motors_srv_;
 
-		static constexpr double ASYNC_WAITING = 2.0;
+		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
+				activate_learning_mode_srv_;
+		rclcpp::Service<niryo_one_msgs::srv::SetLeds>::SharedPtr
+				activate_leds_srv_;
 
-		bool waitForAsyncCommand(std::function<double(void)> get_value);
+		rclcpp::Service<niryo_one_msgs::srv::PingDxlTool>::SharedPtr
+				ping_and_set_dxl_tool_srv_;
+
+		rclcpp::Service<niryo_one_msgs::srv::OpenGripper>::SharedPtr
+				open_gripper_srv_;
+		rclcpp::Service<niryo_one_msgs::srv::CloseGripper>::SharedPtr
+				close_gripper_srv_;
+		rclcpp::Service<niryo_one_msgs::srv::PullAirVacuumPump>::SharedPtr
+				pull_air_vacuum_pump_srv_;
+		rclcpp::Service<niryo_one_msgs::srv::PushAirVacuumPump>::SharedPtr
+				push_air_vacuum_pump_srv_;
+
+		rclcpp::Service<niryo_one_msgs::srv::ChangeHardwareVersion>::SharedPtr
+				change_hardware_version_srv_;
+		rclcpp::Service<niryo_one_msgs::srv::SendCustomDxlValue>::SharedPtr
+				send_custom_dxl_value_srv_;
+		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
+				reboot_motors_srv_;
+
+		template<typename T>
+		bool waitForAsyncCommand(std::function<T(void)> get_value);
+
+		void createSubscribers();
+		void createPublishers();
+		void createServices();
 
 		private:
 		void callbackCalibrateMotors(
+				const niryo_one_msgs::srv::SetInt::Request::SharedPtr req,
+				niryo_one_msgs::srv::SetInt::Response::SharedPtr res);
+		void callbackRequestNewCalibration(
+				const niryo_one_msgs::srv::SetInt::Request::SharedPtr req,
+				niryo_one_msgs::srv::SetInt::Response::SharedPtr res);
+
+		void callbackTestMotors(
+				const niryo_one_msgs::srv::SetInt::Request::SharedPtr req,
+				niryo_one_msgs::srv::SetInt::Response::SharedPtr res);
+
+		void callbackActivateLearningMode(
+				const niryo_one_msgs::srv::SetInt::Request::SharedPtr req,
+				niryo_one_msgs::srv::SetInt::Response::SharedPtr res);
+		void callbackActivateLeds(
+				const niryo_one_msgs::srv::SetLeds::Request::SharedPtr req,
+				niryo_one_msgs::srv::SetLeds::Response::SharedPtr res);
+
+		void callbackPingAndSetDxlTool(
+				const niryo_one_msgs::srv::PingDxlTool::Request::SharedPtr req,
+				niryo_one_msgs::srv::PingDxlTool::Response::SharedPtr res);
+
+		void callbackOpenGripper(
+				const niryo_one_msgs::srv::OpenGripper::Request::SharedPtr req,
+				niryo_one_msgs::srv::OpenGripper::Response::SharedPtr res);
+		void callbackCloseGripper(
+				const niryo_one_msgs::srv::CloseGripper::Request::SharedPtr req,
+				niryo_one_msgs::srv::CloseGripper::Response::SharedPtr res);
+		void callbackPullAirVacuumPump(
+				const niryo_one_msgs::srv::PullAirVacuumPump::Request::SharedPtr
+						req,
+				niryo_one_msgs::srv::PullAirVacuumPump::Response::SharedPtr
+						res);
+		void callbackPushAirVacuumPump(
+				const niryo_one_msgs::srv::PushAirVacuumPump::Request::SharedPtr
+						req,
+				niryo_one_msgs::srv::PushAirVacuumPump::Response::SharedPtr
+						res);
+
+		void callbackChangeHardwareVersion(
+				const niryo_one_msgs::srv::ChangeHardwareVersion::Request::
+						SharedPtr req,
+				niryo_one_msgs::srv::ChangeHardwareVersion::Response::SharedPtr
+						res);
+		void callbackSendCustomDxlValue(
+				const niryo_one_msgs::srv::SendCustomDxlValue::Request::
+						SharedPtr req,
+				niryo_one_msgs::srv::SendCustomDxlValue::Response::SharedPtr
+						res);
+		void callbackRebootMotors(
 				const niryo_one_msgs::srv::SetInt::Request::SharedPtr req,
 				niryo_one_msgs::srv::SetInt::Response::SharedPtr res);
 	};

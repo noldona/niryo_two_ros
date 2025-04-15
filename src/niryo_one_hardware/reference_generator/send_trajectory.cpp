@@ -7,11 +7,16 @@
 #include <trajectory_msgs/msg/joint_trajectory.hpp>
 #include <trajectory_msgs/msg/joint_trajectory_point.hpp>
 
+#include "niryo_one_msgs/srv/set_int.hpp"
+
 int main(int argc, char **argv) {
 	rclcpp::init(argc, argv);
 	auto node = std::make_shared<rclcpp::Node>("send_trajectory");
 	auto pub = node->create_publisher<trajectory_msgs::msg::JointTrajectory>(
-			"/niryo_one_controller/joint_trajectory", 10);
+			"/niryo_one/joint_trajectory", 10);
+
+	auto client = node->create_client<niryo_one_msgs::srv::SetInt>(
+			"niryo_one/activate_learning_mode");
 
 	// Get robot description
 	auto robot_param = rclcpp::Parameter();
@@ -92,6 +97,17 @@ int main(int argc, char **argv) {
 							loop_rate * (trajectory_len / loop_rate)));
 	trajectory_msg.points.push_back(trajectory_point_msg);
 
+	auto req = std::make_shared<niryo_one_msgs::srv::SetInt::Request>();
+	req->value = false;
+
+	while (!client->wait_for_service()) {
+		RCLCPP_INFO(node->get_logger(),
+				"Waiting for service to become available...");
+	}
+
+	auto result = client->async_send_request(req);
+
+	RCLCPP_INFO(node->get_logger(), "Publishing trajectory");
 	pub->publish(trajectory_msg);
 	while (rclcpp::ok()) {
 	}
