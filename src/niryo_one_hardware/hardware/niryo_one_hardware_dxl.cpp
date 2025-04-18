@@ -65,12 +65,6 @@ namespace niryo_one_hardware {
 		xl320.reset(new XL320Driver(dxlPortHandler, dxlPacketHandler));
 		xl430.reset(new XL430Driver(dxlPortHandler, dxlPacketHandler));
 
-		reboot_when_auto_change_version = stob(
-				info_.hardware_parameters["reboot_when_auto_change_version"]);
-
-		allowed_motors_ids =
-				stovi(info_.hardware_parameters["allowed_dxl_ids"], ',');
-
 		is_dxl_connection_ok = false;
 
 		is_tool_connected = true;
@@ -232,67 +226,12 @@ namespace niryo_one_hardware {
 
 	return_type NiryoOneHardwareDxl::read(
 			const rclcpp::Time &time, const rclcpp::Duration &period) {
-		if (use_sim) {
-			for (auto joint : info_.joints) {
-				const auto name_pos =
-						joint.name + "/" + hardware_interface::HW_IF_POSITION;
-				const auto name_vel =
-						joint.name + "/" + hardware_interface::HW_IF_VELOCITY;
-				const auto name_tor =
-						joint.name + "/" + hardware_interface::HW_IF_TORQUE;
-				const auto name_temp = joint.name + "/" +
-						hardware_interface::HW_IF_TEMPERATURE;
-				const auto name_volt = joint.name + "/voltage";
-				const auto name_hw_error = joint.name + "/hw_error";
-				const auto name_enabled = joint.name + "/enabled";
-
-				// If simulating, echo the commands back out as the state
-				double prev_pos = get_state(name_pos);
-				set_state(name_pos, get_command(name_pos));
-				set_state(name_vel,
-						(prev_pos - get_command(name_pos)) * period.seconds());
-				set_state(name_tor, get_command(name_tor));
-				set_state(name_temp, 0);
-				set_state(name_volt, 0);
-				set_state(name_hw_error, 0);
-				set_state(name_enabled, 1);
-			}
-		} else {
-			if (!hw_is_busy && hw_control_loop_keep_alive) {
-				hw_is_busy = true;
-
-				hardwareControlRead();
-
-				hw_is_busy = false;
-			}
-		}
-
 		return return_type::OK;
 	}
 
 	return_type NiryoOneHardwareDxl::write(
 			const rclcpp::Time &time, const rclcpp::Duration &period) {
-		if (use_sim) {
-			// Do nothing. Simulation is handled in read
-		} else {
-			if (!hw_is_busy && hw_control_loop_keep_alive) {
-				hw_is_busy = true;
-
-				hardwareControlWrite();
-
-				hw_is_busy = false;
-			}
-		}
-
 		return return_type::OK;
-	}
-
-	void NiryoOneHardwareDxl::setControlMode(int control_mode) {
-		write_position_enable = (control_mode == DXL_CONTROL_MODE_POSITION);
-		write_velocity_enable = (control_mode ==
-				DXL_CONTROL_MODE_VELOCITY);  // Not implemented yet
-		write_torque_enable = (control_mode ==
-				DXL_CONTROL_MODE_TORQUE);  // Not implemented yet
 	}
 
 	void NiryoOneHardwareDxl::manageDxlConnection() {
@@ -359,8 +298,8 @@ namespace niryo_one_hardware {
 			// --> Continue like nothing happened
 		} else if ((detected_version != hardware_version)) {
 			// Change version (V1->V2 or V2->V1) and reboot
-			change_hardware_version_and_reboot(hardware_version,
-					detected_version, reboot_when_auto_change_version);
+			change_hardware_version_and_reboot(
+					hardware_version, detected_version);
 		}
 	}
 
