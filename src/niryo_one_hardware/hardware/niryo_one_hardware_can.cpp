@@ -218,17 +218,16 @@ namespace niryo_one_hardware {
 			const rclcpp::Time & /*time*/, const rclcpp::Duration &period) {
 		// RCLCPP_INFO(get_logger(), "Reading");
 		if (use_sim) {
-			for (std::size_t i = 0; i < info_.joints.size(); ++i) {
-				const auto name_pos = info_.joints[i].name + "/" +
-						hardware_interface::HW_IF_POSITION;
-				const auto name_vel = info_.joints[i].name + "/" +
-						hardware_interface::HW_IF_VELOCITY;
-				const auto name_tor = info_.joints[i].name + "/" +
-						hardware_interface::HW_IF_TORQUE;
-				const auto name_temp = info_.joints[i].name + "/" +
+			for (auto joint : info_.joints) {
+				const auto name_pos =
+						joint.name + "/" + hardware_interface::HW_IF_POSITION;
+				const auto name_vel =
+						joint.name + "/" + hardware_interface::HW_IF_VELOCITY;
+				const auto name_tor =
+						joint.name + "/" + hardware_interface::HW_IF_TORQUE;
+				const auto name_temp = joint.name + "/" +
 						hardware_interface::HW_IF_TEMPERATURE;
-				const auto name_enabled =
-						info_.joints[i].name + "/" + "enabled";
+				const auto name_enabled = joint.name + "/" + "enabled";
 
 				// If simulating, echo the commands back out as the state
 				double prev_pos = get_state(name_pos);
@@ -258,7 +257,13 @@ namespace niryo_one_hardware {
 		if (use_sim) {
 			// Do nothing. Simulation is handled in read
 		} else {
-			hardwareControlWrite();
+			if (!hw_is_busy && hw_control_loop_keep_alive) {
+				hw_is_busy = true;
+
+				hardwareControlWrite();
+
+				hw_is_busy = false;
+			}
 		}
 
 		return return_type::OK;

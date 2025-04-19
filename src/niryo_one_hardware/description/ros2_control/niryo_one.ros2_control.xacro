@@ -5,6 +5,21 @@
 	<xacro:property name="params_path" value="$(arg params_path)" />
 	<xacro:property name="mp" value="${xacro.load_yaml(params_path)}" />
 
+	<xacro:property name="motor_type_xl320" value="1" />
+	<xacro:property name="motor_type_xl430" value="2" />
+
+	<xacro:property name="xl320_total_angle" value="296.67" />
+	<xacro:property name="xl320_max_position" value="1022" />
+	<xacro:property name="xl320_min_position" value="0" />
+	<xacro:property name="xl320_middle_position" value="511" />
+	<xacro:property name="xl320_total_range_position" value="1023" />
+
+	<xacro:property name="xl430_total_angle" value="360.36" />
+	<xacro:property name="xl430_max_position" value="4094" />
+	<xacro:property name="xl430_min_position" value="0" />
+	<xacro:property name="xl430_middle_position" value="2047" />
+	<xacro:property name="xl430_total_range_position" value="4095" />
+
 	<xacro:macro name="niryo_one_ros2_control" params="name">
 		<ros2_control name="${name}_can" type="system">
 			<hardware>
@@ -79,9 +94,7 @@
 				</command_interface>
 				<command_interface name="torque" />
 				<command_interface name="mirco_steps" />
-				<command_interface name="max_effort">
-					<param name="max">1</param>
-				</command_interface>
+				<command_interface name="max_effort" />
 
 				<state_interface name="position">
 					<param name="initial_value">${mp['home_position_1']}</param>
@@ -125,9 +138,7 @@
 				</command_interface>
 				<command_interface name="torque" />
 				<command_interface name="mirco_steps" />
-				<command_interface name="max_effort">
-					<param name="max">1</param>
-				</command_interface>
+				<command_interface name="max_effort" />
 
 				<state_interface name="position">
 					<param name="initial_value">${mp['home_position_2']}</param>
@@ -171,9 +182,7 @@
 				</command_interface>
 				<command_interface name="torque" />
 				<command_interface name="mirco_steps" />
-				<command_interface name="max_effort">
-					<param name="max">1</param>
-				</command_interface>
+				<command_interface name="max_effort" />
 
 				<state_interface name="position">
 					<param name="initial_value">${mp['home_position_3']}</param>
@@ -223,7 +232,8 @@
 			<joint name="joint_4">
 				<param name="id">2</param>
 				<param name="name">Servo Axis 4</param>
-				<param name="type">2</param>  <!-- XL430 -->
+				<param name="type">${motor_type_xl430}</param>
+				<param name="home_position">${xl430_middle_position}</param>
 
 				<command_interface name="position">
 					<param name="min">${limit_low_forearm_rotation}</param>
@@ -236,7 +246,7 @@
 				<command_interface name="led" />
 
 				<state_interface name="position">
-					<param name="initial_value">2047</param>
+					<param name="initial_value">${xl430_middle_position}</param>
 				</state_interface>
 				<state_interface name="velocity" />
 				<state_interface name="torque" />
@@ -249,7 +259,8 @@
 			<joint name="joint_5">
 				<param name="id">3</param>
 				<param name="name">Servo Axis 5</param>
-				<param name="type">2</param>  <!-- XL430 -->
+				<param name="type">${motor_type_xl430}</param>
+				<param name="home_position">${xl430_middle_position}</param>
 
 				<command_interface name="position">
 					<param name="min">${limit_low_wrist_rotation}</param>
@@ -262,7 +273,7 @@
 				<command_interface name="led" />
 
 				<state_interface name="position">
-					<param name="initial_value">2047</param>
+					<param name="initial_value">${xl430_middle_position}</param>
 				</state_interface>
 				<state_interface name="velocity" />
 				<state_interface name="torque" />
@@ -275,7 +286,8 @@
 			<joint name="joint_6">
 				<param name="id">6</param>
 				<param name="name">Servo Axis 6</param>
-				<param name="type">1</param>  <!-- XL320 -->
+				<param name="type">${motor_type_xl320}</param>
+				<param name="home_position">${xl320_middle_position}</param>
 
 				<command_interface name="position">
 					<param name="min">${limit_low_hand_rotation}</param>
@@ -288,7 +300,7 @@
 				<command_interface name="led" />
 
 				<state_interface name="position">
-					<param name="initial_value">511</param>
+					<param name="initial_value">${xl320_middle_position}</param>
 				</state_interface>
 				<state_interface name="velocity" />
 				<state_interface name="torque" />
