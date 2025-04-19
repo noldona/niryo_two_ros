@@ -227,6 +227,7 @@
 				<param name="dxl_hw_write_frequency">${mp['dxl_hw_write_frequency']}</param>
 				<param name="dxl_hw_data_read_frequency">${mp['dxl_hw_data_read_frequency']}</param>
 				<param name="dxl_hw_status_read_frequency">${mp['dxl_hw_status_read_frequency']}</param>
+				<param name="allowed_dxl_ids">${mp['allowed_dxl_ids']}</param>
 			</hardware>
 
 			<joint name="joint_4">

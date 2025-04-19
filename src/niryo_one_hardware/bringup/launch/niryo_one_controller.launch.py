@@ -62,7 +62,7 @@ def generate_launch_description():
         executable="ros2_control_node",
         parameters=[robot_controllers],
         output="both",
-        prefix=['gdb -ex run --args'],
+        # prefix=['gdb -ex run --args'],
     )
 
     robot_state_pub_node = Node(
@@ -70,21 +70,21 @@ def generate_launch_description():
         executable="robot_state_publisher",
         output="both",
         parameters=[robot_description],
-        prefix=['gdb -ex run --args'],
+        # prefix=['gdb -ex run --args'],
     )
 
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["joint_state_broadcaster"],
-        prefix=['gdb -ex run --args'],
+        # prefix=['gdb -ex run --args'],
     )
 
     robot_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["niryo_one_controller", "--param-file", robot_controllers],
-        prefix=['gdb -ex run --args'],
+        # prefix=['gdb -ex run --args'],
     )
 
     rviz_node = Node(

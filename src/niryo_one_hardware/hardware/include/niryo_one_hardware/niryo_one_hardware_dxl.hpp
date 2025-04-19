@@ -168,6 +168,8 @@ namespace niryo_one_hardware {
 
 		bool reboot_when_auto_change_version;
 
+		std::vector<int> allowed_motors_ids;
+
 		void setControlMode(int control_mode);
 		void manageDxlConnection();
 		void checkHardwareVersionFromDxlMotors();

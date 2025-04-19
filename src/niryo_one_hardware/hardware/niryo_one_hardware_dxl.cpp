@@ -68,6 +68,9 @@ namespace niryo_one_hardware {
 		reboot_when_auto_change_version = stob(
 				info_.hardware_parameters["reboot_when_auto_change_version"]);
 
+		allowed_motors_ids =
+				stovi(info_.hardware_parameters["allowed_dxl_ids"], ',');
+
 		is_dxl_connection_ok = false;
 
 		is_tool_connected = false;
@@ -484,10 +487,10 @@ namespace niryo_one_hardware {
 		}
 
 		// 1.1 Log all IDs found for debug purposes
-		RCLCPP_INFO(get_logger(), "Dynamixel broadcast ping - Found IDs:");
-		for (std::size_t i = 0; i < id_list.size(); i++) {
-			RCLCPP_INFO(get_logger(), "- %d", id_list.at(i));
-		}
+		// RCLCPP_INFO(get_logger(), "Dynamixel broadcast ping - Found IDs:");
+		// for (std::size_t i = 0; i < id_list.size(); i++) {
+		// 	RCLCPP_INFO(get_logger(), "- %d", id_list.at(i));
+		// }
 
 		// 2. Check that IDs correspond to niryo_one motors ID list
 		std::vector<uint8_t> missing_motor_ids;
@@ -519,7 +522,6 @@ namespace niryo_one_hardware {
 
 		// 3. Cheeck that there is no unwanted motor
 		std::vector<uint8_t> unallowed_motor_ids;
-		std::vector<uint8_t> allowed_motors_ids;
 		for (auto joint : info_.joints) {
 			allowed_motors_ids.push_back(stoi(joint.parameters["id"]));
 		}
