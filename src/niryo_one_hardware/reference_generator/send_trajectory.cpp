@@ -97,18 +97,23 @@ int main(int argc, char **argv) {
 							loop_rate * (trajectory_len / loop_rate)));
 	trajectory_msg.points.push_back(trajectory_point_msg);
 
+	// Disable learning mode
 	auto req = std::make_shared<niryo_one_msgs::srv::SetInt::Request>();
 	req->value = false;
-
 	while (!client->wait_for_service()) {
 		RCLCPP_INFO(node->get_logger(),
 				"Waiting for service to become available...");
 	}
-
 	auto result = client->async_send_request(req);
 
+	// Send trajectory
 	RCLCPP_INFO(node->get_logger(), "Publishing trajectory");
 	pub->publish(trajectory_msg);
+
+	// Enable learning mode
+	req->value = true;
+	result = client->async_send_request(req);
+
 	while (rclcpp::ok()) {
 	}
 
