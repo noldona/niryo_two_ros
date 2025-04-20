@@ -2,7 +2,7 @@
 #
 #  Stepper caracteristics for hardware V1
 #
-niryo_one_driver:
+/**:
   ros__parameters:
     stepper_1_gear_ratio: 6.0625
     stepper_2_gear_ratio: 8.3125

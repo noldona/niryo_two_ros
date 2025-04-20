@@ -6,7 +6,7 @@
 #
 #  Communication with motors
 #
-niryo_one_driver:
+/**:
   ros__parameters:
     # Dynamixel bus
     dxl_baudrate: 1000000

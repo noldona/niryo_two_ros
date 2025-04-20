@@ -1,0 +1,12 @@
+# THIS IS A GENERATED FILE, NOT RECOMMENDED TO EDIT.
+
+[Unit]
+Description="bringup niryo_one_ros"
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/niryo_one_ros-start
+
+[Install]
+WantedBy=multi-user.target

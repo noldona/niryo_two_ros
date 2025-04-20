@@ -1,0 +1,77 @@
+---ID---
+0
+---NAME---
+Last executed command
+---CREATED---
+1600189057
+---UPDATED---
+1600189057
+---DESCRIPTION---
+
+---END_OF_DESCRIPTION---
+---BLOCKLY_XML---
+<xml xmlns="http://www.w3.org/1999/xhtml"><block type="controls_repeat_ext" id="{`#e9diR=I~[dzw6U(W5" x="70" y="30"><value name="TIMES"><shadow type="math_number" id="MkL@M5lQ9mJ|7#ZM50Ye"><field name="NUM">8</field></shadow></value><statement name="DO"><block type="niryo_one_calibrate_auto" id=":AkYZRq;{u`ZI,~Kad.e"><next><block type="niryo_one_move_joints" id="#N%cDi?9#AF!Mf]oojw."><field name="JOINTS_1">3.053</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="jiq:BZDTTT**72!Gj$~k"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="g*n8W.WaCC8f#^8cVz@]"><field name="JOINTS_1">-3.053</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="`eo;2tQ@Bt.7]PE.KDEl"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="BpY9LQpp[#,tKSZ+]U%L"><field name="JOINTS_1">0</field><field name="JOINTS_2">0.639</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="A@^8uA6O`P(xlt+52f-l"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="Ln#mAAm7/(@GuNwB=,3J"><field name="JOINTS_1">0</field><field name="JOINTS_2">-1.5</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="qAd1TPgkIK90?w:0do.S"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="0er:;TNkTp}NvSk6[:PJ"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">1.357</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id=";qC)mEoP^2TIC[kD5=+k"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="p3wWm?(w?D#~2amBzYXr"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">-1.2</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="uj|~^m+=/?~xM%Y^}h?5"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="kvz7tRqD4qx6(Ajkmzl?"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">3.053</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="7goW{E1p_dj|wbNk]Cf}"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="8X/*R1l8K/0Nk$Ils?9:"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">-3.053</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="g(0)yz3S-MSFmgD*fHT)"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="E^#/o89uUr7Tk?aIce0f"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">1.919</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="r0+(KU8hAK3+CFH0eml%"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="{PC?YdM}(MW3*ZpEQcur"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">-1.744</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="J.VA?m)T.h(}-/ZJwG97"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="Lca*^rPvD:hC!CCZ(iB+"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">2.573</field><next><block type="niryo_one_move_joints" id="I]#YXvpN-R`Q(Jva?9,g"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field><next><block type="niryo_one_move_joints" id="2nQGaKJExvq-oF{Gg7Cr"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">-2.573</field><next><block type="niryo_one_move_joints" id="a+P=yTcD8RTPaWDv(xP4"><field name="JOINTS_1">0</field><field name="JOINTS_2">0</field><field name="JOINTS_3">0</field><field name="JOINTS_4">0</field><field name="JOINTS_5">0</field><field name="JOINTS_6">0</field></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>
+---END_OF_BLOCKLY_XML---
+---PYTHON_CODE---
+#!/usr/bin/env python
+
+from niryo_one_python_api.niryo_one_api import *
+import rospy
+rospy.init_node('niryo_one_generated_code_execution')
+n = NiryoOne()
+
+n.highlight_block('{`#e9diR=I~[dzw6U(W5')
+for count in range(8):
+  n.highlight_block(':AkYZRq;{u`ZI,~Kad.e')
+  n.calibrate_auto()
+  n.highlight_block('#N%cDi?9#AF!Mf]oojw.')
+  n.move_joints([3.053, 0, 0, 0, 0, 0])
+  n.highlight_block('jiq:BZDTTT**72!Gj$~k')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('g*n8W.WaCC8f#^8cVz@]')
+  n.move_joints([-3.053, 0, 0, 0, 0, 0])
+  n.highlight_block('`eo;2tQ@Bt.7]PE.KDEl')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('BpY9LQpp[#,tKSZ+]U%L')
+  n.move_joints([0, 0.639, 0, 0, 0, 0])
+  n.highlight_block('A@^8uA6O`P(xlt+52f-l')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('Ln#mAAm7/(@GuNwB=,3J')
+  n.move_joints([0, -1.5, 0, 0, 0, 0])
+  n.highlight_block('qAd1TPgkIK90?w:0do.S')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('0er:;TNkTp}NvSk6[:PJ')
+  n.move_joints([0, 0, 1.357, 0, 0, 0])
+  n.highlight_block(';qC)mEoP^2TIC[kD5=+k')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('p3wWm?(w?D#~2amBzYXr')
+  n.move_joints([0, 0, -1.2, 0, 0, 0])
+  n.highlight_block('uj|~^m+=/?~xM%Y^}h?5')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('kvz7tRqD4qx6(Ajkmzl?')
+  n.move_joints([0, 0, 0, 3.053, 0, 0])
+  n.highlight_block('7goW{E1p_dj|wbNk]Cf}')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('8X/*R1l8K/0Nk$Ils?9:')
+  n.move_joints([0, 0, 0, -3.053, 0, 0])
+  n.highlight_block('g(0)yz3S-MSFmgD*fHT)')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('E^#/o89uUr7Tk?aIce0f')
+  n.move_joints([0, 0, 0, 0, 1.919, 0])
+  n.highlight_block('r0+(KU8hAK3+CFH0eml%')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('{PC?YdM}(MW3*ZpEQcur')
+  n.move_joints([0, 0, 0, 0, -1.744, 0])
+  n.highlight_block('J.VA?m)T.h(}-/ZJwG97')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('Lca*^rPvD:hC!CCZ(iB+')
+  n.move_joints([0, 0, 0, 0, 0, 2.573])
+  n.highlight_block('I]#YXvpN-R`Q(Jva?9,g')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('2nQGaKJExvq-oF{Gg7Cr')
+  n.move_joints([0, 0, 0, 0, 0, -2.573])
+  n.highlight_block('a+P=yTcD8RTPaWDv(xP4')
+  n.move_joints([0, 0, 0, 0, 0, 0])
+  n.highlight_block('{`#e9diR=I~[dzw6U(W5')
+
+---END_OF_PYTHON_CODE---
