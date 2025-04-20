@@ -56,7 +56,7 @@ class PositionManager(Node):
         self.get_logger().info("get list position created")
 
         self.validation = self.declare_parameter("/niryo_one/robot_command_validation").value
-        self.parameters_validation = ParametersValidation(self.validation)
+        self.parameters_validation = ParametersValidation(self.validation, self)
 
         self.fk_client = self.create_client(GetPositionFK, 'compute_fk')
         while not self.fk_client.wait_for_service(timeout_sec=2.0):
@@ -195,25 +195,19 @@ class PositionManager(Node):
         return position_list
     
     def get_forward_kinematic(self, joints):
-        try:
-            self.fk_client.wait_for_service(timeout_sec=2.0)
-        except (rclpy.exceptions.ROSInterruptException) as e:
-            self.get_logger().error("Service call failed:", e)
-            return None
-        try:
-            moveit_fk = GetPositionFK.Request()
-            fk_link = ['base_link', 'tool_link']
-            joint_names = ['joint_1', 'joint_2', 'joint_3', 'joint_4', 'joint_5', 'joint_6']
-            header = Header(0, self.get_clock().now().to_msg(), "/world")
-            rs = RobotState()
-            rs.joint_state.name = joint_names
-            rs.joint_state.position = joints
-            request = moveit_fk(header, fk_link, rs)
-            future = self.fk_client.call_async(request)
-            response = future.result()
-        except Exception as e:
-            self.get_logger().error("Service call failed:", e)
-            return None
+        fk_link = ['base_link', 'tool_link']
+        joint_names = ['joint_1', 'joint_2', 'joint_3', 'joint_4', 'joint_5', 'joint_6']
+        header = Header(0, self.get_clock().now().to_msg(), "/world")
+        rs = RobotState()
+        rs.joint_state.name = joint_names
+        rs.joint_state.position = joints
+        moveit_fk_request = GetPositionFK.Request(header, fk_link, rs)
+        
+        while not self.fk_client.wait_for_service(timeout_sec=2.0):
+            self.get_logger().warn('Niryo ROS Forward Kinematic service is not up!')
+
+        future = self.fk_client.call_async(moveit_fk_request)
+        response = future.result()
 
         quaternion = [response.pose_stamped[1].pose.orientation.x, response.pose_stamped[1].pose.orientation.y,
                     response.pose_stamped[1].pose.orientation.z, response.pose_stamped[1].pose.orientation.w]

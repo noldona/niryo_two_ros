@@ -17,10 +17,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import rospy
+from rclpy.node import Node
+from rclpy.action import ActionServer
+from rclpy import timer
+from rclpy.duration import Duration
 import sys
 import moveit_commander
-import actionlib
 import threading
 
 # Lib
@@ -57,9 +59,11 @@ This class handles the arm and tools through a service interface
 """
 
 
-class RobotCommander:
+class RobotCommander(Node):
 
-    def __init__(self, position_manager, trajectory_manager):
+    def __init__(self, position_manager, trajectory_manager, **kwargs):
+        super().__init__('robot_commander', **kwargs)
+        
         self.trajectory_manager = trajectory_manager
         self.pos_manager = position_manager
         moveit_commander.roscpp_initialize(sys.argv)
@@ -69,39 +73,44 @@ class RobotCommander:
         self.arm_commander = ArmCommander(self.move_group_arm)
         self.tool_commander = ToolCommander()
 
-        self.stop_trajectory_server = rospy.Service(
-            'niryo_one/commander/stop_command', SetBool, self.callback_stop_command)
+        self.stop_trajectory_server = self.create_service(
+            SetBool, 'niryo_one/commander/stop_command', self.callback_stop_command)
 
-        self.reset_controller_pub = rospy.Publisher('/niryo_one/steppers_reset_controller',
-                                                    Empty, queue_size=1)
+        self.reset_controller_pub = self.create_publisher(
+            Empty, '/niryo_one/steppers_reset_controller', queue_size=1)
 
         # robot action server
-        self.server = actionlib.ActionServer('niryo_one/commander/robot_action',
-                                             RobotMoveAction, self.on_goal, self.on_cancel, auto_start=False)
+        self.server = ActionServer(self, 
+                                   RobotMoveAction, 
+                                   'niryo_one/commander/robot_action',
+                                   self.on_goal, 
+                                   self.on_cancel, 
+                                   auto_start=False)
+        
         self.current_goal_handle = None
         self.learning_mode_on = False
         self.joystick_enabled = False
         self.hardware_status = None
-        self.is_active_server = rospy.Service(
-            'niryo_one/commander/is_active', GetInt, self.callback_is_active)
+        self.is_active_server = self.create_service(
+            GetInt, 'niryo_one/commander/is_active', self.callback_is_active)
 
-        self.learning_mode_subscriber = rospy.Subscriber(
-            '/niryo_one/learning_mode', Bool, self.callback_learning_mode)
-        self.joystick_enabled_subscriber = rospy.Subscriber('/niryo_one/joystick_interface/is_enabled',
-                                                            Bool, self.callback_joystick_enabled)
-        self.hardware_status_subscriber = rospy.Subscriber(
-            '/niryo_one/hardware_status', HardwareStatus, self.callback_hardware_status)
+        self.learning_mode_subscriber = self.create_subscription(
+            Bool, '/niryo_one/learning_mode', self.callback_learning_mode)
+        self.joystick_enabled_subscriber = self.create_subscription(
+            Bool, '/niryo_one/joystick_interface/is_enabled', self.callback_joystick_enabled)
+        self.hardware_status_subscriber = self.create_subscription(
+            HardwareStatus, '/niryo_one/hardware_status', self.callback_hardware_status)
 
-        self.validation = rospy.get_param("/niryo_one/robot_command_validation")
-        self.parameters_validation = ParametersValidation(self.validation)
+        self.validation = self.declare_parameter("/niryo_one/robot_command_validation").value
+        self.parameters_validation = ParametersValidation(self.validation, self)
 
         # arm velocity
         self.max_velocity_scaling_factor = 100
-        self.max_velocity_scaling_factor_pub = rospy.Publisher(
-            '/niryo_one/max_velocity_scaling_factor', Int32, queue_size=10)
-        self.timer = rospy.Timer(rospy.Duration(1.0), self.publish_arm_max_velocity_scaling_factor)
-        self.max_velocity_scaling_factor_server = rospy.Service(
-            '/niryo_one/commander/set_max_velocity_scaling_factor', SetInt,
+        self.max_velocity_scaling_factor_pub = self.create_publisher(
+            Int32, '/niryo_one/max_velocity_scaling_factor', queue_size=10)
+        self.timer = timer.Timer(Duration(1.0), self.publish_arm_max_velocity_scaling_factor)
+        self.max_velocity_scaling_factor_server = self.create_service(
+            SetInt, '/niryo_one/commander/set_max_velocity_scaling_factor',
             self.callback_set_max_velocity_scaling_factor)
 
     def compute_and_execute_plan(self):
@@ -112,31 +121,31 @@ class RobotCommander:
             tries += 1
 
             if tries > 3:
-                rospy.logerr("Big failure from the controller. Try to restart the robot")
+                self.get_logger().info("Big failure from the controller. Try to restart the robot")
                 return CommandStatus.ROS_ERROR, "Please restart the robot and try again."
 
             # if we are re-trying, first stop current plan
             if tries > 1:
                 self.arm_commander.stop_current_plan()
-                rospy.sleep(0.1)
+                timer.Rate(1/0.1).sleep()
             plan = self.move_group_arm.compute_plan()
             if not plan:
                 raise RobotCommanderException(
                     CommandStatus.PLAN_FAILED, "Moveit failed to compute the plan.")
 
             self.reset_controller()
-            rospy.loginfo("Send Moveit trajectory to controller.")
+            self.get_logger().info("Send Moveit trajectory to controller.")
             status, message = self.arm_commander.execute_plan(plan)
 
             if status != CommandStatus.SHOULD_RESTART:
                 break
-            rospy.logwarn("WILL RETRY COMPUTING AND EXECUTING TRAJECTORY.")
+            self.get_logger().warn("WILL RETRY COMPUTING AND EXECUTING TRAJECTORY.")
 
         return status, message
 
     def set_plan_and_execute(self, traj):
         self.reset_controller()
-        rospy.loginfo("Send newly set trajectory to execute")
+        self.get_logger().info("Send newly set trajectory to execute")
         if traj is None:
             raise RobotCommanderException(
                 CommandStatus.PLAN_FAILED, "Moveit failed to execute plan.")
@@ -146,17 +155,17 @@ class RobotCommander:
         msg = Empty()
         self.reset_controller_pub.publish(msg)
         # very important delay to avoid unexpected issues from ros_control
-        rospy.sleep(0.05)
+        timer.Rate(1/0.05).sleep()
 
     @staticmethod
-    def activate_learning_mode(activate):
-        try:
-            rospy.wait_for_service('/niryo_one/activate_learning_mode', 1)
-            srv = rospy.ServiceProxy('/niryo_one/activate_learning_mode', SetInt)
-            resp = srv(int(activate))
-            return resp.status == 200
-        except (rospy.ServiceException, rospy.ROSException), e:
-            return False
+    def activate_learning_mode(self: Node, activate):
+        self.cli = self.create_client(SetInt, '/niryo_one/activate_learning_mode')
+        while not self.cli.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('Niryo ROS Learning Mode service is not up!')
+        self.req = SetInt.Request(activate)
+        future = self.cli.call_async(self.req)
+        resp = future.result()
+        return resp.status == 200
 
     def publish_arm_max_velocity_scaling_factor(self, event):
         msg = Int32()
@@ -175,7 +184,7 @@ class RobotCommander:
         return {'status': 200, 'message': 'Success'}
 
     def set_saved_position(self, cmd):
-        rospy.loginfo("set saved position")
+        self.get_logger().info("set saved position")
         pos = self.pos_manager.get_position(cmd.saved_position_name)
         self.arm_commander.set_joint_target(pos.joints)
 
@@ -232,7 +241,7 @@ class RobotCommander:
     # - Cancel command if asked
     def start(self):
         self.server.start()
-        rospy.loginfo("Action Server started (Robot Commander)")
+        self.get_logger().info("Action Server started (Robot Commander)")
 
     @staticmethod
     def create_result(status, message):
@@ -261,7 +270,7 @@ class RobotCommander:
         return 0
 
     def on_goal(self, goal_handle):
-        rospy.loginfo("Robot Action Server - Received goal. Check if exists")
+        self.get_logger().info("Robot Action Server - Received goal. Check if exists")
 
         # Check if hw status has been received at least once
         if self.hardware_status is None:
@@ -307,12 +316,12 @@ class RobotCommander:
 
         # validate parameters -> set_rejected (msg : validation or commander error)
         try:
-            rospy.loginfo("Robot Action Server - Checking parameters Validity")
+            self.get_logger().info("Robot Action Server - Checking parameters Validity")
             self.validate_params(goal_handle.goal.goal.cmd)
         except RobotCommanderException as e:
             result = self.create_result(e.status, e.message)
             goal_handle.set_rejected(result)
-            rospy.loginfo("Robot Action Server - Invalid parameters")
+            self.get_logger().info("Robot Action Server - Invalid parameters")
             return
 
         # Check if learning mode ON
@@ -326,20 +335,20 @@ class RobotCommander:
         # set accepted
         self.current_goal_handle = goal_handle
         self.current_goal_handle.set_accepted()
-        rospy.loginfo("Robot Action Server - Goal has been accepted")
+        self.get_logger().info("Robot Action Server - Goal has been accepted")
 
         # Launch compute + execution in a new thread
         w = threading.Thread(name="worker", target=self.execute_command_action)
         w.start()
-        rospy.loginfo("Robot Action Server : Executing command in a new thread")
+        self.get_logger().info("Robot Action Server : Executing command in a new thread")
 
     def on_cancel(self, goal_handle):
-        rospy.loginfo("Received cancel command")
+        self.get_logger().info("Received cancel command")
 
         if goal_handle == self.current_goal_handle:
             self.cancel_current_command()
         else:
-            rospy.loginfo("Robot Action Server - No current goal, nothing to do")
+            self.get_logger().info("Robot Action Server - No current goal, nothing to do")
 
     def execute_command_action(self):
         cmd = self.current_goal_handle.goal.goal.cmd
@@ -351,25 +360,25 @@ class RobotCommander:
             result = response
         except RobotCommanderException as e:
             result = self.create_result(e.status, e.message)
-            rospy.loginfo("An exception was thrown during command execution")
+            self.get_logger().info("An exception was thrown during command execution")
 
         if not response:
             self.current_goal_handle.set_aborted(result)
-            rospy.logwarn("Execution has been aborted")
+            self.get_logger().warn("Execution has been aborted")
         elif response.status == CommandStatus.SUCCESS:
             self.current_goal_handle.set_succeeded(result)
-            rospy.loginfo("Goal has been set as succeeded")
+            self.get_logger().info("Goal has been set as succeeded")
         elif response.status == CommandStatus.STOPPED:
             self.current_goal_handle.set_canceled(result)
-            rospy.loginfo("Goal has been successfully canceled")
+            self.get_logger().info("Goal has been successfully canceled")
         elif response.status == CommandStatus.CONTROLLER_PROBLEMS:
             self.current_goal_handle.set_aborted(result)
-            rospy.logwarn("Controller failed during execution : Goal has been aborted.\n" + \
+            self.get_logger().warn("Controller failed during execution : Goal has been aborted.\n" + \
                           "This is due to either a collision, or a motor unable to follow a given command" + \
                           " (overload, extreme positions, ...)")
         else:
             self.current_goal_handle.set_aborted(result)
-            rospy.loginfo("Unknown result, goal has been set as aborted")
+            self.get_logger().info("Unknown result, goal has been set as aborted")
         self.current_goal_handle = None
 
     # Send a cancel signal to Moveit interface
@@ -377,7 +386,7 @@ class RobotCommander:
         try:
             self.cancel_command()
         except RobotCommanderException:
-            rospy.logwarn("Could not cancel current command ")
+            self.get_logger().warn("Could not cancel current command ")
 
     def validate_params(self, cmd):
         cmd_type = cmd.cmd_type
@@ -408,14 +417,14 @@ class RobotCommander:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, "Wrong command type")
 
     def validate_saved_trajectory(self, cmd):
-        rospy.loginfo("Checking saved trajectory validity")
+        self.get_logger().info("Checking saved trajectory validity")
         saved_traj = self.trajectory_manager.get_trajectory(cmd.saved_trajectory_id)
         if saved_traj is None:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, "Saved trajectory  not found")
         self.parameters_validation.validate_trajectory(saved_traj.trajectory_plan)
 
     def validate_saved_position(self, position_name):
-        rospy.loginfo("Checking joints validity")
+        self.get_logger().info("Checking joints validity")
         saved_position = self.pos_manager.get_position(position_name)
         if saved_position is None:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, "Saved position not found")

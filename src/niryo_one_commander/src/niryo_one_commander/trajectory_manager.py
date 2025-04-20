@@ -42,7 +42,7 @@ class TrajectoryManager:
             '/niryo_one/trajectory/get_trajectory_list', GetTrajectoryList, self.callback_get_trajectory_list)
         rospy.loginfo("/niryo_one/trajectory/get_trajectory_list")
         self.validation = rospy.get_param("/niryo_one/robot_command_validation")
-        self.parameters_validation = ParametersValidation(self.validation)
+        self.parameters_validation = ParametersValidation(self.validation, self)
 
     def callback_get_trajectory_list(self, req=None):
         traj_list = self.get_all_trajectories()

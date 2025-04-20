@@ -129,4 +129,6 @@
 			<axis xyz="0 0 1" />
 		</joint>
 	</xacro:macro>
+
+	<xacro:niryo_one_description/>
 </robot>

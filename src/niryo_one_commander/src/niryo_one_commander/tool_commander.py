@@ -17,7 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import rospy, actionlib
+from rclpy.node import Node
+from rclpy.action import ActionClient
 
 from niryo_one_msgs.msg import ToolAction
 from niryo_one_msgs.msg import ToolGoal
@@ -27,28 +28,27 @@ from niryo_one_commander.robot_commander_exception import RobotCommanderExceptio
 from actionlib_msgs.msg import GoalStatus
 
 
-class ToolCommander:
+class ToolCommander(Node):
 
-    def __init__(self):
-        self.action_client = actionlib.SimpleActionClient(
-            'niryo_one/tool_action', ToolAction)
-        rospy.loginfo("Waiting for action server : niryo_one/tool_action...")
+    def __init__(self, **kwargs):
+        super().__init__('tool_commander', **kwargs)
+
+        self.action_client = ActionClient(
+            self, ToolAction, 'niryo_one/tool_action')
+        self.get_logger().info("Waiting for action server : niryo_one/tool_action...")
         self.action_client.wait_for_server()
-        rospy.loginfo("Found action server : niryo_one/tool_action")
+        self.get_logger().info("Found action server : niryo_one/tool_action")
 
-        rospy.loginfo("Tool Commander has been started")
+        self.get_logger().info("Tool Commander has been started")
 
     def send_tool_command(self, cmd):
         goal = self.create_goal(cmd)
         self.action_client.send_goal(goal)
-        rospy.loginfo("Tool command sent")
-
-        # wait for goal transition to DONE
-        self.action_client.wait_for_result()
+        self.get_logger().info("Tool command sent")
 
         # if goal has been rejected/aborted, stop tracking it and return error
         if self.has_problem():
-            message = self.action_client.get_result().message
+            message = self.action_client._get_result().message
             self.action_client.stop_tracking_goal()
             raise RobotCommanderException(CommandStatus.TOOL_FAILED, message)
 
@@ -69,5 +69,5 @@ class ToolCommander:
 
     def has_problem(self):
         status = self.get_command_status()
-        # rospy.loginfo("STATUS : " + str(status))
+        # self.get_logger().info("STATUS : " + str(status))
         return status == GoalStatus.ABORTED or status == GoalStatus.REJECTED

@@ -20,11 +20,12 @@
 import rclpy
 from rclpy.node import Node
 from rclpy.executors import ExternalShutdownException
+import rclpy.publisher
 from rclpy.timer import Timer
 from rclpy.duration import Duration
 from rclpy.time import Time
 import tf2_ros
-from tf2_ros import TransformException, LookupException, ConnectivityException, ExtrapolationException
+from tf2_py import LookupException, ConnectivityException, ExtrapolationException
 from niryo_one_commander.moveit_utils import get_rpy_from_quaternion
 from tf_transformations import quaternion_from_euler
 
@@ -34,10 +35,10 @@ from geometry_msgs.msg import Quaternion
 
 PI = 3.14159
 
-class NiryoRobotStatePublisher(Node):
+class NiryoRobotStatePublisher:
 
-    def __init__(self, **kwargs):
-        super().__init__('niryo_one_robot_state_publisher', **kwargs)
+    def __init__(self, node:Node, **kwargs):
+        self.node = node
 
         # Tf listener (position + rpy) of end effector tool
         self.position = [0, 0, 0]
@@ -46,12 +47,12 @@ class NiryoRobotStatePublisher(Node):
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer,self)
 
         # State publisher
-        self.niryo_one_robot_state_publisher = self.create_publisher(
+        self.niryo_one_robot_state_publisher = self.node.create_publisher(
             RobotState, '/niryo_one/robot_state', queue_size=10)
 
         # Get params from rosparams
-        rate_tf_listener = self.declare_parameter("/niryo_one/robot_state/rate_tf_listener").value
-        rate_publish_state = self.declare_parameter("/niryo_one/robot_state/rate_publish_state").value
+        rate_tf_listener = self.node.declare_parameter("/niryo_one/robot_state/rate_tf_listener").value
+        rate_publish_state = self.node.declare_parameter("/niryo_one/robot_state/rate_publish_state").value
 
         Timer(Duration(1.0 / rate_tf_listener), self.get_robot_pose)
         Timer(Duration(1.0 / rate_publish_state), self.publish_state)
@@ -73,7 +74,7 @@ class NiryoRobotStatePublisher(Node):
             (pos, rot) = self.tf_buffer.lookup_transform('base_link', 'tool_link', Time(0))
             self.position = pos
             self.rpy = get_rpy_from_quaternion(rot)
-        except (TransformException, LookupException, ConnectivityException, ExtrapolationException):
+        except (LookupException, ConnectivityException, ExtrapolationException):
             self.get_logger().info("TF fail")
 
     def publish_state(self, event):

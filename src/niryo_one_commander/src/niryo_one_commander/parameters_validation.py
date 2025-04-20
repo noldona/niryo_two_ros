@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import rospy
+import rclpy
 from math import sqrt
 from niryo_one_commander.robot_commander_exception import RobotCommanderException
 from niryo_one_commander.command_status import CommandStatus
@@ -26,11 +26,12 @@ from niryo_one_commander.command_status import CommandStatus
 
 class ParametersValidation:
 
-    def __init__(self, validation):
+    def __init__(self, validation, node : rclpy.Node):
         self.validation = validation
+        self.node = node
 
     def validate_trajectory(self, plan):
-        rospy.loginfo("Checking trajectory validity")
+        self.node.get_logger().info("Checking trajectory validity")
         # Do soemthing here to check if the trajectory is valid
         n = len(plan.trajectory.joint_trajectory.points)
         for i in range(0, n - 1):

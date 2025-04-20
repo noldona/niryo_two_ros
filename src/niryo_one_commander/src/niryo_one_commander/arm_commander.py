@@ -19,11 +19,12 @@
 
 import rclpy
 from rclpy.node import Node
-from rclpy.executors import ExternalShutdownException
+# from rclpy.executors import ExternalShutdownException
 import threading
 
 from action_msgs.msg import GoalStatus
 
+import rclpy.publisher
 from trajectory_msgs.msg import JointTrajectory
 from control_msgs.action import FollowJointTrajectory
 
@@ -33,26 +34,26 @@ from niryo_one_commander.command_status import CommandStatus
 
 TrajectoryTimeOutMin = 3
 
-class ArmCommander(Node):
+class ArmCommander:
 
-    def __init__(self, move_group_arm, **kwargs):
-        super().__init__('arm_commander', **kwargs)
+    def __init__(self, move_group_arm, node:Node):
         
+        self.node = node
         self.move_group_arm = move_group_arm
         self.traj_finished_event = threading.Event()
         self.current_goal_id = None
-        self.current_goal_result = GoalStatus.LOST
-        self.create_subscription(FollowJointTrajectory.Goal,
+        self.current_goal_result = GoalStatus.STATUS_UNKNOWN
+        self.node.create_subscription(FollowJointTrajectory.Goal,
                                 '/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/goal',
                                 self.callback_current_goal)
 
-        self.create_subscription(FollowJointTrajectory.Result,
+        self.node.create_subscription(FollowJointTrajectory.Result,
                                 '/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/result',
                                 self.callback_goal_result)
 
         # Direct topic to joint_trajectory_controller
         # Used ONLY when goal is aborted, to enter position hold mode
-        self.joint_trajectory_publisher = self.create_publisher(
+        self.joint_trajectory_publisher:rclpy.publisher.Publisher = self.node.create_publisher(
             JointTrajectory,
             '/niryo_one_follow_joint_trajectory_controller/command',
             queue_size=10)
@@ -62,7 +63,7 @@ class ArmCommander(Node):
             # reset event
             self.traj_finished_event.clear()
             self.current_goal_id = None
-            self.current_goal_result = GoalStatus.LOST
+            self.current_goal_result = GoalStatus.STATUS_UNKNOWN
             # send traj and wait
             self.move_group_arm.execute(plan, wait=False)
             trajectory_time_out = 1.5 * self.get_plan_time(plan)
@@ -70,11 +71,11 @@ class ArmCommander(Node):
             if trajectory_time_out < TrajectoryTimeOutMin:
                 trajectory_time_out = TrajectoryTimeOutMin
             if self.traj_finished_event.wait(trajectory_time_out):
-                if self.current_goal_result == GoalStatus.SUCCEEDED:
+                if self.current_goal_result == GoalStatus.STATUS_SUCCEEDED:
                     return CommandStatus.SUCCESS, "Command has been successfully processed"
-                elif self.current_goal_result == GoalStatus.PREEMPTED:
+                elif self.current_goal_result == GoalStatus.STATUS_CANCELED:
                     return CommandStatus.STOPPED, "Command has been successfully stopped"
-                elif self.current_goal_result == GoalStatus.ABORTED:
+                elif self.current_goal_result == GoalStatus.STATUS_ABORTED:
                     # if joint_trajectory_controller aborts the goal, it will still try to
                     # finish executing the trajectory --> so we ask it to stop from here
                     self.set_position_hold_mode()
@@ -99,12 +100,12 @@ class ArmCommander(Node):
 
     def set_position_hold_mode(self):
         msg = JointTrajectory()
-        msg.header.stamp = self.get_clock().now().to_msg()
+        msg.header.stamp = self.node.get_clock().now().to_msg()
         msg.points = []
         self.joint_trajectory_publisher.publish(msg)
 
     def stop_current_plan(self):
-        self.get_logger().info("Send STOP to arm")
+        self.node.get_logger().info("Send STOP to arm")
         self.move_group_arm.stop()
 
     def set_joint_target(self, joint_array):
@@ -159,29 +160,16 @@ class ArmCommander(Node):
 
     def callback_current_goal(self, msg):
         self.current_goal_id = msg.goal_id.id
-        self.get_logger().info("Arm commander - Got a goal id : " + str(self.current_goal_id))
+        self.node.get_logger().info("Arm commander - Got a goal id : " + str(self.current_goal_id))
 
     def callback_goal_result(self, msg):
         if msg.status.goal_id.id == self.current_goal_id:
-            # self.node.get_logger().info("Receive result, goal_id matches.")
+            self.node.get_logger().info("Receive result, goal_id matches.")
             self.current_goal_result = msg.status.status
-            self.get_logger().info("Arm commander - Result : " + str(self.current_goal_result))
+            self.node.get_logger().info("Arm commander - Result : " + str(self.current_goal_result))
             self.traj_finished_event.set()
         else:
-            self.get_logger().info("Arm commander - Received result, WRONG GOAL ID")
-
-def main():
-    rclpy.init()
-    move_group_arm = MoveGroupArm()
-    arm_commander = ArmCommander(move_group_arm)
-
-    try:
-        rclpy.spin(arm_commander)
-    except (ExternalShutdownException, KeyboardInterrupt):
-        pass
-    finally:
-        arm_commander.destroy_node()
-        rclpy.try_shutdown()
+            self.node.get_logger().info("Arm commander - Received result, WRONG GOAL ID")
 
 if __name__ == '__main__':
-    main()
+    pass

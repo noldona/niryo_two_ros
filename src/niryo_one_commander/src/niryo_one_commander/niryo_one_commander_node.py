@@ -31,16 +31,16 @@ class NiryoOneCommanderNode(Node):
         super().__init__('niryo_one_commander_node', **kwargs)
 
         # Publish robot state (position, orientation, tool)
-        self.niryo_one_robot_state_publisher = NiryoRobotStatePublisher()
+        self.niryo_one_robot_state_publisher = NiryoRobotStatePublisher(self)
 
         # Position Manager
         positions_dir = self.declare_parameter("~positions_dir").value
-        self.pos_manager = PositionManager(positions_dir)
+        self.pos_manager = PositionManager(self, positions_dir)
         # trajectory_manager
         trajectories_dir = self.declare_parameter("~trajectories_dir").value
-        self.traj_manager = TrajectoryManager(trajectories_dir)
+        self.traj_manager = TrajectoryManager(self, trajectories_dir)
         # robot commander
-        self.robot_commander = RobotCommander(self.pos_manager, self.traj_manager)
+        self.robot_commander = RobotCommander(self, self.pos_manager, self.traj_manager)
         self.robot_commander.start()
 
 def main():
