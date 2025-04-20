@@ -592,14 +592,14 @@ INT8U MCP_CAN::mcp2515_init(
 						MCP_RXB1CTRL, MCP_RXB_RX_MASK, MCP_RXB_RX_ANY);
 				break;
 				/*          The followingn two functions of the MCP2515 do not work, there is a bug in the silicon.
-            case (MCP_STD): 
+            case (MCP_STD):
             mcp2515_modifyRegister(MCP_RXB0CTRL,
             MCP_RXB_RX_MASK | MCP_RXB_BUKT_MASK,
             MCP_RXB_RX_STD | MCP_RXB_BUKT_MASK );
             mcp2515_modifyRegister(MCP_RXB1CTRL, MCP_RXB_RX_MASK,
             MCP_RXB_RX_STD);
             break;
-            case (MCP_EXT): 
+            case (MCP_EXT):
             mcp2515_modifyRegister(MCP_RXB0CTRL,
             MCP_RXB_RX_MASK | MCP_RXB_BUKT_MASK,
             MCP_RXB_RX_EXT | MCP_RXB_BUKT_MASK );

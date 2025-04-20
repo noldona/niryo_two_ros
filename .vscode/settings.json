@@ -88,6 +88,11 @@
 		"typeinfo": "cpp",
 		"valarray": "cpp",
 		"variant": "cpp",
-		"regex": "cpp"
+		"regex": "cpp",
+		"any": "cpp"
+	},
+	"urdf-visualizer.packages": {
+		"niryo_one_hardware": "${workspaceFolder}/install//niryo_one_hardware/share/niryo_one_hardware",
+		"niryo_one_description": "${workspaceFolder}/install/niryo_one_description/share/niryo_one_description"
 	}
 }

@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:arg name="params_path" default="$(find niryo_one_hardware)/config/niryo_one_hardware_params.yaml" />
+	<xacro:property name="params_path" value="$(arg params_path)" />
+	<xacro:property name="mp" value="${xacro.load_yaml(params_path)}" />
+
+	<xacro:property name="motor_type_xl320" value="1" />
+	<xacro:property name="motor_type_xl430" value="2" />
+
+	<xacro:property name="xl320_total_angle" value="296.67" />
+	<xacro:property name="xl320_max_position" value="1022" />
+	<xacro:property name="xl320_min_position" value="0" />
+	<xacro:property name="xl320_middle_position" value="511" />
+	<xacro:property name="xl320_total_range_position" value="1023" />
+
+	<xacro:property name="xl430_total_angle" value="360.36" />
+	<xacro:property name="xl430_max_position" value="4094" />
+	<xacro:property name="xl430_min_position" value="0" />
+	<xacro:property name="xl430_middle_position" value="2047" />
+	<xacro:property name="xl430_total_range_position" value="4095" />
+
+	<xacro:macro name="niryo_one_ros2_control" params="name">
+		<ros2_control name="${name}_can" type="system">
+			<hardware>
+				<plugin>niryo_one_hardware/NiryoOneHardwareCan</plugin>
+				<param name="hardware_version">${mp['hardware_version']}</param>  <!-- /niryo_one/hardware_version -->
+				<param name="use_sim">${mp['use_sim']}</param>  <!-- ~fake_communication -->
+
+				<!-- Fake Communication -->
+				<param name="stepper_1_home_position">${mp['stepper_1_home_position']}</param>  <!-- /niryo_one/motors/stepper_1_home_position -->
+				<param name="stepper_2_home_position">${mp['stepper_2_home_position']}</param>  <!-- /niryo_one/motors/stepper_2_home_position -->
+				<param name="stepper_3_home_position">${mp['stepper_3_home_position']}</param>  <!-- /niryo_one/motors/stepper_3_home_position -->
+				<param name="stepper_4_home_position">${mp['stepper_4_home_position']}</param>  <!-- /niryo_one/motors/stepper_4_home_position -->
+
+				<!-- Niryo One Communication -->
+				<param name="can_enabled">${mp['can_enabled']}</param>  <!-- ~can_enabled -->
+				<param name="dxl_enabled">${mp['dxl_enabled']}</param>  <!-- ~dxl_enabled -->
+				<param name="niryo_one_hw_check_connection_frequency">${mp['niryo_one_hw_check_connection_frequency']}</param>  <!-- niryo_one_hw_check_connection_frequency -->
+				<param name="reboot">${mp['reboot']}</param>  <!-- /niryo_one/reboot_when_auto_change_version -->
+
+				<!-- Can Communication -->
+				<param name="spi_channel">${mp['spi_channel']}</param>  <!-- ~spi_channel -->
+				<param name="spi_baudrate">${mp['spi_baudrate']}</param>  <!-- ~spi_baudrate -->
+				<param name="gpio_can_interrupt">${mp['gpio_can_interrupt']}</param>  <!-- ~gpio_can_interrupt -->
+				<param name="can_hw_control_loop_frequency">${mp['can_hw_control_loop_frequency']}</param>  <!-- ~can_hardware_control_loop_frequency -->
+				<param name="can_hw_write_frequency">${mp['can_hw_write_frequency']}</param>  <!-- ~can_hardware_write_frequency -->
+				<param name="can_hw_check_connection_frequency">${mp['can_hw_check_connection_frequency']}</param>  <!-- ~can_hardware_check_connection_frequency -->
+				<param name="calibration_timeout">${mp['calibration_timeout']}</param>  <!-- ~calibration_timeout -->
+				<param name="required_steppers_ids">${mp['required_steppers_ids']}</param>  <!-- /niryo_one/motors/can_required_motors -->
+				<param name="allowed_steppers_ids">${mp['allowed_steppers_ids']}</param>  <!-- /niryo_one/motors/can_authorized_motors -->
+				<param name="gear_ratio_1">${mp['gear_ratio_1']}</param>  <!-- /niryo_one/motors/stepper_1_gear_ratio -->
+				<param name="gear_ratio_2">${mp['gear_ratio_2']}</param>  <!-- /niryo_one/motors/stepper_2_gear_ratio -->
+				<param name="gear_ratio_3">${mp['gear_ratio_3']}</param>  <!-- /niryo_one/motors/stepper_3_gear_ratio -->
+				<param name="gear_ratio_4">${mp['gear_ratio_4']}</param>  <!-- /niryo_one/motors/stepper_4_gear_ratio -->
+				<param name="gear_ratio_6">${mp['gear_ratio_6']}</param>  <!-- /niryo_one/motors/stepper_6_gear_ratio -->
+				<param name="gear_ratio_7">${mp['gear_ratio_7']}</param>  <!-- /niryo_one/motors/stepper_7_gear_ratio -->
+				<param name="home_position_1">${mp['home_position_1']}</param>  <!-- /niryo_one/motors/stepper_1_home_position -->
+				<param name="home_position_2">${mp['home_position_2']}</param>  <!-- /niryo_one/motors/stepper_2_home_position -->
+				<param name="home_position_3">${mp['home_position_3']}</param>  <!-- /niryo_one/motors/stepper_3_home_position -->
+				<param name="home_position_4">${mp['home_position_4']}</param>  <!-- /niryo_one/motors/stepper_4_home_position -->
+				<param name="offset_position_1">${mp['offset_position_1']}</param>  <!-- /niryo_one/motors/stepper_1_offset_position -->
+				<param name="offset_position_2">${mp['offset_position_2']}</param>  <!-- /niryo_one/motors/stepper_2_offset_position -->
+				<param name="offset_position_3">${mp['offset_position_3']}</param>  <!-- /niryo_one/motors/stepper_3_offset_position -->
+				<param name="offset_position_4">${mp['offset_position_4']}</param>  <!-- /niryo_one/motors/stepper_4_offset_position -->
+				<param name="direction_1">${mp['direction_1']}</param>  <!-- /niryo_one/motors/stepper_1_direction -->
+				<param name="direction_2">${mp['direction_2']}</param>  <!-- /niryo_one/motors/stepper_2_direction -->
+				<param name="direction_3">${mp['direction_3']}</param>  <!-- /niryo_one/motors/stepper_3_direction -->
+				<param name="direction_4">${mp['direction_4']}</param>  <!-- /niryo_one/motors/stepper_4_direction -->
+				<param name="max_effort_1">${mp['max_effort_1']}</param>  <!-- /niryo_one/motors/stepper_1_max_effort -->
+				<param name="max_effort_2">${mp['max_effort_2']}</param>  <!-- /niryo_one/motors/stepper_2_max_effort -->
+				<param name="max_effort_3">${mp['max_effort_3']}</param>  <!-- /niryo_one/motors/stepper_3_max_effort -->
+				<param name="max_effort_4">${mp['max_effort_4']}</param>  <!-- /niryo_one/motors/stepper_4_max_effort -->
+				<param name="max_effort_6">${mp['max_effort_6']}</param>  <!-- /niryo_one/motors/stepper_6_max_effort -->
+				<param name="max_effort_7">${mp['max_effort_7']}</param>  <!-- /niryo_one/motors/stepper_7_max_effort -->
+			</hardware>
+
+			<joint name="joint_1">
+				<param name="id">1</param>
+				<param name="name">Stepper Axis 1</param>
+				<param name="gear_ratio">${mp['gear_ratio_1']}</param>
+				<param name="home_position">${mp['home_position_1']}</param>
+				<param name="offset_position">${mp['offset_position_1']}</param>
+				<param name="direction">${mp['direction_1']}</param>
+				<param name="max_effort">${mp['max_effort_1']}</param>
+				<param name="firmware_version">2.0.0</param>
+
+				<command_interface name="position">
+					<param name="min">${limit_low_shoulder_rotation}</param>
+					<param name="max">${limit_up_shoulder_rotation}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="max">1.0</param>
+				</command_interface>
+				<command_interface name="torque" />
+				<command_interface name="mirco_steps" />
+				<command_interface name="max_effort" />
+
+				<state_interface name="position">
+					<param name="initial_value">${mp['home_position_1']}</param>
+				</state_interface>
+				<state_interface name="velocity" />
+				<state_interface name="torque" />
+				<state_interface name="temperature" />
+				<state_interface name="hardware_error" />
+				<state_interface name="enabled">
+					<param name="initial_value">true</param>
+				</state_interface>
+				<state_interface name="hw_fail_counter" />
+				<state_interface name="last_time_read" />
+				<state_interface name="firmware_version_major">
+					<param name="initial_value">2</param>
+				</state_interface>
+				<state_interface name="firmware_version_minor">
+					<param name="initial_value">0</param>
+				</state_interface>
+				<state_interface name="firmware_version_patch">
+					<param name="initial_value">0</param>
+				</state_interface>
+			</joint>
+
+			<joint name="joint_2">
+				<param name="id">2</param>
+				<param name="name">Stepper Axis 2</param>
+				<param name="gear_ratio">${mp['gear_ratio_2']}</param>
+				<param name="home_position">${mp['home_position_2']}</param>
+				<param name="offset_position">${mp['offset_position_2']}</param>
+				<param name="direction">${mp['direction_2']}</param>
+				<param name="max_effort">${mp['max_effort_2']}</param>
+				<param name="firmware_version">2.0.0</param>
+
+				<command_interface name="position">
+					<param name="min">${limit_low_arm_rotation}</param>
+					<param name="max">${limit_up_arm_rotation}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="max">1.0</param>
+				</command_interface>
+				<command_interface name="torque" />
+				<command_interface name="mirco_steps" />
+				<command_interface name="max_effort" />
+
+				<state_interface name="position">
+					<param name="initial_value">${mp['home_position_2']}</param>
+				</state_interface>
+				<state_interface name="velocity" />
+				<state_interface name="torque" />
+				<state_interface name="temperature" />
+				<state_interface name="hardware_error" />
+				<state_interface name="enabled">
+					<param name="initial_value">true</param>
+				</state_interface>
+				<state_interface name="hw_fail_counter" />
+				<state_interface name="last_time_read" />
+				<state_interface name="firmware_version_major">
+					<param name="initial_value">2</param>
+				</state_interface>
+				<state_interface name="firmware_version_minor">
+					<param name="initial_value">0</param>
+				</state_interface>
+				<state_interface name="firmware_version_patch">
+					<param name="initial_value">0</param>
+				</state_interface>
+			</joint>
+
+			<joint name="joint_3">
+				<param name="id">3</param>
+				<param name="name">Stepper Axis 3</param>
+				<param name="gear_ratio">${mp['gear_ratio_3']}</param>
+				<param name="home_position">${mp['home_position_3']}</param>
+				<param name="offset_position">${mp['offset_position_3']}</param>
+				<param name="direction">${mp['direction_3']}</param>
+				<param name="max_effort">${mp['max_effort_3']}</param>
+				<param name="firmware_version">2.0.0</param>
+
+				<command_interface name="position">
+					<param name="min">${limit_low_elbow_rotation}</param>
+					<param name="max">${limit_up_elbow_rotation}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="max">1.0</param>
+				</command_interface>
+				<command_interface name="torque" />
+				<command_interface name="mirco_steps" />
+				<command_interface name="max_effort" />
+
+				<state_interface name="position">
+					<param name="initial_value">${mp['home_position_3']}</param>
+				</state_interface>
+				<state_interface name="velocity" />
+				<state_interface name="torque" />
+				<state_interface name="temperature" />
+				<state_interface name="hardware_error" />
+				<state_interface name="enabled">
+					<param name="initial_value">true</param>
+				</state_interface>
+				<state_interface name="hw_fail_counter" />
+				<state_interface name="last_time_read" />
+				<state_interface name="firmware_version_major">
+					<param name="initial_value">2</param>
+				</state_interface>
+				<state_interface name="firmware_version_minor">
+					<param name="initial_value">0</param>
+				</state_interface>
+				<state_interface name="firmware_version_patch">
+					<param name="initial_value">0</param>
+				</state_interface>
+			</joint>
+		</ros2_control>
+
+		<ros2_control name="${name}_dxl" type="system">
+			<hardware>
+				<plugin>niryo_one_hardware/NiryoOneHardwareDxl</plugin>
+				<param name="hardware_version">${mp['hardware_version']}</param>  <!-- /niryo_one/hardware_version -->
+				<param name="use_sim">${mp['use_sim']}</param>  <!-- ~fake_communication -->
+
+				<!-- Niryo One Communication -->
+				<param name="can_enabled">${mp['can_enabled']}</param>  <!-- ~can_enabled -->
+				<param name="dxl_enabled">${mp['dxl_enabled']}</param>  <!-- ~dxl_enabled -->
+				<param name="niryo_one_hw_check_connection_frequency">${mp['niryo_one_hw_check_connection_frequency']}</param>  <!-- niryo_one_hw_check_connection_frequency -->
+				<param name="reboot">${mp['reboot']}</param>  <!-- /niryo_one/reboot_when_auto_change_version -->
+
+				<!-- Dxl Communication -->
+				<param name="dxl_uart_device_name">${mp['device_name']}</param>
+				<param name="dxl_baudrate">${mp['uart_baudrate']}</param>
+				<param name="dxl_hardware_control_loop_frequency">${mp['dxl_hw_control_loop_frequency']}</param>
+				<param name="dxl_hw_write_frequency">${mp['dxl_hw_write_frequency']}</param>
+				<param name="dxl_hw_data_read_frequency">${mp['dxl_hw_data_read_frequency']}</param>
+				<param name="dxl_hw_status_read_frequency">${mp['dxl_hw_status_read_frequency']}</param>
+				<param name="allowed_dxl_ids">${mp['allowed_dxl_ids']}</param>
+			</hardware>
+
+			<joint name="joint_4">
+				<param name="id">2</param>
+				<param name="name">Servo Axis 4</param>
+				<param name="type">${motor_type_xl430}</param>
+				<param name="home_position">${xl430_middle_position}</param>
+
+				<command_interface name="position">
+					<param name="min">${limit_low_forearm_rotation}</param>
+					<param name="max">${limit_up_forearm_rotation}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="max">1.0</param>
+				</command_interface>
+				<command_interface name="torque" />
+				<command_interface name="led" />
+
+				<state_interface name="position">
+					<param name="initial_value">${xl430_middle_position}</param>
+				</state_interface>
+				<state_interface name="velocity" />
+				<state_interface name="torque" />
+				<state_interface name="temperature" />
+				<state_interface name="voltage" />
+				<state_interface name="hw_error" />
+				<state_interface name="enabled" />
+			</joint>
+
+			<joint name="joint_5">
+				<param name="id">3</param>
+				<param name="name">Servo Axis 5</param>
+				<param name="type">${motor_type_xl430}</param>
+				<param name="home_position">${xl430_middle_position}</param>
+
+				<command_interface name="position">
+					<param name="min">${limit_low_wrist_rotation}</param>
+					<param name="max">${limit_up_wrist_rotation}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="max">1.0</param>
+				</command_interface>
+				<command_interface name="torque" />
+				<command_interface name="led" />
+
+				<state_interface name="position">
+					<param name="initial_value">${xl430_middle_position}</param>
+				</state_interface>
+				<state_interface name="velocity" />
+				<state_interface name="torque" />
+				<state_interface name="temperature" />
+				<state_interface name="voltage" />
+				<state_interface name="hw_error" />
+				<state_interface name="enabled" />
+			</joint>
+
+			<joint name="joint_6">
+				<param name="id">6</param>
+				<param name="name">Servo Axis 6</param>
+				<param name="type">${motor_type_xl320}</param>
+				<param name="home_position">${xl320_middle_position}</param>
+
+				<command_interface name="position">
+					<param name="min">${limit_low_hand_rotation}</param>
+					<param name="max">${limit_up_hand_rotation}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="max">1.0</param>
+				</command_interface>
+				<command_interface name="torque" />
+				<command_interface name="led" />
+
+				<state_interface name="position">
+					<param name="initial_value">${xl320_middle_position}</param>
+				</state_interface>
+				<state_interface name="velocity" />
+				<state_interface name="torque" />
+				<state_interface name="temperature" />
+				<state_interface name="voltage" />
+				<state_interface name="hw_error" />
+				<state_interface name="enabled" />
+			</joint>
+		</ros2_control>
+	</xacro:macro>
+</robot>

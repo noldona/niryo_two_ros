@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="niryo_one">
+	<!-- Properties -->
+	<xacro:property name="distance_origin_shoulder_z" value="0.103" scope="global" />
+	<xacro:property name="distance_shoulder_arm_z" value="0.080" scope="global" />
+	<xacro:property name="distance_arm_elbow_x" value="0.210" scope="global" />
+	<xacro:property name="distance_arm_elbow_y" value="0.0" scope="global" />
+	<xacro:property name="distance_elbow_forearm_x" value="0.0415" scope="global" />
+	<xacro:property name="distance_elbow_forearm_y" value="0.030" scope="global" />
+	<xacro:property name="distance_forearm_wrist_z" value="0.180" scope="global" />
+	<xacro:property name="distance_wrist_hand_x" value="0.0164" scope="global" />
+	<xacro:property name="distance_wrist_hand_y" value="-0.0055" scope="global" />
+	<xacro:property name="distance_hand_tool" value="0.0073" scope="global" />
+
+	<xacro:property name="PI" value="3.14159265359" scope="global" />
+
+	<xacro:property name="limit_low_shoulder_rotation" value="-3.05433" scope="global" />
+	<xacro:property name="limit_up_shoulder_rotation" value="3.05433" scope="global" />
+	<xacro:property name="limit_low_arm_rotation" value="-1.57080" scope="global" />
+	<xacro:property name="limit_up_arm_rotation" value="0.640187" scope="global" />
+	<xacro:property name="limit_low_elbow_rotation" value="-1.397485" scope="global" />
+	<xacro:property name="limit_up_elbow_rotation" value="${PI/2}" scope="global" />
+	<xacro:property name="limit_low_forearm_rotation" value="-3.05433" scope="global" />
+	<xacro:property name="limit_up_forearm_rotation" value="3.05433" scope="global" />
+	<xacro:property name="limit_low_wrist_rotation" value="-1.74533" scope="global" />
+	<xacro:property name="limit_up_wrist_rotation" value="1.91986" scope="global" />
+	<xacro:property name="limit_low_hand_rotation" value="-2.57436" scope="global" />
+	<xacro:property name="limit_up_hand_rotation" value="2.57436" scope="global" />
+
+	<!-- Import niryo_one macro -->
+	<xacro:include filename="$(find niryo_one_description)/urdf/v2/niryo_one_description.urdf.xacro"/>
+
+	<xacro:niryo_one_description />
+
+	<!-- Import niryo_one_ros2_control description -->
+	<xacro:include filename="$(find niryo_one_hardware)/ros2_control/niryo_one.ros2_control.xacro" />
+	<xacro:niryo_one_ros2_control name="niryo_one" />
+</robot>

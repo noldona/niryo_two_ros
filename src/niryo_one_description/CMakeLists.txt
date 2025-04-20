@@ -11,7 +11,9 @@ find_package(ament_cmake REQUIRED)
 # Config Directory
 install(DIRECTORY config/
   DESTINATION share/${PROJECT_NAME}/config
-  FILES_MATCHING PATTERN "*.yaml" # or other file extensions
+  FILES_MATCHING
+  PATTERN "*.yaml"
+  PATTERN "*.rviz"
 )
 
 # Launch Directory
@@ -26,29 +28,35 @@ install(DIRECTORY launch/
 # Meshes Directory
 install(DIRECTORY meshes/v1/collada/
   DESTINATION share/${PROJECT_NAME}/meshes/v1/collada
-  FILES_MATCHING PATTERN "*.dae" # or other file extensions
+  FILES_MATCHING PATTERN "*.dae"
 )
 install(DIRECTORY meshes/v1/stl/
   DESTINATION share/${PROJECT_NAME}/meshes/v1/stl
-  FILES_MATCHING PATTERN "*.stl" # or other file extensions
+  FILES_MATCHING PATTERN "*.stl"
 )
 install(DIRECTORY meshes/v2/collada/
   DESTINATION share/${PROJECT_NAME}/meshes/v2/collada
-  FILES_MATCHING PATTERN "*.dae" # or other file extensions
+  FILES_MATCHING PATTERN "*.dae"
 )
 install(DIRECTORY meshes/v2/stl/
   DESTINATION share/${PROJECT_NAME}/meshes/v2/stl
-  FILES_MATCHING PATTERN "*.stl" # or other file extensions
+  FILES_MATCHING PATTERN "*.stl"
+)
+
+# Rviz Config Directory
+install(DIRECTORY rviz/
+  DESTINATION share/${PROJECT_NAME}/rviz
+  FILES_MATCHING PATTERN "*.rviz"
 )
 
 # URDF Directory
 install(DIRECTORY urdf/v1/
   DESTINATION share/${PROJECT_NAME}/urdf/v1
-  FILES_MATCHING PATTERN "*.xacro" # or other file extensions
+  FILES_MATCHING PATTERN "*.xacro"
 )
 install(DIRECTORY urdf/v2/
   DESTINATION share/${PROJECT_NAME}/urdf/v2
-  FILES_MATCHING PATTERN "*.xacro" # or other file extensions
+  FILES_MATCHING PATTERN "*.xacro"
 )
 
 if(BUILD_TESTING)
