@@ -9,121 +9,47 @@ controller_manager:
 niryo_one_controller:
   ros__parameters:
     type: niryo_one_hardware/NiryoOneController
-    joints:
+    can_joints:
       - joint_1
       - joint_2
       - joint_3
+
+    dxl_joints:
       - joint_4
       - joint_5
       - joint_6
-      - tool
 
-    command_interfaces:
-      joint_1:
-        - position
-        - velocity
-        - torque
-        - mirco_steps
-        - max_effort
-      joint_2:
-        - position
-        - velocity
-        - torque
-        - mirco_steps
-        - max_effort
-      joint_3:
-        - position
-        - velocity
-        - torque
-        - mirco_steps
-        - max_effort
-      joint_4:
-        - position
-        - velocity
-        - torque
-        - led
-      joint_5:
-        - position
-        - velocity
-        - torque
-        - led
-      joint_6:
-        - position
-        - velocity
-        - torque
-        - led
-      tool:
-        - position
-        - velocity
-        - torque
-        - led
+    can_command_interfaces:
+      - position
+      - velocity
+      - torque
+      - mirco_steps
+      - max_effort
 
-    state_interfaces:
-      joint_1:
-        - position
-        - velocity
-        - torque
-        - temperature
-        - hardware_error
-        - enabled
-        - hw_fail_counter
-        - last_time_read
-        - firmware_version_major
-        - firmware_version_minor
-        - firmware_version_patch
-      joint_2:
-        - position
-        - velocity
-        - torque
-        - temperature
-        - hardware_error
-        - enabled
-        - hw_fail_counter
-        - last_time_read
-        - firmware_version_major
-        - firmware_version_minor
-        - firmware_version_patch
-      joint_3:
-        - position
-        - velocity
-        - torque
-        - temperature
-        - hardware_error
-        - enabled
-        - hw_fail_counter
-        - last_time_read
-        - firmware_version_major
-        - firmware_version_minor
-        - firmware_version_patch
-      joint_4:
-        - position
-        - velocity
-        - torque
-        - temperature
-        - voltage
-        - hw_error
-        - enabled
-      joint_5:
-        - position
-        - velocity
-        - torque
-        - temperature
-        - voltage
-        - hw_error
-        - enabled
-      joint_6:
-        - position
-        - velocity
-        - torque
-        - temperature
-        - voltage
-        - hw_error
-        - enabled
-      tool:
-        - position
-        - velocity
-        - torque
-        - temperature
-        - voltage
-        - hw_error
-        - enabled
+    dxl_command_interfaces:
+      - position
+      - velocity
+      - torque
+      - led
+
+    can_state_interfaces:
+      - position
+      - velocity
+      - torque
+      - temperature
+      - hardware_error
+      - enabled
+      - hw_fail_counter
+      - last_time_read
+      - firmware_version_major
+      - firmware_version_minor
+      - firmware_version_patch
+
+    dxl_state_interfaces:
+      - position
+      - velocity
+      - torque
+      - temperature
+      - voltage
+      - hw_error
+      - enabled

@@ -20,6 +20,7 @@
 #include "rclcpp_lifecycle/lifecycle_publisher.hpp"
 #include "rclcpp_lifecycle/node_interfaces/lifecycle_node_interface.hpp"
 #include "realtime_tools/realtime_buffer.hpp"
+#include "sensor_msgs/msg/joint_state.hpp"
 #include "trajectory_msgs/msg/joint_trajectory.hpp"
 #include "trajectory_msgs/msg/joint_trajectory_point.hpp"
 
@@ -73,18 +74,27 @@ namespace niryo_one_hardware {
 				const rclcpp_lifecycle::State &previous_state) override;
 
 		protected:
-		std::vector<std::string> joint_names_;
-		std::vector<std::string> command_interface_types_;
-		std::vector<std::string> state_interface_types_;
+		std::vector<std::string> can_joint_names_;
+		std::vector<std::string> can_command_interface_types_;
+		std::vector<std::string> can_state_interface_types_;
+		std::vector<std::string> dxl_joint_names_;
+		std::vector<std::string> dxl_command_interface_types_;
+		std::vector<std::string> dxl_state_interface_types_;
 
 		rclcpp::Subscription<trajectory_msgs::msg::JointTrajectory>::SharedPtr
 				joint_command_subscriber_;
 		realtime_tools::RealtimeBuffer<
 				std::shared_ptr<trajectory_msgs::msg::JointTrajectory>>
 				traj_msg_external_point_ptr_;
+		rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr
+				joint_state_subscriber_;
+		realtime_tools::RealtimeBuffer<
+				std::shared_ptr<sensor_msgs::msg::JointState>>
+				joint_msg_external_ptr_;
 		bool new_msg_ = false;
 		rclcpp::Time start_time_;
 		std::shared_ptr<trajectory_msgs::msg::JointTrajectory> trajectory_msg_;
+		std::shared_ptr<sensor_msgs::msg::JointState> joint_state_msg_;
 		trajectory_msgs::msg::JointTrajectoryPoint point_interp_;
 
 		std::vector<std::reference_wrapper<
@@ -102,6 +112,10 @@ namespace niryo_one_hardware {
 		std::vector<std::reference_wrapper<
 				hardware_interface::LoanedCommandInterface>>
 				joint_max_effort_command_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedCommandInterface>>
+				joint_led_command_interface_;
+
 		std::vector<std::reference_wrapper<
 				hardware_interface::LoanedStateInterface>>
 				joint_position_state_interface_;
@@ -135,10 +149,22 @@ namespace niryo_one_hardware {
 		std::vector<std::reference_wrapper<
 				hardware_interface::LoanedStateInterface>>
 				joint_firmware_version_patch_state_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_voltage_state_interface_;
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				joint_hw_error_state_interface_;
 
 		std::vector<std::reference_wrapper<
 				hardware_interface::LoanedCommandInterface>>
 				niryo_one_command_interface_;
+		int niryo_one_can_command_interface_count = 0;
+
+		std::vector<std::reference_wrapper<
+				hardware_interface::LoanedStateInterface>>
+				niryo_one_state_interface_;
+		int niryo_one_can_state_interface_count = 0;
 
 		std::unordered_map<std::string,
 				std::vector<std::reference_wrapper<
@@ -149,6 +175,7 @@ namespace niryo_one_hardware {
 						{"torque", &joint_torque_command_interface_},
 						{"mirco_steps", &joint_micro_steps_command_interface_},
 						{"max_effort", &joint_max_effort_command_interface_},
+						{"led", &joint_led_command_interface_},
 						{"niryo_one", &niryo_one_command_interface_}};
 
 		std::unordered_map<std::string,
@@ -171,7 +198,9 @@ namespace niryo_one_hardware {
 						{"firmware_version_minor",
 								&joint_firmware_version_minor_state_interface_},
 						{"firmware_version_patch",
-								&joint_firmware_version_patch_state_interface_}};
+								&joint_firmware_version_patch_state_interface_},
+						{"voltage", &joint_voltage_state_interface_},
+						{"hw_error", &joint_hw_error_state_interface_}};
 
 		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
 				calibrate_motors_srv_;

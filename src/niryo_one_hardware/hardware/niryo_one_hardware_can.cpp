@@ -109,7 +109,8 @@ namespace niryo_one_hardware {
 			hardware_interface::InterfaceInfo info;
 			info.name = iter->second;
 			hardware_interface::InterfaceDescription desc =
-					hardware_interface::InterfaceDescription("niryo_one", info);
+					hardware_interface::InterfaceDescription(
+							"niryo_one/can", info);
 			interfaces.push_back(desc);
 		}
 
@@ -170,9 +171,21 @@ namespace niryo_one_hardware {
 					rad_pos_to_steps(stod(joint.parameters["home_position"]),
 							stod(joint.parameters["gear_ratio"]),
 							stod(joint.parameters["direction"])));
+			set_command(
+					joint.name + "/" + hardware_interface::HW_IF_VELOCITY, 0);
+			set_command(joint.name + "/" + hardware_interface::HW_IF_TORQUE, 0);
 			set_command(joint.name + "/mirco_steps", 8);
 			set_command(joint.name + "/max_effort",
 					stod(joint.parameters["max_effort"]));
+
+			set_state(joint.name + "/" + hardware_interface::HW_IF_POSITION,
+					stod(joint.parameters["home_position"]));
+			set_state(joint.name + "/" + hardware_interface::HW_IF_VELOCITY, 0);
+			set_state(joint.name + "/" + hardware_interface::HW_IF_TORQUE, 0);
+			set_state(joint.name + "/" + hardware_interface::HW_IF_TEMPERATURE,
+					0);
+			set_state(joint.name + "/hardware_error", 0);
+			set_state(joint.name + "/hw_fail_counter", 0);
 			set_state(joint.name + "/enabled", true);
 		}
 
@@ -1075,6 +1088,8 @@ namespace niryo_one_hardware {
 								.value();
 				// }
 
+				RCLCPP_INFO(get_logger(), "Activating Learning Mode - CAN: %d",
+						learning_mode_on);
 				activateLearningMode(learning_mode_on);
 
 				// Publish one time
@@ -1082,7 +1097,7 @@ namespace niryo_one_hardware {
 						unlisted_commands_
 								.at(CommandInterfaces::
 												ACTIVATE_LEARNING_MODE_RESPONSE_STATUS)
-								->set_value(300);
+								->set_value(200);
 			}
 		}
 	}

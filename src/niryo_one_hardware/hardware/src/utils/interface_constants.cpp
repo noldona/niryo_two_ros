@@ -6,14 +6,20 @@ namespace niryo_one_hardware {
 					"calibrate_motors_request_value"},
 			{CommandInterfaces::CALIBRATE_MOTORS_RESPONSE_STATUS,
 					"calibrate_motors_response_status"},
-			{CommandInterfaces::CALIBRATE_MOTORS_RESPONSE_MSSAGE,
+			{CommandInterfaces::CALIBRATE_MOTORS_RESPONSE_MESSAGE,
 					"calibrate_motors_response_message"},
 			{CommandInterfaces::ACTIVATE_LEARNING_MODE_REQUEST_VALUE,
 					"activate_learning_mode_request_value"},
 			{CommandInterfaces::ACTIVATE_LEARNING_MODE_RESPONSE_STATUS,
 					"activate_learning_mode_response_status"},
 			{CommandInterfaces::ACTIVATE_LEARNING_MODE_RESPONSE_MESSAGE,
-					"activate_learning_mode_response_message"}};
+					"activate_learning_mode_response_message"},
+			{CommandInterfaces::REBOOT_MOTORS_REQUEST_VALUE,
+					"reboot_motors_request_value"},
+			{CommandInterfaces::REBOOT_MOTORS_RESPONSE_STATUS,
+					"reboot_motors_response_status"},
+			{CommandInterfaces::REBOOT_MOTORS_RESPONSE_MESSAGE,
+					"reboot_motors_response_message"}};
 
 	std::map<StateInterfaces, std::string> state_interface_names = {
 			{StateInterfaces::LEARNING_MODE, "learning_mode"}};

@@ -189,6 +189,9 @@ namespace niryo_one_hardware {
 
 		void hardwareControlRead();
 		void hardwareControlWrite();
+
+		void activateLearningMode();
+		void rebootMotors();
 	};
 }
 

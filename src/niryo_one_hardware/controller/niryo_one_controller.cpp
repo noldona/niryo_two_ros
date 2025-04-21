@@ -20,15 +20,24 @@ namespace niryo_one_hardware {
 
 	controller_interface::CallbackReturn NiryoOneController::on_init() {
 		// should have error handling
-		joint_names_ =
-				auto_declare<std::vector<std::string>>("joints", joint_names_);
-		command_interface_types_ = auto_declare<std::vector<std::string>>(
-				"command_interfaces", command_interface_types_);
-		state_interface_types_ = auto_declare<std::vector<std::string>>(
-				"state_interfaces", state_interface_types_);
+		can_joint_names_ = auto_declare<std::vector<std::string>>(
+				"can_joints", can_joint_names_);
+		can_command_interface_types_ = auto_declare<std::vector<std::string>>(
+				"can_command_interfaces", can_command_interface_types_);
+		can_state_interface_types_ = auto_declare<std::vector<std::string>>(
+				"can_state_interfaces", can_state_interface_types_);
 
-		point_interp_.positions.assign(joint_names_.size(), 0);
-		point_interp_.velocities.assign(joint_names_.size(), 0);
+		dxl_joint_names_ = auto_declare<std::vector<std::string>>(
+				"dxl_joints", dxl_joint_names_);
+		dxl_command_interface_types_ = auto_declare<std::vector<std::string>>(
+				"dxl_command_interfaces", dxl_command_interface_types_);
+		dxl_state_interface_types_ = auto_declare<std::vector<std::string>>(
+				"dxl_state_interfaces", dxl_state_interface_types_);
+
+		point_interp_.positions.assign(
+				can_joint_names_.size() + dxl_joint_names_.size(), 0);
+		point_interp_.velocities.assign(
+				can_joint_names_.size() + dxl_joint_names_.size(), 0);
 
 		return CallbackReturn::SUCCESS;
 	}
@@ -38,10 +47,22 @@ namespace niryo_one_hardware {
 		controller_interface::InterfaceConfiguration conf = {
 				config_type::INDIVIDUAL, {}};
 
-		conf.names.reserve(
-				joint_names_.size() * command_interface_types_.size());
-		for (const auto &joint_name : joint_names_) {
-			for (const auto &interface_type : command_interface_types_) {
+		conf.names.reserve((can_joint_names_.size() *
+								   can_command_interface_types_.size()) +
+				(dxl_joint_names_.size() *
+						dxl_command_interface_types_.size()) +
+				(command_interface_names.size()));
+
+		// CAN motors
+		for (const auto &joint_name : can_joint_names_) {
+			for (const auto &interface_type : can_command_interface_types_) {
+				conf.names.push_back(joint_name + "/" + interface_type);
+			}
+		}
+
+		// DXL motors
+		for (const auto &joint_name : dxl_joint_names_) {
+			for (const auto &interface_type : dxl_command_interface_types_) {
 				conf.names.push_back(joint_name + "/" + interface_type);
 			}
 		}
@@ -49,7 +70,13 @@ namespace niryo_one_hardware {
 		for (std::map<CommandInterfaces, std::string>::iterator iter =
 						command_interface_names.begin();
 				iter != command_interface_names.end(); ++iter) {
-			conf.names.push_back("niryo_one/" + iter->second);
+			conf.names.push_back("niryo_one/can/" + iter->second);
+		}
+
+		for (std::map<CommandInterfaces, std::string>::iterator iter =
+						command_interface_names.begin();
+				iter != command_interface_names.end(); ++iter) {
+			conf.names.push_back("niryo_one/dxl/" + iter->second);
 		}
 
 		return conf;
@@ -60,9 +87,19 @@ namespace niryo_one_hardware {
 		controller_interface::InterfaceConfiguration conf = {
 				config_type::INDIVIDUAL, {}};
 
-		conf.names.reserve(joint_names_.size() * state_interface_types_.size());
-		for (const auto &joint_name : joint_names_) {
-			for (const auto &interface_type : state_interface_types_) {
+		conf.names.reserve(
+				(can_joint_names_.size() * can_state_interface_types_.size()) +
+				(dxl_joint_names_.size() * dxl_state_interface_types_.size()) +
+				(state_interface_names.size()));
+
+		for (const auto &joint_name : can_joint_names_) {
+			for (const auto &interface_type : can_state_interface_types_) {
+				conf.names.push_back(joint_name + "/" + interface_type);
+			}
+		}
+
+		for (const auto &joint_name : dxl_joint_names_) {
+			for (const auto &interface_type : dxl_state_interface_types_) {
 				conf.names.push_back(joint_name + "/" + interface_type);
 			}
 		}
@@ -104,7 +141,8 @@ namespace niryo_one_hardware {
 
 		// assign command interfaces
 		for (auto &interface : command_interfaces_) {
-			if (interface.get_prefix_name() == "niryo_one") {
+			if (interface.get_prefix_name() == "niryo_one/can" ||
+					interface.get_prefix_name() == "niryo_one/dxl") {
 				command_interface_map_["niryo_one"]->push_back(interface);
 			} else {
 				command_interface_map_[interface.get_interface_name()]
@@ -157,13 +195,15 @@ namespace niryo_one_hardware {
 	controller_interface::return_type NiryoOneController::update(
 			const rclcpp::Time &time, const rclcpp::Duration & /*period*/) {
 		if (new_msg_) {
-			RCLCPP_INFO(get_node()->get_logger(), "New trajectory");
+			// RCLCPP_INFO(get_node()->get_logger(), "New message");
 			trajectory_msg_ = *traj_msg_external_point_ptr_.readFromRT();
+			joint_state_msg_ = *joint_msg_external_ptr_.readFromRT();
 			start_time_ = time;
 			new_msg_ = false;
 		}
 
 		if (trajectory_msg_ != nullptr) {
+			// RCLCPP_INFO(get_node()->get_logger(), "Got trajectory");
 			interpolate_trajectory_point(
 					*trajectory_msg_, time - start_time_, point_interp_);
 			for (size_t i = 0; i < joint_position_command_interface_.size();
@@ -177,6 +217,16 @@ namespace niryo_one_hardware {
 				std::ignore =
 						joint_velocity_command_interface_[i].get().set_value(
 								point_interp_.velocities[i]);
+			}
+		}
+
+		if (joint_state_msg_ != nullptr) {
+			// RCLCPP_INFO(get_node()->get_logger(), "Got joint state");
+			for (size_t i = 0; i < joint_position_command_interface_.size();
+					i++) {
+				std::ignore =
+						joint_position_command_interface_[i].get().set_value(
+								joint_state_msg_->position[i]);
 			}
 		}
 
@@ -208,7 +258,7 @@ namespace niryo_one_hardware {
 		auto joint_trajectory_callback =
 				[this](std::shared_ptr<trajectory_msgs::msg::JointTrajectory>
 								traj_msg) -> void {
-			RCLCPP_INFO(get_node()->get_logger(), "Recieved trajectory");
+			// RCLCPP_INFO(get_node()->get_logger(), "Received trajectory");
 			traj_msg_external_point_ptr_.writeFromNonRT(traj_msg);
 			new_msg_ = true;
 		};
@@ -219,6 +269,18 @@ namespace niryo_one_hardware {
 								"/niryo_one/joint_trajectory",
 								rclcpp::SystemDefaultsQoS(),
 								joint_trajectory_callback);
+
+		auto joint_state_callback =
+				[this](std::shared_ptr<sensor_msgs::msg::JointState> joint_msg)
+				-> void {
+			// RCLCPP_INFO(get_node()->get_logger(), "Received Joint State");
+			joint_msg_external_ptr_.writeFromNonRT(joint_msg);
+			new_msg_ = true;
+		};
+		joint_state_subscriber_ =
+				get_node()->create_subscription<sensor_msgs::msg::JointState>(
+						"/niryo_one/joint_states", rclcpp::SystemDefaultsQoS(),
+						joint_state_callback);
 	}
 
 	void NiryoOneController::createPublishers() {}
@@ -462,6 +524,8 @@ namespace niryo_one_hardware {
 			niryo_one_msgs::srv::SetInt::Response::SharedPtr res) {
 		RCLCPP_INFO(get_node()->get_logger(), "Activating learning mode");
 
+		int dxl_offset = command_interface_names.size();
+
 		std::ignore =
 				niryo_one_command_interface_
 						[CommandInterfaces::
@@ -483,16 +547,60 @@ namespace niryo_one_hardware {
 								.get_optional<double>()
 								.value_or(ASYNC_WAITING);
 			})) {
-			RCLCPP_WARN(get_node()->get_logger(), "Could not verify that ");
+			RCLCPP_WARN(get_node()->get_logger(),
+					"Could not verify that CAN activated learning mode");
 		}
 
-		res->status =
+		std::ignore =
+				niryo_one_command_interface_
+						[CommandInterfaces::
+										ACTIVATE_LEARNING_MODE_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.set_value(ASYNC_WAITING);
+		std::ignore =
+				niryo_one_command_interface_
+						[CommandInterfaces::
+										ACTIVATE_LEARNING_MODE_REQUEST_VALUE +
+								dxl_offset]
+								.get()
+								.set_value(req->value);
+
+		if (!waitForAsyncCommand<double>([&]() -> double {
+				return niryo_one_command_interface_
+						[CommandInterfaces::
+										ACTIVATE_LEARNING_MODE_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.get_optional<double>()
+								.value_or(ASYNC_WAITING);
+			})) {
+			RCLCPP_WARN(get_node()->get_logger(),
+					"Could not verify that DXL activate learning mode");
+		}
+
+		int can_status =
 				niryo_one_command_interface_
 						[CommandInterfaces::
 										ACTIVATE_LEARNING_MODE_RESPONSE_STATUS]
 								.get()
 								.get_optional<double>()
 								.value_or(ASYNC_WAITING);
+		int dxl_status =
+				niryo_one_command_interface_
+						[CommandInterfaces::
+										ACTIVATE_LEARNING_MODE_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.get_optional<double>()
+								.value_or(ASYNC_WAITING);
+
+		if (can_status == 200) {
+			res->status = dxl_status;
+		} else {
+			res->status = can_status;
+		}
+
 		if (res->status == 400) {
 			res->message = "You can't activate/deactivate learning mode during "
 						   "motors calibration";
@@ -505,6 +613,13 @@ namespace niryo_one_hardware {
 				niryo_one_command_interface_
 						[CommandInterfaces::
 										ACTIVATE_LEARNING_MODE_RESPONSE_STATUS]
+								.get()
+								.set_value(ASYNC_NONE);
+		std::ignore =
+				niryo_one_command_interface_
+						[CommandInterfaces::
+										ACTIVATE_LEARNING_MODE_RESPONSE_STATUS +
+								dxl_offset]
 								.get()
 								.set_value(ASYNC_NONE);
 	}
@@ -870,43 +985,51 @@ namespace niryo_one_hardware {
 	void NiryoOneController::callbackRebootMotors(
 			const niryo_one_msgs::srv::SetInt::Request::SharedPtr req,
 			niryo_one_msgs::srv::SetInt::Response::SharedPtr res) {
-		RCLCPP_INFO(get_node()->get_logger(), "Testing motors");
+		RCLCPP_INFO(get_node()->get_logger(), "Rebooting motors");
 
-		auto async_res = niryo_one_msgs::srv::SetInt::Response();
-		async_res.status = ASYNC_WAITING;
-		auto async_res_ptr =
-				std::make_shared<niryo_one_msgs::srv::SetInt::Response>(
-						async_res);
+		int dxl_offset = command_interface_names.size();
 
-		// std::ignore =
-		// 		command_interfaces_[CommandInterfaces::REBOOT_MOTORS_RESPONSE]
-		// 				.set_value<niryo_one_msgs::srv::SetInt::Response::
-		// 								SharedPtr>(async_res_ptr);
-		// std::ignore =
-		// 		command_interfaces_[CommandInterfaces::REBOOT_MOTORS_REQUEST]
-		// 				.set_value<niryo_one_msgs::srv::SetInt::Request::
-		// 								SharedPtr>(req);
+		std::ignore =
+				niryo_one_command_interface_
+						[CommandInterfaces::REBOOT_MOTORS_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.set_value(ASYNC_WAITING);
+		std::ignore = niryo_one_command_interface_
+							  [CommandInterfaces::REBOOT_MOTORS_REQUEST_VALUE +
+									  dxl_offset]
+									  .get()
+									  .set_value(req->value);
 
-		// if (!waitForAsyncCommand<
-		// 			niryo_one_msgs::srv::SetInt::Response::SharedPtr>(
-		// 			[&]() -> niryo_one_msgs::srv::SetInt::Response::SharedPtr {
-		// 				return command_interfaces_
-		// 						[CommandInterfaces::REBOOT_MOTORS_RESPONSE]
-		// 								.get_optional<
-		// 										niryo_one_msgs::srv::SetInt::
-		// 												Response::SharedPtr>()
-		// 								.value_or(async_res_ptr);
-		// 			})) {
-		// 	RCLCPP_WARN(get_node()->get_logger(), "Could not verify that ");
-		// }
+		if (!waitForAsyncCommand<double>([&]() -> double {
+				return niryo_one_command_interface_
+						[CommandInterfaces::REBOOT_MOTORS_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.get_optional<double>()
+								.value_or(ASYNC_WAITING);
+			})) {
+			RCLCPP_WARN(get_node()->get_logger(),
+					"Could not verify that motors were rebooted");
+		}
 
-		// res = command_interfaces_[CommandInterfaces::REBOOT_MOTORS_RESPONSE]
-		// 			  .get_optional<niryo_one_msgs::srv::SetInt::Response::
-		// 							  SharedPtr>()
-		// 			  .value_or(async_res_ptr);
-		// command_interfaces_[CommandInterfaces::REBOOT_MOTORS_REQUEST]
-		// 		.set_value<niryo_one_msgs::srv::SetInt::Request::SharedPtr>(
-		// 				nullptr);
+		res->status =
+				niryo_one_command_interface_
+						[CommandInterfaces::REBOOT_MOTORS_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.get_optional<double>()
+								.value_or(ASYNC_WAITING);
+		if (res->status == 200) {
+			res->message = "OK";
+		}
+
+		std::ignore =
+				niryo_one_command_interface_
+						[CommandInterfaces::REBOOT_MOTORS_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.set_value(ASYNC_NONE);
 	}
 
 }  // namespace niryo_one

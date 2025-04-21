@@ -80,7 +80,7 @@ namespace niryo_one_hardware {
 
 		// For hardware loop control
 		hw_is_busy = false;
-		hw_limited_mode = false;
+		hw_limited_mode = true;
 
 		read_position_enable = true;
 		read_velocity_enable = true;  // Not useful for now
@@ -100,15 +100,16 @@ namespace niryo_one_hardware {
 			export_unlisted_command_interface_descriptions() {
 		std::vector<hardware_interface::InterfaceDescription> interfaces;
 
-		// for (std::map<CommandInterfaces, std::string>::iterator iter =
-		// 				command_interface_names.begin();
-		// 		iter != command_interface_names.end(); ++iter) {
-		// 	hardware_interface::InterfaceInfo info;
-		// 	info.name = iter->second;
-		// 	hardware_interface::InterfaceDescription desc =
-		// 			hardware_interface::InterfaceDescription("niryo_one", info);
-		// 	interfaces.push_back(desc);
-		// }
+		for (std::map<CommandInterfaces, std::string>::iterator iter =
+						command_interface_names.begin();
+				iter != command_interface_names.end(); ++iter) {
+			hardware_interface::InterfaceInfo info;
+			info.name = iter->second;
+			hardware_interface::InterfaceDescription desc =
+					hardware_interface::InterfaceDescription(
+							"niryo_one/dxl", info);
+			interfaces.push_back(desc);
+		}
 
 		return interfaces;
 	}
@@ -168,6 +169,26 @@ namespace niryo_one_hardware {
 	CallbackReturn NiryoOneHardwareDxl::on_activate(
 			const rclcpp_lifecycle::State & /*previous_state*/) {
 		RCLCPP_INFO(get_logger(), "Activating DXL hardware... please wait...");
+
+		for (auto joint : info_.joints) {
+			RCLCPP_INFO(get_logger(), "Joint Name:  %s", joint.name.c_str());
+			set_command(joint.name + "/" + hardware_interface::HW_IF_POSITION,
+					stod(joint.parameters["home_position"]));
+			set_command(
+					joint.name + "/" + hardware_interface::HW_IF_VELOCITY, 0);
+			set_command(joint.name + "/" + hardware_interface::HW_IF_TORQUE, 0);
+			set_command(joint.name + "/led", 0);
+
+			set_state(joint.name + "/" + hardware_interface::HW_IF_POSITION,
+					stod(joint.parameters["home_position"]));
+			set_state(joint.name + "/" + hardware_interface::HW_IF_VELOCITY, 0);
+			set_state(joint.name + "/" + hardware_interface::HW_IF_TORQUE, 0);
+			set_state(joint.name + "/" + hardware_interface::HW_IF_TEMPERATURE,
+					0);
+			set_state(joint.name + "/voltage", 0);
+			set_state(joint.name + "/hw_error", 0);
+			set_state(joint.name + "/enabled", true);
+		}
 
 		dxl_connection_loop_thread.reset(new std::thread(
 				std::bind(&NiryoOneHardwareDxl::manageDxlConnection, this)));
@@ -487,10 +508,10 @@ namespace niryo_one_hardware {
 		}
 
 		// 1.1 Log all IDs found for debug purposes
-		// RCLCPP_INFO(get_logger(), "Dynamixel broadcast ping - Found IDs:");
-		// for (std::size_t i = 0; i < id_list.size(); i++) {
-		// 	RCLCPP_INFO(get_logger(), "- %d", id_list.at(i));
-		// }
+		RCLCPP_INFO(get_logger(), "Dynamixel broadcast ping - Found IDs:");
+		for (std::size_t i = 0; i < id_list.size(); i++) {
+			RCLCPP_INFO(get_logger(), "- %d", id_list.at(i));
+		}
 
 		// 2. Check that IDs correspond to niryo_one motors ID list
 		std::vector<uint8_t> missing_motor_ids;
@@ -601,15 +622,71 @@ namespace niryo_one_hardware {
 
 	uint32_t NiryoOneHardwareDxl::rad_pos_to_xl430_pos(double position_rad) {
 		return (uint32_t) ((double) XL430_MIDDLE_POSITION +
-				(position_rad * RADIAN_TO_DEGREE * (double) XL430_TOTAL_ANGLE) /
-						(RADIAN_TO_DEGREE *
-								(double) XL430_TOTAL_RANGE_POSITION));
+				(position_rad * RADIAN_TO_DEGREE *
+						(double) XL430_TOTAL_RANGE_POSITION) /
+						(double) XL430_TOTAL_ANGLE);
+	}
+
+	double NiryoOneHardwareDxl::xl430_pos_to_rad_pos(uint32_t position_dxl) {
+		return (double) ((((double) position_dxl - XL430_MIDDLE_POSITION) *
+								 (double) XL430_TOTAL_ANGLE) /
+				(RADIAN_TO_DEGREE * (double) XL430_TOTAL_RANGE_POSITION));
 	}
 
 	void NiryoOneHardwareDxl::asyncThread() {
 		async_thread_shutdown_ = false;
 		while (!async_thread_shutdown_) {
+			activateLearningMode();
+			rebootMotors();
 			std::this_thread::sleep_for(std::chrono::nanoseconds(20000000));
+		}
+	}
+
+	void NiryoOneHardwareDxl::activateLearningMode() {
+		int32_t status =
+				unlisted_commands_
+						.at(CommandInterfaces::
+										ACTIVATE_LEARNING_MODE_RESPONSE_STATUS)
+						->get_optional<double>()
+						.value_or(ASYNC_NONE);
+
+		if (status == ASYNC_WAITING) {
+			bool learning_mode_on;
+			learning_mode_on =
+					unlisted_commands_
+							.at(CommandInterfaces::
+											ACTIVATE_LEARNING_MODE_REQUEST_VALUE)
+							->get_optional<double>()
+							.value();
+
+			RCLCPP_INFO(get_logger(), "Activating Learning Mode - DXL: %d",
+					learning_mode_on);
+			activateLearningMode(learning_mode_on);
+
+			// Publish one time
+			std::ignore =
+					unlisted_commands_
+							.at(CommandInterfaces::
+											ACTIVATE_LEARNING_MODE_RESPONSE_STATUS)
+							->set_value(200);
+		}
+	}
+
+	void NiryoOneHardwareDxl::rebootMotors() {
+		int32_t status =
+				unlisted_commands_
+						.at(CommandInterfaces::REBOOT_MOTORS_RESPONSE_STATUS)
+						->get_optional<double>()
+						.value_or(ASYNC_NONE);
+
+		if (status == ASYNC_WAITING) {
+			RCLCPP_INFO(get_logger(), "Rebooting motors");
+			should_reboot_motors = true;
+
+			std::ignore = unlisted_commands_
+								  .at(CommandInterfaces::
+												  REBOOT_MOTORS_RESPONSE_STATUS)
+								  ->set_value(200);
 		}
 	}
 
@@ -660,9 +737,11 @@ namespace niryo_one_hardware {
 						xl320_hw_fail_counter_read = 0;
 						for (std::size_t i = 0; i < xl320_motor_list.size();
 								i++) {
+							double rad_pos =
+									xl320_pos_to_rad_pos(position_list.at(i));
 							set_state(xl320_motor_list.at(i).name + "/" +
 											hardware_interface::HW_IF_POSITION,
-									position_list.at(i));
+									rad_pos);
 						}
 					} else {
 						xl320_hw_fail_counter_read++;
@@ -678,9 +757,11 @@ namespace niryo_one_hardware {
 						xl320_hw_fail_counter_read = 0;
 						for (std::size_t i = 0; i < xl430_motor_list.size();
 								i++) {
+							double rad_pos =
+									xl430_pos_to_rad_pos(position_list.at(i));
 							set_state(xl430_motor_list.at(i).name + "/" +
 											hardware_interface::HW_IF_POSITION,
-									position_list.at(i));
+									rad_pos);
 						}
 					} else {
 						xl430_hw_fail_counter_read++;
@@ -973,6 +1054,7 @@ namespace niryo_one_hardware {
 
 			// Write torque enable (for all motors, including tool)
 			if (write_torque_on_enable) {
+				RCLCPP_INFO(get_logger(), "Writing torque");
 				std::vector<uint32_t> xl320_torque_enable_list;
 				for (auto joint : xl320_motor_list) {
 					xl320_torque_enable_list.push_back(torque_on);
@@ -1004,16 +1086,29 @@ namespace niryo_one_hardware {
 			if (torque_on) {
 				// Write position (not for tool)
 				if (write_position_enable) {
+					// RCLCPP_INFO(get_logger(), "Writing position");
 					std::vector<uint32_t> xl320_position_list;
 					for (auto joint : xl320_motor_list) {
-						xl320_position_list.push_back(get_command(joint.name +
-								"/" + hardware_interface::HW_IF_POSITION));
+						double pos = rad_pos_to_xl320_pos(
+								get_command(joint.name + "/" +
+										hardware_interface::HW_IF_POSITION));
+						// RCLCPP_INFO(get_logger(), "Joint: %s - Position: %d",
+						// 		joint.name.c_str(),
+						// 		get_command(joint.name + "/" +
+						// 				hardware_interface::HW_IF_POSITION));
+						xl320_position_list.push_back(pos);
 					}
 
 					std::vector<uint32_t> xl430_position_list;
 					for (auto joint : xl430_motor_list) {
-						xl430_position_list.push_back(get_command(joint.name +
-								"/" + hardware_interface::HW_IF_POSITION));
+						double pos = rad_pos_to_xl430_pos(
+								get_command(joint.name + "/" +
+										hardware_interface::HW_IF_POSITION));
+						// RCLCPP_INFO(get_logger(), "Joint: %s - Position: %d",
+						// 		joint.name.c_str(),
+						// 		get_command(joint.name + "/" +
+						// 				hardware_interface::HW_IF_POSITION));
+						xl430_position_list.push_back(pos);
 					}
 
 					int xl320_result = xl320->syncWritePositionGoal(

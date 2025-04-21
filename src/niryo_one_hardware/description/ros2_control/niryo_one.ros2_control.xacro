@@ -88,6 +88,7 @@
 				<command_interface name="position">
 					<param name="min">${limit_low_shoulder_rotation}</param>
 					<param name="max">${limit_up_shoulder_rotation}</param>
+					<param name="initial_value">${mp['home_position_1']}</param>
 				</command_interface>
 				<command_interface name="velocity">
 					<param name="max">1.0</param>
@@ -132,6 +133,7 @@
 				<command_interface name="position">
 					<param name="min">${limit_low_arm_rotation}</param>
 					<param name="max">${limit_up_arm_rotation}</param>
+					<param name="initial_value">${mp['home_position_2']}</param>
 				</command_interface>
 				<command_interface name="velocity">
 					<param name="max">1.0</param>
@@ -176,6 +178,7 @@
 				<command_interface name="position">
 					<param name="min">${limit_low_elbow_rotation}</param>
 					<param name="max">${limit_up_elbow_rotation}</param>
+					<param name="initial_value">${mp['home_position_3']}</param>
 				</command_interface>
 				<command_interface name="velocity">
 					<param name="max">1.0</param>
@@ -239,6 +242,7 @@
 				<command_interface name="position">
 					<param name="min">${limit_low_forearm_rotation}</param>
 					<param name="max">${limit_up_forearm_rotation}</param>
+					<param name="initial_value">${xl430_middle_position}</param>
 				</command_interface>
 				<command_interface name="velocity">
 					<param name="max">1.0</param>
@@ -266,6 +270,7 @@
 				<command_interface name="position">
 					<param name="min">${limit_low_wrist_rotation}</param>
 					<param name="max">${limit_up_wrist_rotation}</param>
+					<param name="initial_value">${xl430_middle_position}</param>
 				</command_interface>
 				<command_interface name="velocity">
 					<param name="max">1.0</param>
@@ -293,6 +298,7 @@
 				<command_interface name="position">
 					<param name="min">${limit_low_hand_rotation}</param>
 					<param name="max">${limit_up_hand_rotation}</param>
+					<param name="initial_value">${xl320_middle_position}</param>
 				</command_interface>
 				<command_interface name="velocity">
 					<param name="max">1.0</param>

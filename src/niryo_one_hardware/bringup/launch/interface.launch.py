@@ -35,11 +35,14 @@ def generate_launch_description():
         package="joint_state_publisher_gui",
         executable="joint_state_publisher_gui",
         condition=IfCondition(gui),
+        remappings=[
+            ('/joint_states', '/niryo_one/joint_states')
+        ],
     )
 
     nodes = [
         rviz_node,
-        # joint_state_publisher_node,
+        joint_state_publisher_node,
     ]
 
     return LaunchDescription(declared_arguments + nodes)
