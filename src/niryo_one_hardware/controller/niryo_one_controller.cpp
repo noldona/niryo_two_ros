@@ -266,7 +266,7 @@ namespace niryo_one_hardware {
 				get_node()
 						->create_subscription<
 								trajectory_msgs::msg::JointTrajectory>(
-								"/niryo_one/joint_trajectory",
+								"/niryo_one_follow_joint_trajectory_controller/command",
 								rclcpp::SystemDefaultsQoS(),
 								joint_trajectory_callback);
 

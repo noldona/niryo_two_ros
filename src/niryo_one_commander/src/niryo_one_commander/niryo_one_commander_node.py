@@ -34,10 +34,10 @@ class NiryoOneCommanderNode(Node):
         self.niryo_one_robot_state_publisher = NiryoRobotStatePublisher(self)
 
         # Position Manager
-        positions_dir = self.declare_parameter("~positions_dir").value
+        positions_dir = self.declare_parameter("positions_dir").get_parameter_value().string_value
         self.pos_manager = PositionManager(self, positions_dir)
         # trajectory_manager
-        trajectories_dir = self.declare_parameter("~trajectories_dir").value
+        trajectories_dir = self.declare_parameter("trajectories_dir").get_parameter_value().string_value
         self.traj_manager = TrajectoryManager(self, trajectories_dir)
         # robot commander
         self.robot_commander = RobotCommander(self, self.pos_manager, self.traj_manager)

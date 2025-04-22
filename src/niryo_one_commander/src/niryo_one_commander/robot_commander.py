@@ -22,7 +22,8 @@ from rclpy.action import ActionServer
 from rclpy import timer
 from rclpy.duration import Duration
 import sys
-import moveit_commander
+import moveit
+from moveit.planning import MoveItPy
 import threading
 
 # Lib
@@ -40,8 +41,7 @@ from std_srvs.srv import SetBool
 from niryo_one_msgs.srv import GetInt
 from niryo_one_msgs.srv import SetInt
 # Action msgs
-from niryo_one_msgs.msg import RobotMoveAction
-from niryo_one_msgs.msg import RobotMoveResult
+from niryo_one_msgs.action import RobotMove
 # Commanders
 from arm_commander import ArmCommander
 from tool_commander import ToolCommander
@@ -59,14 +59,15 @@ This class handles the arm and tools through a service interface
 """
 
 
-class RobotCommander(Node):
+class RobotCommander:
 
-    def __init__(self, position_manager, trajectory_manager, **kwargs):
-        super().__init__('robot_commander', **kwargs)
+    def __init__(self, node:Node, position_manager, trajectory_manager):
+        self.node = node
         
         self.trajectory_manager = trajectory_manager
         self.pos_manager = position_manager
         moveit_commander.roscpp_initialize(sys.argv)
+        self.moveit_py = MoveItPy(self.node)
 
         # Load all the sub-commanders
         self.move_group_arm = MoveGroupArm()
@@ -81,7 +82,7 @@ class RobotCommander(Node):
 
         # robot action server
         self.server = ActionServer(self, 
-                                   RobotMoveAction, 
+                                   RobotMove, 
                                    'niryo_one/commander/robot_action',
                                    self.on_goal, 
                                    self.on_cancel, 

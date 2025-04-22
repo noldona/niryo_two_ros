@@ -27,16 +27,16 @@ from moveit.planning import MoveItPy
 
 class MoveGroupArm:
 
-    def __init__(self, node:Node, **kwargs):
+    def __init__(self, node:Node):
         self.node = node
 
         # Get params from rosparams
-        reference_frame = self.node.declare_parameter("~reference_frame").value
-        move_group_commander_name = self.node.declare_parameter("~move_group_commander_name").value
-        allow_replanning = self.node.declare_parameter("~allow_replanning").value
-        goal_joint_tolerance = self.node.declare_parameter("~goal_joint_tolerance").value
-        goal_position_tolerance = self.node.declare_parameter("~goal_position_tolerance").value
-        goal_orientation_tolerance = self.node.declare_parameter("~goal_orientation_tolerance").value
+        reference_frame = self.node.declare_parameter("reference_frame").value
+        move_group_commander_name = self.node.declare_parameter("move_group_commander_name").value
+        allow_replanning = self.node.declare_parameter("allow_replanning").value
+        goal_joint_tolerance = self.node.declare_parameter("goal_joint_tolerance").value
+        goal_position_tolerance = self.node.declare_parameter("goal_position_tolerance").value
+        goal_orientation_tolerance = self.node.declare_parameter("goal_orientation_tolerance").value
 
         # Set reference_frame
         self.reference_frame = reference_frame

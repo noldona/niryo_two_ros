@@ -1,3 +1,20 @@
 {
-    "python.analysis.autoImportCompletions": false
+    "python.analysis.autoImportCompletions": false,
+    "ros.distro": "jazzy",
+    "python.autoComplete.extraPaths": [
+        "/home/ericlashley/niryo_two_ros/install/niryo_one_bringup/lib/python3.12/site-packages",
+        "/home/ericlashley/niryo_two_ros/install/niryo_one_tools/lib/python3.12/site-packages",
+        "/home/ericlashley/niryo_two_ros/install/niryo_one_rpi/lib/python3.12/site-packages",
+        "/home/ericlashley/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages",
+        "/home/ericlashley/niryo_two_ros/install/niryo_one_commander/lib/python3.12/site-packages",
+        "/opt/ros/jazzy/lib/python3.12/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/ericlashley/niryo_two_ros/install/niryo_one_bringup/lib/python3.12/site-packages",
+        "/home/ericlashley/niryo_two_ros/install/niryo_one_tools/lib/python3.12/site-packages",
+        "/home/ericlashley/niryo_two_ros/install/niryo_one_rpi/lib/python3.12/site-packages",
+        "/home/ericlashley/niryo_two_ros/install/niryo_one_msgs/lib/python3.12/site-packages",
+        "/home/ericlashley/niryo_two_ros/install/niryo_one_commander/lib/python3.12/site-packages",
+        "/opt/ros/jazzy/lib/python3.12/site-packages"
+    ]
 }

@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
 	rclcpp::init(argc, argv);
 	auto node = std::make_shared<rclcpp::Node>("send_trajectory");
 	auto pub = node->create_publisher<trajectory_msgs::msg::JointTrajectory>(
-			"/niryo_one/joint_trajectory", 10);
+			"/niryo_one_follow_joint_trajectory_controller/command", 10);
 
 	auto client = node->create_client<niryo_one_msgs::srv::SetInt>(
 			"niryo_one/activate_learning_mode");
@@ -97,18 +97,23 @@ int main(int argc, char **argv) {
 							loop_rate * (trajectory_len / loop_rate)));
 	trajectory_msg.points.push_back(trajectory_point_msg);
 
+	// Disable learning mode
 	auto req = std::make_shared<niryo_one_msgs::srv::SetInt::Request>();
 	req->value = false;
-
 	while (!client->wait_for_service()) {
 		RCLCPP_INFO(node->get_logger(),
 				"Waiting for service to become available...");
 	}
-
 	auto result = client->async_send_request(req);
 
+	// Send trajectory
 	RCLCPP_INFO(node->get_logger(), "Publishing trajectory");
 	pub->publish(trajectory_msg);
+
+	// Enable learning mode
+	req->value = true;
+	result = client->async_send_request(req);
+
 	while (rclcpp::ok()) {
 	}
 

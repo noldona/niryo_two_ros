@@ -16,6 +16,7 @@
 #include "niryo_one_hardware/xl320_driver.hpp"
 #include "niryo_one_hardware/xl430_driver.hpp"
 
+#include "niryo_one_hardware/change_hardware_version.hpp"
 #include "niryo_one_hardware/interface_constants.hpp"
 
 #define DXL_MOTOR_4_ID 2  // V2 - axis 4
@@ -166,9 +167,20 @@ namespace niryo_one_hardware {
 
 		std::shared_ptr<std::thread> dxl_connection_loop_thread;
 
+		bool reboot_when_auto_change_version;
+
+		std::vector<int> allowed_motors_ids;
+
+		void setControlMode(int control_mode);
 		void manageDxlConnection();
 		void checkHardwareVersionFromDxlMotors();
 		int detectVersion();
+		void stopHardwareControlLoop();
+		int scanAndCheck();
+		void setTorqueOn(bool on);
+		void activateLearningMode(bool activate);
+		void startHardwareControlLoop(bool limited_mod);
+		void resetHardwareControlLoopRates();
 
 		uint32_t rad_pos_to_xl320_pos(double position_rad);
 		double xl320_pos_to_rad_pos(uint32_t position_dxl);

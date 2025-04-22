@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import rospy
+from rclpy.node import Node
 from niryo_one_commander.niryo_one_file_exception import NiryoOneFileException
 from niryo_one_commander.trajectory.trajectory import Trajectory
 from niryo_one_commander.trajectory.trajectory_command_type import TrajectoryCommandType
@@ -33,16 +33,18 @@ from niryo_one_msgs.srv import GetTrajectoryList
 
 class TrajectoryManager:
 
-    def __init__(self, trajectory_dir):
+    def __init__(self, node:Node, trajectory_dir):
+        self.node = node
+        
         self.fh = TrajectoryFileHandler(trajectory_dir)
-        self.manage_position_server = rospy.Service(
-            '/niryo_one/trajectory/manage_trajectory', ManageTrajectory, self.callback_manage_trajectory)
-        rospy.loginfo("/niryo_one/trajectory/manage_trajectory service has been created ")
-        self.get_trajectory_list_server = rospy.Service(
-            '/niryo_one/trajectory/get_trajectory_list', GetTrajectoryList, self.callback_get_trajectory_list)
-        rospy.loginfo("/niryo_one/trajectory/get_trajectory_list")
-        self.validation = rospy.get_param("/niryo_one/robot_command_validation")
-        self.parameters_validation = ParametersValidation(self.validation, self)
+        self.manage_position_server = self.node.create_service(
+            ManageTrajectory, '/niryo_one/trajectory/manage_trajectory', self.callback_manage_trajectory)
+        self.node.get_logger().info("/niryo_one/trajectory/manage_trajectory service has been created ")
+        self.get_trajectory_list_server = self.node.create_service(
+            GetTrajectoryList, '/niryo_one/trajectory/get_trajectory_list', self.callback_get_trajectory_list)
+        self.node.get_logger().info("/niryo_one/trajectory/get_trajectory_list service has been created ")
+        self.validation = self.node.declare_parameter("/niryo_one/robot_command_validation").value
+        self.parameters_validation = ParametersValidation(self.validation, self.node)
 
     def callback_get_trajectory_list(self, req=None):
         traj_list = self.get_all_trajectories()
@@ -58,7 +60,7 @@ class TrajectoryManager:
 
     def get_all_trajectories(self):
         filenames = self.fh.get_all_filenames()
-        trajectory_list = []
+        trajectory_list:list[Trajectory] = []
         for f in filenames:
             try:
                 trajectory_id = self.fh.trajectory_id_from_filename(f)
@@ -70,7 +72,7 @@ class TrajectoryManager:
         return trajectory_list
 
     @staticmethod
-    def create_trajectory_response(status, message, trajectory=None):
+    def create_trajectory_response(status, message, trajectory:Trajectory=None):
         trajectory_msg = Trajectory()
         if trajectory is not None:
             trajectory_msg.trajectory_plan = trajectory.trajectory_plan
@@ -80,7 +82,7 @@ class TrajectoryManager:
             return {'status': status, 'message': message, 'trajectory': trajectory_msg}
         return {'status': status, 'message': message}
 
-    def callback_manage_trajectory(self, req):
+    def callback_manage_trajectory(self, req:ManageTrajectory.Request):
         cmd_type = req.cmd_type
         trajectory_id = req.trajectory_id
         trajectory_data = Trajectory(name=req.trajectory.name, description=req.trajectory.description,
@@ -125,14 +127,14 @@ class TrajectoryManager:
             return False
         return True
 
-    def update_trajectory(self, traj, trajectory_data):
+    def update_trajectory(self, traj:Trajectory, trajectory_data:Trajectory):
         traj.name = trajectory_data.name
         traj.description = trajectory_data.description
         traj.trajectory_plan = trajectory_data.trajectory_plan
         try:
             self.parameters_validation.validate_trajectory(traj.trajectory_plan)
         except RobotCommanderException as e:
-            rospy.logwarn(str(e) + " Invalid trajectory ")
+            self.node.get_logger().warn(str(e) + " Invalid trajectory ")
             return False, "Could not update trajectory : Invalid trajectory with id : "
         try:
             self.fh.write_trajectroy(traj)
@@ -140,13 +142,13 @@ class TrajectoryManager:
             return False, " Could not update trajectory with id : "
         return True, " Trajectory has been updated : "
 
-    def create_new_trajectory(self, traj):
+    def create_new_trajectory(self, traj:Trajectory):
         new_id = self.fh.pick_new_id()
         traj.id = new_id
         try:
             self.parameters_validation.validate_trajectory(traj.trajectory_plan)
         except RobotCommanderException as e:
-            rospy.logwarn(str(e) + " Invalid trajectory")
+            self.node.get_logger().warn(str(e) + " Invalid trajectory")
             return -1, "Failed to create trajectory: invalid trajectory "
 
         try:

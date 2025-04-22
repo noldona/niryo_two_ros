@@ -19,18 +19,20 @@
 
 
 import rclpy
+from rclpy.node import Node
 from math import sqrt
 from niryo_one_commander.robot_commander_exception import RobotCommanderException
 from niryo_one_commander.command_status import CommandStatus
-
+from niryo_one_msgs.msg import TrajectoryPlan, RPY, ShiftPose
+from geometry_msgs.msg import Point, Quaternion
 
 class ParametersValidation:
 
-    def __init__(self, validation, node : rclpy.Node):
+    def __init__(self, validation, node:Node):
         self.validation = validation
         self.node = node
 
-    def validate_trajectory(self, plan):
+    def validate_trajectory(self, plan:TrajectoryPlan):
         self.node.get_logger().info("Checking trajectory validity")
         # Do soemthing here to check if the trajectory is valid
         n = len(plan.trajectory.joint_trajectory.points)
@@ -66,8 +68,8 @@ class ParametersValidation:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS,
                                           "joint 6 not in range ( " + str(v['j6']['min']) + " , " + str(
                                               v['j6']['max']) + " )")
-
-    def validate_position(self, position):
+    
+    def validate_position(self, position:Point):
         v = self.validation['position_limits']
 
         if position.x < v['x']['min'] or position.x > v['x']['max']:
@@ -80,7 +82,7 @@ class ParametersValidation:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS,
                                           "z not in range ( " + str(v['z']['min']) + " , " + str(v['z']['max']) + " )")
 
-    def validate_orientation(self, orientation):
+    def validate_orientation(self, orientation:RPY):
         v = self.validation['rpy_limits']
 
         if orientation.roll < v['roll']['min'] or orientation.roll > v['roll']['max']:
@@ -97,7 +99,7 @@ class ParametersValidation:
                                               v['yaw']['max']) + " )")
 
     @staticmethod
-    def validate_orientation_quaternion(quat):
+    def validate_orientation_quaternion(quat:Quaternion):
         norm = quat.x * quat.x + quat.y * quat.y + quat.z * quat.z + quat.w * quat.w
         norm = sqrt(norm)
         if abs(norm - 1.0) > 0.001:
@@ -105,7 +107,7 @@ class ParametersValidation:
                                           "Quaternian is not normalised.")
 
     @staticmethod
-    def validate_shift_pose(shift):
+    def validate_shift_pose(shift:ShiftPose):
         if shift.axis_number not in [0, 1, 2, 3, 4, 5]:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, "shift axis number not in [0,1,2,3,4,5]")
         if shift.value == 0 or shift.value < -1.0 or shift.value > 1.0:

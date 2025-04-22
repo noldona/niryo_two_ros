@@ -30,6 +30,7 @@ from niryo_one_commander.parameters_validation import ParametersValidation
 from niryo_one_commander.moveit_utils import get_rpy_from_quaternion
 
 from niryo_one_msgs.msg import Position as PositionMessage
+from niryo_one_msgs.msg import Sequence as SequenceMessage
 from niryo_one_msgs.srv import GetPositionList
 from niryo_one_msgs.srv import ManagePosition
 from niryo_one_msgs.msg import RPY
@@ -40,30 +41,30 @@ from moveit_msgs.srv import GetPositionFK
 from std_msgs.msg import Header
 
 
-class PositionManager(Node):
+class PositionManager:
 
-    def __init__(self, position_dir, **kwargs):
-        super().__init__('position_manager', **kwargs)
+    def __init__(self, node:Node, position_dir):
+        self.node = node
         
         self.fh = PositionFileHandler(position_dir)
-        self.manage_position_server = self.create_service(ManagePosition, 
+        self.manage_position_server = self.node.create_service(ManagePosition, 
                                                     '/niryo_one/position/manage_position',
                                                     self.callback_manage_position)
-        self.get_logger().info("service manage position created")
+        self.node.get_logger().info("service manage position created")
 
-        self.get_position_list_server = self.create_service(
+        self.get_position_list_server = self.node.create_service(
             GetPositionList, '/niryo_one/position/get_position_list', self.callback_get_position_list)
-        self.get_logger().info("get list position created")
+        self.node.get_logger().info("get list position created")
 
-        self.validation = self.declare_parameter("/niryo_one/robot_command_validation").value
+        self.validation = self.node.declare_parameter("/niryo_one/robot_command_validation").value
         self.parameters_validation = ParametersValidation(self.validation, self)
 
-        self.fk_client = self.create_client(GetPositionFK, 'compute_fk')
+        self.fk_client = self.node.create_client(GetPositionFK, 'compute_fk')
         while not self.fk_client.wait_for_service(timeout_sec=2.0):
-            self.get_logger().error('Service call failed, waiting again...')
+            self.node.get_logger().error('Service call failed, waiting again...')
 
     @staticmethod
-    def create_position_response(status, message, position=None):
+    def create_position_response(status, message, position:PositionMessage=None):
         position_msg = PositionMessage()
         if position is not None:
             position_msg.name = position.name
@@ -73,8 +74,22 @@ class PositionManager(Node):
             position_msg.quaternion = Position.Quaternion(position.quaternion.x, position.quaternion.y,
                                                           position.quaternion.z, position.quaternion.w)
         return {'status': status, 'message': message, 'position': position_msg}
+    
+    @staticmethod
+    def create_sequence_response(status, message, sequence:SequenceMessage=None):
+        seq_msg = SequenceMessage()
+        if sequence is not None:
+            seq_msg.id = sequence.id
+            seq_msg.name = sequence.name
+            seq_msg.description = sequence.description
+            seq_msg.created = sequence.created
+            seq_msg.updated = sequence.updated
+            seq_msg.blockly_xml = sequence.blockly_xml
+            seq_msg.python_code = sequence.python_code
+        return {'status': status, 'message': message, 'sequence': seq_msg}
 
-    def callback_manage_position(self, req):
+
+    def callback_manage_position(self, req:ManagePosition.Request):
         cmd_type = req.cmd_type
         position_name = req.position_name
         position_msg = req.position
@@ -131,11 +146,11 @@ class PositionManager(Node):
             return False
         return True
 
-    def update_position(self, position, position_data):
+    def update_position(self, position:Position, position_data:Position):
         try:
             self.parameters_validation.validate_joints(position_data.joints)
         except RobotCommanderException as e:
-            self.get_logger().warn("Invalid joints value when updating position : " + str(e.message))
+            self.node.get_logger().warn("Invalid joints value when updating position : " + str(e.message))
             return False, "Could not update position : " + str(e.message)
         position.joints = position_data.joints
         (position.point, position.rpy, position.quaternion) = self.get_forward_kinematic(position.joints)
@@ -151,14 +166,14 @@ class PositionManager(Node):
         except NiryoOneFileException as e:
             return None
 
-    def create_new_position(self, position):
+    def create_new_position(self, position:Position):
         position.name = position.name.rstrip()
         if not self.fh.check_position_name(position.name):
             return None, "Failed to create new position : position " + str(position.name) + " already exists"
         try:
             self.parameters_validation.validate_joints(position.joints)
         except RobotCommanderException as e:
-            self.get_logger().warn("Invalid joints values when creating position : " + str(e.message))
+            self.node.get_logger().warn("Invalid joints values when creating position : " + str(e.message))
             return None, "Failed to create new position : " + str(e.message)
         try:
             (position.point, position.rpy, position.quaternion) = self.get_forward_kinematic(position.joints)
@@ -194,21 +209,21 @@ class PositionManager(Node):
                 pass
         return position_list
     
-    def get_forward_kinematic(self, joints):
+    def get_forward_kinematic(self, joints:GetPositionFK.Request):
         fk_link = ['base_link', 'tool_link']
         joint_names = ['joint_1', 'joint_2', 'joint_3', 'joint_4', 'joint_5', 'joint_6']
-        header = Header(0, self.get_clock().now().to_msg(), "/world")
+        header = Header(0, self.node.get_clock().now().to_msg(), "/world")
         rs = RobotState()
         rs.joint_state.name = joint_names
         rs.joint_state.position = joints
         moveit_fk_request = GetPositionFK.Request(header, fk_link, rs)
         
         while not self.fk_client.wait_for_service(timeout_sec=2.0):
-            self.get_logger().warn('Niryo ROS Forward Kinematic service is not up!')
+            self.node.get_logger().warn('Niryo ROS Forward Kinematic service is not up!')
 
         future = self.fk_client.call_async(moveit_fk_request)
-        response = future.result()
-
+        response:GetPositionFK.Response = future.result()
+    
         quaternion = [response.pose_stamped[1].pose.orientation.x, response.pose_stamped[1].pose.orientation.y,
                     response.pose_stamped[1].pose.orientation.z, response.pose_stamped[1].pose.orientation.w]
         rpy = get_rpy_from_quaternion(quaternion)
@@ -218,20 +233,8 @@ class PositionManager(Node):
                             round(response.pose_stamped[1].pose.position.y, 3),
                             round(response.pose_stamped[1].pose.position.z, 3))
         rpy = Position.RPY(round(rpy[0], 3), round(rpy[1], 3), round(rpy[2], 3))
-        self.get_logger().info("kinematic forward has been calculated ")
+        self.node.get_logger().info("kinematic forward has been calculated ")
         return point, rpy, quaternion
 
-def main():
-    rclpy.init()
-    position_manager = PositionManager()
-
-    try:
-        rclpy.spin(position_manager)
-    except (ExternalShutdownException, KeyboardInterrupt):
-        pass
-    finally:
-        position_manager.destroy_node()
-        rclpy.try_shutdown()
-
 if __name__ == '__main__':
-    main()
+    pass
