@@ -121,10 +121,12 @@
 			<axis xyz="0 0 1" />
 		</joint>
 
-		<joint name="hand_tool_joint" type="fixed">
+		<joint name="tool" type="revolute">
 			<parent link="hand_link" />
 			<child link="tool_link" />
 			<origin xyz="0 0 ${distance_hand_tool}" rpy="${-PI/2} ${-PI/2} 0" />
+			<limit effort="1" velocity="1.0" lower="${limit_low_tool_rotation}" upper="${limit_up_tool_rotation}" />
+			<axis xyz="0 0 1" />
 		</joint>
 	</xacro:macro>
 </robot>

@@ -316,6 +316,34 @@
 				<state_interface name="hw_error" />
 				<state_interface name="enabled" />
 			</joint>
+
+			<joint name="tool">
+				<param name="id">11</param>
+				<param name="name">Gripper</param>
+				<param name="type">${motor_type_xl320}</param>
+				<param name="home_position">${xl320_middle_position}</param>
+
+				<command_interface name="position">
+					<param name="min">${limit_low_tool_rotation}</param>
+					<param name="max">${limit_up_tool_rotation}</param>
+					<param name="initial_value">${xl320_middle_position}</param>
+				</command_interface>
+				<command_interface name="velocity">
+					<param name="max">1.0</param>
+				</command_interface>
+				<command_interface name="torque" />
+				<command_interface name="led" />
+
+				<state_interface name="position">
+					<param name="initial_value">${xl320_middle_position}</param>
+				</state_interface>
+				<state_interface name="velocity" />
+				<state_interface name="torque" />
+				<state_interface name="temperature" />
+				<state_interface name="voltage" />
+				<state_interface name="hw_error" />
+				<state_interface name="enabled" />
+			</joint>
 		</ros2_control>
 	</xacro:macro>
 </robot>

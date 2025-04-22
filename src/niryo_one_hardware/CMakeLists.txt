@@ -39,6 +39,10 @@ set(CONTROLLER_INCLUDE_DEPENDS
   trajectory_msgs
   niryo_one_msgs
 )
+set(FIX_DEPENDS
+  rclcpp
+  dynamixel_sdk
+)
 
 # Specify the required version of ros2_control
 find_package(controller_manager 4.0.0)
@@ -66,24 +70,39 @@ foreach(Dependency IN ITEMS ${CONTROLLER_INCLUDE_DEPENDS})
   find_package(${Dependency} REQUIRED)
 endforeach()
 
+foreach(Dependency IN ITEMS ${FIX_DEPENDS})
+  find_package(${Dependency} REQUIRED)
+endforeach()
+
 # # COMPILE
 add_executable(send_trajectory reference_generator/send_trajectory.cpp)
+add_executable(fix
+  hardware/fix.cpp
+  hardware/src/hw_driver/dxl_driver.cpp
+  hardware/src/hw_driver/xl320_driver.cpp
+  hardware/src/hw_driver/xl430_driver.cpp
+)
 
 ament_target_dependencies(
   send_trajectory PUBLIC
   ${REF_GEN_INCLUDE_DEPENDS}
 )
 
+target_include_directories(fix PUBLIC
+  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/hardware/include>
+  $<INSTALL_INTERFACE:include/niryo_one_hardware>
+)
+ament_target_dependencies(
+  fix PUBLIC
+  ${FIX_DEPENDS}
+)
+
+
 add_library(
   niryo_one_hardware
   SHARED
-  hardware/niryo_one_hardware.cpp
   hardware/niryo_one_hardware_can.cpp
   hardware/niryo_one_hardware_dxl.cpp
-  hardware/src/hw_comm/can_communication.cpp
-  hardware/src/hw_comm/dxl_communication.cpp
-  hardware/src/hw_comm/fake_communication.cpp
-  hardware/src/hw_comm/niryo_one_communication.cpp
   hardware/src/hw_driver/dxl_driver.cpp
   hardware/src/hw_driver/niryo_one_can_driver.cpp
   hardware/src/hw_driver/xl320_driver.cpp
@@ -128,6 +147,10 @@ install(
 )
 install(
   TARGETS send_trajectory
+  RUNTIME DESTINATION lib/niryo_one_hardware
+)
+install(
+  TARGETS fix
   RUNTIME DESTINATION lib/niryo_one_hardware
 )
 

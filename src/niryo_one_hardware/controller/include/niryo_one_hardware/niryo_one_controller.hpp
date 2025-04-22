@@ -233,6 +233,8 @@ namespace niryo_one_hardware {
 				send_custom_dxl_value_srv_;
 		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
 				reboot_motors_srv_;
+		rclcpp::Service<niryo_one_msgs::srv::SetInt>::SharedPtr
+				factory_reset_motor_srv;
 
 		template<typename T>
 		bool waitForAsyncCommand(std::function<T(void)> get_value);
@@ -292,6 +294,9 @@ namespace niryo_one_hardware {
 				niryo_one_msgs::srv::SendCustomDxlValue::Response::SharedPtr
 						res);
 		void callbackRebootMotors(
+				const niryo_one_msgs::srv::SetInt::Request::SharedPtr req,
+				niryo_one_msgs::srv::SetInt::Response::SharedPtr res);
+		void callbackFactoryResetMotor(
 				const niryo_one_msgs::srv::SetInt::Request::SharedPtr req,
 				niryo_one_msgs::srv::SetInt::Response::SharedPtr res);
 	};

@@ -47,6 +47,19 @@ int DxlDriver::reboot(uint8_t id) {
 	return result;
 }
 
+int DxlDriver::factoryReset(uint8_t id, uint32_t baudrate) {
+	uint8_t dxl_error = 0;
+
+	int result = packetHandler->factoryReset(portHandler, id, 0x02, &dxl_error);
+	// changeBaudRate(id, baudrate);
+
+	if (dxl_error != 0) {
+		return dxl_error;
+	}
+
+	return result;
+}
+
 /*
  *  -----------------   SYNC WRITE   --------------------
  */

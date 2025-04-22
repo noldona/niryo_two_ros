@@ -66,6 +66,7 @@ class DxlDriver {
 	int ping(uint8_t id);
 	int getModelNumber(uint8_t id, uint16_t *dxl_model_number);
 	int reboot(uint8_t id);
+	int factoryReset(uint8_t id, uint32_t baudrate);
 
 	/*
          * Virtual functions below - to override

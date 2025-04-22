@@ -18,6 +18,7 @@ niryo_one_controller:
       - joint_4
       - joint_5
       - joint_6
+      - tool
 
     can_command_interfaces:
       - position

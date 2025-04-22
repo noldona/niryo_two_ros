@@ -26,6 +26,8 @@
 	<xacro:property name="limit_up_wrist_rotation" value="1.91986" scope="global" />
 	<xacro:property name="limit_low_hand_rotation" value="-2.57436" scope="global" />
 	<xacro:property name="limit_up_hand_rotation" value="2.57436" scope="global" />
+	<xacro:property name="limit_low_tool_rotation" value="${-PI/2}" scope="global" />
+	<xacro:property name="limit_up_tool_rotation" value="${PI/2}" scope="global" />
 
 	<!-- Import niryo_one macro -->
 	<xacro:include filename="$(find niryo_one_description)/urdf/v2/niryo_one_description.urdf.xacro"/>

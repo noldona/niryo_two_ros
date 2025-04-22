@@ -146,6 +146,7 @@ namespace niryo_one_hardware {
 
 		std::queue<DxlCustomCommand> custom_command_queue;
 		bool should_reboot_motors;
+		int factory_reset_motor_id;
 
 		// Enable flags
 		bool read_position_enable;
@@ -192,6 +193,7 @@ namespace niryo_one_hardware {
 
 		void activateLearningMode();
 		void rebootMotors();
+		void factoryResetMotor();
 	};
 }
 

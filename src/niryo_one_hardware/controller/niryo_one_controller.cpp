@@ -383,6 +383,14 @@ namespace niryo_one_hardware {
 						std::bind(&NiryoOneController::callbackRebootMotors,
 								this, std::placeholders::_1,
 								std::placeholders::_2));
+
+		factory_reset_motor_srv =
+				get_node()->create_service<niryo_one_msgs::srv::SetInt>(
+						"niryo_one/factory_reset_motor",
+						std::bind(
+								&NiryoOneController::callbackFactoryResetMotor,
+								this, std::placeholders::_1,
+								std::placeholders::_2));
 	}
 
 	void NiryoOneController::callbackCalibrateMotors(
@@ -1027,6 +1035,61 @@ namespace niryo_one_hardware {
 		std::ignore =
 				niryo_one_command_interface_
 						[CommandInterfaces::REBOOT_MOTORS_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.set_value(ASYNC_NONE);
+	}
+
+	void NiryoOneController::callbackFactoryResetMotor(
+			const niryo_one_msgs::srv::SetInt::Request::SharedPtr req,
+			niryo_one_msgs::srv::SetInt::Response::SharedPtr res) {
+		RCLCPP_INFO(get_node()->get_logger(), "Factory resetting motor");
+
+		int dxl_offset = command_interface_names.size();
+
+		std::ignore =
+				niryo_one_command_interface_
+						[CommandInterfaces::
+										FACTORY_RESET_MOTOR_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.set_value(ASYNC_WAITING);
+		std::ignore =
+				niryo_one_command_interface_
+						[CommandInterfaces::FACTORY_RESET_MOTOR_REQUEST_VALUE +
+								dxl_offset]
+								.get()
+								.set_value(req->value);
+
+		if (!waitForAsyncCommand<double>([&]() -> double {
+				return niryo_one_command_interface_
+						[CommandInterfaces::
+										FACTORY_RESET_MOTOR_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.get_optional<double>()
+								.value_or(ASYNC_WAITING);
+			})) {
+			RCLCPP_WARN(get_node()->get_logger(),
+					"Could not verify that motor was factory reset");
+		}
+
+		res->status =
+				niryo_one_command_interface_
+						[CommandInterfaces::
+										FACTORY_RESET_MOTOR_RESPONSE_STATUS +
+								dxl_offset]
+								.get()
+								.get_optional<double>()
+								.value_or(ASYNC_WAITING);
+		if (res->status == 200) {
+			res->message = "OK";
+		}
+
+		std::ignore =
+				niryo_one_command_interface_
+						[CommandInterfaces::
+										FACTORY_RESET_MOTOR_RESPONSE_STATUS +
 								dxl_offset]
 								.get()
 								.set_value(ASYNC_NONE);

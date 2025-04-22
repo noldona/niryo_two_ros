@@ -19,7 +19,13 @@ namespace niryo_one_hardware {
 			{CommandInterfaces::REBOOT_MOTORS_RESPONSE_STATUS,
 					"reboot_motors_response_status"},
 			{CommandInterfaces::REBOOT_MOTORS_RESPONSE_MESSAGE,
-					"reboot_motors_response_message"}};
+					"reboot_motors_response_message"},
+			{CommandInterfaces::FACTORY_RESET_MOTOR_REQUEST_VALUE,
+					"factory_reset_motor_request_value"},
+			{CommandInterfaces::FACTORY_RESET_MOTOR_RESPONSE_STATUS,
+					"factory_reset_motor_response_status"},
+			{CommandInterfaces::FACTORY_RESET_MOTOR_RESPONSE_MESSAGE,
+					"factory_reset_motor_response_message"}};
 
 	std::map<StateInterfaces, std::string> state_interface_names = {
 			{StateInterfaces::LEARNING_MODE, "learning_mode"}};

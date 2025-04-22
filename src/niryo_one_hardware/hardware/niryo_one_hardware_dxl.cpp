@@ -73,7 +73,7 @@ namespace niryo_one_hardware {
 
 		is_dxl_connection_ok = false;
 
-		is_tool_connected = false;
+		is_tool_connected = true;
 
 		torque_on = 0;
 		should_reboot_motors = false;
@@ -89,9 +89,11 @@ namespace niryo_one_hardware {
 
 		// Change these values according to the current loaded controller (position, velocity, or torque control)
 		setControlMode(DXL_CONTROL_MODE_POSITION);
-		write_led_enable = true;
+		write_led_enable = false;
 		write_torque_on_enable = true;
 		write_tool_enable = false;
+
+		factory_reset_motor_id = -1;
 
 		return CallbackReturn::SUCCESS;
 	}
@@ -590,7 +592,7 @@ namespace niryo_one_hardware {
 		RCLCPP_INFO(get_logger(), "DXL: Start hardware control loop");
 		xl320_hw_fail_counter_read = 0;
 		xl430_hw_fail_counter_read = 0;
-		write_led_enable = true;
+		write_led_enable = false;
 		write_torque_on_enable = true;
 		resetHardwareControlLoopRates();
 		hw_control_loop_keep_alive = true;
@@ -638,6 +640,7 @@ namespace niryo_one_hardware {
 		while (!async_thread_shutdown_) {
 			activateLearningMode();
 			rebootMotors();
+			factoryResetMotor();
 			std::this_thread::sleep_for(std::chrono::nanoseconds(20000000));
 		}
 	}
@@ -687,6 +690,33 @@ namespace niryo_one_hardware {
 								  .at(CommandInterfaces::
 												  REBOOT_MOTORS_RESPONSE_STATUS)
 								  ->set_value(200);
+		}
+	}
+
+	void NiryoOneHardwareDxl::factoryResetMotor() {
+		int32_t status =
+				unlisted_commands_
+						.at(CommandInterfaces::
+										FACTORY_RESET_MOTOR_RESPONSE_STATUS)
+						->get_optional<double>()
+						.value_or(ASYNC_NONE);
+
+		if (status == ASYNC_WAITING) {
+			uint8_t motor_id =
+					unlisted_commands_
+							.at(CommandInterfaces::
+											FACTORY_RESET_MOTOR_REQUEST_VALUE)
+							->get_optional<double>()
+							.value();
+			RCLCPP_INFO(get_logger(), "Factory resetting motor %d", motor_id);
+
+			factory_reset_motor_id = motor_id;
+
+			std::ignore =
+					unlisted_commands_
+							.at(CommandInterfaces::
+											FACTORY_RESET_MOTOR_RESPONSE_STATUS)
+							->set_value(200);
 		}
 	}
 
@@ -1012,6 +1042,11 @@ namespace niryo_one_hardware {
 				xl430->reboot(stoi(joint.parameters["id"]));
 			}
 			should_reboot_motors = false;
+		}
+
+		if (factory_reset_motor_id != -1) {
+			xl430->factoryReset(factory_reset_motor_id, uart_baudrate);
+			factory_reset_motor_id = -1;
 		}
 
 		if (get_clock()->now().seconds() - time_hw_data_last_write >
