@@ -11,36 +11,23 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
 
     declared_arguments = []
-
-    declared_arguments.append(DeclareLaunchArgument('simulation_mode', default_value='false'))
-    declared_arguments.append(DeclareLaunchArgument('reference_frame', default_value='world'))
-    declared_arguments.append(DeclareLaunchArgument('move_group_commander_name', default_value='arm'))
-    declared_arguments.append(DeclareLaunchArgument('allow_replanning', default_value='true'))
-    declared_arguments.append(DeclareLaunchArgument('goal_joint_tolerance', default_value='0.01'))
-    declared_arguments.append(DeclareLaunchArgument('goal_position_tolerance', default_value='0.01'))
-    declared_arguments.append(DeclareLaunchArgument('goal_orientation_tolerance', default_value='0.01'))
-    declared_arguments.append(DeclareLaunchArgument(
-        'positions_dir',
-        default_value=IfElseSubstitution(
+    declared_arguments.append(
+        DeclareLaunchArgument('simulation_mode', default_value='false'),
+        DeclareLaunchArgument('reference_frame', default_value='world'),
+        DeclareLaunchArgument('move_group_commander_name', default_value='arm'),
+        DeclareLaunchArgument('allow_replanning', default_value='true'),
+        DeclareLaunchArgument('goal_joint_tolerance', default_value='0.01'),
+        DeclareLaunchArgument('goal_position_tolerance', default_value='0.01'),
+        DeclareLaunchArgument('goal_orientation_tolerance', default_value='0.01'),
+        DeclareLaunchArgument('positions_dir', default_value=IfElseSubstitution(
             condition=LaunchConfiguration('simulation_mode'),
             if_value="~/niryo_one_positions",
-            else_value="~/niryo/niryo_one_positions"  
-        )
-    ))
-    declared_arguments.append(DeclareLaunchArgument(
-        'trajectories_dir',
-        default_value=IfElseSubstitution(
+            else_value="home/niryo/niryo_one_positions")),
+        DeclareLaunchArgument('trajectories_dir', default_value=IfElseSubstitution(
             condition=LaunchConfiguration('simulation_mode'),
             if_value="~/niryo_one_trajectories",
-            else_value="~/niryo/niryo_one_trajectories"  
-        )
-    ))
-
-    
-    declared_arguments.append(DeclareLaunchArgument('move_group_namespace', default_value='move_group'))
-    declared_arguments.append(DeclareLaunchArgument('move_group_name', default_value='niryo_move_group'))
-    declared_arguments.append(DeclareLaunchArgument('move_group_prefix', default_value=''))
-
+            else_value="home/niryo/niryo_one_trajectories")),
+    )
 
     launch_include = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -52,7 +39,6 @@ def generate_launch_description():
         )
     )
 
-    
     niryo_one_commander_node = Node(
         package='niryo_one_commander',
         executable='niryo_one_commander_node.py',
@@ -68,12 +54,16 @@ def generate_launch_description():
             'goal_orientation_tolerance': LaunchConfiguration('goal_orientation_tolerance'),
             'positions_dir': LaunchConfiguration('positions_dir'),
             'trajectories_dir': LaunchConfiguration('trajectories_dir'),
-            'move_group_namespace': LaunchConfiguration('move_group_namespace'),   
-            'move_group_name': LaunchConfiguration('move_group_name'),             
-            'move_group_prefix': LaunchConfiguration('move_group_prefix')          
+            # 🔵 Added the missing 3 move_group parameters
+            '/move_group/trajectory_execution/allowed_start_tolerance': 0.0,
+            '/move_group/trajectory_execution/execution_duration_monitoring': False,
+            '/move_group/start_state_max_bounds_error': 0.3
         }]
     )
 
-    return LaunchDescription(
-        declared_arguments + [launch_include, niryo_one_commander_node]
-    )
+    return LaunchDescription([
+        launch_include,
+        declared_arguments,
+        niryo_one_commander_node
+    ])
+
