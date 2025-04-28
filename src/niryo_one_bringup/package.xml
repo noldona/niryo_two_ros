@@ -7,14 +7,17 @@
   <maintainer email="noldona@gmail.com">noldona</maintainer>
   <license>GPL-3.0-only</license>
 
+  <exec_depend>niryo_one_driver</exec_depend>
+  <exec_depend>niryo_one_tools</exec_depend>
+  <exec_depend>niryo_one_description</exec_depend>
+  <exec_depend>tf2_web_republisher</exec_depend>
+  <exec_depend>rosbridge_server</exec_depend>
+  <exec_depend>rosbridge_websocket</exec_depend>
+
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
   <test_depend>python3-pytest</test_depend>
-
-  <exec_depend>niryo_one_driver</exec_depend>
-  <exec_depend>niryo_one_tools</exec_depend>
-  <exec_depend>niryo_one_description</exec_depend>
 
   <export>
     <build_type>ament_python</build_type>
