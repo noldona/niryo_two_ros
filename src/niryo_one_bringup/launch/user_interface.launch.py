@@ -23,11 +23,12 @@ def generate_launch_description():
                 package='joy',
                 executable='joy_node',
                 name='joy_node',
+                namespace='joy_node',  #  Added namespace
                 output='screen',
-                parameters=[
-                    {'deadzone': 0.2},
-                    {'coalesce_interval': 0.1}
-                ]
+                parameters=[{
+                    'joy_node.deadzone': 0.2,
+                    'joy_node.coalesce_interval': 0.1
+                }]
             )
         ]
     )
