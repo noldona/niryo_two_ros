@@ -15,7 +15,7 @@ from niryo_one_rpi.wifi import flask_app as app
 from niryo_one_rpi.wifi.flask_views import set_hotspot_ssid
 from niryo_one_rpi.wifi.flask_views import set_hotspot_password
 from niryo_one_rpi.rpi_ros_utils import create_response
-import niryo_one_rpi.wifi.network_manager as niryo_one_wifi
+from niryo_one_rpi.wifi import network_manager as niryo_one_wifi
 
 
 class WifiConnectionManager(Node):
@@ -24,14 +24,14 @@ class WifiConnectionManager(Node):
 
         self.get_logger().info('Starting Wifi Manager ...')
 
-        self.hotspot_ssid = self.declare_parameter('~hotspot_ssid').value
+        self.hotspot_ssid = self.declare_parameter('hotspot_ssid', rclpy.Parameter.Type.STRING).value
         # Add robot unique identifier to ssid to make it unique and recognizable
         self.hotspot_ssid += " "
         self.hotspot_ssid += str(self.get_robot_unique_identifier())
         self.hotspot_password = self.declare_parameter(
-            '~hotspot_password').value
+            'hotspot_password', rclpy.Parameter.Type.STRING).value
         self.filename_robot_name = self.declare_parameter(
-            '~filename_robot_name').value
+            'filename_robot_name', rclpy.Parameter.Type.STRING).value
 
         # Set filename for robot name
         set_filename_robot_name(self.filename_robot_name)
@@ -121,7 +121,7 @@ class WifiConnectionManager(Node):
                     rpi_serial[8:10]) + '-' + str(rpi_serial[10:13]) + '-' + str(rpi_serial[13:16])
         return identifier
 
-    def _set_robot_name_cb(self, req: SetString.Request, resp: SetString.Response) -> SetString.Response:
+    def set_robot_name_cb(self, req: SetString.Request, resp: SetString.Response) -> SetString.Response:
         name = req.value
         self.get_logger().info(f'Setting robot name to {name}')
         if len(name) > 32 or len(name) < 3:

@@ -72,7 +72,7 @@ def delete_connection_with_ssid(ssid: str) -> bool:
     return False
 
 
-def hard_enable_hotspot_with_ssid(SSID: str, password: str) -> bool:
+def hard_enable_hotspot_with_ssid(ssid: str, password: str) -> bool:
     """Create and start Hotspot with ssid and password"""
     delete_connection_with_ssid(ssid)  # Will avoid duplicate
     deactivate_current_wlan0()
@@ -165,7 +165,7 @@ def is_connected_to_wifi() -> bool:
         stdout=subprocess.PIPE)
     output, error = list_enabled_connection.communicate()
     # Print output
-    for line in output.split(os.linesep):
+    for line in output.decode('utf-8').split(os.linesep):
         if 'wlan0' in line:
             return True
     return False
@@ -178,7 +178,7 @@ def get_current_ssid() -> str:
         stdout=subprocess.PIPE)
     output, error = list_enabled_connection.communicate()
     # Print output
-    for line in output.split(os.linesep):
+    for line in output.decode('utf-8').split(os.linesep):
         if 'wlan0' in line:
             return line.split('  ')[0]
     return ''
@@ -191,7 +191,7 @@ def get_all_registered_wifi() -> list:
         'sudo', 'nmcli', 'connection', 'show'],
         stdout=subprocess.PIPE)
     output, error = list_registered_connection.communicate()
-    for line in output.split(os.linesep):
+    for line in output.decode('utf-8').split(os.linesep):
         if 'wireless' in line:
             list_ssid.append(line.split('  ')[0])
     return list_ssid
@@ -210,7 +210,7 @@ def get_all_available_wifi() -> list:
     output, error = subprocess.Popen([
         'sudo', 'nmcli', 'device', 'wifi', 'list'],
         stdout=subprocess.PIPE).communicate()
-    for line in output.split(os.linesep):
+    for line in output.decode('utf-8').split(os.linesep):
         line = line[3:]
         if line != '':
             if (line.split('  ', 2)[0] != "SSID" and

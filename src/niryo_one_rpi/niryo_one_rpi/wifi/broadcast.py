@@ -1,7 +1,7 @@
 from socket import *
 import time
 
-from robot_name_handler import *
+from niryo_one_rpi.wifi.robot_name_handler import *
 import socket
 
 #

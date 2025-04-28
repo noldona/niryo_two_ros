@@ -1,4 +1,5 @@
 from gpiozero import Button
+import rclpy.exceptions
 from rclpy.node import Node
 from rclpy.clock import Clock
 from rclpy.clock import ClockType
@@ -8,6 +9,7 @@ import rclpy
 
 from niryo_one_rpi.rpi_ros_utils import *
 
+import rclpy.service
 from std_msgs.msg import Bool, Int32
 from niryo_one_msgs.srv import SetInt
 from niryo_one_rpi.rpi_ros_utils import create_response
@@ -23,6 +25,8 @@ class ButtonMode(Enum):
 
 class NiryoButton(Node):
 
+    clock = Clock()
+
     def __init__(self) -> None:
         super().__init__('niryo_button')
 
@@ -32,7 +36,7 @@ class NiryoButton(Node):
         self.button.when_released = self.button_released_cb
         self.button.when_held = self.button_held_cb
 
-        Clock(ClockType.SYSTEM_TIME).sleep_for(Duration(seconds=0.1))
+        self.clock.sleep_for(Duration(seconds=0.1))
 
         self.last_state = self.read_value()
         self.consecutive_pressed = 0
@@ -47,7 +51,7 @@ class NiryoButton(Node):
             SetInt, '/niryo_one/rpi/change_button_mode',
             self.change_button_mode_cb)
         self.monitor_button_mode_timer = self.create_timer(
-            Duration(seconds=3), self.monitor_button_mode)
+            3, self.monitor_button_mode)
         self.last_time_button_mode_changed = self.get_clock().now()
 
         # Publisher used to send info to Niryp One Studio, so the user
@@ -120,12 +124,12 @@ class NiryoButton(Node):
         if self.consecutive_pressed > 20:  # Held for 20 seconds
             self.activated = False  # Deactivate button if pressed more than 20 seconds
         elif self.consecutive_pressed > 6:  # Held for 6 seconds
-            send_hotspot_action()
+            self.hotspot_action = True
         elif self.consecutive_pressed > 3:  # Held for 3 seconds
-            send_shutdown_action()
+            self.shutdown_action = True
         elif self.consecutive_pressed >= 1:  # Held for 1 second
             if self.button_mode == ButtonMode.TRIGGER_SEQUENCE_AUTORUN:
-                send_trigger_sequence_autorun_action()
+                self.send_trigger_sequence_autorun_action()
             elif self.button_mode == ButtonMode.BLOCKLY_SAVE_POINT:
                 self.blockly_save_current_point()
         self.consecutive_pressed = 0
@@ -146,12 +150,29 @@ class NiryoButton(Node):
 
         # Use LED to help user know which action to execute
         if self.consecutive_pressed > 20:  # Held for 20 seconds
-            send_led_state(LedState.SHUTDOWN)
+            self.send_led_state(LedState.SHUTDOWN)
         elif self.consecutive_pressed > 6:  # Held for 6 seconds
-            send_led_state(LedState.WAIT_HOTSPOT)
+            self.send_led_state(LedState.WAIT_HOTSPOT)
         elif self.consecutive_pressed > 3:  # Held for 3 seconds
-            send_led_state(LedState.SHUTDOWN)
+            self.send_led_state(LedState.SHUTDOWN)
 
+    def send_trigger_sequence_autorun_action(self):
+        rclpy.get_logger().info("Trigger sequence autorun from button")
+        try:
+            self.wait_for_service('/niryo_one/sequences/trugger_sequence_autorun', timeout_sec=0.1)
+            trigger = self.create_client(
+                SetInt, '/niryo_one/sequences/trigger_sequence_autorun')
+            trigger.call_async(SetInt.Request(value=1))
+        except rclpy.exceptions.ServiceException as e:
+            return
+
+    def send_led_state(self, state: LedState) -> None:
+        try:
+            self.wait_for_service('/niryo_one/rpi/set_led_state')
+            set_led = self.create_client(SetInt, '/niryo_one/set_led_state')
+            set_led.call_async(SetInt.Request(value=state))
+        except rclpy.exceptions.ServiceException as e:
+            rclpy.get_logger().warn("Cound not call set_led_state service")
 
 def main():
     rclpy.init()

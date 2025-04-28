@@ -31,15 +31,17 @@ LED_WHITE = Color('#FFFFFF')
 
 class LEDManager(Node):
 
+    clock = Clock()
+
     def __init__(self) -> None:
         super().__init__('led_manager')
 
         self.led = RGBLED(LED_GPIO_R, LED_GPIO_G, LED_GPIO_B)
 
         # Sleep for 0.1 seconds
-        Clock(ClockType.SYSTEM_TIME).sleep_for(Duration(seconds=0.1))
+        self.clock.sleep_for(Duration(seconds=0.1))
         self.state = LedState.OK
-        self.set_led_fromState(dxl_leds=True)
+        self.set_led_from_state(dxl_leds=True)
 
         self.set_led_state_server = self.create_service(
             SetInt, '/niryo_one/rpi/set_led_state', self.set_led_state_cb)
@@ -57,7 +59,11 @@ class LEDManager(Node):
 
     def set_dxl_leds(self, color: Color) -> None:
         leds = SetLeds.Request()
-        leds.values = [color, color, color, 8]  # Gripper LED will not be used
+        (red, green, blue) = color.rgb
+        red = int(red * 255)
+        green = int(green * 255)
+        blue = int(blue * 255)
+        leds.values = [red, green, blue, 8]  # Gripper LED will not be used
 
         set_dxl_leds = self.create_client(SetLeds, '/niryo_one/set_dxl_leds')
         while not set_dxl_leds.wait_for_service(timeout_sec=1):
@@ -65,7 +71,7 @@ class LEDManager(Node):
         set_dxl_leds.call_async(leds)
 
     def set_led(self, color: Color, dxl_leds=False):
-        self.leds.off()
+        self.led.off()
 
         if (color != LED_OFF):
             self.led.color = color
@@ -101,7 +107,7 @@ class LEDManager(Node):
     def hardware_status_cb(self, msg: HardwareStatus) -> None:
         if not msg.connection_up or msg.error_message != '':
             self.set_led(LED_RED, dxl_leds=True)  # Blink red
-            Clock(ClockType.SYSTEM_TIME).sleep_for(Duration(seconds=0.05))
+            self.clock.sleep_for(Duration(seconds=0.05))
             self.set_led_from_state(dxl_leds=True)
 
     def set_led_state_cb(self, req: SetInt.Request, resp: SetInt.Response) -> SetInt.Response:
