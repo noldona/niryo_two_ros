@@ -2,7 +2,7 @@ from flask import flash, request, jsonify, Response
 
 from niryo_one_rpi.wifi import flask_app as app
 from niryo_one_rpi.wifi.robot_name_handler import *
-import network_manager as niryo_one_wifi
+from niryo_one_rpi.wifi import network_manager as niryo_one_wifi
 import json
 
 # This ID will be useful to recognize robot type (Niryo One)
@@ -13,7 +13,7 @@ HOTSPOT_SSID = "Niryo_One"
 HOTSPOT_PASSWORD = "password"
 
 
-def set_hotspot_sside(ssid: str) -> None:
+def set_hotspot_ssid(ssid: str) -> None:
     global HOTSPOT_SSID
     HOTSPOT_SSID = ssid
 
@@ -29,7 +29,7 @@ def standard_response(status, message):
     return response
 
 
-@app.rout('/')
+@app.route('/')
 def index():
     message = "Instructions: \n"
     message += "/addWifi : Connect to a new Wi-Fi (params: [ssid, password])\n"

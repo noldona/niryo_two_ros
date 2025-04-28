@@ -82,6 +82,12 @@ add_executable(fix
   hardware/src/hw_driver/xl320_driver.cpp
   hardware/src/hw_driver/xl430_driver.cpp
 )
+add_executable(fix_id
+  hardware/fix_id.cpp
+  hardware/src/hw_driver/dxl_driver.cpp
+  hardware/src/hw_driver/xl320_driver.cpp
+  hardware/src/hw_driver/xl430_driver.cpp
+)
 
 ament_target_dependencies(
   send_trajectory PUBLIC
@@ -94,6 +100,14 @@ target_include_directories(fix PUBLIC
 )
 ament_target_dependencies(
   fix PUBLIC
+  ${FIX_DEPENDS}
+)
+target_include_directories(fix_id PUBLIC
+  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/hardware/include>
+  $<INSTALL_INTERFACE:include/niryo_one_hardware>
+)
+ament_target_dependencies(
+  fix_id PUBLIC
   ${FIX_DEPENDS}
 )
 
@@ -151,6 +165,10 @@ install(
 )
 install(
   TARGETS fix
+  RUNTIME DESTINATION lib/niryo_one_hardware
+)
+install(
+  TARGETS fix_id
   RUNTIME DESTINATION lib/niryo_one_hardware
 )
 

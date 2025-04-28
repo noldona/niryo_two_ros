@@ -13,7 +13,7 @@ class MotorDebug(Node):
         super().__init__('motor_debug')
 
         self.hw_version = self.declare_parameter(
-            '/niryo_one/hardware_version').value
+            '/niryo_one/hardware_version', rclpy.Parameter.Type.INTEGER).value
         self.change_motor_config_server = self.create_service(
             ChangeMotorConfig, 'niryo_one/change_motor_config',
             self.change_motor_config_cb)

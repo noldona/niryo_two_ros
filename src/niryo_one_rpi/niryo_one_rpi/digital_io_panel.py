@@ -75,7 +75,7 @@ class DigitalPin:
 
     def get_state(self) -> bool:
         if self.mode == IoMode.IN:
-            self.state = self.device.value
+            self.state = IoState(self.device.value)
 
         return self.state
 
@@ -86,7 +86,7 @@ class DigitalIOPanel(Node):
         super().__init__('digital_io_panel')
 
         self.publish_io_state_frequency = self.declare_parameter(
-            '~publish_io_state_frequency').value
+            'publish_io_state_frequency', rclpy.Parameter.Type.DOUBLE).value
 
         self.digitalIOs = {
             GPIO_1_A: DigitalPin(GPIO_1_A, GPIO_1_A_NAME),
@@ -121,11 +121,11 @@ class DigitalIOPanel(Node):
         names = []
         modes = []
         states = []
-        for io in self.digitalIOs:
+        for id, io in self.digitalIOs.items():
             pins.append(io.pin)
             names.append(io.name)
-            modes.append(io.mode)
-            states.append(io.get_state())
+            modes.append(io.mode.value)
+            states.append(io.get_state().value)
         msg.pins = pins
         msg.names = names
         msg.modes = modes

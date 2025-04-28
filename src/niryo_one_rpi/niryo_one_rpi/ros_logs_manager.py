@@ -1,4 +1,4 @@
-from niryo_one_rpi.niryo_one_rpi.rpi_ros_utils import create_response
+from niryo_one_rpi.rpi_ros_utils import create_response
 from rclpy.node import Node
 from rclpy.duration import Duration
 from rclpy.executors import ExternalShutdownException
@@ -12,13 +12,13 @@ from niryo_one_msgs.srv import SetInt
 
 class RosLogManager(Node):
     def __init__(self):
-        super.__init__('ros_log_manager')
+        super().__init__('ros_log_manager')
 
         self.log_size_threshold = self.declare_parameter(
-            '~ros_log_size_treshold').value
-        self.log_path = self.declare_parameter('~ros_log_location').value
+            'ros_log_size_treshold', rclpy.Parameter.Type.INTEGER).value
+        self.log_path = self.declare_parameter('ros_log_location', rclpy.Parameter.Type.STRING).value
         self.should_purge_log_on_startup_file = self.declare_parameter(
-            '~should_purge_ros_log_on_startup_file').value
+            'should_purge_ros_log_on_startup_file', rclpy.Parameter.Type.STRING).value
         self.purge_log_on_startup = self.should_purge_log_on_startup()
 
         # Clean logs on startup if param is true
@@ -35,8 +35,7 @@ class RosLogManager(Node):
 
         self.log_status_publisher = self.create_publisher(
             LogStatus, '/niryo_one/rpi/ros_log_status', 10)
-        self.timer = self.create_timer(Duration(seconds=3),
-                                       self.publish_log_status)
+        self.timer = self.create_timer(3, self.publish_log_status)
 
         self.get_logger().info('Init ROS Log Manager OK')
 
@@ -46,7 +45,7 @@ class RosLogManager(Node):
             process = subprocess.Popen(
                 ['df', '--output=avail', '/'], stdout=subprocess.PIPE)
             output, error = process.communicate()
-            lines = output.split(os.linesep)
+            lines = output.decode('utf-8').split(os.linesep)
             if len(lines) >= 2:
                 return int(lines[1]) / 10024
             return -1
@@ -58,7 +57,7 @@ class RosLogManager(Node):
             if not os.path.exists(self.log_path):
                 return -1
             output = subprocess.check_output(['du', '-sBM', self.log_path])
-            output_array = output.split()
+            output_array = output.decode('utf-8').split()
             if len(output_array) >= 1:
                 return int(output_array[0].replace('M', ''))
             return -1

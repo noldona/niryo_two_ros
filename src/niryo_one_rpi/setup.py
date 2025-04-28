@@ -22,6 +22,14 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            "digital_io_panel = niryo_one_rpi.digital_io_panel:main",
+            "fans_manager = niryo_one_rpi.fans_manager:main",
+            "led_manager = niryo_one_rpi.led_manager:main",
+            "niryo_one_button = niryo_one_rpi.niryo_one_button:main",
+            "shutdown_manager = niryo_one_rpi.shutdown_manager:main",
+            "motor_debug = niryo_one_rpi.motor_debug:main",
+            "ros_logs_manager = niryo_one_rpi.ros_logs_manager:main",
+            "wifi_conntection = niryo_one_rpi.wifi_connection:main",
         ],
     },
 )

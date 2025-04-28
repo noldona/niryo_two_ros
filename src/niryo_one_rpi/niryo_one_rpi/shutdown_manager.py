@@ -1,4 +1,4 @@
-from niryo_one_rpi.niryo_one_rpi.rpi_ros_utils import create_response
+from niryo_one_rpi.rpi_ros_utils import create_response
 from rclpy.node import Node
 from rclpy.executors import ExternalShutdownException
 import rclpy

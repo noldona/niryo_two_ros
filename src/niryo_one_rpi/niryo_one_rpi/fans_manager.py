@@ -13,29 +13,33 @@ FAN_2_GPIO = 23
 
 class FansManager(Node):
 
+    fan1 = None
+    fan2 = None
+    clock = Clock()
+
     def __init__(self) -> None:
-        super().__init('fans_manager')
+        super().__init__('fans_manager')
         self.setup_fans()
         self.learning_mode_on = True
 
         # Activate fans for 5 seconds to give an audio signal to the user
         self.set_fans(True)
-        Clock(ClockType.SYSTEM_TIME).sleep_for(Duration(seconds=5))
+        self.clock.sleep_for(Duration(seconds=5))
         self.set_fans(not self.learning_mode_on)
 
         self.learning_mode_subscriber = self.create_subscription(
             Bool, '/niryo_one/learning_mode', self.learning_mode_cb, 10)
 
     def __del__(self) -> None:
-        if self.fan1 is not None:
+        if self.fan1:
             self.fan1.close()
-        if self.fan2 is not None:
+        if self.fan2:
             self.fan2.close()
 
     def setup_fans(self) -> None:
-        self.fan1 = DigitalOutputDevice(FAN_1_GPIO, inital_value=False)
-        self.fan2 = DigitalOutputDevice(FAN_2_GPIO, inital_value=False)
-        Clock(ClockType.SYSTEM_TIME).sleep_for(Duration(seconds=0.05))
+        self.fan1 = DigitalOutputDevice(pin=FAN_1_GPIO, initial_value=False)
+        self.fan2 = DigitalOutputDevice(pin=FAN_2_GPIO, initial_value=False)
+        self.clock.sleep_for(Duration(seconds=0.05))
         self.get_logger().info("------ RPI FANS SETUP OK ------")
 
     def set_fans(self, activate: bool) -> None:
