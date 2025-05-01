@@ -101,7 +101,7 @@ def generate_demo_launch(moveit_config, launch_package_path=None):
             executable="ros2_control_node",
             parameters=[
                 str(moveit_config.package_path / "config/ros2_controllers.yaml"),
-                str(get_package_share_directory("niryo_one_hardware") / "bringup/config/niryo_one_controller.yaml"),
+                str(get_package_share_directory("niryo_one_hardware") / "bringup" / "config" / "niryo_one_controller.yaml"),
             ],
             remappings=[
                 ("/controller_manager/robot_description", "/robot_description"),
