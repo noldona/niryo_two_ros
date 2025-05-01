@@ -26,11 +26,11 @@ def generate_launch_description():
     for entity in demo_ld.entities:
         if (
             isinstance(entity, Node)
-            and entity.package == "controller_manager"
-            and entity.executable == "ros2_control_node"
+            and entity.node_package == "controller_manager"
+            and entity.node_executable == "ros2_control_node"
         ):
             # Node.parameters is a list; just append your file
-            entity.parameters.append(hw_yaml)
+            entity.__parameters.append(hw_yaml)
             break
 
     return demo_ld
