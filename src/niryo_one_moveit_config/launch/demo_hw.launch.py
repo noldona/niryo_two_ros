@@ -7,7 +7,7 @@ from launch_ros.actions import Node
 from moveit_configs_utils.launch_utils import DeclareBooleanLaunchArg
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
-from pathlib import Path
+import os
 
 def generate_launch_description():
     moveit_config = MoveItConfigsBuilder("niryo_one", package_name="niryo_one_moveit_config").to_moveit_configs()
@@ -102,7 +102,8 @@ def generate_demo_launch(moveit_config, launch_package_path=None):
             executable="ros2_control_node",
             parameters=[
                 str(moveit_config.package_path / "config/ros2_controllers.yaml"),
-                str(Path(get_package_share_directory("niryo_one_hardware") / "bringup" / "config" / "niryo_one_controller.yaml")),
+                os.path.join(
+                    get_package_share_directory("niryo_one_hardware"), "bringup", "config", "niryo_one_controller.yaml"),
             ],
             remappings=[
                 ("/controller_manager/robot_description", "/robot_description"),
