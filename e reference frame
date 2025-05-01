@@ -1,0 +1,65 @@
+Help on class RobotModel in module moveit.core.robot_model:
+
+class RRoobboottMMooddeell(pybind11_builtins.pybind11_object)
+ |  Representation of a kinematic model.
+ |
+ |  Method resolution order:
+ |      RobotModel
+ |      pybind11_builtins.pybind11_object
+ |      builtins.object
+ |
+ |  Methods defined here:
+ |
+ |  ____iinniitt____(...)
+ |      Initializes a kinematic model for a robot.
+ |
+ |      Args:
+ |          urdf_xml_path (str): The filepath to the urdf file describing the robot.
+ |          srdf_xml_path (str): The filepath to the srdf file describing the robot semantics.
+ |      Returns:
+ |          moveit_py.core.RobotModel: The kinematic model for the robot.
+ |
+ |  ggeett__jjooiinntt__mmooddeell__ggrroouupp(...)
+ |      Gets a joint model group instance by name.
+ |      Args:
+ |          joint_model_group_name (str): The name of the joint model group to return.
+ |      Returns:
+ |          :py:class:`moveit_py.core.JointModelGroup`: joint model group instance that corresponds with joint_model_group_name parameter.
+ |
+ |  ggeett__mmooddeell__iinnffoo(...)
+ |      Gets a formatted string containing a summary of relevant information from the robot model.
+ |      Returns:
+ |          str: Formatted string containing generic robot model information.
+ |
+ |  hhaass__jjooiinntt__mmooddeell__ggrroouupp(...)
+ |      Checks if a joint model group with the given name exists in the robot model.
+ |      Returns:
+ |              bool: true if joint model group exists.
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties defined here:
+ |
+ |  eenndd__eeffffeeccttoorrss
+ |      TODO
+ |
+ |  jjooiinntt__mmooddeell__ggrroouupp__nnaammeess
+ |      list of str: The names of the joint model groups in the robot model.
+ |
+ |  jjooiinntt__mmooddeell__ggrroouuppss
+ |      list of moveit_py.core.JointModelGroup: The joint model groups available in the robot model.
+ |
+ |  mmooddeell__ffrraammee
+ |      str: Get the frame in which the transforms for this model are computed (when using a :py:class:`moveit_py.core.RobotState`).
+ |      This frame depends on the root joint. As such, the frame is either extracted from SRDF, or it is assumed to be the name of the root link.
+ |
+ |  nnaammee
+ |      str: The name of the robot model.
+ |
+ |  rroooott__jjooiinntt__nnaammee
+ |      str: The name of the root joint.
+ |
+ |  ----------------------------------------------------------------------
+ |  Static methods inherited from pybind11_builtins.pybind11_object:
+ |
+ |  ____nneeww____(*args, **kwargs) class method of pybind11_builtins.pybind11_object
+ |      Create and return a new object.  See help(type) for accurate signature.

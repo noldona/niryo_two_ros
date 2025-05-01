@@ -5,7 +5,7 @@ package_name = 'niryo_one_commander'
 setup(
     name=package_name,
     version='0.0.0',
-    packages=find_packages(exclude=['test']),
+    packages=find_packages(where='src',exclude=['test']),
     package_dir={'': 'src'},
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -21,7 +21,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'niryo_one_commander_node = niryo_one_commander:main',
+            'niryo_one_commander_node = niryo_one_commander.niryo_one_commander_node:main',
+            'traj_client = niryo_one_commander.traj_client:main'
         ],
     },
 )

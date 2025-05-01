@@ -7,6 +7,8 @@
   <maintainer email="ericlashley@rocketmail.com">ericlashley</maintainer>
   <license>GPL-3.0-only</license>
 
+  <depend>moveit_py</depend>
+
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>

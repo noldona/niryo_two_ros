@@ -43,8 +43,8 @@ class TrajectoryManager:
         self.get_trajectory_list_server = self.node.create_service(
             GetTrajectoryList, '/niryo_one/trajectory/get_trajectory_list', self.callback_get_trajectory_list)
         self.node.get_logger().info("/niryo_one/trajectory/get_trajectory_list service has been created ")
-        self.validation = self.node.declare_parameter("/niryo_one/robot_command_validation").value
-        self.parameters_validation = ParametersValidation(self.validation, self.node)
+        self.validation = self.node.get_parameter("/niryo_one/robot_command_validation").value
+        self.parameters_validation = ParametersValidation(self.node, self.validation)
 
     def callback_get_trajectory_list(self, req=None):
         traj_list = self.get_all_trajectories()

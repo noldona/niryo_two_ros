@@ -1,0 +1,56 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+
+niryo_one_controller:
+  ros__parameters:
+    type: niryo_one_hardware/NiryoOneController
+    can_joints:
+      - joint_1
+      - joint_2
+      - joint_3
+
+    dxl_joints:
+      - joint_4
+      - joint_5
+      - joint_6
+      - tool
+
+    can_command_interfaces:
+      - position
+      - velocity
+      - torque
+      - mirco_steps
+      - max_effort
+
+    dxl_command_interfaces:
+      - position
+      - velocity
+      - torque
+      - led
+
+    can_state_interfaces:
+      - position
+      - velocity
+      - torque
+      - temperature
+      - hardware_error
+      - enabled
+      - hw_fail_counter
+      - last_time_read
+      - firmware_version_major
+      - firmware_version_minor
+      - firmware_version_patch
+
+    dxl_state_interfaces:
+      - position
+      - velocity
+      - torque
+      - temperature
+      - voltage
+      - hw_error
+      - enabled

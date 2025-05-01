@@ -247,10 +247,16 @@ namespace niryo_one_hardware {
 				const auto name_enabled = joint.name + "/enabled";
 
 				// If simulating, echo the commands back out as the state
-				double prev_pos = get_state(name_pos);
-				set_state(name_pos, get_command(name_pos));
-				set_state(name_vel,
-						(prev_pos - get_command(name_pos)) * period.seconds());
+				constexpr double TICKS_TO_RAD = 2.0 * M_PI / 4096.0;
+				double prev_pos_rad = get_state(name_pos);  // already in radians
+    			double cmd_ticks = get_command(name_pos);
+    			double cmd_pos_rad = cmd_ticks * TICKS_TO_RAD;
+
+    			set_state(name_pos, cmd_pos_rad);
+
+    			double velocity = (cmd_pos_rad - prev_pos_rad) / period.seconds();
+    			set_state(name_vel, velocity);
+
 				set_state(name_tor, get_command(name_tor));
 				set_state(name_temp, 0);
 				set_state(name_volt, 0);
@@ -274,6 +280,15 @@ namespace niryo_one_hardware {
 			const rclcpp::Time &time, const rclcpp::Duration &period) {
 		if (use_sim) {
 			// Do nothing. Simulation is handled in read
+			for (const auto& joint : info_.joints) {
+				std::string name_pos = joint.name + "/" + hardware_interface::HW_IF_POSITION;
+				double cmd_rad = get_command(name_pos);
+				constexpr double RAD_TO_TICKS = 4096.0 / (2.0 * M_PI);
+				double cmd_ticks = cmd_rad * RAD_TO_TICKS;
+	
+				// Store it so read() can echo it back
+				set_state(name_pos, cmd_ticks);
+			}
 		} else {
 			if (!hw_is_busy && hw_control_loop_keep_alive) {
 				hw_is_busy = true;

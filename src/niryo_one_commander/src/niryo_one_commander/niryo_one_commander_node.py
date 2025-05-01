@@ -20,10 +20,10 @@
 import rclpy
 from rclpy.node import Node
 from rclpy.executors import ExternalShutdownException
-from position_manager import PositionManager
-from trajectory_manager import TrajectoryManager
-from niryo_one_robot_state_publisher import NiryoRobotStatePublisher
-from robot_commander import RobotCommander
+from niryo_one_commander.position_manager import PositionManager
+from niryo_one_commander.trajectory_manager import TrajectoryManager
+from niryo_one_commander.niryo_one_robot_state_publisher import NiryoRobotStatePublisher
+from niryo_one_commander.robot_commander import RobotCommander
 
 class NiryoOneCommanderNode(Node):
 
@@ -34,10 +34,10 @@ class NiryoOneCommanderNode(Node):
         self.niryo_one_robot_state_publisher = NiryoRobotStatePublisher(self)
 
         # Position Manager
-        positions_dir = self.declare_parameter("positions_dir").get_parameter_value().string_value
+        positions_dir = self.declare_parameter("positions_dir","home/niryo/niryo_one_positions").value
         self.pos_manager = PositionManager(self, positions_dir)
         # trajectory_manager
-        trajectories_dir = self.declare_parameter("trajectories_dir").get_parameter_value().string_value
+        trajectories_dir = self.declare_parameter("trajectories_dir","home/niryo/niryo_one_trajectories").value
         self.traj_manager = TrajectoryManager(self, trajectories_dir)
         # robot commander
         self.robot_commander = RobotCommander(self, self.pos_manager, self.traj_manager)

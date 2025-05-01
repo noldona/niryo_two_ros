@@ -28,7 +28,7 @@ from geometry_msgs.msg import Point, Quaternion
 
 class ParametersValidation:
 
-    def __init__(self, validation, node:Node):
+    def __init__(self, node:Node, validation):
         self.validation = validation
         self.node = node
 

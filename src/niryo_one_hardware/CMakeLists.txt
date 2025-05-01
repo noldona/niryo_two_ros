@@ -142,6 +142,10 @@ install(
   DESTINATION share/niryo_one_hardware
 )
 install(
+  DIRECTORY description
+  DESTINATION share/niryo_one_hardware
+)
+install(
   DIRECTORY bringup/launch bringup/config
   DESTINATION share/niryo_one_hardware
 )

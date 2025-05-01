@@ -50,14 +50,14 @@ class PositionManager:
         self.manage_position_server = self.node.create_service(ManagePosition, 
                                                     '/niryo_one/position/manage_position',
                                                     self.callback_manage_position)
-        self.node.get_logger().info("service manage position created")
+        self.node.get_logger().info("Service manage position created")
 
         self.get_position_list_server = self.node.create_service(
             GetPositionList, '/niryo_one/position/get_position_list', self.callback_get_position_list)
-        self.node.get_logger().info("get list position created")
+        self.node.get_logger().info("Get list position created")
 
-        self.validation = self.node.declare_parameter("/niryo_one/robot_command_validation").value
-        self.parameters_validation = ParametersValidation(self.validation, self)
+        self.validation = self.node.declare_parameter("/niryo_one/robot_command_validation",True).value
+        self.parameters_validation = ParametersValidation(self.node, self.validation)
 
         self.fk_client = self.node.create_client(GetPositionFK, 'compute_fk')
         while not self.fk_client.wait_for_service(timeout_sec=2.0):

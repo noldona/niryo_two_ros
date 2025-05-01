@@ -46,14 +46,14 @@ class NiryoRobotStatePublisher:
         
         # State publisher
         self.niryo_one_robot_state_publisher:rclpy.publisher.Publisher = self.node.create_publisher(
-            RobotState, '/niryo_one/robot_state', queue_size=10)
+            RobotState, '/niryo_one/robot_state', qos_profile=10)
 
         # Get params from rosparams
-        rate_tf_listener = self.node.declare_parameter("/niryo_one/robot_state/rate_tf_listener").value
-        rate_publish_state = self.node.declare_parameter("/niryo_one/robot_state/rate_publish_state").value
+        rate_tf_listener = self.node.declare_parameter("niryo_one/robot_state/rate_tf_listener",5.0).value
+        rate_publish_state = self.node.declare_parameter("niryo_one/robot_state/rate_publish_state",5.0).value
 
-        self.node.create_timer(Duration(1.0 / rate_tf_listener), self.get_robot_pose)
-        self.node.create_timer(Duration(1.0 / rate_publish_state), self.publish_state)
+        self.node.create_timer(timer_period_sec=1.0 / rate_tf_listener, callback=self.get_robot_pose)
+        self.node.create_timer(timer_period_sec=1.0 / rate_publish_state, callback=self.publish_state)
         
         self.node.get_logger().info("Started Niryo One robot state publisher")
 
@@ -67,7 +67,7 @@ class NiryoRobotStatePublisher:
         orientation.w = quaternion[3]
         return orientation
 
-    def get_robot_pose(self, event):
+    def get_robot_pose(self):
         try:
             (pos, rot) = self.tf_buffer.lookup_transform('base_link', 'tool_link', Time(0))
             self.position = pos
@@ -75,7 +75,7 @@ class NiryoRobotStatePublisher:
         except (LookupException, ConnectivityException, ExtrapolationException):
             self.node.get_logger().info("TF fail")
 
-    def publish_state(self, event):
+    def publish_state(self):
         msg = RobotState()
         msg.position.x = self.position[0]
         msg.position.y = self.position[1]

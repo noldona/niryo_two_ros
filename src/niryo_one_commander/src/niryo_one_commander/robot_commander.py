@@ -17,8 +17,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionServer
+from rclpy.action.server import ServerGoalHandle
 from rclpy import timer
 from rclpy.duration import Duration
 import sys
@@ -30,9 +32,13 @@ import threading
 from niryo_one_commander.command_type import CommandType
 from niryo_one_commander.command_status import CommandStatus
 from niryo_one_commander.robot_commander_exception import RobotCommanderException
+
 # Messages
+import rclpy.publisher
+import rclpy.service
+import rclpy.subscription
 from std_msgs.msg import Empty
-from niryo_one_msgs.msg import HardwareStatus
+from niryo_one_msgs.msg import HardwareStatus, RobotMoveCommand, TrajectoryPlan
 from std_msgs.msg import Bool
 from std_msgs.msg import Int32
 
@@ -43,13 +49,15 @@ from niryo_one_msgs.srv import SetInt
 # Action msgs
 from niryo_one_msgs.action import RobotMove
 # Commanders
-from arm_commander import ArmCommander
-from tool_commander import ToolCommander
+from niryo_one_commander.arm_commander import ArmCommander
+from niryo_one_commander.tool_commander import ToolCommander
 from niryo_one_commander.move_group_arm import MoveGroupArm
 from niryo_one_commander.parameters_validation import ParametersValidation
+from niryo_one_commander.position_manager import PositionManager
+from niryo_one_commander.trajectory_manager import TrajectoryManager
 
 # State publisher
-from niryo_one_robot_state_publisher import NiryoRobotStatePublisher
+from niryo_one_commander.niryo_one_robot_state_publisher import NiryoRobotStatePublisher
 
 """
 This class handles the arm and tools through a service interface 
@@ -61,56 +69,54 @@ This class handles the arm and tools through a service interface
 
 class RobotCommander:
 
-    def __init__(self, node:Node, position_manager, trajectory_manager):
+    def __init__(self, node:Node, position_manager:PositionManager, trajectory_manager:TrajectoryManager):
         self.node = node
         
         self.trajectory_manager = trajectory_manager
         self.pos_manager = position_manager
-        moveit_commander.roscpp_initialize(sys.argv)
-        self.moveit_py = MoveItPy(self.node)
 
         # Load all the sub-commanders
-        self.move_group_arm = MoveGroupArm()
-        self.arm_commander = ArmCommander(self.move_group_arm)
-        self.tool_commander = ToolCommander()
+        self.move_group_arm = MoveGroupArm(self.node)
+        self.arm_commander = ArmCommander(self.node, self.move_group_arm)
+        self.tool_commander = ToolCommander(self.node)
 
-        self.stop_trajectory_server = self.create_service(
+        self.stop_trajectory_server:rclpy.service.Service = self.node.create_service(
             SetBool, 'niryo_one/commander/stop_command', self.callback_stop_command)
 
-        self.reset_controller_pub = self.create_publisher(
-            Empty, '/niryo_one/steppers_reset_controller', queue_size=1)
+        self.reset_controller_pub:rclpy.publisher.Publisher = self.node.create_publisher(
+            Empty, '/niryo_one/steppers_reset_controller', qos_profile=1)
 
         # robot action server
         self.server = ActionServer(self, 
                                    RobotMove, 
                                    'niryo_one/commander/robot_action',
-                                   self.on_goal, 
-                                   self.on_cancel, 
-                                   auto_start=False)
+                                   execute_callback=self.execute_command_action,
+                                   goal_callback=self.on_goal, 
+                                   cancel_callback=self.on_cancel)
         
         self.current_goal_handle = None
         self.learning_mode_on = False
         self.joystick_enabled = False
         self.hardware_status = None
-        self.is_active_server = self.create_service(
+        self.is_active_server:rclpy.service.Service = self.node.create_service(
             GetInt, 'niryo_one/commander/is_active', self.callback_is_active)
 
-        self.learning_mode_subscriber = self.create_subscription(
+        self.learning_mode_subscriber = self.node.create_subscription(
             Bool, '/niryo_one/learning_mode', self.callback_learning_mode)
-        self.joystick_enabled_subscriber = self.create_subscription(
+        self.joystick_enabled_subscriber = self.node.create_subscription(
             Bool, '/niryo_one/joystick_interface/is_enabled', self.callback_joystick_enabled)
-        self.hardware_status_subscriber = self.create_subscription(
+        self.hardware_status_subscriber = self.node.create_subscription(
             HardwareStatus, '/niryo_one/hardware_status', self.callback_hardware_status)
 
-        self.validation = self.declare_parameter("/niryo_one/robot_command_validation").value
-        self.parameters_validation = ParametersValidation(self.validation, self)
+        self.validation = self.node.declare_parameter("/niryo_one/robot_command_validation",True).value
+        self.parameters_validation = ParametersValidation(self.node, self.validation)
 
         # arm velocity
         self.max_velocity_scaling_factor = 100
-        self.max_velocity_scaling_factor_pub = self.create_publisher(
+        self.max_velocity_scaling_factor_pub:rclpy.publisher.Publisher = self.node.create_publisher(
             Int32, '/niryo_one/max_velocity_scaling_factor', queue_size=10)
         self.timer = timer.Timer(Duration(1.0), self.publish_arm_max_velocity_scaling_factor)
-        self.max_velocity_scaling_factor_server = self.create_service(
+        self.max_velocity_scaling_factor_server:rclpy.service.Service = self.node.create_service(
             SetInt, '/niryo_one/commander/set_max_velocity_scaling_factor',
             self.callback_set_max_velocity_scaling_factor)
 
@@ -122,31 +128,32 @@ class RobotCommander:
             tries += 1
 
             if tries > 3:
-                self.get_logger().info("Big failure from the controller. Try to restart the robot")
+                self.node.get_logger().info("Big failure from the controller. Try to restart the robot")
                 return CommandStatus.ROS_ERROR, "Please restart the robot and try again."
 
             # if we are re-trying, first stop current plan
             if tries > 1:
                 self.arm_commander.stop_current_plan()
                 timer.Rate(1/0.1).sleep()
+            
             plan = self.move_group_arm.compute_plan()
             if not plan:
                 raise RobotCommanderException(
                     CommandStatus.PLAN_FAILED, "Moveit failed to compute the plan.")
 
             self.reset_controller()
-            self.get_logger().info("Send Moveit trajectory to controller.")
+            self.node.get_logger().info("Send Moveit trajectory to controller.")
             status, message = self.arm_commander.execute_plan(plan)
 
             if status != CommandStatus.SHOULD_RESTART:
                 break
-            self.get_logger().warn("WILL RETRY COMPUTING AND EXECUTING TRAJECTORY.")
+            self.node.get_logger().warn("WILL RETRY COMPUTING AND EXECUTING TRAJECTORY.")
 
         return status, message
 
-    def set_plan_and_execute(self, traj):
+    def set_plan_and_execute(self, traj:TrajectoryPlan):
         self.reset_controller()
-        self.get_logger().info("Send newly set trajectory to execute")
+        self.node.get_logger().info("Send newly set trajectory to execute")
         if traj is None:
             raise RobotCommanderException(
                 CommandStatus.PLAN_FAILED, "Moveit failed to execute plan.")
@@ -184,16 +191,16 @@ class RobotCommander:
         self.publish_arm_max_velocity_scaling_factor(None)
         return {'status': 200, 'message': 'Success'}
 
-    def set_saved_position(self, cmd):
-        self.get_logger().info("set saved position")
+    def set_saved_position(self, cmd:RobotMoveCommand):
+        self.node.get_logger().info("set saved position")
         pos = self.pos_manager.get_position(cmd.saved_position_name)
         self.arm_commander.set_joint_target(pos.joints)
 
-    def set_saved_trajectory(self, cmd):
+    def set_saved_trajectory(self, cmd:RobotMoveCommand):
         traj = self.trajectory_manager.get_trajectory(cmd.saved_trajectory_id)
         return self.set_plan_and_execute(traj.trajectory_plan)
 
-    def execute_command(self, cmd):
+    def execute_command(self, cmd:RobotMoveCommand):
         cmd_type = cmd.cmd_type
         status = CommandStatus.ROS_ERROR
         message = "Unknown problem occured during command execution"
@@ -204,7 +211,7 @@ class RobotCommander:
             message = "Tool command has been successfully processed"
         else:  # move command
             if cmd_type == CommandType.EXECUTE_TRAJ:
-                status, message = self.set_plan_and_execute(cmd.Trajectory)
+                status, message = self.set_plan_and_execute(cmd.trajectory)
             elif cmd_type == CommandType.SAVED_TRAJECTORY:
                 status, message = self.set_saved_trajectory(cmd)
             else:
@@ -240,18 +247,15 @@ class RobotCommander:
     # - Validate params
     # - Execute command and return status + message
     # - Cancel command if asked
-    def start(self):
-        self.server.start()
-        self.get_logger().info("Action Server started (Robot Commander)")
 
     @staticmethod
     def create_result(status, message):
-        result = RobotMoveResult()
+        result = RobotMove.Result()
         result.status = status
         result.message = message
         return result
 
-    def callback_learning_mode(self, msg):
+    def callback_learning_mode(self, msg:Bool):
         activate = msg.data
 
         if not self.learning_mode_on and activate:
@@ -259,10 +263,10 @@ class RobotCommander:
 
         self.learning_mode_on = activate
 
-    def callback_joystick_enabled(self, msg):
+    def callback_joystick_enabled(self, msg:Bool):
         self.joystick_enabled = msg.data
 
-    def callback_hardware_status(self, msg):
+    def callback_hardware_status(self, msg:HardwareStatus):
         self.hardware_status = msg
 
     def callback_is_active(self, req):
@@ -270,59 +274,59 @@ class RobotCommander:
             return 1
         return 0
 
-    def on_goal(self, goal_handle):
-        self.get_logger().info("Robot Action Server - Received goal. Check if exists")
+    def on_goal(self, goal_handle:ServerGoalHandle):
+        self.node.get_logger().info("Robot Action Server - Received goal. Check if exists")
 
         # Check if hw status has been received at least once
         if self.hardware_status is None:
             result = self.create_result(CommandStatus.HARDWARE_NOT_OK,
                                         "Hardware Status still not received, please restart the robot")
-            goal_handle.set_rejected(result)
+            goal_handle.abort()
             return
 
         # Check if motor connection problem
         if not self.hardware_status.connection_up:
             result = self.create_result(CommandStatus.HARDWARE_NOT_OK,
                                         "Motor connection problem, you can't send a command now")
-            goal_handle.set_rejected(result)
+            goal_handle.abort()
             return
 
         # Check if calibration is needed
         if self.hardware_status.calibration_needed == 1:
             result = self.create_result(CommandStatus.HARDWARE_NOT_OK,
                                         "You need to calibrate the robot before sending a command")
-            goal_handle.set_rejected(result)
+            goal_handle.abort()
             return
 
         # Check if calibration is in progress
         if self.hardware_status.calibration_in_progress:
             result = self.create_result(CommandStatus.HARDWARE_NOT_OK,
                                         "Calibration in progress, wait until it ends to send a command")
-            goal_handle.set_rejected(result)
+            goal_handle.abort()
             return
 
         # Check if joystick enabled
         if self.joystick_enabled:
             result = self.create_result(CommandStatus.JOYSTICK_ENABLED,
                                         "You need to deactivate joystick to execute a new command")
-            goal_handle.set_rejected(result)
+            goal_handle.abort()
             return
 
         # check if still have a goal -> set_rejected() 
         if self.current_goal_handle is not None:
             result = self.create_result(CommandStatus.GOAL_STILL_ACTIVE,
                                         "Current command is still active. Cancel it if you want to execute a new one")
-            goal_handle.set_rejected(result)
+            goal_handle.abort()
             return
 
         # validate parameters -> set_rejected (msg : validation or commander error)
         try:
-            self.get_logger().info("Robot Action Server - Checking parameters Validity")
-            self.validate_params(goal_handle.goal.goal.cmd)
+            self.node.get_logger().info("Robot Action Server - Checking parameters Validity")
+            self.validate_params(goal_handle.request.cmd)
         except RobotCommanderException as e:
             result = self.create_result(e.status, e.message)
-            goal_handle.set_rejected(result)
-            self.get_logger().info("Robot Action Server - Invalid parameters")
+            goal_handle.abort()
+            self.node.get_logger().info("Robot Action Server - Invalid parameters")
             return
 
         # Check if learning mode ON
@@ -330,29 +334,22 @@ class RobotCommander:
             if not self.activate_learning_mode(False):
                 result = self.create_result(CommandStatus.LEARNING_MODE_ON,
                                             "Learning mode could not be deactivated")
-                goal_handle.set_rejected(result)
+                goal_handle.abort()
                 return
 
         # set accepted
         self.current_goal_handle = goal_handle
-        self.current_goal_handle.set_accepted()
-        self.get_logger().info("Robot Action Server - Goal has been accepted")
-
-        # Launch compute + execution in a new thread
-        w = threading.Thread(name="worker", target=self.execute_command_action)
-        w.start()
-        self.get_logger().info("Robot Action Server : Executing command in a new thread")
-
+        
     def on_cancel(self, goal_handle):
-        self.get_logger().info("Received cancel command")
+        self.node.get_logger().info("Received cancel command")
 
         if goal_handle == self.current_goal_handle:
             self.cancel_current_command()
         else:
-            self.get_logger().info("Robot Action Server - No current goal, nothing to do")
+            self.node.get_logger().info("Robot Action Server - No current goal, nothing to do")
 
-    def execute_command_action(self):
-        cmd = self.current_goal_handle.goal.goal.cmd
+    def execute_command_action(self, goal_handle:ServerGoalHandle):
+        cmd:RobotMoveCommand = self.current_goal_handle.request.cmd
         result = self.create_result(CommandStatus.ROS_ERROR, "error with executing command")
         response = None
         try:
@@ -361,25 +358,25 @@ class RobotCommander:
             result = response
         except RobotCommanderException as e:
             result = self.create_result(e.status, e.message)
-            self.get_logger().info("An exception was thrown during command execution")
+            self.node.get_logger().info("An exception was thrown during command execution")
 
         if not response:
-            self.current_goal_handle.set_aborted(result)
-            self.get_logger().warn("Execution has been aborted")
+            self.current_goal_handle.abort()
+            self.node.get_logger().warn("Execution has been aborted")
         elif response.status == CommandStatus.SUCCESS:
-            self.current_goal_handle.set_succeeded(result)
-            self.get_logger().info("Goal has been set as succeeded")
+            self.current_goal_handle.succeed()
+            self.node.get_logger().info("Goal has been set as succeeded")
         elif response.status == CommandStatus.STOPPED:
-            self.current_goal_handle.set_canceled(result)
-            self.get_logger().info("Goal has been successfully canceled")
+            self.current_goal_handle.canceled()
+            self.node.get_logger().info("Goal has been successfully canceled")
         elif response.status == CommandStatus.CONTROLLER_PROBLEMS:
-            self.current_goal_handle.set_aborted(result)
-            self.get_logger().warn("Controller failed during execution : Goal has been aborted.\n" + \
+            self.current_goal_handle.abort()
+            self.node.get_logger().warn("Controller failed during execution : Goal has been aborted.\n" + \
                           "This is due to either a collision, or a motor unable to follow a given command" + \
                           " (overload, extreme positions, ...)")
         else:
-            self.current_goal_handle.set_aborted(result)
-            self.get_logger().info("Unknown result, goal has been set as aborted")
+            self.current_goal_handle.abort()
+            self.node.get_logger().info("Unknown result, goal has been set as aborted")
         self.current_goal_handle = None
 
     # Send a cancel signal to Moveit interface
@@ -387,9 +384,9 @@ class RobotCommander:
         try:
             self.cancel_command()
         except RobotCommanderException:
-            self.get_logger().warn("Could not cancel current command ")
+            self.node.get_logger().warn("Could not cancel current command ")
 
-    def validate_params(self, cmd):
+    def validate_params(self, cmd:RobotMoveCommand):
         cmd_type = cmd.cmd_type
         if cmd_type == CommandType.JOINTS:
             self.parameters_validation.validate_joints(cmd.joints)
@@ -417,15 +414,15 @@ class RobotCommander:
         else:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, "Wrong command type")
 
-    def validate_saved_trajectory(self, cmd):
-        self.get_logger().info("Checking saved trajectory validity")
+    def validate_saved_trajectory(self, cmd:RobotMoveCommand):
+        self.node.get_logger().info("Checking saved trajectory validity")
         saved_traj = self.trajectory_manager.get_trajectory(cmd.saved_trajectory_id)
         if saved_traj is None:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, "Saved trajectory  not found")
         self.parameters_validation.validate_trajectory(saved_traj.trajectory_plan)
 
     def validate_saved_position(self, position_name):
-        self.get_logger().info("Checking joints validity")
+        self.node.get_logger().info("Checking joints validity")
         saved_position = self.pos_manager.get_position(position_name)
         if saved_position is None:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, "Saved position not found")

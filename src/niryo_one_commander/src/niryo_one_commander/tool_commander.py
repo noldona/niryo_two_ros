@@ -20,37 +20,59 @@
 from rclpy.node import Node
 from rclpy.action import ActionClient
 
-from niryo_one_msgs.msg import ToolAction
-from niryo_one_msgs.msg import ToolGoal
+from niryo_one_msgs.action import Tool
 
 from niryo_one_commander.command_status import CommandStatus
 from niryo_one_commander.robot_commander_exception import RobotCommanderException
 from actionlib_msgs.msg import GoalStatus
 
 
-class ToolCommander(Node):
+class ToolCommander:
 
-    def __init__(self, **kwargs):
-        super().__init__('tool_commander', **kwargs)
+    def __init__(self, node: Node):
+        self.node = node
 
         self.action_client = ActionClient(
-            self, ToolAction, 'niryo_one/tool_action')
-        self.get_logger().info("Waiting for action server : niryo_one/tool_action...")
+            self, Tool, 'niryo_one/tool_action')
+        self.node.get_logger().info("Waiting for action server : niryo_one/tool_action...")
         self.action_client.wait_for_server()
-        self.get_logger().info("Found action server : niryo_one/tool_action")
+        self.node.get_logger().info("Found action server : niryo_one/tool_action")
 
-        self.get_logger().info("Tool Commander has been started")
+        self.node.get_logger().info("Tool Commander has been started")
 
     def send_tool_command(self, cmd):
         goal = self.create_goal(cmd)
-        self.action_client.send_goal(goal)
-        self.get_logger().info("Tool command sent")
+        self.action_client.wait_for_server()
+        send_goal_future = self.action_client.send_goal_async(goal, feedback_callback=self.feedback_callback)
+        send_goal_future.add_done_callback(self.goal_response_callback)
+        self.node.get_logger().info("Tool command sent")
 
         # if goal has been rejected/aborted, stop tracking it and return error
         if self.has_problem():
-            message = self.action_client._get_result().message
-            self.action_client.stop_tracking_goal()
+            result_future = self.action_client.get_result_async(self.goal_handle)
+            result = result_future.result().result
+            message = result.message  # user-defined status text
+            self.goal_handle = None    # stop tracking
             raise RobotCommanderException(CommandStatus.TOOL_FAILED, message)
+    
+    def goal_response_callback(self, future):
+        self.goal_handle = future.result()
+        if not self.goal_handle.accepted:
+            self.node.get_logger().info('Goal rejected :(')
+            raise RobotCommanderException(CommandStatus.TOOL_FAILED, 'Goal rejected')
+
+        self.node.get_logger().info('Goal accepted :)')
+
+        self.get_result_future = self.goal_handle.get_result_async()
+        self.get_result_future.add_done_callback(self.get_result_callback)
+
+    def get_result_callback(self, future):
+        result = future.result().result
+        self.node.get_logger().info('Result: ' + str(result))
+
+    def feedback_callback(self, feedback_msg):
+        feedback = feedback_msg.feedback
+        self.node.get_logger().info('Received feedback: ' + str(feedback))
 
     def stop_tool_command(self):
         pass
@@ -58,16 +80,18 @@ class ToolCommander(Node):
 
     @staticmethod
     def create_goal(cmd):
-        goal = ToolGoal()
+        goal = Tool.Goal()
         goal.cmd = cmd
         return goal
 
     # Returns LOST if this SimpleActionClient isn't tracking a goal. 
     # see documentation : http://docs.ros.org/diamondback/api/actionlib/html/classactionlib_1_1simple__action__client_1_1SimpleActionClient.html#a6bdebdd9f43a470ecd361d2c8b743188
     def get_command_status(self):
-        return self.action_client.get_state()
+        if self.goal_handle is None:
+            return GoalStatus.LOST
+        return self.goal_handle.status
 
     def has_problem(self):
         status = self.get_command_status()
-        # self.get_logger().info("STATUS : " + str(status))
+        # self.node.get_logger().info("STATUS : " + str(status))
         return status == GoalStatus.ABORTED or status == GoalStatus.REJECTED

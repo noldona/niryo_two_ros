@@ -19,10 +19,11 @@
 
 import rclpy
 from rclpy.node import Node
-# from rclpy.executors import ExternalShutdownException
+from rclpy.action import ActionServer, ActionClient
 import threading
 
-from action_msgs.msg import GoalStatus
+from action_msgs.msg import GoalStatus, GoalStatusArray
+from action_msgs.msg import GoalInfo
 
 import rclpy.publisher
 from trajectory_msgs.msg import JointTrajectory
@@ -32,31 +33,29 @@ from niryo_one_commander.move_group_arm import MoveGroupArm
 from niryo_one_commander.robot_commander_exception import RobotCommanderException
 from niryo_one_commander.command_status import CommandStatus
 
+from moveit.core.planning_interface import MotionPlanResponse
+
 TrajectoryTimeOutMin = 3
 
 class ArmCommander:
 
-    def __init__(self, move_group_arm, node:Node):
+    def __init__(self,  node:Node, move_group_arm:MoveGroupArm):
         
         self.node = node
         self.move_group_arm = move_group_arm
         self.traj_finished_event = threading.Event()
         self.current_goal_id = None
         self.current_goal_result = GoalStatus.STATUS_UNKNOWN
-        self.node.create_subscription(FollowJointTrajectory.Goal,
-                                '/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/goal',
-                                self.callback_current_goal)
-
-        self.node.create_subscription(FollowJointTrajectory.Result,
-                                '/niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/result',
-                                self.callback_goal_result)
+        self.node.create_subscription(GoalStatusArray,
+                                'niryo_one_follow_joint_trajectory_controller/follow_joint_trajectory/_action/status',
+                                self.callback_goal_status, 10)
 
         # Direct topic to joint_trajectory_controller
         # Used ONLY when goal is aborted, to enter position hold mode
         self.joint_trajectory_publisher:rclpy.publisher.Publisher = self.node.create_publisher(
             JointTrajectory,
-            '/niryo_one_follow_joint_trajectory_controller/command',
-            queue_size=10)
+            'niryo_one_follow_joint_trajectory_controller/command',
+            qos_profile=10)
 
     def execute_plan(self, plan):
         if plan:
@@ -65,7 +64,7 @@ class ArmCommander:
             self.current_goal_id = None
             self.current_goal_result = GoalStatus.STATUS_UNKNOWN
             # send traj and wait
-            self.move_group_arm.execute(plan, wait=False)
+            self.move_group_arm.execute(plan)
             trajectory_time_out = 1.5 * self.get_plan_time(plan)
             # if trajectory_time_out is less than 3 seconds, the default value will be 3 seconds
             if trajectory_time_out < TrajectoryTimeOutMin:
@@ -108,9 +107,9 @@ class ArmCommander:
         self.node.get_logger().info("Send STOP to arm")
         self.move_group_arm.stop()
 
-    def set_joint_target(self, joint_array):
+    def set_joint_target(self, joint_dict):
         try:
-            self.move_group_arm.set_joint_value_target(joint_array)
+            self.move_group_arm.set_joint_value_target(joint_dict)
         except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
@@ -149,27 +148,29 @@ class ArmCommander:
             self.move_group_arm.set_max_velocity_scaling_factor(percentage)
         except Exception as e:
             raise RobotCommanderException(400, str(e))
-
+    
     @staticmethod
-    def get_plan_time(plan):
+    def get_plan_time(plan:MotionPlanResponse):
         if plan:
-            return plan.joint_trajectory.points[-1].time_from_start.to_sec()
+            return plan.trajectory.duration
         else:
             raise RobotCommanderException(CommandStatus.NO_PLAN_AVAILABLE,
                                           "No current plan found")
-
-    def callback_current_goal(self, msg):
-        self.current_goal_id = msg.goal_id.id
-        self.node.get_logger().info("Arm commander - Got a goal id : " + str(self.current_goal_id))
-
-    def callback_goal_result(self, msg):
-        if msg.status.goal_id.id == self.current_goal_id:
-            self.node.get_logger().info("Receive result, goal_id matches.")
-            self.current_goal_result = msg.status.status
-            self.node.get_logger().info("Arm commander - Result : " + str(self.current_goal_result))
-            self.traj_finished_event.set()
-        else:
-            self.node.get_logger().info("Arm commander - Received result, WRONG GOAL ID")
-
+    
+    def callback_goal_status(self, msg:GoalStatusArray):
+        for status in msg.status_list:
+            if status.status == GoalStatus.STATUS_ACCEPTED:
+                self.node.get_logger().info("Arm commander - Goal accepted with id : " + str(status.goal_info.goal_id))
+            elif status.status == GoalStatus.STATUS_EXECUTING:
+                self.current_goal_id = status.goal_info.goal_id
+                self.node.get_logger().info("Arm commander - Executing goal id : " + str(self.current_goal_id))
+            elif status.status in [GoalStatus.STATUS_SUCCEEDED,
+                                        GoalStatus.STATUS_CANCELED,
+                                        GoalStatus.STATUS_ABORTED]:
+                if status.goal_info.goal_id == self.current_goal_id:
+                    self.node.get_logger().info("Arm commander - Goal finished with id : " + str(status.goal_info.goal_id))
+                    self.current_goal_result = status.status
+                self.node.get_logger().info("Arm commander - Result : " + str(self.current_goal_result))
+                
 if __name__ == '__main__':
     pass
