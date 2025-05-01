@@ -5,6 +5,9 @@ controller_manager:
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
+    niryo_one_controller:
+      type: niryo_one_hardware/NiryoOneController
+
 
 niryo_one_controller:
   ros__parameters:
