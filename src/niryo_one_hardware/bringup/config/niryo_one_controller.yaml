@@ -1,5 +1,9 @@
 controller_manager:
   ros__parameters:
+    controller_list:
+      - niryo_one_controller
+      - joint_state_broadcaster
+
     update_rate: 100  # Hz
 
     joint_state_broadcaster:
